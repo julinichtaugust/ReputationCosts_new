@@ -14,6 +14,7 @@ class ResultsWaitPage(WaitPage):
         self.group.marktpreisA_rech()
         self.group.handelA()
         self.group.ausführung()
+        self.group.daten()
 
 class Results(Page):
 
@@ -27,7 +28,7 @@ class Results(Page):
             'kaufA_3': self.group.kaufA_3,
             'marktpreisA': self.group.marktpreisA,
             'anzahlA': self.player.anzahlA,
-            'endowment': self.player.endowment
+            'endowment': self.player.endowment,
         }
 
 

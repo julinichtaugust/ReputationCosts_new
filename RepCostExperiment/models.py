@@ -9,6 +9,8 @@ from otree.api import (
     currency_range,
 )
 
+import operator
+
 
 author = 'Your name here'
 
@@ -38,6 +40,7 @@ class Group(BaseGroup):
     kaufA_3 = models.CurrencyField()
     marktpreisA = models.CurrencyField()
     clearing_rankA = models.IntegerField()
+
 
 
     def verkaufA_liste(self):
@@ -97,6 +100,18 @@ class Group(BaseGroup):
                     else:
                         pass
 
+    def daten(self):
+        players = self.get_players()
+        v = []
+        k = []
+        for p in players:
+            v.append({'SPIELER': p.id_in_group, 'ANGEBOT': p.verkaufA})
+        liste_verkaufA = sorted(v, key=lambda k: k['ANGEBOT'])
+        print(liste_verkaufA)
+        for p in players:
+            k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
+        liste_kaufA = sorted(k, key=lambda k: k['NACHFRAGE'], reverse=True)
+        print(liste_kaufA)
 
 
 
