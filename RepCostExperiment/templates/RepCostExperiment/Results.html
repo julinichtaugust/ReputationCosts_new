@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Ergebnis
+{% endblock %}
+
+{% block content %}
+
+    <p>Das Angebot war {{ player.verkaufA }}, die Nachfrage war {{ player.kaufA }}.</p>
+    <table>
+  <tr>
+    <th>Rank</th>
+    <th>Nachfrage</th>
+      <th>Angebot</th>
+      <th>Rank</th>
+  </tr>
+  <tr>
+    <td>1</td>
+      <td>{{ kaufA_1 }}</td>
+    <td>{{ verkaufA_1 }}</td>
+    <td>1</td>
+   </tr>
+   <tr>
+     <td>2</td>
+       <td>{{ kaufA_2 }}</td>
+     <td>{{ verkaufA_2 }}</td>
+     <td>2</td>
+   </tr>
+   <tr>
+     <td>3</td>
+       <td>{{ kaufA_3 }}</td>
+     <td>{{ verkaufA_3 }}</td>
+     <td>3</td>
+   </tr>
+</table>
+<p>Der Marktpreis ist {{ marktpreisA }}.</p>
+
+{% if player.is_trade_kaufA %}
+    <div class="alert alert-success"> Sie haben die Aktie des A-Unternehmens gekauft. </div>
+{% else %}
+    <div class="alert alert-warning"> Sie haben keine Aktie des A-Unternehmens erhalten. </div>
+{% endif %}
+{% if player.is_trade_verkaufA %}
+    <div class="alert alert-success"> Sie haben die Aktie des A-Unternehmens verkauft. </div>
+{% else %}
+    <div class="alert alert-warning"> Sie haben kein Aktie des A-Unternehmens verkauft. </div>
+{% endif %}
+<p>Neue Anzahl Aktien A: {{ player.anzahlA }}.</p>
+<p>Neue Ausstattung: {{ player.endowment }}.</p>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+
+
