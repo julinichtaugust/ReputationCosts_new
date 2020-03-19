@@ -34,7 +34,11 @@
      <td>3</td>
    </tr>
 </table>
+{% if marktpreisA == None %}
+<p>Alle Nachfragen unter den Angeboten, kein Handel.</p>
+{% else %}
 <p>Der Marktpreis ist {{ marktpreisA }}.</p>
+{% endif %}
 
 {% if player.is_trade_kaufA %}
     <div class="alert alert-success"> Sie haben die Aktie des A-Unternehmens gekauft. </div>
