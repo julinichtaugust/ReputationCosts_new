@@ -124,26 +124,26 @@ class Group(BaseGroup):
               p.is_trade_kaufA = True
             else:
                 pass
-            if p.verkaufA <= self.clearing_rankA:
+            if p.rank_verkaufA <= self.clearing_rankA:
               p.is_trade_verkaufA = True
             else:
                 pass
 
-    #def ausführung(self):
-     #   players = self.get_players()
-      #  for p in players:
-       #     if p.is_trade_kaufA == True and p.is_trade_verkaufA == True:
-        #        pass
-         #   else:
-          #      if p.is_trade_kaufA == True:
-           #         p.anzahlA = p.anzahlA + 1
-            #        p.endowment = p.endowment - self.marktpreisA
-             #   else:
-              #      if p.is_trade_verkaufA == True:
-               #         p.anzahlA = p.anzahlA -1
-                #        p.endowment = p.endowment + self.marktpreisA
-                 #   else:
-                  #      pass
+    def ausfuhrung(self):
+        players = self.get_players()
+        for p in players:
+            if p.is_trade_kaufA == True and p.is_trade_verkaufA == True:
+                pass
+            else:
+                if p.is_trade_kaufA == True and p.is_trade_verkaufA == False:
+                    p.anzahlA = p.anzahlA + 1
+                    p.endowment = p.endowment - self.marktpreisA
+                else:
+                    if p.is_trade_verkaufA == True and p.is_trade_kaufA == False:
+                        p.anzahlA = p.anzahlA -1
+                        p.endowment = p.endowment + self.marktpreisA
+                    else:
+                        pass
 
 
 
