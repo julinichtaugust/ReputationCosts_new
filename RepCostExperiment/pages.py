@@ -14,7 +14,7 @@ class ResultsWaitPage(WaitPage):
         self.group.daten()
         self.group.rank()
         self.group.marktpreisA_rech()
-        #self.group.handelA()
+        self.group.handelA()
         #self.group.ausführung()
 
 

@@ -117,17 +117,17 @@ class Group(BaseGroup):
         if self.clearing_rankA ==  3:
             self.marktpreisA = (self.kaufA_3 + self.verkaufA_3)/2
 
-    #def handelA(self):
-    #    players = self.get_players()
-    #    for p in players:
-     #       if p.kaufA >= self.marktpreisA:
-     #           p.is_trade_kaufA = True
-     #       else:
-    #            pass
-    #        if p.verkaufA <= self.marktpreisA:
-     #           p.is_trade_verkaufA = True
-    #        else:
-     #           pass
+    def handelA(self):
+        players = self.get_players()
+        for p in players:
+            if p.rank_kaufA <= self.clearing_rankA:
+              p.is_trade_kaufA = True
+            else:
+                pass
+            if p.verkaufA <= self.clearing_rankA:
+              p.is_trade_verkaufA = True
+            else:
+                pass
 
     #def ausführung(self):
      #   players = self.get_players()
