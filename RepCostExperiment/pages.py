@@ -15,6 +15,7 @@ class ResultsWaitPage(WaitPage):
         self.group.handelA()
         self.group.ausführung()
         self.group.daten()
+        self.group.rank()
 
 class Results(Page):
 
@@ -29,6 +30,7 @@ class Results(Page):
             'marktpreisA': self.group.marktpreisA,
             'anzahlA': self.player.anzahlA,
             'endowment': self.player.endowment,
+
         }
 
 

@@ -95,6 +95,19 @@ class Group(BaseGroup):
                 else:
                     pass
 
+    def rank(self):
+        if self.kaufA_3 >= self.verkaufA_3:
+            self.clearing_rankA = 3
+        else:
+            if self.kaufA_2 >= self.verkaufA_2:
+                self.clearing_rankA = 2
+            else:
+                if self.kaufA_1 >= self.verkaufA_1:
+                    self.clearing_rankA = 1
+                else:
+                    self.clearing_rankA = 0
+
+
     def marktpreisA_rech(self):
        if self.kaufA_3 >= self.verkaufA_3:
            self.marktpreisA = (self.kaufA_liste[-3]+self.verkaufA_liste[-3])/2
