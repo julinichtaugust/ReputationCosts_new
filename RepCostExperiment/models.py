@@ -71,7 +71,6 @@ class Group(BaseGroup):
         for item in liste_verkaufA:
             w1 = w1+1
             item.update({'RANK': w1})
-        print(liste_verkaufA)
 
         for p in players:
             for item in liste_verkaufA:
@@ -86,7 +85,6 @@ class Group(BaseGroup):
         for item in liste_kaufA:
             w2 = w2+1
             item.update({'RANK': w2})
-        print(liste_kaufA)
 
         for p in players:
             for item in liste_kaufA:
@@ -106,7 +104,6 @@ class Group(BaseGroup):
                     self.clearing_rankA = 1
                 else:
                     self.clearing_rankA = 0
-
 
     def marktpreisA_rech(self):
         # for Schleife einrichten
@@ -158,6 +155,11 @@ class Player(BasePlayer):
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
 
+
+
+    def access_data(self):
+        self.endowment = self.in_round(self.round_number - 1).endowment
+        self.anzahlA = self.in_round(self.round_number - 1).anzahlA
 
 
 
