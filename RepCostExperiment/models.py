@@ -59,6 +59,41 @@ class Group(BaseGroup):
         self.kaufA_2 = self.kaufA_liste[-2]
         self.kaufA_3 = self.kaufA_liste[-3]
 
+    def daten(self):
+        players = self.get_players()
+        v = []
+        k = []
+        w1=0
+        w2=0
+        for p in players:
+            v.append({'SPIELER': p.id_in_group, 'ANGEBOT': p.verkaufA})
+        liste_verkaufA = sorted(v, key=lambda k: k['ANGEBOT'])
+        for item in liste_verkaufA:
+            w1 = w1+1
+            item.update({'RANK': w1})
+        print(liste_verkaufA)
+
+        for p in players:
+            for item in liste_verkaufA:
+                if p.id_in_group == item['SPIELER']:
+                    p.rank_verkaufA = item['RANK']
+                else:
+                    pass
+
+        for p in players:
+            k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
+        liste_kaufA = sorted(k, key=lambda k: k['NACHFRAGE'], reverse=True)
+        for item in liste_kaufA:
+            w2 = w2+1
+            item.update({'RANK': w2})
+        print(liste_kaufA)
+
+        for p in players:
+            for item in liste_kaufA:
+                if p.id_in_group == item['SPIELER']:
+                    p.rank_kaufA = item['RANK']
+                else:
+                    pass
 
     def marktpreisA_rech(self):
        if self.kaufA_3 >= self.verkaufA_3:
@@ -100,30 +135,6 @@ class Group(BaseGroup):
                     else:
                         pass
 
-    def daten(self):
-        players = self.get_players()
-        v = []
-        k = []
-        w1=0
-        w2=0
-        for p in players:
-            v.append({'SPIELER': p.id_in_group, 'ANGEBOT': p.verkaufA})
-        liste_verkaufA = sorted(v, key=lambda k: k['ANGEBOT'])
-        for item in liste_verkaufA:
-            w1 = w1+1
-            item.update({'RANK': w1})
-        print(liste_verkaufA)
-        for p in players:
-            k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
-        liste_kaufA = sorted(k, key=lambda k: k['NACHFRAGE'], reverse=True)
-        for item in liste_kaufA:
-            w2 = w2+1
-            item.update({'RANK': w2})
-        print(liste_kaufA)
-
-
-
-
 
 
 
@@ -134,6 +145,10 @@ class Player(BasePlayer):
     is_trade_kaufA = models.BooleanField(initial=False)
     is_trade_verkaufA = models.BooleanField(initial=False)
     anzahlA = models.IntegerField(initial=5)
-    rank_kaufA = models.IntegerField()
     rank_verkaufA = models.IntegerField()
+    rank_kaufA = models.IntegerField()
+
+
+
+
 
