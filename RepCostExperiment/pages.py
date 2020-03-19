@@ -11,11 +11,13 @@ class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.verkaufA_liste()
         self.group.kaufA_liste()
-        self.group.marktpreisA_rech()
-        self.group.handelA()
-        self.group.ausführung()
         self.group.daten()
         self.group.rank()
+        self.group.marktpreisA_rech()
+        #self.group.handelA()
+        #self.group.ausführung()
+
+
 
 class Results(Page):
 
@@ -28,8 +30,8 @@ class Results(Page):
             'kaufA_2': self.group.kaufA_2,
             'kaufA_3': self.group.kaufA_3,
             'marktpreisA': self.group.marktpreisA,
-            'anzahlA': self.player.anzahlA,
-            'endowment': self.player.endowment,
+            #'anzahlA': self.player.anzahlA,
+            #'endowment': self.player.endowment,
 
         }
 

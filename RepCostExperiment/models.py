@@ -109,44 +109,41 @@ class Group(BaseGroup):
 
 
     def marktpreisA_rech(self):
-       if self.kaufA_3 >= self.verkaufA_3:
-           self.marktpreisA = (self.kaufA_liste[-3]+self.verkaufA_liste[-3])/2
-       else:
-           if self.kaufA_2 >= self.verkaufA_2:
-               self.marktpreisA = (self.kaufA_liste[-2]+self.verkaufA_liste[-2])/2
-           else:
-               if self.kaufA_1 >= self.verkaufA_1:
-                   self.marktpreisA = (self.kaufA_liste[-1] + self.verkaufA_liste[-1])/2
-               else:
-                   pass
+        # for Schleife einrichten
+        if self.clearing_rankA == 1:
+            self.marktpreisA = (self.kaufA_1 + self.verkaufA_1)/2
+        if self.clearing_rankA == 2:
+            self.marktpreisA = (self.kaufA_2 + self.verkaufA_2)/2
+        if self.clearing_rankA ==  3:
+            self.marktpreisA = (self.kaufA_3 + self.verkaufA_3)/2
 
-    def handelA(self):
-        players = self.get_players()
-        for p in players:
-            if p.kaufA >= self.marktpreisA:
-                p.is_trade_kaufA = True
-            else:
-                pass
-            if p.verkaufA <= self.marktpreisA:
-                p.is_trade_verkaufA = True
-            else:
-                pass
+    #def handelA(self):
+    #    players = self.get_players()
+    #    for p in players:
+     #       if p.kaufA >= self.marktpreisA:
+     #           p.is_trade_kaufA = True
+     #       else:
+    #            pass
+    #        if p.verkaufA <= self.marktpreisA:
+     #           p.is_trade_verkaufA = True
+    #        else:
+     #           pass
 
-    def ausführung(self):
-        players = self.get_players()
-        for p in players:
-            if p.is_trade_kaufA == True and p.is_trade_verkaufA == True:
-                pass
-            else:
-                if p.is_trade_kaufA == True:
-                    p.anzahlA = p.anzahlA + 1
-                    p.endowment = p.endowment - self.marktpreisA
-                else:
-                    if p.is_trade_verkaufA == True:
-                        p.anzahlA = p.anzahlA -1
-                        p.endowment = p.endowment + self.marktpreisA
-                    else:
-                        pass
+    #def ausführung(self):
+     #   players = self.get_players()
+      #  for p in players:
+       #     if p.is_trade_kaufA == True and p.is_trade_verkaufA == True:
+        #        pass
+         #   else:
+          #      if p.is_trade_kaufA == True:
+           #         p.anzahlA = p.anzahlA + 1
+            #        p.endowment = p.endowment - self.marktpreisA
+             #   else:
+              #      if p.is_trade_verkaufA == True:
+               #         p.anzahlA = p.anzahlA -1
+                #        p.endowment = p.endowment + self.marktpreisA
+                 #   else:
+                  #      pass
 
 
 
