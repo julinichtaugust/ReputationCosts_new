@@ -104,14 +104,25 @@ class Group(BaseGroup):
         players = self.get_players()
         v = []
         k = []
+        w1=0
+        w2=0
         for p in players:
             v.append({'SPIELER': p.id_in_group, 'ANGEBOT': p.verkaufA})
         liste_verkaufA = sorted(v, key=lambda k: k['ANGEBOT'])
+        for item in liste_verkaufA:
+            w1 = w1+1
+            item.update({'RANK': w1})
         print(liste_verkaufA)
         for p in players:
             k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
         liste_kaufA = sorted(k, key=lambda k: k['NACHFRAGE'], reverse=True)
+        for item in liste_kaufA:
+            w2 = w2+1
+            item.update({'RANK': w2})
         print(liste_kaufA)
+
+
+
 
 
 
