@@ -13,6 +13,10 @@ class PlayerBot(Bot):
             yield pages.MyPage, dict(verkaufA=random.randrange(1,2,1), kaufA=random.randrange(2,6,1))
         if self.player.id_in_group == 3:
             yield pages.MyPage, dict(verkaufA=random.randrange(1,6,1), kaufA=random.randrange(4,10,1))
-        time.sleep(40)
+        time.sleep(10)
+        yield pages.Results
+        if self.round_number == Constants.num_rounds:
+            time.sleep(10)
+            yield pages.Ende
 
 

@@ -16,7 +16,7 @@ SESSION_CONFIGS = [
         display_name='RepCostExperiment',
         num_demo_participants=3,
         app_sequence=['RepCostExperiment'],
-        use_browser_bots=False,
+        use_browser_bots=True,
     ),
 ]
 
