@@ -24,6 +24,7 @@ class ResultsWaitPage(WaitPage):
         self.group.marktpreisA_rech()
         self.group.handelA()
         self.group.ausfuhrung()
+        self.group.dividende_rech()
 
 
 
@@ -42,6 +43,7 @@ class Results(Page):
             'marktpreisA': self.group.marktpreisA,
             'anzahlA': self.player.anzahlA,
             'endowment': self.player.endowment,
+            'divA': self.group.dividendeA,
         }
 
 class Ende(Page):

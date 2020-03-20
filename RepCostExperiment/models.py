@@ -9,7 +9,7 @@ from otree.api import (
     currency_range,
 )
 
-import operator
+import random
 
 
 author = 'Your name here'
@@ -27,6 +27,7 @@ class Constants(BaseConstants):
     endowment = 100
 
 
+
 class Subsession(BaseSubsession):
     pass
 
@@ -40,6 +41,7 @@ class Group(BaseGroup):
     kaufA_3 = models.CurrencyField()
     marktpreisA = models.CurrencyField()
     clearing_rankA = models.IntegerField()
+    dividendeA = models.CurrencyField()
 
 
 
@@ -142,6 +144,11 @@ class Group(BaseGroup):
                     else:
                         pass
 
+    def dividende_rech(self):
+        self.dividendeA = random.randrange(0,10,1)
+        players = self.get_players()
+        for p in players:
+            p.endowment = p.endowment + p.anzahlA * self.dividendeA
 
 
 
