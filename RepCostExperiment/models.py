@@ -25,6 +25,7 @@ class Constants(BaseConstants):
     num_rounds = 2
 
     endowment = 100
+    diviA = [0,5,15,20]
 
 
 
@@ -145,7 +146,7 @@ class Group(BaseGroup):
                         pass
 
     def dividende_rech(self):
-        self.dividendeA = random.randrange(0,10,1)
+        self.dividendeA = c(random.choice(Constants.diviA))
         players = self.get_players()
         for p in players:
             p.endowment = p.endowment + p.anzahlA * self.dividendeA
