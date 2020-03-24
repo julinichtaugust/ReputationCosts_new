@@ -28,7 +28,6 @@ class Constants(BaseConstants):
     diviA = [0,5,15,20]
 
 
-
 class Subsession(BaseSubsession):
     pass
 
@@ -38,22 +37,21 @@ class Group(BaseGroup):
     clearing_rankA = models.IntegerField()
     dividendeA = models.CurrencyField()
 
-
-
+# Sortierte Liste der Verkaufspreise (Angebote: von klein nach groß)
     def verkaufA_liste(self):
         players = self.get_players()
         self.verkaufA_liste = [p.verkaufA for p in players]
         self.verkaufA_liste.sort()
         return self.verkaufA_liste
 
-
+# Sortierte Liste der Kaufspreise (Nachfragen: von groß nach klein)
     def kaufA_liste(self):
         players = self.get_players()
         self.kaufA_liste = [p.kaufA for p in players]
         self.kaufA_liste.sort(reverse=True)
         return self.kaufA_liste
 
-
+# Liste, in der pro Spieler ein Dict mit Spieler, Angebot/Nachfrage, Rank liegt, sortiert
     def daten(self):
         players = self.get_players()
         v = []
@@ -88,27 +86,28 @@ class Group(BaseGroup):
                 else:
                     pass
 
+# Rank bestimmen zu dem Markt geräumt wird (Nachrage >= Angebot)
     def rank(self):
-        if self.kaufA_liste[2] >= self.verkaufA_liste[2]:
-            self.clearing_rankA = 3
-        else:
-            if self.kaufA_liste[1] >= self.verkaufA_liste[1]:
-                self.clearing_rankA = 2
+        print(self.verkaufA_liste)
+        print(self.kaufA_liste)
+        self.clearing_rankA = 0
+        for i in range(1,Constants.players_per_group+1,1):
+            a = i-1
+            if self.kaufA_liste[a] >= self.verkaufA_liste[a]:
+                self.clearing_rankA = i
             else:
-                if self.kaufA_liste[0] >= self.verkaufA_liste[0]:
-                    self.clearing_rankA = 1
-                else:
-                    self.clearing_rankA = 0
+                pass
 
+# Marktpreis in Abhänigkeit des bestimmten Ranks berechnen - Mittelwert aus Nachfrage und Angebot
     def marktpreisA_rech(self):
-        # for Schleife einrichten
-        if self.clearing_rankA == 1:
-            self.marktpreisA = (self.kaufA_liste[0] + self.verkaufA_liste[0])/2
-        if self.clearing_rankA == 2:
-            self.marktpreisA = (self.kaufA_liste[1] + self.verkaufA_liste[1])/2
-        if self.clearing_rankA ==  3:
-            self.marktpreisA = (self.kaufA_liste[2] + self.verkaufA_liste[2])/2
+        for i in range(Constants.players_per_group, 0, -1):
+            a = i-1
+            if self.clearing_rankA == i:
+                self.marktpreisA = ((self.kaufA_liste[a] + self.verkaufA_liste[a])/2)
+            else:
+                pass
 
+# Jedem Spieler zuweisen, ob er ein Aktie verkauft hat oder kauft (Abfrage ob eigener Rang über "clearing" Rank
     def handelA(self):
         players = self.get_players()
         for p in players:
@@ -121,6 +120,7 @@ class Group(BaseGroup):
             else:
                 pass
 
+# Ausführen des Handels, in dem jedem Spieler Aktien zugerechnet und abgezogen werden, sowie die Ausstattung angepasst wird
     def ausfuhrung(self):
         players = self.get_players()
         for p in players:
@@ -137,6 +137,7 @@ class Group(BaseGroup):
                     else:
                         pass
 
+# Nach Abschluss des Handels, Auszahlung der Dividende pro Aktie im neuen Portfolio
     def dividende_rech(self):
         self.dividendeA = c(random.choice(Constants.diviA))
         players = self.get_players()
@@ -154,8 +155,7 @@ class Player(BasePlayer):
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
 
-
-
+# Werte der Vorperiode holen
     def access_data(self):
         self.endowment = self.in_round(self.round_number - 1).endowment
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
