@@ -7,33 +7,27 @@
 
 {% block content %}
 
-    <p>Das Angebot war {{ player.verkaufA }}, die Nachfrage war {{ player.kaufA }}.</p>
+<p>Das Angebot war {{ player.verkaufA }}, die Nachfrage war {{ player.kaufA }}.</p>
     <table>
   <tr>
-    <th>Rank</th>
     <th>Nachfrage</th>
       <th>Angebot</th>
-      <th>Rank</th>
   </tr>
   <tr>
-    <td>1</td>
-      <td>{{ kaufA_liste.0}}</td>
-    <td>{{ verkaufA_liste.0}}</td>
-    <td>1</td>
+      <td>
+         {% for x in kaufA_liste %}
+         <p>{{forloop.counter}}. {{x}}</p>
+         {% endfor %}
+      </td>
+    <td>
+        {% for x in verkaufA_liste %}
+        <p>{{x}}</p>
+        {% endfor %}
+    </td>
    </tr>
-   <tr>
-     <td>2</td>
-       <td>{{ kaufA_liste.1}}</td>
-    <td>{{ verkaufA_liste.1}}</td>
-     <td>2</td>
-   </tr>
-   <tr>
-     <td>3</td>
-       <td>{{ kaufA_liste.2}}</td>
-    <td>{{ verkaufA_liste.2}}</td>
-     <td>3</td>
-   </tr>
+
 </table>
+
 {% if marktpreisA == None %}
 <p>Alle Nachfragen unter den Angeboten, kein Handel.</p>
 {% else %}
