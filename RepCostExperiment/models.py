@@ -34,12 +34,6 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    verkaufA_1 = models.CurrencyField()
-    verkaufA_2 = models.CurrencyField()
-    verkaufA_3 = models.CurrencyField()
-    kaufA_1 = models.CurrencyField()
-    kaufA_2 = models.CurrencyField()
-    kaufA_3 = models.CurrencyField()
     marktpreisA = models.CurrencyField()
     clearing_rankA = models.IntegerField()
     dividendeA = models.CurrencyField()
@@ -49,18 +43,16 @@ class Group(BaseGroup):
     def verkaufA_liste(self):
         players = self.get_players()
         self.verkaufA_liste = [p.verkaufA for p in players]
-        self.verkaufA_liste.sort(reverse=True)
-        self.verkaufA_1 = self.verkaufA_liste[-1]
-        self.verkaufA_2 = self.verkaufA_liste[-2]
-        self.verkaufA_3 = self.verkaufA_liste[-3]
+        self.verkaufA_liste.sort()
+        return self.verkaufA_liste
+
 
     def kaufA_liste(self):
         players = self.get_players()
         self.kaufA_liste = [p.kaufA for p in players]
-        self.kaufA_liste.sort()
-        self.kaufA_1 = self.kaufA_liste[-1]
-        self.kaufA_2 = self.kaufA_liste[-2]
-        self.kaufA_3 = self.kaufA_liste[-3]
+        self.kaufA_liste.sort(reverse=True)
+        return self.kaufA_liste
+
 
     def daten(self):
         players = self.get_players()
@@ -97,13 +89,13 @@ class Group(BaseGroup):
                     pass
 
     def rank(self):
-        if self.kaufA_3 >= self.verkaufA_3:
+        if self.kaufA_liste[2] >= self.verkaufA_liste[2]:
             self.clearing_rankA = 3
         else:
-            if self.kaufA_2 >= self.verkaufA_2:
+            if self.kaufA_liste[1] >= self.verkaufA_liste[1]:
                 self.clearing_rankA = 2
             else:
-                if self.kaufA_1 >= self.verkaufA_1:
+                if self.kaufA_liste[0] >= self.verkaufA_liste[0]:
                     self.clearing_rankA = 1
                 else:
                     self.clearing_rankA = 0
@@ -111,11 +103,11 @@ class Group(BaseGroup):
     def marktpreisA_rech(self):
         # for Schleife einrichten
         if self.clearing_rankA == 1:
-            self.marktpreisA = (self.kaufA_1 + self.verkaufA_1)/2
+            self.marktpreisA = (self.kaufA_liste[0] + self.verkaufA_liste[0])/2
         if self.clearing_rankA == 2:
-            self.marktpreisA = (self.kaufA_2 + self.verkaufA_2)/2
+            self.marktpreisA = (self.kaufA_liste[1] + self.verkaufA_liste[1])/2
         if self.clearing_rankA ==  3:
-            self.marktpreisA = (self.kaufA_3 + self.verkaufA_3)/2
+            self.marktpreisA = (self.kaufA_liste[2] + self.verkaufA_liste[2])/2
 
     def handelA(self):
         players = self.get_players()
@@ -150,7 +142,6 @@ class Group(BaseGroup):
         players = self.get_players()
         for p in players:
             p.endowment = p.endowment + p.anzahlA * self.dividendeA
-
 
 
 class Player(BasePlayer):
