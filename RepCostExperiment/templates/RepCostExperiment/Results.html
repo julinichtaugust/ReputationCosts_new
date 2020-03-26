@@ -7,7 +7,19 @@
 
 {% block content %}
 
-<p>Das Angebot war {{ player.verkaufA }}, die Nachfrage war {{ player.kaufA }}.</p>
+<table border="1">
+  <tr>
+    <td>
+       Aktie A
+    <td>
+      Aktie B
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+       <p>Ihre Nachfrage: {{ player.kaufA }}</p>
+        <p>Ihr Angebot: {{ player.verkaufA }}</p>
     <table>
   <tr>
     <th>Nachfrage</th>
@@ -46,6 +58,54 @@
 {% endif %}
 <p>Dividende pro Aktie A: {{ divA }}.</p>
 <p>Neue Anzahl Aktien A: {{ player.anzahlA }}.</p>
+    </td>
+    <td>
+      <p>Ihre Nachfrage: {{ player.kaufB }}</p>
+        <p>Ihr Angebot: {{ player.verkaufB }}</p>
+    <table>
+  <tr>
+    <th>Nachfrage</th>
+      <th>Angebot</th>
+  </tr>
+  <tr>
+      <td>
+         {% for y in kaufB_liste %}
+         <p>{{forloop.counter}}. {{y}}</p>
+         {% endfor %}
+      </td>
+    <td>
+        {% for y in verkaufB_liste %}
+        <p>{{y}}</p>
+        {% endfor %}
+    </td>
+   </tr>
+
+</table>
+
+{% if marktpreisB == None %}
+<p>Alle Nachfragen unter den Angeboten, kein Handel.</p>
+{% else %}
+<p>Der Marktpreis ist {{ marktpreisB }}.</p>
+{% endif %}
+
+{% if player.is_trade_kaufB %}
+    <div class="alert alert-success"> Sie haben die Aktie des B-Unternehmens gekauft. </div>
+{% else %}
+    <div class="alert alert-warning"> Sie haben keine Aktie des B-Unternehmens erhalten. </div>
+{% endif %}
+{% if player.is_trade_verkaufB %}
+    <div class="alert alert-success"> Sie haben die Aktie des B-Unternehmens verkauft. </div>
+{% else %}
+    <div class="alert alert-warning"> Sie haben kein Aktie des B-Unternehmens verkauft. </div>
+{% endif %}
+<p>Dividende pro Aktie B: {{ divB }}.</p>
+<p>Neue Anzahl Aktien B: {{ player.anzahlB }}.</p>
+    </td>
+  </tr>
+
+</table>
+
+
 <p>Neue Ausstattung: {{ player.endowment }}.</p>
 
     {% next_button %}
