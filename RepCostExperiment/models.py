@@ -88,8 +88,6 @@ class Group(BaseGroup):
 
 # Rank bestimmen zu dem Markt geräumt wird (Nachrage >= Angebot)
     def rank(self):
-        print(self.verkaufA_liste)
-        print(self.kaufA_liste)
         self.clearing_rankA = 0
         for i in range(1,Constants.players_per_group+1,1):
             a = i-1
