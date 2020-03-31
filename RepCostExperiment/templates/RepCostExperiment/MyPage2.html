@@ -1,0 +1,230 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+    <link href="{% static 'ReputationCosts/custom.css' %}" rel="stylesheet"/>
+    <link href="{% static 'ReputationCosts/table.css' %}" rel="stylesheet"/>
+    <link href="{% static 'ReputationCosts/Popup.css' %}" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block title %}
+Handelsrunde - Periode {{ subsession.round_number }}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row toprow">
+            <div class="col-md-4">
+                <div class="card my-0">
+                    <div class="card-body">
+                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                            A-Unternehmen
+                        </h4>
+                        <div id="Unternehmen4" style=" float:left;">
+                                <p>
+                                    <table align="center" >
+                                        <tr style="font-size:10pt;">
+                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. €)</th>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="280px">Umsatzerlöse</td> <td width="70px">60,0</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Gewinn vor Steuern</td> <td width="70px">35,0</td>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="250px">Gewinn nach Steuern</td> <td width="70px">32,5</td>
+                                        </trstyle="font-size:10pt;">
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Effektive Steuerquote</td> <td width="70px">7,1 %</td>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="250px">Gezahlte Steuern</td> <td width="70px">2,5</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Auszahlung pro Aktie:</td> <td width="70px">111</td>
+                                        </tr>
+                                    </table>
+                                </p>
+
+                                <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
+                                <p>
+                                    <table border="0" cellpadding="1" cellspacing="1">
+                                        <colgroup>
+                                            <col width="20%" />
+                                            <col width="80%" />
+                                        </colgroup>
+
+                                        <tr style="font-size:10pt;">
+                                            <td>15.01.2019</td>
+                                            <td>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td valign="top">03.01.2019</td>
+                                            <td>Gewinnverschiebung ins ausländische Steuerparadies Cayman Islands, <br> A-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td>
+                                        </tr>
+                                    </table>
+                                </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card my-0">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                           Markt A
+                        </h4>
+                            Hallo {{ player.endowment}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card my-0">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                           Markt B
+                        </h4>
+                            Hallo {{ player.endowment}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card my-0">
+                    <div class="card-body">
+                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                            A-Unternehmen
+                        </h4>
+                        <div id="Unternehmen5" style=" float:left;">
+                                <p>
+                                    <table align="center" >
+                                        <tr style="font-size:10pt;">
+                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. €)</th>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="280px">Umsatzerlöse</td> <td width="70px">60,0</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Gewinn vor Steuern</td> <td width="70px">35,0</td>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="250px">Gewinn nach Steuern</td> <td width="70px">32,5</td>
+                                        </trstyle="font-size:10pt;">
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Effektive Steuerquote</td> <td width="70px">7,1 %</td>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="250px">Gezahlte Steuern</td> <td width="70px">2,5</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Auszahlung pro Aktie:</td> <td width="70px">111</td>
+                                        </tr>
+                                    </table>
+                                </p>
+
+                                <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
+                                <p>
+                                    <table border="0" cellpadding="1" cellspacing="1">
+                                        <colgroup>
+                                            <col width="20%" />
+                                            <col width="80%" />
+                                        </colgroup>
+
+                                        <tr style="font-size:10pt;">
+                                            <td>15.01.2019</td>
+                                            <td>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td valign="top">03.01.2019</td>
+                                            <td>Gewinnverschiebung ins ausländische Steuerparadies Cayman Islands, <br> A-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td>
+                                        </tr>
+                                    </table>
+                                </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="row bottomrow ">
+            <div class="col-md-4">
+                <div class="card my-2">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                           Handelsplatz A
+                        </h4>
+                            <table border="0" cellpadding="1" cellspacing="1">
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.verkaufA  %}</td>
+                                </tr>
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.kaufA %}</td>
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card my-2" >
+                    <div class="card-body" style="hight: 240px">
+                        <h4 class="card-title">
+                           Informationen
+                        </h4>
+                        <div id="Info" style=" float:left;">
+                                <p>
+                                    <table align="center" >
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="280px">Anzahl Marktteilnehmer</td> <td width="70px">60,0</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Periode</td> <td width="70px">35,0</td>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="250px">Ausstattung</td> <td width="70px">32,5</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Portfolio</td> <td width="70px"></td>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td width="250px">Anzahl A-Aktien</td> <td width="70px">2,5</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="250px">Anzahl B-Aktien</td> <td width="70px">7,1 %</td>
+                                        </tr>
+                                    </table>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card my-2">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                           Handelsplatz B
+                        </h4>
+                            <table border="0" cellpadding="1" cellspacing="1">
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.verkaufB  %}</td>
+                                </tr>
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.kaufB %}</td>
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+</div>
+
+{% endblock %}

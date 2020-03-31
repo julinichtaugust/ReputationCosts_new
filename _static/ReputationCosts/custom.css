@@ -1,0 +1,33 @@
+/* ****************************************************************************************************************** */
+/* *** General *** */
+/* ****************************************************************************************************************** */
+.controls.field{
+    alignment: center !important;
+}
+
+.otree-body{
+    max-width: 1500px !important;
+    color: black !important;
+    color: #002a80;
+    background-color: #999999;
+}
+
+
+h2{
+    text-align: center !important;
+}
+.container{
+    background-color: #eceeef;
+}
+
+
+.otree-btn-next {
+    alignment: right !important;
+    margin: 10px auto !important;
+    display: inherit !important;
+    width: 100px !important;
+}
+
+.otree-form-errors{
+    content: 'sdsdsd';
+}

@@ -10,7 +10,7 @@ class Wait_Page(WaitPage):
 
 
 
-class MyPage(Page):
+class MyPage2(Page):
     form_model = 'player'
     form_fields = ['verkaufA', 'kaufA', 'verkaufB', 'kaufB']
 
@@ -20,11 +20,11 @@ class MyPage(Page):
         if values['verkaufA'] > 0 and self.player.anzahlA == 0:
             return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
         if values['verkaufA'] <= values['kaufA']:
-            return 'Ihr Angebot kann nicht über der Nachfrage liegen. Sie würden mit sich selber handeln.'
+            return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
         if values['verkaufB'] > 0 and self.player.anzahlB == 0:
             return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
         if values['verkaufB'] <= values['kaufB']:
-            return 'Ihr Angebot kann nicht über der Nachfrage liegen. Sie würden mit sich selber handeln.'
+            return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
 
 
 class ResultsWaitPage(WaitPage):
@@ -73,4 +73,4 @@ class Ende(Page):
         }
 
 
-page_sequence = [Wait_Page, MyPage, ResultsWaitPage, Results, Ende]
+page_sequence = [Wait_Page, MyPage2, ResultsWaitPage, Results, Ende]
