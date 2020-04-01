@@ -45,7 +45,7 @@ class ResultsWaitPage(WaitPage):
         self.group.dividende_rech()
 
 
-class Results(Page):
+class Results2(Page):
 
     def vars_for_template(self):
         return {
@@ -73,4 +73,4 @@ class Ende(Page):
         }
 
 
-page_sequence = [Wait_Page, MyPage2, ResultsWaitPage, Results, Ende]
+page_sequence = [Wait_Page, MyPage2, ResultsWaitPage, Results2, Ende]

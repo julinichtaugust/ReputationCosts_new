@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block title %}
-Handelsrunde - Periode {{ subsession.round_number }}
+Ergebnisse - Periode {{ subsession.round_number }}
 {% endblock %}
 
 {% block content %}
@@ -43,7 +43,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td width="250px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="100px"> {{ Constants.diviA}}</td>
+                                            <td width="250px">Auszahlung pro Aktie aktuelle Periode</td> <td style="text-align:center" width="100px"> {{ divA }}</td>
                                         </tr>
                                     </table>
                                 </p>
@@ -90,7 +90,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                     </table>
                                 </p>
 
-                               <p>
+                                <p>
                                     <table align="center" >
                                         <tr style="font-size:10pt;">
                                             <th colspan="2">Portfolio </th>
@@ -100,6 +100,20 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
                                             <td style="text-align:center" width="175px">{{ player.anzahlA }}</td> <td style="text-align:center" width="175">{{ player.anzahlB }}</td>
+                                        </tr>
+                                    </table>
+                                </p>
+
+                                <p>
+                                    <table align="center" >
+                                        <tr style="font-size:10pt;">
+                                            <th colspan="2">Handel </th>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td style="text-align:center" width="175px">{% if player.is_trade_verkaufA %}<div class="alert alert-success">A-Aktie verkauft </div>{% else %}<div class="alert alert-warning">Keine A-Aktie verkauft </div>{% endif %}</td> <td style="text-align:center" width="175px">{% if player.is_trade_verkaufB %}<div class="alert alert-success">B-Aktie verkauft </div>{% else %}<div class="alert alert-warning">Keine B-Aktie verkauft </div>{% endif %}</td>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td style="text-align:center" width="175px">{% if player.is_trade_kaufA %}<div class="alert alert-success">A-Aktie gekauft </div>{% else %}<div class="alert alert-warning">Keine A-Aktie gekauft </div>{% endif %}</td> <td style="text-align:center" width="175px">{% if player.is_trade_kaufB %}<div class="alert alert-success">B-Aktie gekauft </div>{% else %}<div class="alert alert-warning">Keine B-Aktie gekauft </div>{% endif %}</td>
                                         </tr>
                                     </table>
                                 </p>
@@ -138,7 +152,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td width="250px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="100px">{{Constants.diviB}}</td>
+                                            <td width="250px">Auszahlung pro Aktie aktuelle Periode</td> <td style="text-align:center" width="100px">{{ divB }}</td>
                                         </tr>
                                     </table>
                                 </p>
@@ -173,10 +187,19 @@ Handelsrunde - Periode {{ subsession.round_number }}
             <div class="col-md-4">
                 <div class="card my-2">
                     <div class="card-body">
-                        <h4 class="card-title">
-                           Markt A
+                        <h4 class="card-title" align="center">
+                           Marktpreise A
                         </h4>
-                            Chart Einfügen
+                             <p>
+                                <table align="center" >
+                                        <tr style="font-size:10pt;">
+                                            <th width="350px" colspan="1">Aktueller Marktpreis: {% if marktpreisA == None %}Kein Handel{% else %}{{ marktpreisA }}{% endif %} </th>
+                                        </tr>
+                                </table>
+                            </p>
+                            <p>
+                                Chart einfügen
+                            </p>
                     </div>
                 </div>
             </div>
@@ -184,16 +207,43 @@ Handelsrunde - Periode {{ subsession.round_number }}
             <div class="col-md-2">
                 <div class="card my-2">
                     <div class="card-body">
-                        <h4 class="card-title">
-                           Handelsplatz A
+                        <h4 class="card-title" align="center">
+                           Markt A
                         </h4>
                             <table border="0" cellpadding="1" cellspacing="1">
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.verkaufA  %}</td>
-                                </tr>
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.kaufA %}</td>
-                                </tr>
+                                  <tr style="font-size:10pt;">
+                                    <th>Nachfrage</th>
+                                      <th>Angebot</th>
+                                  </tr>
+                                  {% for y in kaufA_liste %} {% for x in verkaufA_liste %}
+                                    {% if forloop.counter == forloop.parentloop.counter %}
+                                        {% if forloop.parentloop.counter == player.rank_verkaufA and forloop.parentloop.counter == player.rank_kaufA %}
+                                        <tr style="font-size:10pt;">
+                                        <td style="background: #f7adad;">{{y}}</td>
+                                        <td style="background: #f7adad;">{{x}}</td>
+                                        </tr>
+                                        {% else %}
+                                            {% if forloop.parentloop.counter == player.rank_verkaufA and forloop.parentloop.counter != player.rank_kaufA %}
+                                            <tr style="font-size:10pt;">
+                                            <td style="background: whitesmoke;">{{y}}</td>
+                                            <td style="background: #f7adad;">{{x}}</td>
+                                            </tr>
+                                            {% else %}
+                                                {% if forloop.parentloop.counter != player.rank_verkaufA and forloop.parentloop.counter == player.rank_kaufA %}
+                                                <tr style="font-size:10pt;">
+                                                <td style="background: #f7adad;">{{y}}</td>
+                                                <td style="background: whitesmoke;">{{x}}</td>
+                                                </tr>
+                                                {% else %}
+                                                    <tr style=" font-size:10pt;">
+                                                    <td style="background: whitesmoke;">{{y}}</td>
+                                                    <td style="background: whitesmoke;">{{x}}</td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}{% endfor %}
                             </table>
                     </div>
                 </div>
@@ -202,16 +252,43 @@ Handelsrunde - Periode {{ subsession.round_number }}
             <div class="col-md-2">
                 <div class="card my-2">
                     <div class="card-body">
-                        <h4 class="card-title">
-                           Handelsplatz B
+                        <h4 class="card-title" align="center">
+                           Markt B
                         </h4>
                             <table border="0" cellpadding="1" cellspacing="1">
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.verkaufB  %}</td>
-                                </tr>
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.kaufB %}</td>
-                                </tr>
+                                  <tr style="font-size:10pt;">
+                                    <th>Nachfrage</th>
+                                      <th>Angebot</th>
+                                  </tr>
+                                  {% for y in kaufB_liste %} {% for x in verkaufB_liste %}
+                                    {% if forloop.counter == forloop.parentloop.counter %}
+                                        {% if forloop.parentloop.counter == player.rank_verkaufB and forloop.parentloop.counter == player.rank_kaufB %}
+                                        <tr style="font-size:10pt;">
+                                        <td style="background: #f7adad;">{{y}}</td>
+                                        <td style="background: #f7adad;">{{x}}</td>
+                                        </tr>
+                                        {% else %}
+                                            {% if forloop.parentloop.counter == player.rank_verkaufB and forloop.parentloop.counter != player.rank_kaufB %}
+                                            <tr style="font-size:10pt;">
+                                            <td style="background: whitesmoke;">{{y}}</td>
+                                            <td style="background: #f7adad;">{{x}}</td>
+                                            </tr>
+                                            {% else %}
+                                                {% if forloop.parentloop.counter != player.rank_verkaufB and forloop.parentloop.counter == player.rank_kaufB %}
+                                                <tr style="font-size:10pt;">
+                                                <td style="background: #f7adad;">{{y}}</td>
+                                                <td style="background: whitesmoke;">{{x}}</td>
+                                                </tr>
+                                                {% else %}
+                                                    <tr style=" font-size:10pt;">
+                                                    <td style="background: whitesmoke;">{{y}}</td>
+                                                    <td style="background: whitesmoke;">{{x}}</td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}{% endfor %}
                             </table>
                     </div>
                 </div>
@@ -220,10 +297,19 @@ Handelsrunde - Periode {{ subsession.round_number }}
             <div class="col-md-4">
                 <div class="card my-2">
                     <div class="card-body">
-                        <h4 class="card-title">
-                           Markt B
+                        <h4 class="card-title" align="center">
+                           Marktpreise B
                         </h4>
-                            Chart einfügen
+                            <p>
+                                <table align="center" >
+                                        <tr style="font-size:10pt;">
+                                            <th width="350px" colspan="1">Aktueller Marktpreis: {% if marktpreisB == None %}Kein Handel{% else %}{{ marktpreisB }}{% endif %} </th>
+                                        </tr>
+                                </table>
+                            </p>
+                            <p>
+                                Chart einfügen
+                            </p>
                     </div>
                 </div>
             </div>
