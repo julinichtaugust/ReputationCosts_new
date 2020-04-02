@@ -41,6 +41,7 @@ class Group(BaseGroup):
     clearing_rankB = models.IntegerField()
     dividendeB = models.CurrencyField()
 
+
 # Sortierte Liste der Verkaufspreise (Angebote: von klein nach groß)
     def verkaufA_liste(self):
         players = self.get_players()
@@ -163,6 +164,7 @@ class Group(BaseGroup):
                 self.marktpreisA = ((self.kaufA_liste[a] + self.verkaufA_liste[a])/2)
             else:
                 pass
+
 
     def marktpreisB_rech(self):
         for i in range(Constants.players_per_group, 0, -1):

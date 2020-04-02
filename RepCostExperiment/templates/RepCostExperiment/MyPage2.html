@@ -17,7 +17,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
     <div class="row toprow">
             <div class="col-md-4">
                 <div class="card my-0">
-                    <div class="card-body">
+                    <div class="card-body" style="height: 550px;">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                             A-Unternehmen
                         </h4>
@@ -25,7 +25,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                 <p>
                                     <table align="center" >
                                         <tr style="font-size:10pt;">
-                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. €)</th>
+                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. ECU)</th>
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
                                             <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">60,0</td>
@@ -43,7 +43,10 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td width="250px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="100px"> {{ Constants.diviA}}</td>
+                                            <th colspan="2">Erwartete Dividende mit Wahrscheinlichkeit 25%</th>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviA}} ECU</td>
                                         </tr>
                                     </table>
                                 </p>
@@ -74,8 +77,8 @@ Handelsrunde - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-0" >
-                    <div class="card-body"  style="height: 423px;">
-                        <h4 class="card-title" align="center">
+                    <div class="card-body"  style="height: 475px">
+                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
                         <div id="Info" style=" float:left;">
@@ -112,7 +115,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-0">
-                    <div class="card-body" style="height: 496px;">
+                    <div class="card-body" style="height: 550px;">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                             B-Unternehmen
                         </h4>
@@ -120,7 +123,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                 <p>
                                     <table align="center" >
                                         <tr style="font-size:10pt;">
-                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. €)</th>
+                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. ECU)</th>
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
                                             <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">60,0</td>
@@ -138,7 +141,10 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td width="250px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="100px">{{Constants.diviB}}</td>
+                                            <th colspan="2">Erwartete Dividende mit Wahrscheinlichkeit 25%</th>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviB}} ECU</td>
                                         </tr>
                                     </table>
                                 </p>

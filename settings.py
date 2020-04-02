@@ -16,7 +16,7 @@ SESSION_CONFIGS = [
         display_name='RepCostExperiment',
         num_demo_participants=3,
         app_sequence=['RepCostExperiment'],
-        use_browser_bots=True,
+        use_browser_bots=False,
     ),
 ]
 
@@ -28,7 +28,7 @@ LANGUAGE_CODE = 'de'
 REAL_WORLD_CURRENCY_CODE = 'EUR'
 USE_POINTS = True
 POINTS_CUSTOM_NAME = 'ECU'
-POINTS_DECIMAL_PLACES = 1
+POINTS_DECIMAL_PLACES = 2
 
 
 ROOMS = [

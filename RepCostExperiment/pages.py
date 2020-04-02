@@ -48,19 +48,19 @@ class ResultsWaitPage(WaitPage):
 class Results2(Page):
 
     def vars_for_template(self):
-        return {
-            'verkaufA_liste': self.group.verkaufA_liste,
-            'kaufA_liste': self.group.kaufA_liste,
-            'marktpreisA': self.group.marktpreisA,
-            'anzahlA': self.player.anzahlA,
-            'endowment': self.player.endowment,
-            'divA': self.group.dividendeA,
-            'verkaufB_liste': self.group.verkaufB_liste,
-            'kaufB_liste': self.group.kaufB_liste,
-            'marktpreisB': self.group.marktpreisB,
-            'anzahlB': self.player.anzahlB,
-            'divB': self.group.dividendeB,
-        }
+            return {
+                'verkaufA_liste': self.group.verkaufA_liste,
+                'kaufA_liste': self.group.kaufA_liste,
+                'marktpreisA': self.group.marktpreisA,
+                'anzahlA': self.player.anzahlA,
+                'endowment': self.player.endowment,
+                'divA': self.group.dividendeA,
+                'verkaufB_liste': self.group.verkaufB_liste,
+                'kaufB_liste': self.group.kaufB_liste,
+                'marktpreisB': self.group.marktpreisB,
+                'anzahlB': self.player.anzahlB,
+                'divB': self.group.dividendeB,
+            }
 
 class Ende(Page):
     def is_displayed(self):
