@@ -54,12 +54,15 @@ class Results2(Page):
                 'marktpreisA': self.group.marktpreisA,
                 'anzahlA': self.player.anzahlA,
                 'endowment': self.player.endowment,
+                'endowmentalt': self.player.endowmentalt,
                 'divA': self.group.dividendeA,
+                'gesdiviA': self.player.gesdiviA,
                 'verkaufB_liste': self.group.verkaufB_liste,
                 'kaufB_liste': self.group.kaufB_liste,
                 'marktpreisB': self.group.marktpreisB,
                 'anzahlB': self.player.anzahlB,
                 'divB': self.group.dividendeB,
+                'gesdiviB': self.player.gesdiviB,
             }
 
 class Ende(Page):

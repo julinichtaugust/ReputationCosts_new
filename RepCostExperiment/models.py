@@ -203,6 +203,7 @@ class Group(BaseGroup):
     def ausfuhrung(self):
         players = self.get_players()
         for p in players:
+            p.endowmentalt = p.endowment
             if p.is_trade_kaufA == True and p.is_trade_verkaufA == True:
                 pass
             else:
@@ -236,17 +237,20 @@ class Group(BaseGroup):
         players = self.get_players()
         for p in players:
             p.endowment = p.endowment + p.anzahlA * self.dividendeA + p.anzahlB * self.dividendeB
-
+            p.gesdiviA = p.anzahlA * self.dividendeA
+            p.gesdiviB = p.anzahlB * self.dividendeB
 
 class Player(BasePlayer):
     verkaufA = models.CurrencyField(label='Angebot A:')
     kaufA = models.CurrencyField(label='Nachfrage A:')
     endowment = models.CurrencyField(initial=1000)
+    endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
     is_trade_verkaufA = models.BooleanField(initial=False)
     anzahlA = models.IntegerField(initial=5)
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
+    gesdiviA = models.CurrencyField()
 
     verkaufB = models.CurrencyField(label='Angebot B:')
     kaufB = models.CurrencyField(label='Nachfrage B:')
@@ -255,13 +259,13 @@ class Player(BasePlayer):
     anzahlB = models.IntegerField(initial=5)
     rank_verkaufB = models.IntegerField()
     rank_kaufB = models.IntegerField()
+    gesdiviB = models.CurrencyField()
 
 # Werte der Vorperiode holen
     def access_data(self):
         self.endowment = self.in_round(self.round_number - 1).endowment
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
         self.anzahlB = self.in_round(self.round_number - 1).anzahlB
-
-
+        self.i
 
 
