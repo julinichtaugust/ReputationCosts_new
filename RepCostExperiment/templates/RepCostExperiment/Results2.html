@@ -244,6 +244,25 @@ Ergebnisse - Periode {{ subsession.round_number }}
                            Markt A
                         </h4>
                             <table border="0" cellpadding="1" cellspacing="1">
+                                  <ul>
+                                        {% for key, value in dictionary.items %}
+                                            <li><a href="{{Rank}}">{{Angebot}}</a></li>
+                                        {% endfor %}
+                                        </ul>
+                            </table>
+                    </div>
+                </div>
+            </div>
+
+
+        <!--
+            <div class="col-md-3">
+                <div class="card my-2">
+                    <div class="card-body">
+                        <h4 class="card-title" align="center">
+                           Markt A
+                        </h4>
+                            <table border="0" cellpadding="1" cellspacing="1">
                                   <tr style="font-size:10pt;">
                                       <th>Spieler</th>
                                     <th>Nachfrage</th>
@@ -291,7 +310,7 @@ Ergebnisse - Periode {{ subsession.round_number }}
                     </div>
                 </div>
             </div>
-
+          -->
             <div class="col-md-3">
                 <div class="card my-2">
                     <div class="card-body">

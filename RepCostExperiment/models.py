@@ -1,3 +1,4 @@
+from django.shortcuts import render_to_response
 from otree.api import (
     models,
     widgets,
@@ -89,6 +90,7 @@ class Group(BaseGroup):
                 else:
                     pass
 
+
         for p in players:
             k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
         liste_kaufA = sorted(k, key=lambda k: (k['NACHFRAGE'],random.random()), reverse=True)
@@ -102,6 +104,8 @@ class Group(BaseGroup):
                     p.rank_kaufA = item['RANK']
                 else:
                     pass
+
+        return render_to_response('Result2.html', {'dictionary': liste_verkaufA})
 
     def datenB(self):
         players = self.get_players()
@@ -266,6 +270,6 @@ class Player(BasePlayer):
         self.endowment = self.in_round(self.round_number - 1).endowment
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
         self.anzahlB = self.in_round(self.round_number - 1).anzahlB
-        self.i
+
 
 
