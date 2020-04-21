@@ -244,25 +244,6 @@ Ergebnisse - Periode {{ subsession.round_number }}
                            Markt A
                         </h4>
                             <table border="0" cellpadding="1" cellspacing="1">
-                                  <ul>
-                                        {% for key, value in dictionary.items %}
-                                            <li><a href="{{Rank}}">{{Angebot}}</a></li>
-                                        {% endfor %}
-                                        </ul>
-                            </table>
-                    </div>
-                </div>
-            </div>
-
-
-        <!--
-            <div class="col-md-3">
-                <div class="card my-2">
-                    <div class="card-body">
-                        <h4 class="card-title" align="center">
-                           Markt A
-                        </h4>
-                            <table border="0" cellpadding="1" cellspacing="1">
                                   <tr style="font-size:10pt;">
                                       <th>Spieler</th>
                                     <th>Nachfrage</th>
@@ -273,33 +254,33 @@ Ergebnisse - Periode {{ subsession.round_number }}
                                     {% if forloop.counter == forloop.parentloop.counter %}
                                         {% if forloop.parentloop.counter == player.rank_verkaufA and forloop.parentloop.counter == player.rank_kaufA %}
                                         <tr style="font-size:10pt;">
-                                        <td style="background: #f7adad; text-align:center" > {{player.id_in_group}}</td>
-                                        <td style="background: #f7adad;">{{y}}</td>
-                                        <td style="background: #f7adad;">{{x}}</td>
-                                            <td style="background: #f7adad; text-align:center">{{player.id_in_group}}</td>
+                                        <td style="background: #f7adad; text-align:center" > {{group.datenB}} </td>
+                                        <td style="background: whitesmoke;">{{y}}</td>
+                                        <td style="background: whitesmoke;">{{x}}</td>
+                                            <td style="background: #f7adad; text-align:center">a</td>
                                         </tr>
                                         {% else %}
                                             {% if forloop.parentloop.counter == player.rank_verkaufA and forloop.parentloop.counter != player.rank_kaufA %}
                                             <tr style="font-size:10pt;">
-                                                <td style="background: whitesmoke; text-align:center"></td>
+                                                <td style="background: whitesmoke; text-align:center">{{group.datenB}}</td>
                                             <td style="background: whitesmoke;">{{y}}</td>
                                             <td style="background: #f7adad;">{{x}}</td>
-                                                <td style="background: #f7adad; text-align:center">{{player.id_in_group}}</td>
+                                                <td style="background: whitesmoke; text-align:center">b</td>
                                             </tr>
                                             {% else %}
                                                 {% if forloop.parentloop.counter != player.rank_verkaufA and forloop.parentloop.counter == player.rank_kaufA %}
                                                 <tr style="font-size:10pt;">
-                                                    <td style="background: #f7adad; text-align:center">{{player.id_in_group}}</td>
-                                                <td style="background: #f7adad;">{{y}}</td>
+                                                    <td style="background: #f7adad; text-align:center">{{group.datenB}}</td>
+                                                <td style="background: whitesmoke;">{{y}}</td>
                                                 <td style="background: whitesmoke;">{{x}}</td>
-                                                    <td style="background: whitesmoke; text-align:center"></td>
+                                                    <td style="background: whitesmoke; text-align:center">c</td>
                                                 </tr>
                                                 {% else %}
                                                     <tr style=" font-size:10pt;">
-                                                        <td style="background: whitesmoke;text-align:center"></td>
+                                                        <td style="background: whitesmoke;text-align:center">{{group.datenB}}</td>
                                                     <td style="background: whitesmoke;">{{y}}</td>
                                                     <td style="background: whitesmoke;">{{x}}</td>
-                                                        <td style="background: whitesmoke;text-align:center"></td>
+                                                        <td style="background: whitesmoke;text-align:center">d</td>
                                                     </tr>
                                                 {% endif %}
                                             {% endif %}
@@ -310,7 +291,7 @@ Ergebnisse - Periode {{ subsession.round_number }}
                     </div>
                 </div>
             </div>
-          -->
+
             <div class="col-md-3">
                 <div class="card my-2">
                     <div class="card-body">

@@ -8,7 +8,7 @@ import time
 class PlayerBot(Bot):
 
     def play_round(self):
-        time.sleep(10)
+        time.sleep(1)
         if self.player.id_in_group == 1:
             yield pages.MyPage2, dict(verkaufA=random.randrange(8, 10, 1), kaufA= random.randrange(5, 8, 1), verkaufB=random.randrange(8, 10, 1), kaufB=random.randrange(5, 7, 1))
         if self.player.id_in_group == 2:

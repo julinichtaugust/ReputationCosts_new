@@ -63,6 +63,7 @@ class Results2(Page):
                 'anzahlB': self.player.anzahlB,
                 'divB': self.group.dividendeB,
                 'gesdiviB': self.player.gesdiviB,
+                'datenB': self.group.datenB,
             }
 
 class Ende(Page):

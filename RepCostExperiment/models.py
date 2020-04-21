@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+
 from otree.api import (
     models,
     widgets,
@@ -41,6 +41,7 @@ class Group(BaseGroup):
     marktpreisB = models.CurrencyField()
     clearing_rankB = models.IntegerField()
     dividendeB = models.CurrencyField()
+
 
 
 # Sortierte Liste der Verkaufspreise (Angebote: von klein nach groß)
@@ -90,6 +91,7 @@ class Group(BaseGroup):
                 else:
                     pass
 
+       # self.vla = [sub['SPIELER'] for sub in self.liste_verkaufA]
 
         for p in players:
             k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
@@ -105,7 +107,6 @@ class Group(BaseGroup):
                 else:
                     pass
 
-        return render_to_response('Result2.html', {'dictionary': liste_verkaufA})
 
     def datenB(self):
         players = self.get_players()
@@ -127,6 +128,9 @@ class Group(BaseGroup):
                 else:
                     pass
 
+        self.datenB = [d['SPIELER'] for d in liste_verkaufB]
+        print(self.datenB)
+
         for p in players:
             k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufB})
         liste_kaufB = sorted(k, key=lambda k: (k['NACHFRAGE'],random.random()), reverse=True)
@@ -140,6 +144,8 @@ class Group(BaseGroup):
                     p.rank_kaufB = item['RANK']
                 else:
                     pass
+
+
 
 # Rank bestimmen zu dem Markt geräumt wird (Nachrage >= Angebot)
     def rankA(self):
