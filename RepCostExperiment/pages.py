@@ -33,7 +33,8 @@ class ResultsWaitPage(WaitPage):
         self.group.verkaufB_liste()
         self.group.kaufA_liste()
         self.group.kaufB_liste()
-        self.group.datenA()
+        self.group.datenA_verkauf()
+        self.group.datenA_verkauf_liste()
         self.group.datenB()
         self.group.rankA()
         self.group.rankB()
@@ -57,7 +58,7 @@ class Results2(Page):
                 'endowmentalt': self.player.endowmentalt,
                 'divA': self.group.dividendeA,
                 'gesdiviA': self.player.gesdiviA,
-                'datenA': self.group.datenA,
+                'datenA_verkauf': self.group.datenA_verkauf_liste,
                 'verkaufB_liste': self.group.verkaufB_liste,
                 'kaufB_liste': self.group.kaufB_liste,
                 'marktpreisB': self.group.marktpreisB,
