@@ -57,6 +57,7 @@ class Results2(Page):
                 'endowmentalt': self.player.endowmentalt,
                 'divA': self.group.dividendeA,
                 'gesdiviA': self.player.gesdiviA,
+                'datenA': self.group.datenA,
                 'verkaufB_liste': self.group.verkaufB_liste,
                 'kaufB_liste': self.group.kaufB_liste,
                 'marktpreisB': self.group.marktpreisB,

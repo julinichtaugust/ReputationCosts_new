@@ -73,6 +73,7 @@ class Group(BaseGroup):
 # Liste, in der pro Spieler ein Dict mit Spieler, Angebot/Nachfrage, Rank liegt, sortiert
     def datenA(self):
         players = self.get_players()
+        self.datenA_kauf = []
         v = []
         k = []
         w1=0
@@ -91,7 +92,8 @@ class Group(BaseGroup):
                 else:
                     pass
 
-       # self.vla = [sub['SPIELER'] for sub in self.liste_verkaufA]
+        self.datenA = [d['SPIELER'] for d in liste_verkaufA]
+        print(self.datenA)
 
         for p in players:
             k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
@@ -106,7 +108,10 @@ class Group(BaseGroup):
                     p.rank_kaufA = item['RANK']
                 else:
                     pass
+        return liste_kaufA
 
+    def datenA_kauf(self):
+        self.datenA_kauf = [d['SPIELER'] for d in self.l]
 
     def datenB(self):
         players = self.get_players()
@@ -129,7 +134,6 @@ class Group(BaseGroup):
                     pass
 
         self.datenB = [d['SPIELER'] for d in liste_verkaufB]
-        print(self.datenB)
 
         for p in players:
             k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufB})
@@ -145,6 +149,7 @@ class Group(BaseGroup):
                 else:
                     pass
 
+        #self.datenB_kauf = [d['SPIELER'] for d in liste_kaufB]
 
 
 # Rank bestimmen zu dem Markt geräumt wird (Nachrage >= Angebot)
