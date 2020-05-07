@@ -69,30 +69,58 @@ class Group(BaseGroup):
         self.kaufB_liste = [p.kaufB for p in players]
         self.kaufB_liste.sort(reverse=True)
         return self.kaufB_liste
-
+################################################################################################
     def datenA_verkauf(self):
         players = self.get_players()
         v = []
-        k = []
         w1=0
         for p in players:
             v.append({'SPIELER': p.id_in_group, 'ANGEBOT': p.verkaufA})
-            liste_verkaufA = sorted(v, key=lambda k: (k['ANGEBOT'],random.random()))
-            for item in liste_verkaufA:
+            datenA_verkauf = sorted(v, key=lambda k: (k['ANGEBOT'],random.random()))
+            for item in datenA_verkauf:
                 w1 = w1+1
                 item.update({'RANK': w1})
+        return self.datenA_verkauf
 
-            for p in players:
-                for item in liste_verkaufA:
-                    if p.id_in_group == item['SPIELER']:
-                        p.rank_verkaufA = item['RANK']
-                    else:
-                        pass
+    def datenA_kauf(self):
+        players = self.get_players()
+        k = []
+        w2=0
+        for p in players:
+            k.append({'SPIELER': p.id_in_group, 'NACHFRAGE': p.kaufA})
+            datenA_kauf = sorted(k, key=lambda k: (k['NACHFRAGE'],random.random()), reverse=True)
+            for item in datenA_kauf:
+                w2 = w2+1
+                item.update({'RANK': w2})
+        return self.datenA_kauf
+
+    def rank_verkaufA(self):
+        players = self.get_players()
+        for p in players:
+            for item in self.datenA_verkauf:
+                if p.id_in_group == item['SPIELER']:
+                    p.rank_verkaufA = item['RANK']
+                else:
+                    pass
+
+    def rank_kaufA(self):
+        players = self.get_players()
+        for p in players:
+            for item in self.datenA_kauf:
+                if p.id_in_group == item['SPIELER']:
+                    p.rank_kaufA = item['RANK']
+                else:
+                    pass
 
     def datenA_verkauf_liste(self):
-        datenA_verkauf = datenA_verkauf()
-        self.datenA_verkauf_liste = [d['SPIELER'] for d in dat]
+        datenA_verkauf = self.datenA_verkauf()
+        self.datenA_verkauf_liste = [d['SPIELER'] for d in datenA_verkauf]
         print(self.datenA_verkauf_liste)
+
+    def datenA_kauf_liste(self):
+        datenA_kauf = self.datenA_kauf()
+        self.datenA_kauf_liste = [d['SPIELER'] for d in datenA_kauf]
+        print(self.datenA_kauf_liste)
 
 
 # Liste, in der pro Spieler ein Dict mit Spieler, Angebot/Nachfrage, Rank liegt, sortiert
@@ -133,10 +161,7 @@ class Group(BaseGroup):
     #                p.rank_kaufA = item['RANK']
     #            else:
     #                pass
-        return liste_kaufA
 
-    def datenA_kauf(self):
-        self.datenA_kauf = [d['SPIELER'] for d in self.l]
 
     def datenB(self):
         players = self.get_players()
