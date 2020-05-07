@@ -39,7 +39,12 @@ class ResultsWaitPage(WaitPage):
         self.group.rank_kaufA()
         self.group.datenA_verkauf_liste()
         self.group.datenA_kauf_liste()
-        self.group.datenB()
+        self.group.datenB_verkauf()
+        self.group.datenB_kauf()
+        self.group.rank_verkaufB()
+        self.group.rank_kaufB()
+        self.group.datenB_verkauf_liste()
+        self.group.datenB_kauf_liste()
         self.group.rankA()
         self.group.rankB()
         self.group.marktpreisA_rech()
@@ -62,14 +67,14 @@ class Results2(Page):
                 'endowmentalt': self.player.endowmentalt,
                 'divA': self.group.dividendeA,
                 'gesdiviA': self.player.gesdiviA,
-                'datenA_verkauf': self.group.datenA_verkauf_liste,
+                'datenA_verkauf_liste': self.group.datenA_verkauf_liste,
                 'verkaufB_liste': self.group.verkaufB_liste,
                 'kaufB_liste': self.group.kaufB_liste,
                 'marktpreisB': self.group.marktpreisB,
                 'anzahlB': self.player.anzahlB,
                 'divB': self.group.dividendeB,
                 'gesdiviB': self.player.gesdiviB,
-                'datenB': self.group.datenB,
+                'datenB_verkauf_liste': self.group.datenB_verkauf_liste,
             }
 
 class Ende(Page):
