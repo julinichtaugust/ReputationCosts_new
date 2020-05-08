@@ -4,7 +4,7 @@
 {% block styles %}
     <link href="{% static 'ReputationCosts/custom.css' %}" rel="stylesheet"/>
     <link href="{% static 'ReputationCosts/table.css' %}" rel="stylesheet"/>
-    <link href="{% static 'ReputationCosts/Popup.css' %}" rel="stylesheet"/>
+    <link href="{% static 'ReputationCosts/popup.css' %}" rel="stylesheet"/>
 
 {% endblock %}
 
@@ -81,9 +81,22 @@ Handelsrunde - Periode {{ subsession.round_number }}
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
+                        <div>
+                        <div class="center">
+                            <a class="button" href="#popup1">Instruktionen anzeigen</a>
+                                <div id="popup1" class="overlay">
+                                    <div class="popup">
+                                        <a class="close" href="#">&times;</a>
+                                        <div class="content">
+                                        {% include 'RepCostExperiment/includes/PopUp_Instruktion.html' %}
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
                         <div id="Info" style=" float:left;">
                                 <p>
-                                    <table align="center" >
+                                    <table align="center" style="width: 378px" >
                                         <tr style="font-size:10pt;">
                                             <th>Ausstattung </th>
                                         </tr>
@@ -94,7 +107,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                 </p>
 
                                <p>
-                                    <table align="center" >
+                                    <table align="center" style="width: 378px" >
                                         <tr style="font-size:10pt;">
                                             <th colspan="2">Portfolio </th>
                                         </tr>
@@ -178,18 +191,29 @@ Handelsrunde - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-2">
-                    <div class="card-body">
-                        <h4 class="card-title">
+                    <div class="card-body" style="height: 250px;">
+                        <h4 class="card-title" align="center">
                            Markt A
                         </h4>
-                            Chart Einfügen
+                        <div id="Info" style=" float:left;">
+                                <p>
+                                    <table align="center" style="width: 378px">
+                                        <tr style="font-size:10pt;">
+                                            <th>Letzter Marktpreis A </th>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
+                                        </tr>
+                                    </table>
+                                </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="card my-2">
-                    <div class="card-body">
+                    <div class="card-body" style="height: 250px;">
                         <h4 class="card-title">
                            Handelsplatz A
                         </h4>
@@ -225,11 +249,22 @@ Handelsrunde - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-2">
-                    <div class="card-body">
-                        <h4 class="card-title">
+                    <div class="card-body" style="height: 250px;">
+                        <h4 class="card-title" align="center">
                            Markt B
                         </h4>
-                            Chart einfügen
+                        <div id="Info" style=" float:left;">
+                                <p>
+                                    <table align="center" style="width: 378px">
+                                        <tr style="font-size:10pt;">
+                                            <th>Letzter Marktpreis B </th>
+                                        </tr>
+                                        <tr style="font-size:10pt;">
+                                            <td style="text-align:center" width="350px">{{ player.endowment }}</td>
+                                        </tr>
+                                    </table>
+                                </p>
+                        </div>
                     </div>
                 </div>
             </div>

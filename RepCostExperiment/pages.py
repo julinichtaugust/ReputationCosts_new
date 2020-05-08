@@ -14,6 +14,16 @@ class MyPage2(Page):
     form_model = 'player'
     form_fields = ['verkaufA', 'kaufA', 'verkaufB', 'kaufB']
 
+    def after_all_players_arrive(self):
+        if self.round_number != 1:
+            self.group.marktpreisA_alt()
+
+    def vars_for_template(self):
+        return {
+            'marktpreisA_alt': self.group.marktpreisA_alt
+
+        }
+
     def error_message(self, values):
         if values['kaufA'] + values['kaufB'] > self.player.endowment:
             return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
@@ -25,6 +35,8 @@ class MyPage2(Page):
             return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
         if values['verkaufB'] <= values['kaufB']:
             return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
+
+
 
 
 class ResultsWaitPage(WaitPage):

@@ -271,6 +271,9 @@ class Group(BaseGroup):
                     else:
                         pass
 
+    def marktpreisA_alt(self):
+        self.marktpreisA_alt = self.in_round(self.round_number - 1).marktpreisA
+
 # Nach Abschluss des Handels, Auszahlung der Dividende pro Aktie im neuen Portfolio
     def dividende_rech(self):
         self.dividendeA = c(random.choice(Constants.diviA))
