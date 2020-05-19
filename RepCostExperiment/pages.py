@@ -8,6 +8,9 @@ class Wait_Page(WaitPage):
             if self.round_number != 1:
                 player.access_data()
 
+        if self.round_number != 1:
+            self.group.marktpreisA_alt()
+
 
 
 class MyPage2(Page):
@@ -21,7 +24,6 @@ class MyPage2(Page):
     def vars_for_template(self):
         return {
             'marktpreisA_alt': self.group.marktpreisA_alt
-
         }
 
     def error_message(self, values):

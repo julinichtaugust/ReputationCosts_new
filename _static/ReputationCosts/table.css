@@ -50,7 +50,7 @@ table  tr {
 #Info {
     height: 430px;
     float: left;
-    padding-left: 25pt;
+    padding-left: 10pt;
     padding-top: 15pt;
 }
 .clear { clear: both; }

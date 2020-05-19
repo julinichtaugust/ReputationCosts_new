@@ -41,6 +41,7 @@ class Group(BaseGroup):
     marktpreisB = models.CurrencyField()
     clearing_rankB = models.IntegerField()
     dividendeB = models.CurrencyField()
+    marktpreisA_alt = models.CurrencyField()
 
 
 
@@ -97,7 +98,6 @@ class Group(BaseGroup):
     def rank_verkaufA(self):
         players = self.get_players()
         datenA_verkauf = self.datenA_verkauf
-        print(datenA_verkauf)
         for p in players:
             for item in datenA_verkauf:
                 if p.id_in_group == item['SPIELER']:
@@ -146,13 +146,11 @@ class Group(BaseGroup):
         for item in self.datenB_kauf:
             w4 = w4 + 1
             item.update({'RANK': w4})
-        print(self.datenB_kauf)
         return self.datenB_kauf
 
     def rank_verkaufB(self):
         players = self.get_players()
         datenB_verkauf = self.datenB_verkauf
-        print(datenB_verkauf)
         for p in players:
             for item in datenB_verkauf:
                 if p.id_in_group == item['SPIELER']:
@@ -273,6 +271,7 @@ class Group(BaseGroup):
 
     def marktpreisA_alt(self):
         self.marktpreisA_alt = self.in_round(self.round_number - 1).marktpreisA
+        print(self.marktpreisA_alt)
 
 # Nach Abschluss des Handels, Auszahlung der Dividende pro Aktie im neuen Portfolio
     def dividende_rech(self):
