@@ -1,6 +1,10 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block scripts %}
+
+{% endblock %}
+
 {% block styles %}
     <link href="{% static 'ReputationCosts/custom.css' %}" rel="stylesheet"/>
     <link href="{% static 'ReputationCosts/table.css' %}" rel="stylesheet"/>
@@ -260,7 +264,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <th>Letzter Marktpreis B </th>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td style="text-align:center" width="350px">{{ player.endowment }}</td>
+                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
                                         </tr>
                                     </table>
                                 </p>

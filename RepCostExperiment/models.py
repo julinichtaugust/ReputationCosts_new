@@ -1,4 +1,3 @@
-
 from otree.api import (
     models,
     widgets,
@@ -33,7 +32,6 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     pass
 
-
 class Group(BaseGroup):
     marktpreisA = models.CurrencyField()
     clearing_rankA = models.IntegerField()
@@ -43,7 +41,17 @@ class Group(BaseGroup):
     dividendeB = models.CurrencyField()
     marktpreisA_alt = models.CurrencyField()
 
+    def marktpreisA_alt(self):
+        if self.round_number == 1:
+            pass
+        else:
+            return self.in_round(self.round_number - 1).marktpreisA
 
+    def marktpreisB_alt(self):
+        if self.round_number == 1:
+            pass
+        else:
+            return self.in_round(self.round_number - 1).marktpreisB
 
 # Sortierte Liste der Verkaufspreise (Angebote: von klein nach groß)
     def verkaufA_liste(self):
@@ -269,9 +277,7 @@ class Group(BaseGroup):
                     else:
                         pass
 
-    def marktpreisA_alt(self):
-        self.marktpreisA_alt = self.in_round(self.round_number - 1).marktpreisA
-        print(self.marktpreisA_alt)
+
 
 # Nach Abschluss des Handels, Auszahlung der Dividende pro Aktie im neuen Portfolio
     def dividende_rech(self):
@@ -309,6 +315,3 @@ class Player(BasePlayer):
         self.endowment = self.in_round(self.round_number - 1).endowment
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
         self.anzahlB = self.in_round(self.round_number - 1).anzahlB
-
-
-
