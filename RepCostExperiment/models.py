@@ -290,8 +290,8 @@ class Group(BaseGroup):
             p.gesdiviB = p.anzahlB * self.dividendeB
 
 class Player(BasePlayer):
-    verkaufA = models.CurrencyField(label='Angebot A:')
-    kaufA = models.CurrencyField(label='Nachfrage A:')
+    verkaufA = models.CurrencyField(label='Verkauf A:')
+    kaufA = models.CurrencyField(label='Kauf A:')
     endowment = models.CurrencyField(initial=1000)
     endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
@@ -301,8 +301,8 @@ class Player(BasePlayer):
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
 
-    verkaufB = models.CurrencyField(label='Angebot B:')
-    kaufB = models.CurrencyField(label='Nachfrage B:')
+    verkaufB = models.CurrencyField(label='Verkauf B:')
+    kaufB = models.CurrencyField(label='Kauf B:')
     is_trade_kaufB = models.BooleanField(initial=False)
     is_trade_verkaufB = models.BooleanField(initial=False)
     anzahlB = models.IntegerField(initial=5)

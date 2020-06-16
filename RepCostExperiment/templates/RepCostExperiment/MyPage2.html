@@ -21,7 +21,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
     <div class="row toprow">
             <div class="col-md-4">
                 <div class="card my-0">
-                    <div class="card-body" style="height: 550px;">
+                    <div class="card-body" style="height: 816px;">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                             A-Unternehmen
                         </h4>
@@ -47,15 +47,18 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <th colspan="2">Erwartete Dividende mit Wahrscheinlichkeit 25%</th>
+                                            <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
                                         </tr>
-                                        <tr style="font-size:10pt;">
+                                        <tr style="background: whitesmoke; font-size:10pt;">
                                             <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviA}} ECU</td>
                                         </tr>
                                     </table>
                                 </p>
+                                <br>
 
-                                <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
+
+                                <div class="card-body">
+                                    <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
                                 <p>
                                     <table border="0" cellpadding="1" cellspacing="1">
                                         <colgroup>
@@ -73,6 +76,18 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                         </tr>
                                     </table>
                                 </p>
+                                </div>
+
+                                <p>
+                                    <table align="center" style="width: 378px" >
+                                        <tr style="font-size:10pt;">
+                                            <th>Letzter Marktpreis A-Unternehmen </th>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
+                                        </tr>
+                                    </table>
+                                </p>
 
                         </div>
                     </div>
@@ -81,7 +96,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-0" >
-                    <div class="card-body"  style="height: 475px">
+                    <div class="card-body"  style="height: 376px">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
@@ -125,6 +140,51 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                 </p>
                         </div>
                     </div>
+
+                    <p align="center">
+                        Geben Sie nun die Verkaufs- und Kaufspreise in die untenliegenden Felder ein.
+                    </p>
+
+
+                    <div id="main">
+                    <div id="spaltelinks">
+                        <div class="card my-4" >
+                        <div class="card-body" style="height: 250px;" >
+                        <h4 class="card-title">
+                           Handelsplatz A
+                        </h4>
+                            <table border="0" cellpadding="1" cellspacing="1">
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.verkaufA  %}</td>
+                                </tr>
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.kaufA %}</td>
+                                </tr>
+                            </table>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="spalterechts">
+                        <div class="card my-4">
+                        <div class="card-body" style="height: 250px;">
+                        <h4 class="card-title">
+                           Handelsplatz B
+                        </h4>
+                            <table border="0" cellpadding="1" cellspacing="1">
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.verkaufB  %}</td>
+                                </tr>
+                                <tr style="font-size:10pt;">
+                                    <td>{% formfield player.kaufB %}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="clear"></div>
+                    </div>
+
+
                     {% next_button %}
                 </div>
             </div>
@@ -132,7 +192,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-0">
-                    <div class="card-body" style="height: 550px;">
+                    <div class="card-body" style="height: 816px;">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                             B-Unternehmen
                         </h4>
@@ -158,13 +218,15 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                             <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <th colspan="2">Erwartete Dividende mit Wahrscheinlichkeit 25%</th>
+                                            <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
                                         </tr>
-                                        <tr style="font-size:10pt;">
+                                        <tr style="background: whitesmoke; font-size:10pt;">
                                             <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviB}} ECU</td>
                                         </tr>
                                     </table>
                                 </p>
+                                <br>
+                                <br>
 
                                 <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
                                 <p>
@@ -184,6 +246,20 @@ Handelsrunde - Periode {{ subsession.round_number }}
                                         </tr>
                                     </table>
                                 </p>
+                                <br>
+                                <br>
+                                <p>
+                                    <table align="center" style="width: 378px">
+                                        <tr style="font-size:10pt;">
+                                            <th>Letzter Marktpreis B-Unternehmen</th>
+                                        </tr>
+                                        <tr style="background: whitesmoke; font-size:10pt;">
+                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
+                                        </tr>
+                                    </table>
+                                </p>
+
+
 
                         </div>
                     </div>
@@ -191,90 +267,6 @@ Handelsrunde - Periode {{ subsession.round_number }}
             </div>
     </div>
 
-    <div class="row bottomrow ">
-
-            <div class="col-md-4">
-                <div class="card my-2">
-                    <div class="card-body" style="height: 250px;">
-                        <h4 class="card-title" align="center">
-                           Markt A
-                        </h4>
-                        <div id="Info" style=" float:left;">
-                                <p>
-                                    <table align="center" style="width: 378px">
-                                        <tr style="font-size:10pt;">
-                                            <th>Letzter Marktpreis A </th>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="card my-2">
-                    <div class="card-body" style="height: 250px;">
-                        <h4 class="card-title">
-                           Handelsplatz A
-                        </h4>
-                            <table border="0" cellpadding="1" cellspacing="1">
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.verkaufA  %}</td>
-                                </tr>
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.kaufA %}</td>
-                                </tr>
-                            </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="card my-2">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                           Handelsplatz B
-                        </h4>
-                            <table border="0" cellpadding="1" cellspacing="1">
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.verkaufB  %}</td>
-                                </tr>
-                                <tr style="font-size:10pt;">
-                                    <td>{% formfield player.kaufB %}</td>
-                                </tr>
-                            </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card my-2">
-                    <div class="card-body" style="height: 250px;">
-                        <h4 class="card-title" align="center">
-                           Markt B
-                        </h4>
-                        <div id="Info" style=" float:left;">
-                                <p>
-                                    <table align="center" style="width: 378px">
-                                        <tr style="font-size:10pt;">
-                                            <th>Letzter Marktpreis B </th>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
 </div>
 
 {% endblock %}

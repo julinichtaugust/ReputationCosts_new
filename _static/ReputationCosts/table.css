@@ -53,4 +53,24 @@ table  tr {
     padding-left: 10pt;
     padding-top: 15pt;
 }
+
+#main {
+   width: 440px;
+   background-color: #fff;
+   padding: 20;
+   border-right:0px ;
+   border-left:0px ;
+   border-top:0px;
+   border-bottom:0px;
+   margin: 0 auto;
+   }
+
+#spaltelinks {
+   float: left;
+   }
+
+#spalterechts {
+   float: right;
+   }
+
 .clear { clear: both; }
