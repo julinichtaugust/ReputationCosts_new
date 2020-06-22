@@ -1,0 +1,49 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block scripts %}
+<script>
+    var errorExists
+    {% if form.errors %}
+    errorExists = true;
+    {% endif %}
+</script>
+
+    <script>
+        errors = document.getElementsByClassName("otree-form-errors alert alert-danger").item(0)
+        if (errors != null) {
+            errors.innerHTML= "{% trans 'Mindestens eine Verständnisfrage wurde falsch beantwortet. <br> Bitte lesen Sie sich die Instruktionen erneut durch und überprüfen anschließend Ihre Antwort(en)!' %} "
+        }else{
+            console.log(errors)
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info" role="alert">
+        <p>
+            {% blocktrans trimmed %}
+                Bevor die eigentliche Studie beginnt, möchten wir Sie bitten, die folgenden Verständnisfragen zu beantworten.
+                Bei Verständnisfragen können Sie sich jederzeit die Instruktionen erneut anschauen.
+            {% endblocktrans %}
+        </p>
+        <p style="font-weight: bold">
+            {% blocktrans trimmed %}
+                Bitte beachten Sie, dass wir Ihren HIT abweisen, wenn Sie die Instruktionen nicht aufmerksam gelesen haben und folglich die folgenden Frage nicht gewissenhaft beantworten.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+
+    <br>
+    {% for field in form %}
+    {% formfield field %}
+    {% endfor %}
+
+
+
+
+{% endblock %}
+
+

@@ -18,6 +18,17 @@ SESSION_CONFIGS = [
         app_sequence=['RepCostExperiment'],
         use_browser_bots=False,
     ),
+    dict(
+        name= 'Instruktionen',
+        display_name= "Instruktionen",
+        num_demo_participants= 1,
+        app_sequence=['instructions'],
+        #treatment='Deferred',
+        tax_rate=0.40,
+        tax_rate_low=0.25,
+        use_browser_bots= False,
+        test=0,
+    ),
 ]
 
 # ISO-639 code

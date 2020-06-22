@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    {% trans 'Verständnistest' %}
+    <p><p><img style="display: block; text-align: center; margin: 0px auto; width: 80%;" src="{% static image_path12_test %}"></p></p>
+{% endblock %}
+
+{% block content %}
+
+    {% if comprehension_check %}
+        <p style="text-align: center">
+            {% blocktrans trimmed with wrong_answers=wrong_answers %}
+                Sie haben den Verständnistest bestanden und beginnen nun mit der ersten Sequenz.
+            {% endblocktrans %}
+        </p>
+        <br>
+        {% next_button %}
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            <p style="text-align: center">
+                {% blocktrans trimmed with wrong_answers=wrong_answers %}
+                    Sie haben {{ wrong_answers }}-mal eine Verständnisfrage falsch beantwortet.
+                    Folglich gehen wir davon aus, dass Sie die Instruktionen nicht aufmerksam gelesen haben und weisen Ihre HIT ab.
+                {% endblocktrans %}
+            </p>
+            <p style="text-align: center">
+                {% trans 'Damit ist die Studie für Sie beendet.' %}
+            </p>
+            <p style="text-align: center">
+            {% trans 'Kehren Sie nun bitte zu Mechanical Turk zurück und geben Sie den folgenden Code ein:' %} 8f4dshd
+            </p>
+            <p style="text-align: center">
+                {% blocktrans trimmed %}
+                    Alternatively you can leave this study and not enter a MTurk code. This option will not affect your Rejection Rate.
+                {% endblocktrans %}
+            </p>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+

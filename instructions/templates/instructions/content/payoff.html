@@ -1,0 +1,19 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block content %}
+
+    <h3>{% trans 'Fixe Vergütung' %}</h3>
+        <p>{% trans 'Sie erhalten eine fixe Vergütung von' %} {{ participation_fee }}.</p>
+
+    <h3>{% trans 'Variable Vergütung' %}</h3>
+        <p>
+            {% blocktrans trimmed %}
+                Für Ihre variable Vergütung wird die Ausstattung nach Ablauf der Handelsphase verwendet. Ein Zufallsgenerator entscheidet, welche der zwei Sequenzen ausgezahlt wird.
+                <b>Es wird folglich nur eine Sequenz entlohnt!</b> Das Ergebnis der zufällig gezogenen Sequenz wird in Euro umgerechnet.
+            {% endblocktrans %}
+        </p>
+
+{% endblock %}
+
+
