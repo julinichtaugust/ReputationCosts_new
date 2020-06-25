@@ -2,6 +2,109 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+#translations
+def trans_question_incorrectly(number):
+    return _('Frage {} wurde falsch beantwortet.').format(number)
+
+class Welcome(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def vars_for_template(self):
+        context = self.player.vars_for_template()
+        context.update(
+            mean_remuneration=c(Constants.mean_remuneration).to_real_world_currency(self.session),
+        )
+        return context
+
+class questions_pre(Page):
+    form_model = 'player'
+
+    def get_form_fields(self):
+        return ['gender', 'year_of_birth', 'risk']
+
+    def is_displayed(self):
+        self.participant.vars['year_of_birth'] = self.player.year_of_birth
+        return self.round_number == 1
+
+    def risk_error_message(self, value):
+        if value == None:
+            return "Diese Frage wurde nicht beantwortet."
+
+class Instruction_Page(Page):
+    form_model = 'player'
+
+    def get_form_fields(self):
+        return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
+                    'comprehension_question4', 'comprehension_question5', 'comprehension_question6']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def vars_for_template(self):
+        pass
+        #context =  self.player.vars_for_template()
+        #context.update(
+        #    image_path12_LifeCycle = ('graphics/12_periods/LifeCycle.png').format(self.round_number),
+        #    image_path12_income= ('graphics/12_periods/LifeCycleIncome.png').format(self.round_number),
+        #    image_path12_rest= ('graphics/12_periods/LifeCycle_RestPhase.png').format(self.round_number),
+        #    image_path12_questionnaire= ('graphics/12_periods/LifeCycle_Questionnaire.png').format(self.round_number),
+        #    image_path12_payoff= ('graphics/12_periods/LifeCycle_Payoff.png').format(self.round_number),
+        #    image_path12_test= ('graphics/12_periods/LifeCycle_ComprehensionTest.png').format(self.round_number),
+        #)
+        #return context
+
+    def comprehension_question1_error_message(self, value):
+        if value != 2:
+            self.player.wrong_answer1 += 1
+            return trans_question_incorrectly(1)
+
+    def comprehension_question2_error_message(self, value):
+        if value != 0:
+            self.player.wrong_answer2 += 1
+            return trans_question_incorrectly(2)
+
+    def comprehension_question3_error_message(self, value):
+            if value != 0:
+                self.player.wrong_answer3 += 1
+                return trans_question_incorrectly(3)
+
+    def comprehension_question4_error_message(self, value):
+            if value != 0:
+                self.player.wrong_answer4 += 1
+                return trans_question_incorrectly(4)
+
+    def comprehension_question5_error_message(self, value):
+        if value != 0:
+            self.player.wrong_answer5 += 1
+            return trans_question_incorrectly(5)
+
+    def comprehension_question5_2_error_message(self, value):
+        if value != 0:
+            self.player.wrong_answer5 += 1
+            return trans_question_incorrectly(5)
+
+    def comprehension_question6_error_message(self, value):
+            if value != 0:
+                self.player.wrong_answer6 += 1
+                return trans_question_incorrectly(6)
+
+class comprehension_check(Page):
+    def check_wrong_anwers(self):
+        if self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5 + self.player.wrong_answer6 >= 3:
+            return False
+        else:
+            return True
+
+    def vars_for_template(self):
+        context =  self.player.vars_for_template()
+        context.update(
+            comprehension_check= self.check_wrong_anwers(),
+            wrong_answers= self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5 + self.player.wrong_answer6,
+        )
+        return context
+
+
 class Wait_Page(WaitPage):
     def after_all_players_arrive(self):
         for player in self.group.get_players():
@@ -101,4 +204,13 @@ class Ende(Page):
         }
 
 
-page_sequence = [Wait_Page, MyPage2, ResultsWaitPage, Results2, Ende]
+page_sequence = [
+    Welcome,
+    questions_pre,
+    Instruction_Page,
+    comprehension_check,
+    Wait_Page,
+    MyPage2,
+    ResultsWaitPage,
+    Results2,
+    Ende]

@@ -1,0 +1,44 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block content %}
+
+    <p>
+        {% blocktrans trimmed %}
+            Die folgende Abbildung zeigt den Bildschrim in der Handelsphase.
+        {% endblocktrans %}
+
+    </p>
+
+    <p>
+        {% blocktrans trimmed %}
+            In jeder Handelsphase haben Sie die Möglichkeit Ihr Portfolio zu verändern. Sie haben 2 Minuten Zeit um die möglichen folgenden Handlungen durchzuführen.
+        {% endblocktrans %}
+
+    </p>
+
+    <h3>{% trans 'Kauf von Aktien' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+        Sie können am Markt Aktien der Unternehmen erwerben. Geben Sie dafür in das Feld <b>Kauf von Aktie</b> Ihre maximale Zahlungsbereitschaft für eine Aktie des entsprechenden Unternehmens ein.
+        {% endblocktrans %}
+
+    </p>
+
+    <h3>{% trans 'Verkauf von Aktien' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+           Sie können am Markt Aktien aus Ihrem Portfolio verkaufen. Geben Sie dafür in das Feld <b>Verkauf von Aktie</b> Ihren minimalen Preis ein, zum dem Sie bereit sind die Aktie am Markt zu verkaufen.
+        {% endblocktrans %}
+    </p>
+
+    <h3>{% trans 'Ermittlung des Handels' %}</h3>
+
+    <p>
+        {% blocktrans trimmed %}
+           Nachdem alle Marktteilnehmer die Handelsphase beendet haben werden für beide Unternehmen die Nachfragen und Angebote in einem Markt gesammelt. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf absteigend sortiert.
+    </p>
+
+{% endblock %}
+
+

@@ -9,15 +9,15 @@
 
 {% block scripts %}
 
-<script src="{% static "instructions/js/prev_next_button.js" %}"></script>
+<script src="{% static "RepCostExperiment/js/prev_next_button.js" %}"></script>
 
 {% endblock %}
 
 
 {% block styles %}
     <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
-    <link href="{% static 'instructions/css/back-button.css' %}" rel="stylesheet">
-    <link href="{% static 'instructions/css/Counter.css' %}" rel="stylesheet"/>
+    <link href="{% static 'RepCostExperiment/css/back-button.css' %}" rel="stylesheet">
+    <link href="{% static 'RepCostExperiment/css/Counter.css' %}" rel="stylesheet"/>
     <link href="{% static 'global/css/table.css' %}" rel="stylesheet"/>
 
     <style type="text/css">
@@ -81,7 +81,7 @@
         </div>
         <br>
 
-        {% include 'instructions/content/structure.html' %}
+        {% include 'RepCostExperiment/content/structure.html' %}
 
 
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
@@ -95,11 +95,11 @@
             <h2 class="card-title">
                 {% trans 'Handelsphase' %}
             </h2>
-            <p><img style="display: block; text-align: center; margin: 0px auto; width: 80%;" src="{% static image_path12_income %}"></p>
+
         </div>
         <br>
 
-        {% include 'instructions/content/Handelsphase.html' %}
+        {% include 'RepCostExperiment/content/Handelsphase.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
@@ -114,11 +114,10 @@
             <h2 class="card-title">
                 {% trans 'Dividendenphase' %}
             </h2>
-            <p><img style="display: block; text-align: center; margin: 0px auto; width: 80%;" src="{% static image_path12_rest %}"></p>
         </div>
         <br>
 
-        {% include 'instructions/content/Dividendenphase.html' %}
+        {% include 'RepCostExperiment/content/Dividendenphase.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
@@ -133,11 +132,11 @@
             <h2 class="card-title">
                 {% trans 'Fragebogen' %}
             </h2>
-            <p><img style="display: block; text-align: center; margin: 0px auto; width: 80%;" src="{% static image_path12_questionnaire %}"></p>
+
         </div>
         <br>
 
-        {% include 'instructions/content/questionnaire.html' %}
+        {% include 'RepCostExperiment/content/questionnaire.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
@@ -152,11 +151,11 @@
             <h2 class="card-title">
                 {% trans 'Vergütung der Studie' %}
             </h2>
-            <p><img style="display: block; text-align: center; margin: 0px auto; width: 80%;" src="{% static image_path12_payoff %}"></p>
+
         </div>
         <br>
 
-        {% include 'instructions/content/payoff.html' %}
+        {% include 'RepCostExperiment/content/payoff.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
@@ -171,11 +170,11 @@
             <h2 class="card-title">
                 {% trans 'Verständnistest' %}
             </h2>
-            <p><img style="display: block; text-align: center; margin: 0px auto; width: 80%;" src="{% static image_path12_test %}"></p>
+
         </div>
         <br>
 
-        {% include 'instructions/content/comprehension_test.html' %}
+        {% include 'RepCostExperiment/content/comprehension_test.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>

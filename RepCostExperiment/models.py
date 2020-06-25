@@ -1,3 +1,6 @@
+import itertools
+
+
 from otree.api import (
     models,
     widgets,
@@ -25,8 +28,13 @@ class Constants(BaseConstants):
     num_rounds = 2
 
     endowment = 100
-    diviA = [0, 5, 15, 20]
-    diviB = [0, 5, 15, 20]
+    diviA = [10, 20, 30, 40, 50]
+    diviB = [10, 20, 30, 40, 50]
+
+    mean_remuneration = 1500
+
+
+
 
 
 class Subsession(BaseSubsession):
@@ -39,7 +47,7 @@ class Group(BaseGroup):
     marktpreisB = models.CurrencyField()
     clearing_rankB = models.IntegerField()
     dividendeB = models.CurrencyField()
-    marktpreisA_alt = models.CurrencyField()
+    #marktpreisA_alt = models.CurrencyField()
 
     def marktpreisA_alt(self):
         if self.round_number == 1:
@@ -290,8 +298,8 @@ class Group(BaseGroup):
             p.gesdiviB = p.anzahlB * self.dividendeB
 
 class Player(BasePlayer):
-    verkaufA = models.CurrencyField(label='Verkauf A:')
-    kaufA = models.CurrencyField(label='Kauf A:')
+    verkaufA = models.CurrencyField(label='Verkauf A:', blank=True)
+    kaufA = models.CurrencyField(label='Kauf A:', blank=True)
     endowment = models.CurrencyField(initial=1000)
     endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
@@ -301,14 +309,119 @@ class Player(BasePlayer):
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
 
-    verkaufB = models.CurrencyField(label='Verkauf B:')
-    kaufB = models.CurrencyField(label='Kauf B:')
+    verkaufB = models.CurrencyField(label='Verkauf B:', blank=True)
+    kaufB = models.CurrencyField(label='Kauf B:', blank=True)
     is_trade_kaufB = models.BooleanField(initial=False)
     is_trade_verkaufB = models.BooleanField(initial=False)
     anzahlB = models.IntegerField(initial=5)
     rank_verkaufB = models.IntegerField()
     rank_kaufB = models.IntegerField()
     gesdiviB = models.CurrencyField()
+
+    treatment = models.StringField()
+
+    gender = models.IntegerField(
+        label=(("Sind Sie weiblich, männlich oder divers?")),
+        choices=[
+            [0, ('Weiblich')],
+            [1, ('Männlich')],
+            [2, ('Divers')],
+        ],
+        widget=widgets.RadioSelect,
+        blank=False,
+        # initial=0
+    )
+
+    year_of_birth = models.IntegerField(
+        min=1900,
+        max=2004,
+        label=("Ich welchem Jahr wurden Sie geboren (z.B. 1962)?"),
+        blank=False,
+        # initial=1987,
+    )
+
+    risk = models.IntegerField(
+        choices=[[1, ''], [2, ''], [3, ''], [4, ''], [5, ''], [6, ''], [7, ''], [8, ''], [9, '']],
+        label=(
+            'Wie schätzen Sie sich persönlich ein: Sind Sie im Allgemeinen ein risikobereiter Mensch oder versuchen Sie, Risiken zu vermeiden?'),
+        widget=widgets.RadioSelectHorizontal,
+        blank=False,
+        # initial=1,  # zum testen
+    )
+
+    comprehension_question1 = models.IntegerField(
+        verbose_name=(
+            "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende der Studie ist richtig?"),
+        # initial = 2,
+        choices=[[0, ('Der durchschnittliche Auszahlungsbetrag aller Perioden wird am Ende der Studie vergütet.')],
+                 [1, ('Der durchschnittliche Auszahlungsbetrag in der Ruhephase wird am Ende der Studie vergütet.')],
+                 [2, ('Nur eine der insgesamt 24 Perioden wird am Ende der Studie vergütet.')]],
+        widget=widgets.RadioSelect,
+    )
+    comprehension_question2 = models.IntegerField(
+        verbose_name=("Frage 2: In welchen Perioden einer Sequenz erhalten Sie ein Einkommen von uns?"),
+        # initial = 0,
+        choices=[[0, ('Perioden 1 bis 8.')],
+                 [1, ('Perioden 9 bis 12.')],
+                 [2, ('Perioden 1 bis 12.')]],
+        widget=widgets.RadioSelect,
+    )
+    comprehension_question3 = models.IntegerField(
+        verbose_name=("Frage 3: Wie wird das Bruttoeinkommen in der Einkommensphase besteuert?"),
+        # initial = 0,
+        choices=[[0, ('Das Bruttoeinkommen unterliegt einer Steuer in Höhe von 40 %.')],
+                 [1, ('Das Bruttoeinkommen unterliegt einer Steuer in Höhe von 20 %.')],
+                 [2, ('Das Bruttoeinkommen ist steuerfrei.')]],
+        widget=widgets.RadioSelect,
+    )
+    comprehension_question4 = models.IntegerField(
+        verbose_name=("Frage 4: Wie werden die Sparbeiträge in der Einkommensphase besteuert?"),
+        # initial = 0,
+        choices=[[0, (
+            'Die Sparbeiträge können steuerlich geltend gemacht werden. Dementsprechend erhalten Sie eine Steuererstattung in Höhe von 40 % der Sparbeiträge.')],
+                 [1, (
+                     'Die Sparbeiträge können steuerlich nicht geltend gemacht werden. Dementsprechend erhalten Sie keine Steuererstattung.')]],
+        widget=widgets.RadioSelect,
+    )
+    comprehension_question5 = models.IntegerField(
+        verbose_name=(
+            "Frage 5: Wie wird das aus den Sparbeiträgen resultierende Bruttoeinkommen in der Ruhephase besteuert?"),
+        # initial = 1,
+        choices=[[0, ('Das Bruttoeinkommen in der Ruhephase ist steuerfrei.')],
+                 [1, ('Das Bruttoeinkommen in der Ruhephase unterliegt einer Steuer in Höhe von 40 %.')]],
+        widget=widgets.RadioSelect,
+    )
+    comprehension_question5_2 = models.IntegerField(
+        verbose_name=(
+            "Frage 5: Wie wird das aus den Sparbeiträgen resultierende Bruttoeinkommen in der Ruhephase besteuert?"),
+        # initial = 1,
+        choices=[[0, ('Das Bruttoeinkommen in der Ruhephase ist steuerfrei.')],
+                 [1, ('Das Bruttoeinkommen in der Ruhephase unterliegt einer Steuer in Höhe von 25 %.')]],
+        widget=widgets.RadioSelect,
+    )
+    comprehension_question6 = models.IntegerField(
+        verbose_name=(
+            "Frage 6: Nehmen Sie an, Sie sparen in den gesamten acht Perioden der Einkommensphase nichts und am Ende der "
+            "Studie wird eine Periode der Ruhephase ausgezahlt. Wie hoch ist dann Ihre Auszahlung in einer Periode der Ruhephase?"),
+        # initial = 0,
+        choices=[[0, ('Null Euro.')],
+                 [1, ('Die Höhe der Steuererstattungen der Perioden 1 bis 8.')]],
+        widget=widgets.RadioSelect,
+    )
+
+    wrong_answer1 = models.IntegerField(initial=0)
+    wrong_answer2 = models.IntegerField(initial=0)
+    wrong_answer3 = models.IntegerField(initial=0)
+    wrong_answer4 = models.IntegerField(initial=0)
+    wrong_answer5 = models.IntegerField(initial=0)
+    wrong_answer6 = models.IntegerField(initial=0)
+
+    #    wrong_answer7 = models.IntegerField(initial=0)
+
+    def vars_for_template(self):
+        return dict(
+            participation_fee=self.session.config['participation_fee'],
+        )
 
 # Werte der Vorperiode holen
     def access_data(self):

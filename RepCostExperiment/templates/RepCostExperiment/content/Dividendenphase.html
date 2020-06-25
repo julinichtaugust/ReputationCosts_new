@@ -20,15 +20,6 @@
                 ein gleich hohes Bruttoeinkommen (vor Abzug von Steuern), das sich aus Ihrem gesamten Ersparten und den daraus resultierenden Zinsen und Zinseszinsen ergibt.
             {% endblocktrans %}
         </p>
-        <p>
-            {% if treatment in deferred_group %}
-                {% blocktrans trimmed with tax_rate_low=tax_rate_low|floatformat:0 %}
-                    Das Bruttoeinkommen unterliegt in der Ruhephase einer Steuer in Höhe von {{ tax_rate_low }} &#37;.
-                {% endblocktrans %}
-            {% else %}
-                {% trans 'Das Bruttoeinkommen ist in der Ruhephase steuerfrei.' %}
-            {% endif %}
-        </p>
 
     <h3>{% trans 'Informationen zu dem Bruttoeinkommen während der Einkommensphase' %}</h3>
         <p>
@@ -49,15 +40,6 @@
             </i>
         </p>
 
-    <h3>{% trans 'Auszahlungen in der Ruhephase' %}</h3>
-        <p>
-            {% if treatment in deferred_group %}
-                {% trans 'Das Bruttoeinkommen abzüglich der Steuern bildet den Auszahlungsbetrag der jeweiligen Periode.' %}
-            {% else %}
-                {% trans 'Das Bruttoeinkommen bildet den Auszahlungsbetrag der jeweiligen Periode.' %}
-            {% endif %}
-        </p>
-    <br>
 
 {% endblock %}
 

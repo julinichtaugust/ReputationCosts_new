@@ -6,7 +6,7 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=1.00, participation_fee=3.00, doc=""
 )
 
 
@@ -17,16 +17,8 @@ SESSION_CONFIGS = [
         num_demo_participants=3,
         app_sequence=['RepCostExperiment'],
         use_browser_bots=False,
-    ),
-    dict(
-        name= 'Instruktionen',
-        display_name= "Instruktionen",
-        num_demo_participants= 1,
-        app_sequence=['instructions'],
-        #treatment='Deferred',
         tax_rate=0.40,
         tax_rate_low=0.25,
-        use_browser_bots= False,
         test=0,
     ),
 ]
