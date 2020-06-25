@@ -167,8 +167,11 @@
 
 <h3>{% trans 'Markt' %}</h3>
 
-    Das 
+    {% blocktrans trimmed %}
+       Sie sind Teilnehmer auf einem Aktienmarkt. Neben Ihnen handeln noch X weitere Teilnehmer an diesem Aktienmarkt.
+    {% endblocktrans %}
 
+<br>
 
 {% endblock %}
 
