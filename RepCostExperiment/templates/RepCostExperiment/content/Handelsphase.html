@@ -3,16 +3,26 @@
 
 {% block content %}
 
+    <h3>{% trans 'Bildschirm in der Handelsphase' %}</h3>
+
     <p>
         {% blocktrans trimmed %}
-            Die folgende Abbildung zeigt den Bildschrim in der Handelsphase.
+            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen auf der linken und rechten Seite jeweils erneut die Informationen zu den Unternehmen. In der Mitte erhalten Sie in jeder Handelsphase Informationen zu Ihrer aktuellen Ausstattung sowie zu Ihrem Portfolio.
         {% endblocktrans %}
 
     </p>
 
+    <h3>{% trans 'Markt' %}</h3>
+    <p>
+    {% blocktrans trimmed %}
+       Sie sind Teilnehmer am Kapitalmarkt. Neben Ihnen handeln noch X weitere Teilnehmer an diesem Markt, die ebenfalls eine Ausstattung erhalten haben und ein Portfolio aufbauen.
+    {% endblocktrans %}
+     </p>
+
     <p>
         {% blocktrans trimmed %}
-            In jeder Handelsphase haben Sie die Möglichkeit Ihr Portfolio zu verändern. Sie haben 2 Minuten Zeit um die möglichen folgenden Handlungen durchzuführen.
+        In jeder Handelsphase haben Sie die Möglichkeit Ihr Portfolio zu verändern. Sie können Aktien an andere Teilnehmer des Marktes verkaufen oder Aktien von diesen erwerben.
+        Sie haben in jeder Handelsphase 2 Minuten Zeit um die möglichen folgenden Handlungen durchzuführen.
         {% endblocktrans %}
 
     </p>
@@ -20,7 +30,8 @@
     <h3>{% trans 'Kauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
-        Sie können am Markt Aktien der Unternehmen erwerben. Geben Sie dafür in das Feld <b>Kauf von Aktie</b> Ihre maximale Zahlungsbereitschaft für eine Aktie des entsprechenden Unternehmens ein.
+        Sie können am Markt Aktien der Unternehmen von anderen Marktteilnehmern erwerben. Geben Sie dafür in das Feld <b>Kauf von Aktie</b> Ihre maximale Zahlungsbereitschaft für eine Aktie des entsprechenden Unternehmens ein.
+        Möchten Sie in dieser Periode keine Aktie kaufen, können Sie dieses Feld auch freilassen.
         {% endblocktrans %}
 
     </p>
@@ -28,7 +39,15 @@
     <h3>{% trans 'Verkauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
-           Sie können am Markt Aktien aus Ihrem Portfolio verkaufen. Geben Sie dafür in das Feld <b>Verkauf von Aktie</b> den minimalen Preis ein, zum dem Sie bereit sind die Aktie am Markt zu verkaufen.
+           Sie können am Markt Aktien aus Ihrem Portfolio an andere Marktteilnehmer verkaufen. Geben Sie dafür in das Feld <b>Verkauf von Aktie</b> den minimalen Preis ein, zum dem Sie bereit sind die Aktie am Markt zu verkaufen.
+            Möchten Sie in dieser Periode keine Aktie verkaufen, können Sie dieses Feld auch freilassen. Beachten Sie, dass Ihr Kaufpreis nicht über Ihrem Verkaufspreis liegt, da Sie in diesem Fall mit sich selber handeln würden.
+        {% endblocktrans %}
+    </p>
+
+    <h3>{% trans 'Ende der Handelsphase' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+           Die Handelsphase endet automatisch nach 2 Minuten. Sie haben außerdem über den "Weiter"-Button die Möglichkeit schon vor Ablauf der 2 Minuten zu bestätigen, dass Sie mit Ihrer Eingabe fertig sind. Sind alle Marktteilnehmer vor Ablauf der 2 Minuten fertig endet die Handelsphase auch früher.
         {% endblocktrans %}
     </p>
 
@@ -37,9 +56,17 @@
     <p>
         {% blocktrans trimmed %}
            Nachdem alle Marktteilnehmer die Handelsphase beendet haben werden für beide Unternehmen die Nachfragen und Angebote in einem Markt gesammelt. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf absteigend sortiert.
-            Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaar verglichen. Es findet immer dann ein Handel statt, wenn der maximale Kaufpreis (Nachfrage) über dem minimalen Verkaufspreis (Angebot) liegt.
+            Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaare verglichen. Es findet immer dann ein Handel statt, wenn der maximale Kaufpreis (Nachfrage) über dem minimalen Verkaufspreis (Angebot) liegt.
         {% endblocktrans %}
     </p>
+
+    <p>
+        {% blocktrans trimmed %}
+           Der Marktpreis zu dem alle Transaktionen durchgeführt werden, ist der markträumende Preis. Dieser bestimmt sich als Mittelwert aus dem Kaufpreis- und Verkaufspreispaar, bei dem ein Handel stattgefunden hat und die Spanne zwischen Kaufpreis und Verkaufpreis minimal ist.
+            Entsprechend kann es passieren, dass beispielsweise Ihr angegebener Kaufpreis zwar über dem Marktpreis liegt, jedoch kein weitere Marktteilnehmer bereit ist zu diesem Preis zu verkaufen und somit der Käufer mit einem höheren Kaufpreis als Ihrer die Aktie erhält.
+        {% endblocktrans %}
+    </p>
+
 
 {% endblock %}
 

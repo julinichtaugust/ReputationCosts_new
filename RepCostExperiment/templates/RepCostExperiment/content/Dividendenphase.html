@@ -13,32 +13,36 @@
 
 {% block content %}
 
-    <h3>{% trans 'Höhe und Besteuerung des Einkommens' %}</h3>
+    <h3>{% trans 'Bildschirm in der Dividendenphase' %}</h3>
         <p>
             {% blocktrans trimmed %}
-                In der Ruhephase erhalten Sie von uns kein Einkommen mehr. Ihr Einkommen in den Perioden 9 bis 12 hängt lediglich von Ihren Sparbeiträgen in der Einkommensphase ab. In jeder Periode der Ruhephase erhalten Sie
-                ein gleich hohes Bruttoeinkommen (vor Abzug von Steuern), das sich aus Ihrem gesamten Ersparten und den daraus resultierenden Zinsen und Zinseszinsen ergibt.
+                 Die folgende Abbildung zeigt den Bildschirm in der Dividendenphase. In den Dividendenphasen können Sie nicht aktiv am Markt teilnehmen. Sie erhalten lediglich die folgenden Information.
             {% endblocktrans %}
         </p>
 
-    <h3>{% trans 'Informationen zu dem Bruttoeinkommen während der Einkommensphase' %}</h3>
+    <h3>{% trans 'Informationen über Handel' %}</h3>
         <p>
             {% blocktrans trimmed %}
-                Nach jeder Periode der Einkommensphase erhalten Sie eine Sparinformation.
-                Sie werden zum einen über Ihre durchschnittlichen Sparbeiträge der vorangegangenen Perioden in der Einkommensphase informiert.
-                Auf Grundlage dieser durchschnittlichen Sparbeiträge erhalten Sie weiterhin eine Information, wie hoch Ihr Bruttoeinkommen in der Ruhephase wäre.
+               Im unteren Teil sehen Sie für beide Unternehmen das Orderbuch, in das alle Kaufpreise und Verkaufpreise eingetragen sind. Sie können damit nachvollziehen, ob Sie eine Aktie erwerben oder verkaufen konnten.
+                Zusätzlich sehen Sie den berechneten Marktpreis für beide Aktien.
             {% endblocktrans %}
         </p>
 
-        <p style="margin-left: 20px ">
-            <i>
-                {% blocktrans trimmed %}
-                    <b>Beispiel:</b>
-                    In den vorangegangenen Perioden haben Sie durchschnittlich XXX ECU gespart. Sollten Sie bis zur Ruhephase Sparbeiträge wie im Durchschnitt der letzten Perioden in Höhe von XXX ECU sparen,
-                    würden Sie in der Ruhephase ein Bruttoeinkommen in Höhe von YYY ECU erhalten.
-                {% endblocktrans %}
-            </i>
+    <h3>{% trans 'Informationen über Dividenden' %}</h3>
+        <p>
+            {% blocktrans trimmed %}
+               Links und rechts sehen Sie, welche Dividende das Unternehmen in der aktuellen Periode ausschütten konnte. Wie bereits im Reiter "Aufbau der Studie" erfolgt die Auszahlung der Dividende zufällig und für beide Unternehmen unabhängig.
+            {% endblocktrans %}
         </p>
+
+    <h3>{% trans 'Berechnung Ihrer Ausstattung' %}</h3>
+        <p>
+            {% blocktrans trimmed %}
+               Mittig sehen Sie eine Berechnungsübersicht mit allen wichtigen Informationen der Handels- und der Dividendenphase. Es wir aufgeführt, zum welchem Preis Sie eine Aktie erworben und/oder verkauft haben. Wie viele Aktien der Unternehmen jeweils in Ihrem Portfolio sind und welche Dividendenzahlung Sie dafür erhalten haben. Am Ende sehen Sie ihre neue Ausstattung.
+            {% endblocktrans %}
+        </p>
+
+
 
 
 {% endblock %}

@@ -4,24 +4,26 @@
 {% block content %}
 
 <h3>{% trans 'Allgemeines' %}</h3>
+    <h6>Ablauf</h6>
     <p>
-        {% blocktrans trimmed %}
-            Die Studie besteht aus einem <b>Verständnistest</b>, <b>zwei Handels-Sequenzen</b> und einem anschließenden <b>Fragebogen</b>. Jede Sequenz besteht aus <b>XX&nbsp;Perioden</b>. Jede Periode unterteilt sich wiederum in
-            eine <b>Handelsphase</b> und eine <b>Dividendenphase</b>. Beide Sequenzen sind vom Ablauf her vollkommen identisch.
-        {% endblocktrans %}
+        Die Studie besteht aus einem <b>Verständnistest</b>, <b>zwei Handels-Sequenzen</b> und einem anschließenden <b>Fragebogen</b>. Jede Sequenz besteht aus <b>XX&nbsp;Perioden</b>. Jede Periode unterteilt sich wiederum in
+        eine <b>Handelsphase</b> und eine <b>Dividendenphase</b>. Beide Sequenzen sind vom Ablauf her vollkommen identisch.
+    </p>
+    <p>
+        In jeder Handelsphase können Sie am Kapitalmarkt Aktien von zwei verschiedenen Unternehmen handeln und Ihr Portfolio optimieren.
+    </p>
+    <p>
+        In jeder Dividendenphase erhalten Sie für jede Aktie die Sie in Ihrem Portfolio halten eine Dividende. Diese wird zufällig und für beide Unternehmen unabhängig gezogen. Die jeweiligen Dividendenhöhen finden Sie immer in den Informationen über das Unternehmen.
+        Die entsprechenden Wahrscheinlichkeiten für die Dividendenhöhen sind gleichverteilt. Das bedeutet, dass alle Dividenden mit einer Wahrscheinlichkeit von 20% gleich wahrscheinlich auftreten.
     </p>
 
     <p>
         {% trans 'Die folgende Abbildung zeigt den gesamten Ablauf im Zeitverlauf:' %}
     </p>
 
-
-    <br>
-
+    <h6>Währung</h6>
     <p>
-        {% blocktrans trimmed with pay1000=1000|c  %}
-            Die Durchführung der Studie erfolgt in einer <b>fiktiven Währung</b>, die wir <b>"ECU"</b> nennen. 1 ECU entspricht dabei 0,01 € . Ihre tatsächliche Vergütung wird am Ende der Studie in Euro umgerechnet.
-        {% endblocktrans %}
+        Die Durchführung der Studie erfolgt in einer <b>fiktiven Währung</b>, die wir <b>ECU</b> nennen. 1 ECU entspricht dabei 0,01 € . Ihre tatsächliche Vergütung wird am Ende der Studie in Euro umgerechnet.
     </p>
 
     <p>
@@ -165,13 +167,7 @@
 
     <br>
 
-<h3>{% trans 'Markt' %}</h3>
 
-    {% blocktrans trimmed %}
-       Sie sind Teilnehmer auf einem Aktienmarkt. Neben Ihnen handeln noch X weitere Teilnehmer an diesem Aktienmarkt.
-    {% endblocktrans %}
-
-<br>
 
 {% endblock %}
 
