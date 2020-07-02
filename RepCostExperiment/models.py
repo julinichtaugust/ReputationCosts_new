@@ -353,59 +353,59 @@ class Player(BasePlayer):
         verbose_name=(
             "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende der Studie ist richtig?"),
         # initial = 2,
-        choices=[[0, ('Der durchschnittliche Auszahlungsbetrag aller Perioden wird am Ende der Studie vergütet.')],
-                 [1, ('Der durchschnittliche Auszahlungsbetrag in der Ruhephase wird am Ende der Studie vergütet.')],
-                 [2, ('Nur eine der insgesamt 24 Perioden wird am Ende der Studie vergütet.')]],
+        choices=[[0, ('Der durchschnittliche Auszahlungsbetrag der beiden Sequenzen wird am Ende der Studie ausgezahlt.')],
+                 [1, ('Die Summe der Auszahlungsbeträge beider Sequenzen wird am Ende der Studie ausgezahlt.')],
+                 [2, ('Nur eine der zwei Sequenzen wird am Ende der Studie vergütet.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question2 = models.IntegerField(
-        verbose_name=("Frage 2: In welchen Perioden einer Sequenz erhalten Sie ein Einkommen von uns?"),
+        verbose_name=("Frage 2: Wonach bestimmt sich die Vergütung einer Sequenz?"),
         # initial = 0,
-        choices=[[0, ('Perioden 1 bis 8.')],
-                 [1, ('Perioden 9 bis 12.')],
-                 [2, ('Perioden 1 bis 12.')]],
+        choices=[[0, ('Höhe der Ausstattung nach Ablauf aller Perioden.')],
+                 [1, ('Anzahl der Aktien im Portfolio.')],
+                 [2, ('Höhe der Ausstattung nach Ablauf aller Perioden und Anzahl der Aktien im Portfolio.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question3 = models.IntegerField(
-        verbose_name=("Frage 3: Wie wird das Bruttoeinkommen in der Einkommensphase besteuert?"),
+        verbose_name=("Frage 3: Welches Unternehmen hat einen höheren Gewinn vor Steuern?"),
         # initial = 0,
-        choices=[[0, ('Das Bruttoeinkommen unterliegt einer Steuer in Höhe von 40 %.')],
-                 [1, ('Das Bruttoeinkommen unterliegt einer Steuer in Höhe von 20 %.')],
-                 [2, ('Das Bruttoeinkommen ist steuerfrei.')]],
+        choices=[[0, ('Der Gewinn vor Steuern ist gleich groß.')],
+                 [1, ('Das A-Unternehmen hat einen höheren Gewinn vor Steuern.')],
+                 [2, ('Das B-Unternehmen hat einen höheren Gewinn vor Steuern.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question4 = models.IntegerField(
-        verbose_name=("Frage 4: Wie werden die Sparbeiträge in der Einkommensphase besteuert?"),
+        verbose_name=("Frage 4: Welches Unternehmen zahlt weniger Steuern?"),
         # initial = 0,
-        choices=[[0, (
-            'Die Sparbeiträge können steuerlich geltend gemacht werden. Dementsprechend erhalten Sie eine Steuererstattung in Höhe von 40 % der Sparbeiträge.')],
-                 [1, (
-                     'Die Sparbeiträge können steuerlich nicht geltend gemacht werden. Dementsprechend erhalten Sie keine Steuererstattung.')]],
+        choices=[[0, ('Das A-Unternehmen.')],
+                 [1, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question5 = models.IntegerField(
         verbose_name=(
-            "Frage 5: Wie wird das aus den Sparbeiträgen resultierende Bruttoeinkommen in der Ruhephase besteuert?"),
+            "Frage 5: Wie viele Teilnehmer handeln auf dem Markt?"),
         # initial = 1,
-        choices=[[0, ('Das Bruttoeinkommen in der Ruhephase ist steuerfrei.')],
-                 [1, ('Das Bruttoeinkommen in der Ruhephase unterliegt einer Steuer in Höhe von 40 %.')]],
+        choices=[[0, ('2')],
+                 [1, ('3')],
+                 [1, ('4')],],
         widget=widgets.RadioSelect,
     )
     comprehension_question5_2 = models.IntegerField(
         verbose_name=(
-            "Frage 5: Wie wird das aus den Sparbeiträgen resultierende Bruttoeinkommen in der Ruhephase besteuert?"),
+            "Frage 5: Welche der folgenden Aussagen ist richtig?"),
         # initial = 1,
-        choices=[[0, ('Das Bruttoeinkommen in der Ruhephase ist steuerfrei.')],
-                 [1, ('Das Bruttoeinkommen in der Ruhephase unterliegt einer Steuer in Höhe von 25 %.')]],
+        choices=[[0, ('')],
+                 [1, ('')],
+                 [2, ('')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question6 = models.IntegerField(
         verbose_name=(
-            "Frage 6: Nehmen Sie an, Sie sparen in den gesamten acht Perioden der Einkommensphase nichts und am Ende der "
-            "Studie wird eine Periode der Ruhephase ausgezahlt. Wie hoch ist dann Ihre Auszahlung in einer Periode der Ruhephase?"),
+            "Frage 6: Welche der folgenden Aussagen ist richtig?"),
         # initial = 0,
-        choices=[[0, ('Null Euro.')],
-                 [1, ('Die Höhe der Steuererstattungen der Perioden 1 bis 8.')]],
+        choices=[[0, ('')],
+                 [1, ('')],
+                 [2, ('')]],
         widget=widgets.RadioSelect,
     )
 
