@@ -4,7 +4,7 @@ from .models import Constants
 
 #translations
 def trans_question_incorrectly(number):
-    return _('Frage {} wurde falsch beantwortet.').format(number)
+    return ('Frage {} wurde falsch beantwortet.').format(number)
 
 class Welcome(Page):
     def is_displayed(self):
@@ -35,8 +35,12 @@ class Instruction_Page(Page):
     form_model = 'player'
 
     def get_form_fields(self):
-        return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
+        if self.player.rand == 1:
+            return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
                     'comprehension_question4', 'comprehension_question5', 'comprehension_question6']
+        else:
+            return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
+                    'comprehension_question4', 'comprehension_question5_2', 'comprehension_question6']
 
     def is_displayed(self):
         return self.round_number == 1
@@ -70,18 +74,18 @@ class Instruction_Page(Page):
                 return trans_question_incorrectly(3)
 
     def comprehension_question4_error_message(self, value):
-            if value != 0:
+            if value != 1:
                 self.player.wrong_answer4 += 1
                 return trans_question_incorrectly(4)
 
     def comprehension_question5_error_message(self, value):
-        if value != 0:
+        if value != 1:
             self.player.wrong_answer5 += 1
             return trans_question_incorrectly(5)
 
     def comprehension_question5_2_error_message(self, value):
-        if value != 0:
-            self.player.wrong_answer5 += 1
+        if value !=2:
+            self.player.wrong_answer5_2 += 1
             return trans_question_incorrectly(5)
 
     def comprehension_question6_error_message(self, value):
@@ -91,10 +95,16 @@ class Instruction_Page(Page):
 
 class comprehension_check(Page):
     def check_wrong_anwers(self):
-        if self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5 + self.player.wrong_answer6 >= 3:
-            return False
+        if self.player.rand == 1:
+            if self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5 + self.player.wrong_answer6 >= 100:
+                return False
+            else:
+                return True
         else:
-            return True
+            if self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5_2 + self.player.wrong_answer6 >= 100:
+                return False
+            else:
+                return True
 
     def vars_for_template(self):
         context =  self.player.vars_for_template()

@@ -38,7 +38,11 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        # randomize to treatments
+        for player in self.get_players():
+            player.rand = random.choice([1, 2])
+            print('set player.rand to', player.rand)
 
 class Group(BaseGroup):
     marktpreisA = models.CurrencyField()
@@ -298,6 +302,7 @@ class Group(BaseGroup):
             p.gesdiviB = p.anzahlB * self.dividendeB
 
 class Player(BasePlayer):
+    rand = models.IntegerField()
     verkaufA = models.CurrencyField(label='Verkauf A:', blank=True)
     kaufA = models.CurrencyField(label='Kauf A:', blank=True)
     endowment = models.CurrencyField(initial=1000)
@@ -375,28 +380,27 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     comprehension_question4 = models.IntegerField(
-        verbose_name=("Frage 4: Welches Unternehmen zahlt weniger Steuern?"),
-        # initial = 0,
-        choices=[[0, ('Das A-Unternehmen.')],
-                 [1, ('Das B-Unternehmen.')]],
-        widget=widgets.RadioSelect,
-    )
-    comprehension_question5 = models.IntegerField(
         verbose_name=(
-            "Frage 5: Wie viele Teilnehmer handeln auf dem Markt?"),
+            "Frage 4: Wie viele Teilnehmer handeln auf dem Markt?"),
         # initial = 1,
         choices=[[0, ('2')],
                  [1, ('3')],
-                 [1, ('4')],],
+                 [2, ('4')], ],
         widget=widgets.RadioSelect,
     )
-    comprehension_question5_2 = models.IntegerField(
-        verbose_name=(
-            "Frage 5: Welche der folgenden Aussagen ist richtig?"),
+    comprehension_question5 = models.IntegerField(
+        verbose_name=("Frage 5: Welches Unternehmen zahlt weniger Steuern?"),
         # initial = 1,
-        choices=[[0, ('')],
-                 [1, ('')],
-                 [2, ('')]],
+        choices=[[1, ('Das A-Unternehmen.')],
+                 [2, ('Das B-Unternehmen.')]],
+        widget=widgets.RadioSelect,
+    )
+
+    comprehension_question5_2 = models.IntegerField(
+        verbose_name=("Frage 5: Welches Unternehmen zahlt weniger Steuern?"),
+        # initial = 2,
+        choices=[[1, ('Das A-Unternehmen.')],
+                 [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question6 = models.IntegerField(
@@ -414,6 +418,7 @@ class Player(BasePlayer):
     wrong_answer3 = models.IntegerField(initial=0)
     wrong_answer4 = models.IntegerField(initial=0)
     wrong_answer5 = models.IntegerField(initial=0)
+    wrong_answer5_2 = models.IntegerField(initial=0)
     wrong_answer6 = models.IntegerField(initial=0)
 
     #    wrong_answer7 = models.IntegerField(initial=0)
