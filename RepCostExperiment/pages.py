@@ -20,6 +20,7 @@ class Welcome(Page):
 class questions_pre(Page):
     form_model = 'player'
 
+
     def get_form_fields(self):
         return ['gender', 'year_of_birth', 'risk']
 
@@ -89,11 +90,15 @@ class Instruction_Page(Page):
             return trans_question_incorrectly(5)
 
     def comprehension_question6_error_message(self, value):
-            if value != 0:
+            if value != 2:
                 self.player.wrong_answer6 += 1
                 return trans_question_incorrectly(6)
 
 class comprehension_check(Page):
+
+    def is_displayed(self):
+        return self.round_number == 1
+
     def check_wrong_anwers(self):
         if self.player.rand == 1:
             if self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5 + self.player.wrong_answer6 >= 100:

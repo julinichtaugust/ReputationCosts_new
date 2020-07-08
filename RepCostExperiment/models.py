@@ -303,8 +303,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     rand = models.IntegerField()
-    verkaufA = models.CurrencyField(label='Verkauf A:', blank=True)
-    kaufA = models.CurrencyField(label='Kauf A:', blank=True)
+    verkaufA = models.CurrencyField(blank=True)
+    kaufA = models.CurrencyField(blank=True)
     endowment = models.CurrencyField(initial=1000)
     endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
@@ -314,8 +314,8 @@ class Player(BasePlayer):
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
 
-    verkaufB = models.CurrencyField(label='Verkauf B:', blank=True)
-    kaufB = models.CurrencyField(label='Kauf B:', blank=True)
+    verkaufB = models.CurrencyField(blank=True)
+    kaufB = models.CurrencyField(blank=True)
     is_trade_kaufB = models.BooleanField(initial=False)
     is_trade_verkaufB = models.BooleanField(initial=False)
     anzahlB = models.IntegerField(initial=5)
@@ -405,13 +405,15 @@ class Player(BasePlayer):
     )
     comprehension_question6 = models.IntegerField(
         verbose_name=(
-            "Frage 6: Welche der folgenden Aussagen ist richtig?"),
+            "Frage 6: Wie kann sich Ihre Ausstattung ändern? "),
         # initial = 0,
-        choices=[[0, ('')],
-                 [1, ('')],
-                 [2, ('')]],
+        choices=[[0, ('Nur durch den Kauf oder Verkauf von Aktien.')],
+                 [1, ('Nur durch Dividenden, die Sie für die Aktien in ihrem Portfolio erhalten.')],
+                 [2, ('Sowohl durch den Kauf und Verkauf von Aktien, als auch durch Dividenden für Aktien im Portfolio.')]],
         widget=widgets.RadioSelect,
     )
+    # Frage zu Anzahl Perioden
+    # Frage zu Unsicherheit Dividenden
 
     wrong_answer1 = models.IntegerField(initial=0)
     wrong_answer2 = models.IntegerField(initial=0)
