@@ -9,6 +9,7 @@
     <link href="{% static 'ReputationCosts/custom.css' %}" rel="stylesheet"/>
     <link href="{% static 'ReputationCosts/table.css' %}" rel="stylesheet"/>
     <link href="{% static 'ReputationCosts/popup.css' %}" rel="stylesheet"/>
+    <link href="{% static 'ReputationCosts/table_PopUp.css' %}" rel="stylesheet"/>
 
 {% endblock %}
 
@@ -17,6 +18,7 @@ Handelsrunde - Periode {{ subsession.round_number }}
 {% endblock %}
 
 {% block content %}
+
 {% if player.rand == 1 %}
 
     <div class="container-fluid">
@@ -101,19 +103,6 @@ Handelsrunde - Periode {{ subsession.round_number }}
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
-
-                        <div class="center">
-                            <a class="button" href="#popup1">Instruktionen anzeigen</a>
-                                <div id="popup1" class="overlay">
-                                    <div class="popup">
-                                        <a class="close" href="#">&times;</a>
-                                        <div class="content">
-                                        {% include 'RepCostExperiment/includes/PopUp_Instruktion.html' %}
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-
                         <div id="Info" style=" float:left;">
                             <p>
                                 <table align="center" style="width: 378px" >
@@ -349,19 +338,6 @@ Handelsrunde - Periode {{ subsession.round_number }}
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
-
-                        <div class="center">
-                            <a class="button" href="#popup1">Instruktionen anzeigen</a>
-                                <div id="popup1" class="overlay">
-                                    <div class="popup">
-                                        <a class="close" href="#">&times;</a>
-                                        <div class="content">
-                                        {% include 'RepCostExperiment/includes/PopUp_Instruktion.html' %}
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-
                         <div id="Info" style=" float:left;">
                             <p>
                                 <table align="center" style="width: 378px" >
@@ -517,4 +493,78 @@ Handelsrunde - Periode {{ subsession.round_number }}
     </div>
 
 {% endif %}
+<br>
+<div class="container-fluid">
+            <div class="col-md-12">
+                    <div class="card-body" style="height: 100px;">
+                        <div class="center">
+                            <a class="button" href="#popup">Instruktionen anzeigen</a>
+                            <div id="popup" class="overlay">
+                                <div class="popup">
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                        <h4>Allgemeines</h4>
+                                        <p>
+                                            In jeder Handelsphase können Sie am Kapitalmarkt Aktien von zwei verschiedenen Unternehmen handeln und Ihr Portfolio optimieren.
+                                        </p>
+                                        <p>
+                                            In jeder Dividendenphase erhalten Sie für jede Aktie die Sie in Ihrem Portfolio halten eine Dividende. Diese wird zufällig und für beide Unternehmen unabhängig gezogen. Die jeweiligen Dividendenhöhen finden Sie immer in den Informationen über das Unternehmen.
+                                            Die entsprechenden Wahrscheinlichkeiten für die Dividendenhöhen sind gleichverteilt. Das bedeutet, dass alle Dividenden mit einer Wahrscheinlichkeit von 20% gleich wahrscheinlich auftreten.
+                                        </p>
+                                        <h4>Währung</h4>
+                                        <p>
+                                            Die Durchführung der Studie erfolgt in einer <b>fiktiven Währung</b>, die wir <b>ECU</b> nennen. 1 ECU entspricht dabei 0,01 € . Ihre tatsächliche Vergütung wird am Ende der Studie in Euro umgerechnet.
+                                        </p>
+                                        <h4>Markt</h4>
+                                        <p>
+                                           Sie sind Teilnehmer am Kapitalmarkt. Neben Ihnen handeln noch X weitere Teilnehmer an diesem Markt, die ebenfalls eine Ausstattung erhalten haben und ein Portfolio aufbauen.
+                                         </p>
+
+                                        <p>
+                                            In jeder Handelsphase haben Sie die Möglichkeit Ihr Portfolio zu verändern. Sie können Aktien an andere Teilnehmer des Marktes verkaufen oder Aktien von diesen erwerben.
+                                            Sie haben in jeder Handelsphase 2 Minuten Zeit um die möglichen folgenden Handlungen durchzuführen.
+                                        </p>
+
+                                        <h6>Kauf von Aktien</h6>
+                                        <p>
+
+                                            Sie können am Markt Aktien der Unternehmen von anderen Marktteilnehmern erwerben. Geben Sie dafür in das Feld <b>Kauf von Aktie</b> Ihre maximale Zahlungsbereitschaft für eine Aktie des entsprechenden Unternehmens ein.
+                                            Möchten Sie in dieser Periode keine Aktie kaufen, können Sie dieses Feld auch freilassen.
+                                        </p>
+
+                                        <h6>Verkauf von Aktien</h6>
+                                        <p>
+                                               Sie können am Markt Aktien aus Ihrem Portfolio an andere Marktteilnehmer verkaufen. Geben Sie dafür in das Feld <b>Verkauf von Aktie</b> den minimalen Preis ein, zum dem Sie bereit sind die Aktie am Markt zu verkaufen.
+                                                Möchten Sie in dieser Periode keine Aktie verkaufen, können Sie dieses Feld auch freilassen. Beachten Sie, dass Ihr Kaufpreis nicht über Ihrem Verkaufspreis liegt, da Sie in diesem Fall mit sich selber handeln würden.
+                                        </p>
+
+                                        <h6>Ende der Handelsphase</h6>
+                                        <p>
+                                               Die Handelsphase endet automatisch nach 2 Minuten. Sie haben außerdem über den "Weiter"-Button die Möglichkeit schon vor Ablauf der 2 Minuten zu bestätigen, dass Sie mit Ihrer Eingabe fertig sind. Sind alle Marktteilnehmer vor Ablauf der 2 Minuten fertig endet die Handelsphase auch früher.
+                                        </p>
+
+                                        <h6>Ermittlung des Handels</h6>
+
+                                        <p>
+                                               Nachdem alle Marktteilnehmer die Handelsphase beendet haben werden für beide Unternehmen die Nachfragen und Angebote in einem Markt gesammelt. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf absteigend sortiert.
+                                                Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaare verglichen. Es findet immer dann ein Handel statt, wenn der maximale Kaufpreis (Nachfrage) über dem minimalen Verkaufspreis (Angebot) liegt.
+                                        </p>
+
+                                        <p>
+                                               Der Marktpreis zu dem alle Transaktionen durchgeführt werden, ist der markträumende Preis. Dieser bestimmt sich als Mittelwert aus dem Kaufpreis- und Verkaufspreispaar, bei dem ein Handel stattgefunden hat und die Spanne zwischen Kaufpreis und Verkaufpreis minimal ist.
+                                                Entsprechend kann es passieren, dass beispielsweise Ihr angegebener Kaufpreis zwar über dem Marktpreis liegt, jedoch kein weitere Marktteilnehmer bereit ist zu diesem Preis zu verkaufen und somit der Käufer mit einem höheren Kaufpreis als Ihrer die Aktie erhält.
+                                        </p>
+                                        <h4>Variable Vergütung</h4>
+                                        <p>
+                                                Für Ihre variable Vergütung wird die Ausstattung nach Ablauf der Sequenzen verwendet. Ein Zufallsgenerator entscheidet, welche der zwei Sequenzen ausgezahlt wird.
+                                                <b>Es wird folglich nur eine Sequenz entlohnt!</b> Das Ergebnis der zufällig gezogenen Sequenz wird in Euro umgerechnet.
+                                        </p>
+                                        {% include 'RepCostExperiment/includes/Popup.html' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+ </div>
 {% endblock %}

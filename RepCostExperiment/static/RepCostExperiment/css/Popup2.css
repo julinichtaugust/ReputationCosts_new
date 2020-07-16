@@ -24,10 +24,10 @@ a.button{
 
 .overlay {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: -50px;
+  bottom: 200px;
+  left: -500px;
+  right: -500px;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 300ms;
   visibility: hidden;
@@ -44,10 +44,10 @@ a.button{
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 95% !important;
+  width: 1000px;
   position: relative;
   transition: all 5s ease-in-out;
-  height: 98% !important;
+  height: 200px !important;
 }
 
 .popup h2 {
