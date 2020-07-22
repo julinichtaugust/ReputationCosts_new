@@ -127,7 +127,6 @@ class Wait_Page(WaitPage):
                 player.access_data()
 
 
-
 class MyPage2(Page):
     form_model = 'player'
     form_fields = ['verkaufA', 'kaufA', 'verkaufB', 'kaufB']
@@ -144,19 +143,41 @@ class MyPage2(Page):
 
 
     def error_message(self, values):
-        if values['kaufA'] + values['kaufB'] > self.player.endowment:
-            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
-        if values['verkaufA'] > 0 and self.player.anzahlA == 0:
-            return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
-        if values['verkaufA'] <= values['kaufA']:
-            return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
-        if values['verkaufB'] > 0 and self.player.anzahlB == 0:
-            return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
-        if values['verkaufB'] <= values['kaufB']:
-            return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
+        if self.player.kaufA == None or self.player.kaufB == None:
+            pass
+        else:
+            if values['kaufA'] + values['kaufB'] > self.player.endowment:
+                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
 
+        if self.player.verkaufA == None:
+            pass
+        else:
+            if values['verkaufA'] > 0 and self.player.anzahlA == 0:
+                return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
 
+        if self.player.kaufA == None or self.player.verkaufA == None:
+            pass
+        else:
+            if values['verkaufA'] <= values['kaufA']:
+                return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
 
+        if self.player.verkaufB == None:
+            pass
+        else:
+            if values['verkaufB'] > 0 and self.player.anzahlB == 0:
+                return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
+
+        if self.player.kaufB == None or self.player.verkaufB == None:
+            pass
+        else:
+            if values['verkaufB'] <= values['kaufB']:
+                return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
+
+    def before_next_page(self):
+        self.player.set_value_verkaufA()
+        self.player.set_value_verkaufB()
+        self.player.set_value_kaufA()
+        self.player.set_value_kaufB()
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):

@@ -345,7 +345,7 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelect,
         blank=False,
-        # initial=0
+        initial=0
     )
 
     year_of_birth = models.IntegerField(
@@ -353,7 +353,7 @@ class Player(BasePlayer):
         max=2004,
         label=("Ich welchem Jahr wurden Sie geboren (z.B. 1962)?"),
         blank=False,
-        # initial=1987,
+        initial=1987,
     )
 
     risk = models.IntegerField(
@@ -362,29 +362,29 @@ class Player(BasePlayer):
             'Wie schätzen Sie sich persönlich ein: Sind Sie im Allgemeinen ein risikobereiter Mensch oder versuchen Sie, Risiken zu vermeiden?'),
         widget=widgets.RadioSelectHorizontal,
         blank=False,
-        # initial=1,  # zum testen
+        initial=1,  # zum testen
     )
 
     comprehension_question1 = models.IntegerField(
         verbose_name=(
-            "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende der Studie ist richtig?"),
-        # initial = 2,
-        choices=[[0, ('Der durchschnittliche Auszahlungsbetrag der beiden Sequenzen wird am Ende der Studie ausgezahlt.')],
-                 [1, ('Die Summe der Auszahlungsbeträge beider Sequenzen wird am Ende der Studie ausgezahlt.')],
-                 [2, ('Nur eine der zwei Sequenzen wird am Ende der Studie vergütet.')]],
+            "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende des Experiments ist richtig?"),
+        initial = 2,
+        choices=[[0, ('Das durchschnittliche Endvermögen der beiden Sequenzen wird am Ende des Experiments ausgezahlt.')],
+                 [1, ('Die Summe des gesamten Vermögens beider Sequenzen wird am Ende des Experiments ausgezahlt.')],
+                 [2, ('Nur das Endvermögen einer der zwei Sequenzen wird am Ende des Experiments vergütet.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question2 = models.IntegerField(
         verbose_name=("Frage 2: Wonach bestimmt sich die Vergütung einer Sequenz?"),
-        # initial = 0,
-        choices=[[0, ('Höhe des Vermögens nach Ablauf aller Perioden.')],
-                 [1, ('Anzahl der Aktien im Portfolio.')],
-                 [2, ('Höhe des Vermögens nach Ablauf aller Perioden und Anzahl der Aktien im Portfolio.')]],
+        initial = 0,
+        choices=[[0, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden einer Sequenz.')],
+                 [1, ('Nach der Anzahl der Aktien im Portfolio.')],
+                 [2, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden und nach der Anzahl der Aktien im Portfolio.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question3 = models.IntegerField(
         verbose_name=("Frage 3: Welches Unternehmen hat einen höheren Gewinn vor Steuern?"),
-        # initial = 0,
+        initial = 0,
         choices=[[0, ('Der Gewinn vor Steuern ist gleich groß.')],
                  [1, ('Das A-Unternehmen hat einen höheren Gewinn vor Steuern.')],
                  [2, ('Das B-Unternehmen hat einen höheren Gewinn vor Steuern.')]],
@@ -392,8 +392,8 @@ class Player(BasePlayer):
     )
     comprehension_question4 = models.IntegerField(
         verbose_name=(
-            "Frage 4: Wie viele Teilnehmer handeln auf dem Markt?"),
-        # initial = 1,
+            "Frage 4: Wie viele Teilnehmer (mit Ihnen) handeln auf dem Markt?"),
+        initial = 1,
         choices=[[0, ('2')],
                  [1, ('3')],
                  [2, ('4')], ],
@@ -401,7 +401,7 @@ class Player(BasePlayer):
     )
     comprehension_question5 = models.IntegerField(
         verbose_name=("Frage 5: Welches Unternehmen zahlt weniger Steuern?"),
-        # initial = 1,
+        initial = 1,
         choices=[[1, ('Das A-Unternehmen.')],
                  [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
@@ -409,18 +409,18 @@ class Player(BasePlayer):
 
     comprehension_question5_2 = models.IntegerField(
         verbose_name=("Frage 5: Welches Unternehmen zahlt weniger Steuern?"),
-        # initial = 2,
+        initial = 2,
         choices=[[1, ('Das A-Unternehmen.')],
                  [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question6 = models.IntegerField(
         verbose_name=(
-            "Frage 6: Wie kann sich Ihre Ausstattung ändern? "),
-        # initial = 0,
+            "Frage 6: Wie ändert sich Ihr Vermögen?"),
+        initial = 2,
         choices=[[0, ('Nur durch den Kauf oder Verkauf von Aktien.')],
                  [1, ('Nur durch Dividenden, die Sie für die Aktien in ihrem Portfolio erhalten.')],
-                 [2, ('Sowohl durch den Kauf und Verkauf von Aktien, als auch durch Dividenden für Aktien im Portfolio.')]],
+                 [2, ('Sowohl durch den Kauf und Verkauf von Aktien, als auch durch Dividendenzahlungen für Aktien in dem Portfolio.')]],
         widget=widgets.RadioSelect,
     )
     # Frage zu Anzahl Perioden
@@ -440,6 +440,23 @@ class Player(BasePlayer):
         return dict(
             participation_fee=self.session.config['participation_fee'],
         )
+
+# Kauf- und Verkaufspreis auf 0 setzen, falls Eingabe == None
+    def set_value_verkaufB(self):
+        if self.verkaufB == None:
+            self.verkaufB = 999
+
+    def set_value_kaufB(self):
+        if self.kaufB == None:
+            self.kaufB = 0
+
+    def set_value_verkaufA(self):
+        if self.verkaufA == None:
+            self.verkaufA = 999
+
+    def set_value_kaufA(self):
+        if self.kaufA == None:
+            self.kaufA = 0
 
 # Werte der Vorperiode holen
     def access_data(self):
