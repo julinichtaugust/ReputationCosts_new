@@ -16,16 +16,17 @@
     </p>
     <p>
         {% blocktrans trimmed %}
-            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen auf der linken und rechten Seite jeweils erneut die Informationen zu den Unternehmen. In der Mitte erhalten Sie in jeder Handelsphase Informationen zu Ihrer aktuellen Ausstattung sowie zu Ihrem Portfolio.
+            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen auf der linken und rechten Seite jeweils erneut die Informationen zu den Unternehmen. In der Mitte erhalten Sie in jeder Handelsphase Informationen zu Ihrem aktuellen Vermögen sowie zu Ihrem Portfolio.
         {% endblocktrans %}
      </p>
-
-
+    <center>
+        <img src="{% static "ReputationCosts/Screenshots/Handel.PNG" %}"/>
+    </center>
 
     <h3>{% trans 'Kauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
-        Um Aktien von anderen Marktteilnehmer zu kaufen, geben Sie in das Feld <b>Kauf von Aktie</b> Ihre maximale Zahlungsbereitschaft für eine Aktie des entsprechenden Unternehmens ein.
+        Um Aktien von anderen Marktteilnehmer zu kaufen, geben Sie in das Feld <b>Kauf</b> Ihre maximale Zahlungsbereitschaft für eine Aktie des entsprechenden Unternehmens ein.
         Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei.
         {% endblocktrans %}
 
@@ -34,7 +35,7 @@
     <h3>{% trans 'Verkauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
-           Um Aktien an andere Marktteilnehmer zu verkaufen, geben Sie in das Feld <b>Verkauf von Aktie</b> den minimalen Preis ein, zum dem Sie bereit sind die Aktie zu verkaufen.
+           Um Aktien an andere Marktteilnehmer zu verkaufen, geben Sie in das Feld <b>Verkauf</b> den minimalen Preis ein, zum dem Sie bereit sind die Aktie zu verkaufen.
             Möchten Sie in einer Periode keine Aktie verkaufen, lassen Sie das Feld frei. Beachten Sie, dass Ihr Kaufpreis nicht über Ihrem Verkaufspreis liegen darf, da Sie in diesem Fall mit sich selber handeln würden.
         {% endblocktrans %}
     </p>
@@ -46,22 +47,7 @@
         {% endblocktrans %}
     </p>
 
-    <h3>{% trans 'Ermittlung des Handels' %}</h3>
 
-    <p>
-        {% blocktrans trimmed %}
-           Im Anschluss an die Handelsphase werden für beide Unternehmen die Nachfragen und Angebote auf dem Markt ausgewertet. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf aufsteigend sortiert.
-            Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaare verglichen. Es findet immer dann ein Handel statt, wenn der maximale Kaufpreis (Nachfrage) über dem minimalen Verkaufspreis (Angebot) liegt.
-        {% endblocktrans %}
-    </p>
-
-    <p>
-        {% blocktrans trimmed %}
-           Der Marktpreis zu dem alle Transaktionen durchgeführt werden, ist der markträumende Preis. Dieser bestimmt sich als Mittelwert aus dem Kaufpreis- und Verkaufspreispaar, bei dem ein Handel stattgefunden hat und die Spanne zwischen Kaufpreis und Verkaufpreis minimal ist.
-            Entsprechend kann es passieren, dass beispielsweise Ihr angegebener Kaufpreis zwar über dem Marktpreis liegt, jedoch kein weiterer Marktteilnehmer bereit ist zu diesem Preis zu verkaufen und somit der Käufer mit einem höheren Kaufpreis als Ihrer die Aktie erhält.
-        {% endblocktrans %}
-    </p>
-        Beispiele bitte mit einer dieser Tabellen!!!!
 
 
 {% endblock %}

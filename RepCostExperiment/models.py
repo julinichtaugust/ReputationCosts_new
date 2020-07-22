@@ -35,12 +35,12 @@ class Constants(BaseConstants):
 
     Umsatz = 60
     GvS = 35
-    GnS_low = 32,5
-    GnS_high = 24,3
-    ETR_low = 7,1
-    ETR_high = 30,6
-    Steuern_low = 2,5
-    Steuern_high = 10,7
+    GnS_low = 32.5
+    GnS_high = 24.3
+    ETR_low = 7.1
+    ETR_high = 30.6
+    Steuern_low = 2.5
+    Steuern_high = 10.7
 
 
 
@@ -377,9 +377,9 @@ class Player(BasePlayer):
     comprehension_question2 = models.IntegerField(
         verbose_name=("Frage 2: Wonach bestimmt sich die Vergütung einer Sequenz?"),
         # initial = 0,
-        choices=[[0, ('Höhe der Ausstattung nach Ablauf aller Perioden.')],
+        choices=[[0, ('Höhe des Vermögens nach Ablauf aller Perioden.')],
                  [1, ('Anzahl der Aktien im Portfolio.')],
-                 [2, ('Höhe der Ausstattung nach Ablauf aller Perioden und Anzahl der Aktien im Portfolio.')]],
+                 [2, ('Höhe des Vermögens nach Ablauf aller Perioden und Anzahl der Aktien im Portfolio.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question3 = models.IntegerField(

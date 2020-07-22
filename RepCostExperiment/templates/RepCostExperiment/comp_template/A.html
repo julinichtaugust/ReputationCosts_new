@@ -14,22 +14,22 @@
                                             <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">{{Constants.Umsatz}}</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td width="250px">Gewinn vor Steuern</td> <td style="text-align:center" width="100px">35,0</td>
+                                            <td width="250px">Gewinn vor Steuern</td> <td style="text-align:center" width="100px">{{Constants.GvS}}</td>
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gewinn nach Steuern</td> <td style="text-align:center" width="100px">32,5</td>
+                                            <td width="250px">Gewinn nach Steuern</td> <td style="text-align:center" width="100px">{% if player.rand == 1 %} {{Constants.GnS_low}} {% else %} {{Constants.GnS_high}} {% endif %}</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
-                                            <td width="250px">Effektive Steuerquote</td> <td style="text-align:center" width="100px">7,1 %</td>
+                                            <td width="250px">Effektive Steuerquote</td> <td style="text-align:center" width="100px">{% if player.rand == 1 %} {{Constants.ETR_low}} {% else %} {{Constants.ETR_high}} {% endif %} %</td>
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
+                                            <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">{% if player.rand == 1 %} {{Constants.Steuern_low}} {% else %} {{Constants.Steuern_high}} {% endif %}</td>
                                         </tr>
                                         <tr style="font-size:10pt;">
                                             <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="200px">Dividende pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviA}} ECU</td>
+                                            <td width="200px">Dividende pro Aktie:</td> <td style="text-align:center" width="150px"> {% if player.rand == 1 %} {{Constants.diviA}} {% else %} {{Constants.diviB}} {% endif %} ECU</td>
                                         </tr>
                                     </table>
                                 </p>
@@ -49,7 +49,8 @@
                                             </tr>
                                             <tr style="font-size:10pt;">
                                                 <td valign="top">03.01.2019</td>
-                                                <td>Gewinnverschiebung ins ausländische Steuerparadies Cayman Islands, A-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td>
+                                                {% if player.rand == 1 %} <td>Gewinnverschiebung ins ausländische Steuerparadies Cayman Islands, A-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td> {% else %} <td>A-Unternehmen hat eine effektive Steuerquote von 30,6 % - Steuerquote entspricht dem deutschen Durchschnitt</td> {% endif %}
+
                                             </tr>
                                         </table>
                                     </p>
