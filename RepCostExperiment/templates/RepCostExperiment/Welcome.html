@@ -18,15 +18,22 @@
 
 
 {% block title %}
-    {% trans 'Herzlich Willkommen zu unserer Studie' %}
+    {% trans 'Herzlich Willkommen zu unserem Experiment' %}
 {% endblock %}
 
 {% block content %}
 
     <p>
-        {% trans 'Vielen Dank für die Teilnahme an dieser Studie. Bevor die Studie jedoch beginnt, lesen Sie sich bitte die folgenden Punkte aufmerksam durch.' %}
+    <p>Vielen Dank für die Teilnahme an diesem Experiment. Das Experiment wird etwa eine Stunde dauern. Wie viel Sie insgesamt verdienen, hängt von Ihren Entscheidungen ab. Diese Anleitung erläutert Ihnen, wie Sie durch Ihre Entscheidungen Ihren Verdienst aus dem Experiment beeinflussen und auf welche Weise Sie in diesem Experiment Geld verdienen. Lesen Sie daher die folgende Anleitung genau durch. </p>
+    <p>Bevor das Experiment beginnt, möchten wir Sie noch auf ein paar wichtige Punkte aufmerksam machen. </p>
+    <ul>
+        <li>Sie dürfen während des gesamten Experiments nicht mit anderen Teilnehmern kommunizieren oder Ihren Platz verlassen. Bitte bleiben Sie auch mit Ihren Augen auf Ihrem Arbeitsplatz.</li>
+        <li>Bitte schalten Sie Ihr Smartphone bzw. Handy aus und verstauen Sie es in Ihrer Tasche.</li>
+        <li>Es ist wichtig, dass Sie die Instruktionen verstanden haben. Daher scheuen Sie sich bitte nicht Fragen zu stellen. Bei Fragen heben Sie bitte die Hand. Wir werden dann auf Sie zukommen, um Ihre Fragen zu beantworten. Bitte stellen Sie Fragen nicht laut.</li>
+        <li>Bitte beachten Sie, dass es bei dem Experiment zu Wartezeiten kommen kann, da die verschiedenen Teilnehmer unterschiedlich schnell sind. Wundern Sie sich daher bitte nicht, wenn Sie gebeten werden, ein paar Minuten zu warten.</li>
+    </ul>
     </p>
-
+<!--
     <h3>{% trans 'Ablauf und Dauer' %}</h3>
     <p>
         {% blocktrans trimmed %}
@@ -52,7 +59,7 @@
             Die durchschnittliche variable Vergütung liegt in etwa bei {{ mean_remuneration }}.
         {% endblocktrans %}
     </p>
-    <!--
+
     <div style="color: red; font-weight: bold">
         {% blocktrans trimmed %}
             Bitte beachten Sie Folgendes: Wir legen großen Wert darauf, dass Sie die Aufgabe in dieser Studie gewissenhaft bearbeiten und die Fragen ehrlich beantworten.
@@ -64,7 +71,7 @@
             <li>{% trans 'Sie lesen die Fragen nicht aufmerksam oder beantworten diese nicht gewissenhaft.' %}</li>
         </ul>
     </div>
-    -->
+
     <h3>{% trans 'Nutzen der Studie' %}</h3>
     <p>
         {% blocktrans trimmed %}
@@ -98,6 +105,7 @@
     <p>
         {% trans 'Durch Klicken auf <i>Weiter</i> bestätigen Sie, dass Sie die obigen Punkte gelesen haben und mit der Teilnahme an der Studie einverstanden sind.' %}
     </p>
+    -->
         {% next_button %}
 
 
