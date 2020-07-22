@@ -35,15 +35,15 @@
 
     <p>
         {% blocktrans trimmed %}
-           Im Anschluss an die Handelsphase werden für beide Unternehmen die Nachfragen und Angebote auf dem Markt ausgewertet. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf aufsteigend sortiert.
-            Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaare verglichen. Es findet immer dann ein Handel statt, wenn der maximale Kaufpreis (Nachfrage) über dem minimalen Verkaufspreis (Angebot) liegt.
+           Im Anschluss an die Handelsphase werden für beide Unternehmen die Nachfragen und Angebote auf dem Markt ausgewertet. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf aufsteigend sortiert. Sie finden diese Übersicht für beide Märkte unten mittig auf dem Bildschirm in der Dividendenphase.
+            Zur Veranschaulichung nutzen wir den Markt A aus der oben abgebildeten Dividendenphase. Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaare verglichen. Im ersten Paar möchte der Spieler 1 die Aktie für 4 ECU kaufen, während Spieler 2 bereit ist, diese für 2 ECU zu verkaufen. In diesem Fall findet ein Handel statt. Betrachten wir das nächste Nachfrage- und Angebotspaar. Spieler 3 ist bereit die Aktie ebenfalls für 4 ECU zu kaufen. Allerdings möchte Spieler 1 diese minimal für 5 ECU verkaufen. Dies bedeutet, dass zwischen diesen Spielern kein Handel stattfindet.
         {% endblocktrans %}
     </p>
 
     <p>
         {% blocktrans trimmed %}
-           Der Marktpreis zu dem alle Transaktionen durchgeführt werden, ist der markträumende Preis. Dieser bestimmt sich als Mittelwert aus dem Kaufpreis- und Verkaufspreispaar, bei dem ein Handel stattgefunden hat und die Spanne zwischen Kaufpreis und Verkaufpreis minimal ist.
-            Entsprechend kann es passieren, dass beispielsweise Ihr angegebener Kaufpreis zwar über dem Marktpreis liegt, jedoch kein weiterer Marktteilnehmer bereit ist zu diesem Preis zu verkaufen und somit der Käufer mit einem höheren Kaufpreis als Ihrer die Aktie erhält.
+           Abschließend muss der Marktpreis berechnet werden, zu dem alle Transaktionen durchgeführt werden. Dafür wird als erstes das Handelspaar mit dem niedrigsten Nachfragepreis und höchsten Angebotspreis bestimmt, bei dem ein Handel stattfindet. Der Marktpreis ergibt sich als Mittelwert aus diesem Kaufpreis- und Verkaufspreispaar. Im Beispiel bedeutet dies, dass wir uns den Handel von Spieler 1 und 2 anschauen. Der Mittelwert aus dem Nachfragepreis (4 ECU) und aus dem Angebotspreis (2 ECU) beträgt 3 ECU, sodass die Aktie für 3 ECU gehandelt wird.
+            Entsprechend kann es passieren, dass beispielsweise Ihr angegebener Kaufpreis zwar über dem Marktpreis liegt, jedoch kein weiterer Marktteilnehmer bereit ist zu diesem Preis zu verkaufen und somit der Käufer mit einer höheren oder der gleichen Kaufnachfrage die Aktie erhält.
         {% endblocktrans %}
     </p>
         Beispiele bitte mit einer dieser Tabellen!!!!
