@@ -43,24 +43,28 @@
         <a class="nav-link active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="topFunction()">{% trans 'Aufbau der Studie' %}</a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Handelsphase' %}</a>
+    <li class="nav-item" >
+        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Unternehmen und Dividenden' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part3-tab" data-toggle="tab" href="#part3" role="tab" aria-controls="part3" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
+        <a class="nav-link" id="part3-tab" data-toggle="tab" href="#part3" role="tab" aria-controls="part3" onclick="topFunction()">{% trans 'Handelsphase' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Fragebogen' %}</a>
+        <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Vergütung' %}</a>
+        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Fragebogen' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
+        <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Vergütung' %}</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" id="part7-tab" data-toggle="tab" href="#part7" role="tab" aria-controls="part7" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
     </li>
 
 </ul>
@@ -87,9 +91,26 @@
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
     </div>
 
+    <!-- Companies and dividends -->
+
+    <div class="tab-pane show active" id="part2" role="tabpanel" aria-labelledby="part2-tab">
+
+        <div class="card-header bg-transparent mainheader" >
+            <h2 class="card-title ">
+                {% trans 'Unternehmen und Dividenden' %}
+            </h2>
+        </div>
+        <br>
+
+        {% include 'RepCostExperiment/content/companies.html' %}
+
+
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
+    </div>
+
 <!-- Income phase -->
 
-    <div class="tab-pane" id="part2" role="tabpanel" aria-labelledby="part2-tab">
+    <div class="tab-pane" id="part3" role="tabpanel" aria-labelledby="part3-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -108,7 +129,7 @@
     </div>
 
 <!-- Rest phase -->
-    <div class="tab-pane" id="part3" role="tabpanel" aria-labelledby="part3-tab">
+    <div class="tab-pane" id="part4" role="tabpanel" aria-labelledby="part4-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -126,7 +147,7 @@
     </div>
 
 <!-- Questionnaire -->
-    <div class="tab-pane" id="part4" role="tabpanel" aria-labelledby="part4-tab">
+    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -145,7 +166,7 @@
     </div>
 
 <!-- Payoff -->
-    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
+    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -164,7 +185,7 @@
     </div>
 
 <!-- Comprehension test -->
-    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
+    <div class="tab-pane" id="part7" role="tabpanel" aria-labelledby="part7-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">

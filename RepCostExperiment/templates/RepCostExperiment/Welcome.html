@@ -10,22 +10,17 @@
     }
 
 </style>
-
     <link href="{% static 'RepCostExperiment/css/custom.css' %}" rel="stylesheet"/>
     <link href="{% static 'RepCostExperiment/css/Counter.css' %}" rel="stylesheet"/>
 {% endblock %}
-
-
 
 {% block title %}
     {% trans 'Herzlich Willkommen zu unserem Experiment' %}
 {% endblock %}
 
 {% block content %}
-
-    <p>
-    <p>Vielen Dank für die Teilnahme an diesem Experiment. Das Experiment wird etwa eine Stunde dauern. Wie viel Sie insgesamt verdienen, hängt von Ihren Entscheidungen ab. Diese Anleitung erläutert Ihnen, wie Sie durch Ihre Entscheidungen Ihren Verdienst aus dem Experiment beeinflussen und auf welche Weise Sie in diesem Experiment Geld verdienen. Lesen Sie daher die folgende Anleitung genau durch. </p>
-    <p>Bevor das Experiment beginnt, möchten wir Sie noch auf ein paar wichtige Punkte aufmerksam machen. </p>
+    <p>Vielen Dank für die Teilnahme an diesem Experiment. Das Experiment wird etwa eine Stunde dauern. Wie viel Sie insgesamt verdienen, hängt von Ihren Entscheidungen ab. Die folgenden Instruktionen erläutern Ihnen, wie Sie durch Ihre Entscheidungen Ihren Verdienst aus dem Experiment beeinflussen und auf welche Weise Sie in diesem Experiment Geld verdienen. Lesen Sie sich daher die folgenden Instruktionen aufmerksam durch. </p>
+    <p>Bevor das Experiment beginnt, möchten wir Sie noch auf ein paar wichtige Punkte aufmerksam machen: </p>
     <ul>
         <li>Sie dürfen während des gesamten Experiments nicht mit anderen Teilnehmern kommunizieren oder Ihren Platz verlassen. Bitte bleiben Sie auch mit Ihren Augen auf Ihrem Arbeitsplatz.</li>
         <li>Bitte schalten Sie Ihr Smartphone bzw. Handy aus und verstauen Sie es in Ihrer Tasche.</li>
@@ -33,80 +28,11 @@
         <li>Bitte beachten Sie, dass es bei dem Experiment zu Wartezeiten kommen kann, da die verschiedenen Teilnehmer unterschiedlich schnell sind. Wundern Sie sich daher bitte nicht, wenn Sie gebeten werden, ein paar Minuten zu warten.</li>
     </ul>
     </p>
-<!--
-    <h3>{% trans 'Ablauf und Dauer' %}</h3>
     <p>
-        {% blocktrans trimmed %}
-            In dieser Studie handeln Sie mit Aktien von unterschiedlichen Unternehmen.
-            Weiterhin gibt es einige Fragen bezüglich der Risikobereitschaft und weiteren sozio-demographischen Eigenschaften.
-            Bitte beantworten Sie alle Fragen sorgfältig und achten Sie auf die Kontrollfragen, die Ihre Aufmerksamkeit schärfen sollen.
-            Insgesamt sollte die Studie ca. XX Minuten dauern.
-        {% endblocktrans %}
-    </p>
-    <p>
-        {% trans 'Die Teilnahme an dieser Studie ist vollkommen freiwillig. Wenn Sie die Studie zwischdurch abbrechen, werden Sie nicht bestraft, aber Sie erhalten auch keine Entschädigung.' %}
-    </p>
-    <h3>{% trans 'Zweck dieser Forschungsstudie:' %}</h3>
-    <p>
-        {% trans 'Diese Studie untersucht mögliche Reputationskosten am Kapitalmarkt.' %}
-    </p>
-    <h3>{% trans 'Vergütung' %}</h3>
-    <p>
-        {% blocktrans trimmed with participation_fee=participation_fee mean_remuneration=mean_remuneration%}
-            Sie erhalten mindestens {{ participation_fee }} für den Abschluss der Studie.
-            Zusätzlich erhalten Sie eine variable Vergütung. Wie hoch diese ist, hängt von Ihren Entscheidungen und dem Glück ab.
-            Sie erfahren in den folgenden Instruktionen, wie Sie durch Ihre Entscheidungen Ihre variable Vergütung beeinflussen können.
-            Die durchschnittliche variable Vergütung liegt in etwa bei {{ mean_remuneration }}.
-        {% endblocktrans %}
-    </p>
-
-    <div style="color: red; font-weight: bold">
-        {% blocktrans trimmed %}
-            Bitte beachten Sie Folgendes: Wir legen großen Wert darauf, dass Sie die Aufgabe in dieser Studie gewissenhaft bearbeiten und die Fragen ehrlich beantworten.
-            Dafür zahlen wir Ihnen eine angemessene Vergütung.
-            Daher werden wir Ihren HIT in folgenden Fällen abweisen:
-        {% endblocktrans %}
-        <ul>
-            <li>{% trans 'Sie lesen die Instruktionen nicht aufmerksam.' %}</li>
-            <li>{% trans 'Sie lesen die Fragen nicht aufmerksam oder beantworten diese nicht gewissenhaft.' %}</li>
-        </ul>
-    </div>
-
-    <h3>{% trans 'Nutzen der Studie' %}</h3>
-    <p>
-        {% blocktrans trimmed %}
-            Diese Studie soll dem Forscher helfen, mehr über das menschliche Verhalten zu erfahren.
-            Wir hoffen, dass in Zukunft andere Menschen durch ein besseres Verständnis von Reputationskosten am Kapitalmarkt von dieser Studie profitieren könnten.
-        {% endblocktrans %}
-    </p>
-
-    <h3>{% trans 'Mögliche Risiken der Studie' %}</h3>
-    <p>
-        {% trans 'In dieser Studie werden keine Risiken oder nachteiligen Auswirkungen erwartet, die über das hinausgehen, was man normalerweise im täglichen Leben erfahren würde.' %}
-    </p>
-
-    <h3>{% trans 'Vertraulichkeit' %}</h3>
-        <p>
-            {% blocktrans trimmed %}
-                Die von Ihnen gemachten Angaben werden streng vertraulich behandelt.
-                Nur der Projektleiter und seine Mitarbeiter haben Zugang zu den Rohdaten.
-                Anonymisierte Daten aus dieser Studie können an qualifizierte Forscher oder Forschungseinrichtungen weitergegeben werden,
-                wenn dies im Einklang mit den Richtlinien von akademischen Vereinigungen, Zeitschriften oder Universitäten als angemessen erachtet wird.
-                Alle Berichte aus dieser Studie werden auf aggregierter Ebene und/oder mit anonymisierten oder verschleierten Einzelinformationen erstellt,
-                so dass eine Identifizierung der Teilnehmer nicht möglich ist. Wir werden keine Informationen, die Sie identifizieren, an andere weitergeben, es sei denn, wir sind gesetzlich dazu verpflichtet.
-            {% endblocktrans %}
-        </p>
-    <h3>{% trans 'Kontaktdaten' %}</h3>
-    <p>
-        {% trans 'Diese Studie wird von Julian Simon von der Leibniz Universität in Hannover durchgeführt.' %}
-        {% trans 'Bei Fragen zu der Studie kontaktieren Sie mich bitte unter' %} <a href= "mailto:info@experimente.uni-hannover.de">info@experimente.uni-hannover.de</a>.
-    </p>
-    <h3>{% trans 'Einverständniserklärung' %}</h3>
-    <p>
-        {% trans 'Durch Klicken auf <i>Weiter</i> bestätigen Sie, dass Sie die obigen Punkte gelesen haben und mit der Teilnahme an der Studie einverstanden sind.' %}
-    </p>
-    -->
         {% next_button %}
+    </p>
+
+
 
 
 

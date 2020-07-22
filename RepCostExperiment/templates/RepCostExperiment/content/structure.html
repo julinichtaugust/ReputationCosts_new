@@ -3,289 +3,36 @@
 
 {% block content %}
 
-<h3>{% trans 'Allgemeines' %}</h3>
-    <b>Ablauf</b>
+<h3>{% trans 'Ablauf' %}</h3>
+
     <p>
-        Das Experiment besteht aus <b>zwei</b> vom Ablauf her identischen <b>Handels-Sequenzen</b> und einem anschließenden <b>Fragebogen</b>. Jede Sequenz besteht aus <b>XX&nbsp;Perioden</b>. Jede Periode unterteilt sich wiederum in
+        In diesem Experiment sollen Sie auf einem fiktiven Kapitalmarkt Aktien kaufen und verkaufen, um so Ihre Auszahlung am Ende des Experiments zu optimieren.
+    </p>
+
+    <p>
+        Das Experiment besteht insgesamt aus <b>zwei</b> vom Ablauf her identischen <b>Handels-Sequenzen</b> und einem anschließenden <b>Fragebogen</b>. Jede Sequenz besteht aus <b>XX&nbsp;Perioden</b>. Jede Periode unterteilt sich wiederum in
         eine <b>Handelsphase</b> und eine <b>Dividendenphase</b>.
     </p>
     <p>
-        In jeder Handelsphase können Sie am Kapitalmarkt Aktien von zwei verschiedenen Unternehmen handeln und Ihr Portfolio optimieren.
-    </p>
-    <p>
-        In jeder Dividendenphase erhalten Sie für jede Aktie die Sie in Ihrem Portfolio halten eine Dividende. Diese wird zufällig und für beide Unternehmen unabhängig gezogen. Die jeweiligen Dividendenhöhen finden Sie immer in den Informationen über das Unternehmen.
-        Die entsprechenden Wahrscheinlichkeiten für die Dividendenhöhen sind gleichverteilt. Das bedeutet, dass alle Dividenden mit einer Wahrscheinlichkeit von 20% gleich wahrscheinlich auftreten.
+        In jeder Handelsphase können Sie am Kapitalmarkt Aktien von zwei verschiedenen Unternehmen handeln, um so Ihr Portfolio (= Aktienbestand) zu optimieren. In jeder Dividendenphase erhalten Sie anschließend für jede Aktie in Ihrem Portfolio eine Auszahlung (= Dividende). Um welche Unternehmen es sich handelt und wie hoch die Dividenden sind, erfahren Sie im Punkt <i>Unternehmen und Dividenden</i>.
     </p>
 
     <p>
         Nachdem Sie die Instruktionen gelesen haben, müssen Sie einige Verständnisfragen beantworten.
     </p>
 
-    <b>Währung</b>
+    <h3>{% trans 'Währung' %}</h3>
     <p>
         Die Durchführung des Experiments erfolgt in einer <b>fiktiven Währung</b>, die wir <b>ECU</b> nennen. 1 ECU entspricht dabei 0,01 €. Ihre tatsächliche Vergütung wird am Ende der Studie in Euro umgerechnet.
     </p>
 
+    <h3>{% trans 'Anfangsvermögen' %}</h3>
+
     <p>
-        {% blocktrans trimmed %}
-            Sie erhalten von uns zu Beginn jeder Sequenz eine Ausstattung von XX ECU. Zusätzlich erhalten Sie ein Portfolio an Aktien von zwei Unternehmen. Nachfolgend finden Sie Informationen zu den zwei Unternehmen. Bitte lesen Sie diese genau durch.
-        {% endblocktrans %}
+            Zu Beginn jeder Sequenz erhalten Sie von uns ein Vermögen in Höhe von XX ECU. Zusätzlich erhalten Sie für Ihr Portfolie jeweils xx Aktien der beiden Unternehmen.
     </p>
 
-{% if player.rand == 1 %}
-<h3>{% trans 'Unternehmen' %}</h3>
-    <p>
-        <div class="container-fluid">
-            <div class="row toprow">
-                <div class="col-md-6">
-                    <div class="card my-0">
-                        <div class="card-body" style="height: 516px">
-                            <h4 class="card-title" align="center" style="margin-bottom: .0rem">
-                                A-Unternehmen
-                            </h4>
-                            <div id="UnternehmenA" style=" float:left;">
-                                <p>
-                                    <table align="center" >
-                                        <tr style="font-size:10pt;">
-                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. ECU)</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">60,0</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td width="250px">Gewinn vor Steuern</td> <td style="text-align:center" width="100px">35,0</td>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gewinn nach Steuern</td> <td style="text-align:center" width="100px">32,5</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td width="250px">Effektive Steuerquote</td> <td style="text-align:center" width="100px">7,1 %</td>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviA}} ECU</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                                <br>
-
-
-                                <div class="card-body">
-                                    <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
-                                        <table border="0" cellpadding="1" cellspacing="1">
-                                            <colgroup>
-                                                <col width="20%" />
-                                                <col width="80%" />
-                                            </colgroup>
-                                            <tr style="font-size:10pt;">
-                                                <td>15.01.2019</td>
-                                                <td>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
-                                            </tr>
-                                            <tr style="font-size:10pt;">
-                                                <td valign="top">03.01.2019</td>
-                                                <td>Gewinnverschiebung ins ausländische Steuerparadies Cayman Islands, A-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td>
-                                            </tr>
-                                        </table>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card my-0">
-                        <div class="card-body" style="height: 516px;">
-                            <h4 class="card-title" align="center" style="margin-bottom: .0rem">
-                                B-Unternehmen
-                            </h4>
-                                <div id="UnternehmenB" style=" float:left;">
-                                    <p>
-                                        <table align="center" >
-                                            <tr style="font-size:10pt;">
-                                                <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. ECU)</th>
-                                            </tr>
-                                            <tr style="background: whitesmoke; font-size:10pt;">
-                                                <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">60,0</td>
-                                            </tr>
-                                            <tr style="font-size:10pt;">
-                                                <td width="250px">Gewinn vor Steuern</td> <td style="text-align:center" width="100px">35,0</td>
-                                            </tr>
-                                            <tr style="background: whitesmoke; font-size:10pt;">
-                                                <td width="250px">Gewinn nach Steuern</td> <td style="text-align:center" width="100px">24,3</td>
-                                            </tr>
-                                            <tr style="font-size:10pt;">
-                                                <td width="250px">Effektive Steuerquote</td> <td style="text-align:center" width="100px">30,6 %</td>
-                                            </tr>
-                                            <tr style="background: whitesmoke; font-size:10pt;">
-                                                <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
-                                            </tr>
-                                            <tr style="font-size:10pt;">
-                                                <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
-                                            </tr>
-                                            <tr style="background: whitesmoke; font-size:10pt;">
-                                                <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviB}} ECU</td>
-                                            </tr>
-                                        </table>
-                                    </p>
-                                    <br>
-                                    <br>
-
-                                    <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
-                                        <table border="0" cellpadding="1" cellspacing="1">
-                                            <colgroup>
-                                                <col width="20%" />
-                                                <col width="80%" />
-                                            </colgroup>
-
-                                            <tr style="font-size:10pt;">
-                                                <td>15.01.2019</td>
-                                                <td>B-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
-                                            </tr>
-                                            <tr style="font-size:10pt;">
-                                                <td valign="top">03.01.2019</td>
-                                                <td>B-Unternehmen hat eine effektive Steuerquote von 30,6 % - Steuerquote entspricht dem deutschen Durchschnitt</td>
-                                            </tr>
-                                        </table>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </p>
-{% else %}
-        <h3>{% trans 'Unternehmen' %}</h3>
-        <div class="container-fluid">
-            <div class="row toprow">
-                <div class="col-md-6">
-                    <div class="card my-0">
-                        <div class="card-body" style="height: 516px">
-                            <h4 class="card-title" align="center" style="margin-bottom: .0rem">
-                            A-Unternehmen
-                            </h4>
-                            <div id="UnternehmenA" style=" float:left;">
-                                <p>
-                                    <table align="center" >
-                                        <tr style="font-size:10pt;">
-                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. ECU)</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">60,0</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td width="250px">Gewinn vor Steuern</td> <td style="text-align:center" width="100px">35,0</td>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gewinn nach Steuern</td> <td style="text-align:center" width="100px">24,3</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td width="250px">Effektive Steuerquote</td> <td style="text-align:center" width="100px">30,6 %</td>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviB}} ECU</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                                <br>
-                                <br>
-
-                                <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
-                                <p>
-                                    <table border="0" cellpadding="1" cellspacing="1">
-                                        <colgroup>
-                                            <col width="20%" />
-                                            <col width="80%" />
-                                        </colgroup>
-
-                                        <tr style="font-size:10pt;">
-                                            <td>15.01.2019</td>
-                                            <td>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td valign="top">03.01.2019</td>
-                                            <td>A-Unternehmen hat eine effektive Steuerquote von 30,6 % - Steuerquote entspricht dem deutschen Durchschnitt</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-6">
-                    <div class="card my-0">
-                        <div class="card-body" style="height: 516px;">
-                            <h4 class="card-title" align="center" style="margin-bottom: .0rem">
-                                B-Unternehmen
-                            </h4>
-                            <div id="UnternehmenB" style=" float:left;">
-                                <p>
-                                    <table align="center" >
-                                        <tr style="font-size:10pt;">
-                                            <th colspan="2">Gewinn- und Verlustrechnung <br> des letzten Jahres 2018 (in Mio. ECU)</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Umsatzerlöse</td> <td style="text-align:center" width="100px">60,0</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td width="250px">Gewinn vor Steuern</td> <td style="text-align:center" width="100px">35,0</td>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gewinn nach Steuern</td> <td style="text-align:center" width="100px">32,5</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td width="250px">Effektive Steuerquote</td> <td style="text-align:center" width="100px">7,1 %</td>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <th colspan="2">Erwartete Dividende pro Periode <br> mit Wahrscheinlichkeit 25%</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="200px">Auszahlung pro Aktie:</td> <td style="text-align:center" width="150px"> {{ Constants.diviA}} ECU</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                                <br>
-                                <div class="card-body">
-                                    <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
-                                    <table border="0" cellpadding="1" cellspacing="1">
-                                        <colgroup>
-                                            <col width="20%" />
-                                            <col width="80%" />
-                                        </colgroup>
-                                        <tr style="font-size:10pt;">
-                                            <td>15.01.2019</td>
-                                            <td>B-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td valign="top">03.01.2019</td>
-                                            <td>Gewinnverschiebung ins ausländische Steuerparadies Cayman Islands, B-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-{% endif %}
-<br>
+    <br>
 
 
 
