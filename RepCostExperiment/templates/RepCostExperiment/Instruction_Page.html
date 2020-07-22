@@ -56,15 +56,11 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Fragebogen' %}</a>
+        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Vergütung' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Vergütung' %}</a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" id="part7-tab" data-toggle="tab" href="#part7" role="tab" aria-controls="part7" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
+        <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
     </li>
 
 </ul>
@@ -146,27 +142,9 @@
         </div>
     </div>
 
-<!-- Questionnaire -->
-    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
-
-        <div class="card-header bg-transparent mainheader" >
-            <h2 class="card-title">
-                {% trans 'Fragebogen' %}
-            </h2>
-
-        </div>
-        <br>
-
-        {% include 'RepCostExperiment/content/questionnaire.html' %}
-
-        <div style="text-align: center">
-            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
-            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">{% trans 'Weiter' %}</button>
-        </div>
-    </div>
 
 <!-- Payoff -->
-    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
+    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -185,7 +163,7 @@
     </div>
 
 <!-- Comprehension test -->
-    <div class="tab-pane" id="part7" role="tabpanel" aria-labelledby="part7-tab">
+    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
