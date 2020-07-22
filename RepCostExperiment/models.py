@@ -33,6 +33,15 @@ class Constants(BaseConstants):
 
     mean_remuneration = 1500
 
+    Umsatz = 60
+    GvS = 35
+    GnS_low = 32,5
+    GnS_high = 24,3
+    ETR_low = 7,1
+    ETR_high = 30,6
+    Steuern_low = 2,5
+    Steuern_high = 10,7
+
 
 
 
@@ -43,6 +52,8 @@ class Subsession(BaseSubsession):
         for player in self.get_players():
             player.rand = random.choice([1, 2])
             print('set player.rand to', player.rand)
+
+
 
 class Group(BaseGroup):
     marktpreisA = models.CurrencyField()
