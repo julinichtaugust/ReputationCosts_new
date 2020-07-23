@@ -153,7 +153,7 @@ class MyPage2(Page):
             pass
         else:
             if values['kaufA'] + values['kaufB'] > self.player.endowment:
-                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+                return 'Die Summe der Nachfragen der Aktien beider Unternehmen darf Ihr verfügbares Vermögen nicht übersteigen!'
 
         if values['verkaufA'] is None:
             pass
