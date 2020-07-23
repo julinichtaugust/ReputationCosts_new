@@ -44,7 +44,7 @@ Handelsphase - Periode {{ subsession.round_number }}
 
             <div class="col-md-4">
                 <div class="card my-0" >
-                    <div class="card-body"  style="height: 376px">
+                    <div class="card-body"  style="height: 276px">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
@@ -75,51 +75,57 @@ Handelsphase - Periode {{ subsession.round_number }}
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    <p align="center">
-                        Geben Sie nun die Verkaufs- und Kaufspreise in die untenliegenden Felder ein.
-                    </p>
+                <div class="card my-0" style="top: 20px; height: 520px" >
+                    <div class="card-body"  style="height: 500px">
+                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                               Entscheidung
+                        </h4>
+                        <div id="Info2" style=" float:left;">
+                            <p align="center">
+                                Geben Sie nun die Verkaufs- und Kaufspreise in die untenliegenden Felder ein.
+                            </p>
+                                <div id="main" style="margin-left: -10px;">
+                                    <div id="spaltelinks">
+                                        <div class="card my-4" >
+                                            <div class="card-body" style="height: 250px;" >
+                                                <h4 class="card-title">
+                                                    Handelsplatz A
+                                                </h4>
+                                                <table border="0" cellpadding="1" cellspacing="1">
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.verkaufA label="Verkauf A:" %}</td>
+                                                    </tr>
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.kaufA label="Kauf A:"%}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
 
-
-                    <div id="main">
-                        <div id="spaltelinks">
-                            <div class="card my-4" >
-                                <div class="card-body" style="height: 250px;" >
-                                    <h4 class="card-title">
-                                        Handelsplatz A
-                                    </h4>
-                                    <table border="0" cellpadding="1" cellspacing="1">
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.verkaufA label="Verkauf A:" %}</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.kaufA label="Kauf A:"%}</td>
-                                        </tr>
-                                    </table>
+                                    <div id="spalterechts">
+                                        <div class="card my-4">
+                                            <div class="card-body" style="height: 250px;">
+                                                <h4 class="card-title">
+                                                    Handelsplatz B
+                                                </h4>
+                                                <table border="0" cellpadding="1" cellspacing="1">
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.verkaufB  label="Verkauf B:"%}</td>
+                                                    </tr>
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.kaufB label="Kauf B:"%}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
-                            </div>
                         </div>
-
-                        <div id="spalterechts">
-                            <div class="card my-4">
-                                <div class="card-body" style="height: 250px;">
-                                    <h4 class="card-title">
-                                        Handelsplatz B
-                                    </h4>
-                                    <table border="0" cellpadding="1" cellspacing="1">
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.verkaufB  label="Verkauf B:"%}</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.kaufB label="Kauf B:"%}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
                     </div>
-
 
                     {% next_button %}
                 </div>
@@ -173,9 +179,11 @@ Handelsphase - Periode {{ subsession.round_number }}
                 </div>
             </div>
 
+
+
             <div class="col-md-4">
                 <div class="card my-0" >
-                    <div class="card-body"  style="height: 376px">
+                    <div class="card-body"  style="height: 276px">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                            Informationen
                         </h4>
@@ -206,49 +214,56 @@ Handelsphase - Periode {{ subsession.round_number }}
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    <p align="center">
-                        Geben Sie nun die Verkaufs- und Kaufspreise in die untenliegenden Felder ein.
-                    </p>
+                <div class="card my-0" style="top: 20px; height: 520px" >
+                    <div class="card-body"  style="height: 500px">
+                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                               Entscheidung
+                        </h4>
+                        <div id="Info2" style=" float:left;">
+                            <p align="center">
+                                Geben Sie nun die Verkaufs- und Kaufspreise in die untenliegenden Felder ein.
+                            </p>
+                                <div id="main" style="margin-left: -10px;">
+                                    <div id="spaltelinks">
+                                        <div class="card my-4" >
+                                            <div class="card-body" style="height: 250px;" >
+                                                <h4 class="card-title">
+                                                    Handelsplatz A
+                                                </h4>
+                                                <table border="0" cellpadding="1" cellspacing="1">
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.verkaufB label="Verkauf A:" %}</td>
+                                                    </tr>
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.kaufB label="Kauf A:"%}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
 
-
-                    <div id="main">
-                        <div id="spaltelinks">
-                            <div class="card my-4" >
-                                <div class="card-body" style="height: 250px;" >
-                                    <h4 class="card-title">
-                                        Handelsplatz A
-                                    </h4>
-                                    <table border="0" cellpadding="1" cellspacing="1">
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.verkaufB label="Verkauf A:" %}</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.kaufB label="Kauf A:" %}</td>
-                                        </tr>
-                                    </table>
+                                    <div id="spalterechts">
+                                        <div class="card my-4">
+                                            <div class="card-body" style="height: 250px;">
+                                                <h4 class="card-title">
+                                                    Handelsplatz B
+                                                </h4>
+                                                <table border="0" cellpadding="1" cellspacing="1">
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.verkaufA  label="Verkauf B:"%}</td>
+                                                    </tr>
+                                                    <tr style="font-size:10pt;">
+                                                        <td>{% formfield player.kaufA label="Kauf B:"%}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
-                            </div>
                         </div>
-
-                        <div id="spalterechts">
-                            <div class="card my-4">
-                                <div class="card-body" style="height: 250px;">
-                                    <h4 class="card-title">
-                                        Handelsplatz B
-                                    </h4>
-                                    <table border="0" cellpadding="1" cellspacing="1">
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.verkaufA label="Verkauf B:" %}</td>
-                                        </tr>
-                                        <tr style="font-size:10pt;">
-                                            <td>{% formfield player.kaufA label="Kauf B:"%}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
                     </div>
 
 

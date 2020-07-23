@@ -35,10 +35,6 @@ class questions_pre(Page):
 class Instruction_Page(Page):
     form_model = 'player'
 
-    def get_timeout_seconds(self):
-        second = 1200
-        return second
-
     def get_form_fields(self):
         if self.player.rand == 1:
             return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
