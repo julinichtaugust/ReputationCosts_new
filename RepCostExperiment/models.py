@@ -50,7 +50,8 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         # randomize to treatments
         for player in self.get_players():
-            player.rand = random.choice([1, 2])
+            #player.rand = random.choice([1, 2])
+            player.rand = 1
             print('set player.rand to', player.rand)
 
 
