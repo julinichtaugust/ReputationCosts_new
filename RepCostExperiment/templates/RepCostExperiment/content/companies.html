@@ -11,8 +11,22 @@
     <p>
         <div class="container-fluid">
             <div class="row toprow">
-                {% include 'RepCostExperiment/comp_template/A.html' %}
-                {% include 'RepCostExperiment/comp_template/B.html' %}
+                <div class="col-md-6">
+                    <div class="card my-0">
+                        <div class="card-body" style="height: 516px">
+                            {% include 'RepCostExperiment/comp_template/A.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card my-0">
+                        <div class="card-body" style="height: 516px">
+                            {% include 'RepCostExperiment/comp_template/B.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </p>
