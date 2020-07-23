@@ -154,11 +154,14 @@ class MyPage2(Page):
 
 
     def error_message(self, values):
-        if self.player.kaufA == None or self.player.kaufB == None:
-            pass
-        else:
-            if values['kaufA'] + values['kaufB'] > self.player.endowment:
-                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+        if self.player.kaufA == None and values['kaufB'] > self.player.endowment:
+            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+
+        if self.player.kaufB == None and values['kaufA'] > self.player.endowment:
+            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+
+        if self.player.kaufA != None and self.player.kaufB != None and self.player.kaufA + self.player.kaufB > self.player.endowment:
+            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
 
         if self.player.verkaufA == None:
             pass
