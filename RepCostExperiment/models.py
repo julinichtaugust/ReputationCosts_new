@@ -444,7 +444,7 @@ class Player(BasePlayer):
 # Kauf- und Verkaufspreis auf 0 setzen, falls Eingabe == None
     def set_value_verkaufB(self):
         if self.verkaufB == None:
-            self.verkaufB = 999
+            self.verkaufB = 99999
 
     def set_value_kaufB(self):
         if self.kaufB == None:
@@ -452,7 +452,7 @@ class Player(BasePlayer):
 
     def set_value_verkaufA(self):
         if self.verkaufA == None:
-            self.verkaufA = 999
+            self.verkaufA = 99999
 
     def set_value_kaufA(self):
         if self.kaufA == None:
