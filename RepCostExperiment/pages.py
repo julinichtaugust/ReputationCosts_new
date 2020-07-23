@@ -148,36 +148,32 @@ class MyPage2(Page):
             marktpreisB_alt= self.group.marktpreisB_alt()
         )
 
-
     def error_message(self, values):
-        if self.player.kaufA == None and values['kaufB'] > self.player.endowment:
-            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+        if values['kaufA'] is None or values['kaufB'] is None:
+            pass
+        else:
+            if values['kaufA'] + values['kaufB'] > self.player.endowment:
+                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
 
-        if self.player.kaufB == None and values['kaufA'] > self.player.endowment:
-            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
-
-        if self.player.kaufA != None and self.player.kaufB != None and self.player.kaufA + self.player.kaufB > self.player.endowment:
-            return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
-
-        if self.player.verkaufA == None:
+        if values['verkaufA'] is None:
             pass
         else:
             if values['verkaufA'] > 0 and self.player.anzahlA == 0:
                 return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
 
-        if self.player.kaufA == None or self.player.verkaufA == None:
+        if values['kaufA'] is None or values['verkaufA'] is None:
             pass
         else:
             if values['verkaufA'] <= values['kaufA']:
                 return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
 
-        if self.player.verkaufB == None:
+        if values['verkaufB'] is None:
             pass
         else:
             if values['verkaufB'] > 0 and self.player.anzahlB == 0:
                 return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
 
-        if self.player.kaufB == None or self.player.verkaufB == None:
+        if values['kaufB'] is None or values['verkaufB'] is None:
             pass
         else:
             if values['verkaufB'] <= values['kaufB']:
