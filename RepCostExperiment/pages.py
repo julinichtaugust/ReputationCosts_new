@@ -35,6 +35,10 @@ class questions_pre(Page):
 class Instruction_Page(Page):
     form_model = 'player'
 
+    def get_timeout_seconds(self):
+        second = 1200
+        return second
+
     def get_form_fields(self):
         if self.player.rand == 1:
             return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
@@ -131,6 +135,13 @@ class MyPage2(Page):
     form_model = 'player'
     form_fields = ['verkaufA', 'kaufA', 'verkaufB', 'kaufB']
 
+    def get_timeout_seconds(self):
+        if self.round_number <= 2:
+            second = 1200
+        else:
+            second = 300
+        return second
+
     def after_all_players_arrive(self):
         if self.round_number != 1:
             self.group.marktpreisA_alt()
@@ -208,6 +219,13 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results2(Page):
+
+    def get_timeout_seconds(self):
+        if self.round_number <= 2:
+            second = 1200
+        else:
+            second = 300
+        return second
 
     def vars_for_template(self):
             return {
