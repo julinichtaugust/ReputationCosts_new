@@ -19,7 +19,7 @@
             {% endblocktrans %}
         </p>
         <p>
-        <img src="{% static "ReputationCosts/Screenshots/Dividenden.PNG" %}"/>
+        <img src="{% static "ReputationCosts/Screenshots/Dividenden.PNG" %}" width="100%"/>
         </p>
 
 
@@ -71,10 +71,13 @@
     </p>
     <p>
         <b>Kommt ein Handel zustanden?</b> Nun wird jeweils der Nachfragepreis mit dem Angebotspreis verglichen. Ist die Nachfrage höher als das Angebot wird gehandelt.
-        In der ersten Zeile msind Sie bereit die Aktie für 4,00 ECU zu verkaufen. Spieler 2 ist bereit diese für 2,00 ECU zu verkaufen. In diesem Fall wird gehandelt und Spieler 2 verkauft eine Aktie an Sie. In den anderen beiden Fällen wird nicht gehandelt. Ob ein Handel für Sie zustande gekommen ist oder nicht, sehen Sie auch unter den <b>Handelsinformationen</b>.
+        In der ersten Zeile sind Sie bereit die Aktie für 4,00 ECU zu verkaufen. Spieler 2 ist bereit diese für 2,00 ECU zu verkaufen. In diesem Fall wird gehandelt und Spieler 2 verkauft eine Aktie an Sie. In den anderen beiden Fällen wird nicht gehandelt. Ob ein Handel für Sie zustande gekommen ist oder nicht, sehen Sie auch unter den <b>Handelsinformationen</b>.
     </p>
     <p>
-        <b>Wie hoch ist der Marktpreis zu dem alle Transaktionen durchgeführt werden?</b> Dafür wird als erstes das Handelspaar mit dem niedrigsten Nachfragepreis und höchsten Angebotspreis bestimmt, bei dem ein Handel stattfindet. Der Marktpreis ergibt sich als Mittelwert aus diesem Kaufpreis- und Verkaufspreispaar. Im Beispiel bedeutet dies, dass wir uns den Handel von Spieler 1 und 2 anschauen. Der Mittelwert aus dem Nachfragepreis (4 ECU) und aus dem Angebotspreis (2 ECU) beträgt 3 ECU, sodass die Aktie für 3 ECU gehandelt wird.
+        <b>Wie hoch ist der Marktpreis zu dem alle Transaktionen durchgeführt werden?</b> Bei der Ermittlung des aktuellen Marktpreises werden lediglich die Preise berücksichtigt, bei dem ein Handel stattfindet.
+        In diesem Fall ist das nur das Angebot und die Nachfrage in der ersten Zeile.
+        Der Marktpreis ist der <b>Mittelwert des Kauf- und Verkaufspreises</b>.
+        In diesem Beispiel berechnet sich der Marktpreis durch den Mittelwert aus Ihrem Nachfragepreis (4,00 ECU) und aus dem Angebotspreis (2,00 ECU) von Spieler 2. Der Marktpreis ist folglich 3,00 ECU, zu welchem die Aktie gehandelt wird.
     </p>
 
     <h3>{% trans 'Ihr Vermögen' %}</h3>
