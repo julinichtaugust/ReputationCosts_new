@@ -44,7 +44,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
                                     </tr>
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Aktuelle Dividende</th>
+                                        <th colspan="2">Aktuelle Dividende in Periode {{ subsession.round_number }}</th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td width="200px">Dividende pro Aktie:</td> <td style="text-align:center" width="150px"> {{ divA }}</td>
@@ -84,7 +84,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Vermögen </th>
+                                        <th colspan="2">Ihr Vermögen </th>
                                     </tr>
                                     <tr style=" font-size:10pt;">
                                         <td width="250px">Vermögen zu Beginn der Periode</td> <td style="text-align:right" width="100px">{{player.endowmentalt}}</td>
@@ -131,7 +131,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Portfolio </th>
+                                        <th colspan="2">Ihr Portfolio </th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td style="text-align:center" width="180px">Anzahl A-Aktien</td> <td style="text-align:center" width="180px">Anzahl B-Aktien</td>
@@ -176,7 +176,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
                                     </tr>
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Aktuelle Dividende</th>
+                                        <th colspan="2">Aktuelle Dividende in Periode {{ subsession.round_number }}</th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td width="200px">Dividende pro Aktie:</td> <td style="text-align:center" width="150px"> {{ divB }}</td>
@@ -206,13 +206,39 @@ Dividendenphase - Periode {{ subsession.round_number }}
                 </div>
             </div>
         </div>
+        <br>
+
+        <div class="row bottomrow ">
+            <div class="col-md">
+                <table align="center" >
+                    <tr style="font-size:10pt;">
+                        <td style="width: 1%; text-align: center; background-color: white;">
+                        <h4 align="center">
+                           Markt A
+                        </h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md">
+                <table align="center" >
+                    <tr style="font-size:10pt;">
+                        <td style="width: 1%; text-align: center; background-color: white;">
+                        <h4 align="center">
+                           Markt B
+                        </h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
         <div class="row bottomrow ">
             <div class="col-md-3">
                 <div class="card my-2">
                     <div class="card-body" style="height: 250px;">
                         <h4 class="card-title" align="center">
-                           Marktpreise A
+                           Ihre Handelsübersicht
                         </h4>
                         <p>
                             <table align="center" >
@@ -235,79 +261,57 @@ Dividendenphase - Periode {{ subsession.round_number }}
                 <div class="card my-2">
                     <div class="card-body" style="height: 250px;">
                         <h4 class="card-title" align="center">
-                           Markt A
+                           Orderbuch
                         </h4>
                         <table border="0" cellpadding="1" cellspacing="1" align="center">
                             <tr style="font-size:10pt;">
                                 <th>Spieler</th>
-                                <th>Nachfrage</th>
-                                <th>Angebot</th>
+                                <th width="100px">Nachfrage</th>
+                                <th width="100px">Angebot</th>
                                 <th>Spieler</th>
                             </tr>
                             <tr style="font-size:10pt;">
                                 {% if player.id_in_group == group.datenA_kauf.0.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenA_kauf.0.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_kauf.0.SPIELER}}</td>{% endif %}
-                                {% if kaufA_liste.0 == 0  %}<td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{kaufA_liste.0}}</td>{% endif %}
-                                {% if verkaufA_liste.0 == 99999  %} <td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{verkaufA_liste.0}}</td> {% endif %}
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if kaufA_liste.0 == 0  %}-{% else %} {{kaufA_liste.0}}{% endif %}
+                                </td>
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if verkaufA_liste.0 == 99999  %} - {% else %} {{verkaufA_liste.0}} {% endif %}
+                                </td>
                                 {% if player.id_in_group == group.datenA_verkauf.0.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenA_verkauf.0.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_verkauf.0.SPIELER}}</td>{% endif %}
                             </tr>
-                            <tr style="font-size:10pt;">
+                            <tr style="font-size:10pt">
                                 {% if player.id_in_group == group.datenA_kauf.1.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenA_kauf.1.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_kauf.1.SPIELER}}</td>{% endif %}
-                                {% if kaufA_liste.1 == 0  %}<td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{kaufA_liste.1}}</td>{% endif %}
-                                {% if verkaufA_liste.1 == 99999  %} <td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{verkaufA_liste.1}}</td> {% endif %}
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if kaufA_liste.1 == 0  %}-{% else %} {{kaufA_liste.1}}{% endif %}
+                                </td>
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if verkaufA_liste.1 == 99999  %} - {% else %} {{verkaufA_liste.1}} {% endif %}
+                                </td>
                                 {% if player.id_in_group == group.datenA_verkauf.1.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenA_verkauf.1.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_verkauf.1.SPIELER}}</td>{% endif %}
                             </tr>
-                                <tr style="font-size:10pt;">
-                                    {% if player.id_in_group == group.datenA_kauf.2.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenA_kauf.2.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_kauf.2.SPIELER}}</td>{% endif %}
-                                    {% if kaufA_liste.2 == 0  %}<td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{kaufA_liste.2}}</td>{% endif %}
-                                    {% if verkaufA_liste.2 == 99999  %} <td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{verkaufA_liste.2}}</td> {% endif %}
-                                    {% if player.id_in_group == group.datenA_verkauf.2.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenA_verkauf.2.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_verkauf.2.SPIELER}}</td>{% endif %}
-                                </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card my-2">
-                    <div class="card-body" style="height: 250px;">
-                        <h4 class="card-title" align="center">
-                           Markt B
-                        </h4>
-                        <table border="0" cellpadding="1" cellspacing="1" align="center">
                             <tr style="font-size:10pt;">
-                                <th>Spieler</th>
-                                <th>Nachfrage</th>
-                                <th>Angebot</th>
-                                <th>Spieler</th>
-                            </tr>
-                            <tr style="font-size:10pt;">
-                                {% if player.id_in_group == group.datenB_kauf.0.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenB_kauf.0.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_kauf.0.SPIELER}}</td>{% endif %}
-                                {% if kaufB_liste.0 == 0  %}<td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{kaufB_liste.0}}</td>{% endif %}
-                                {% if verkaufB_liste.0 == 99999  %} <td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{verkaufB_liste.0}}</td> {% endif %}
-                                {% if player.id_in_group == group.datenB_verkauf.0.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenB_verkauf.0.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_verkauf.0.SPIELER}}</td>{% endif %}
-                            </tr>
-                            <tr style="font-size:10pt;">
-                                {% if player.id_in_group == group.datenB_kauf.1.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenB_kauf.1.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_kauf.1.SPIELER}}</td>{% endif %}
-                                {% if kaufB_liste.1 == 0  %}<td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{kaufB_liste.1}}</td>{% endif %}
-                                {% if verkaufB_liste.1 == 99999  %} <td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{verkaufB_liste.1}}</td> {% endif %}
-                                {% if player.id_in_group == group.datenB_verkauf.1.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenB_verkauf.1.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_verkauf.1.SPIELER}}</td>{% endif %}
-                            </tr>
-                            <tr style="font-size:10pt;">
-                                {% if player.id_in_group == group.datenB_kauf.2.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenB_kauf.2.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_kauf.2.SPIELER}}</td>{% endif %}
-                                {% if kaufB_liste.2 == 0  %}<td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{kaufB_liste.2}}</td>{% endif %}
-                                {% if verkaufB_liste.2 == 99999  %} <td style="background: whitesmoke;"><center>-</center></td> {% else %} <td style="background: whitesmoke;">{{verkaufB_liste.2}}</td> {% endif %}
-                                {% if player.id_in_group == group.datenB_verkauf.2.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenB_verkauf.2.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_verkauf.2.SPIELER}}</td>{% endif %}
+                                {% if player.id_in_group == group.datenA_kauf.2.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenA_kauf.2.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_kauf.2.SPIELER}}</td>{% endif %}
+                                  <td style="background: whitesmoke;text-align: center">
+                                    {% if kaufA_liste.2 == 0  %}-{% else %} {{kaufA_liste.2}}{% endif %}
+                                </td>
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if verkaufA_liste.2 == 99999  %} - {% else %} {{verkaufA_liste.2}} {% endif %}
+                                </td>
+                                {% if player.id_in_group == group.datenA_verkauf.2.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenA_verkauf.2.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenA_verkauf.2.SPIELER}}</td>{% endif %}
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
 
+
+
             <div class="col-md-3">
                 <div class="card my-2">
                     <div class="card-body" style="height: 250px;">
                         <h4 class="card-title" align="center">
-                           Marktpreise B
+                           Ihre Handelsübersicht
                         </h4>
                         <p>
                             <table align="center" >
@@ -322,6 +326,54 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                 </tr>
                             </table>
                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card my-2">
+                    <div class="card-body" style="height: 250px;">
+                        <h4 class="card-title" align="center">
+                           Orderbuch
+                        </h4>
+                        <table border="0" cellpadding="1" cellspacing="1" align="center" style="text-align: center">
+                            <tr style="font-size:10pt;">
+                                <th>Spieler</th>
+                                <th width="100px">Nachfrage</th>
+                                <th width="100px">Angebot</th>
+                                <th>Spieler</th>
+                            </tr>
+                            <tr style="font-size:10pt;background: whitesmoke;text-align: center"">
+                                {% if player.id_in_group == group.datenB_kauf.0.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenB_kauf.0.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_kauf.0.SPIELER}}</td>{% endif %}
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if kaufB_liste.0 == 0  %}-{% else %} {{kaufB_liste.0}}{% endif %}
+                                </td>
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if verkaufB_liste.0 == 99999  %} - {% else %} {{verkaufB_liste.0}} {% endif %}
+                                </td>
+                                {% if player.id_in_group == group.datenB_verkauf.0.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenB_verkauf.0.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_verkauf.0.SPIELER}}</td>{% endif %}
+                            </tr>
+                            <tr style="font-size:10pt;">
+                                {% if player.id_in_group == group.datenB_kauf.1.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenB_kauf.1.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_kauf.1.SPIELER}}</td>{% endif %}
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if kaufB_liste.1 == 0  %}-{% else %} {{kaufB_liste.1}}{% endif %}
+                                </td>
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if verkaufB_liste.1 == 99999  %} - {% else %} {{verkaufB_liste.1}} {% endif %}
+                                </td>
+                                {% if player.id_in_group == group.datenB_verkauf.1.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenB_verkauf.1.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_verkauf.1.SPIELER}}</td>{% endif %}
+                            </tr>
+                            <tr style="font-size:10pt;">
+                                {% if player.id_in_group == group.datenB_kauf.2.SPIELER %} <td style="background: #F5A9A9;text-align:center">{{group.datenB_kauf.2.SPIELER}}</td> {% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_kauf.2.SPIELER}}</td>{% endif %}
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if kaufB_liste.2 == 0  %}-{% else %} {{kaufB_liste.2}}{% endif %}
+                                </td>
+                                <td style="background: whitesmoke;text-align: center">
+                                    {% if verkaufB_liste.2 == 99999  %} - {% else %} {{verkaufB_liste.2}} {% endif %}
+                                </td>
+                                {% if player.id_in_group == group.datenB_verkauf.2.SPIELER %}<td style="background: #F5A9A9;text-align:center">{{group.datenB_verkauf.2.SPIELER}}</td>{% else %} <td style="background: whitesmoke;text-align:center">{{group.datenB_verkauf.2.SPIELER}}</td>{% endif %}
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -358,7 +410,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">10,7</td>
                                     </tr>
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Aktuelle Dividende</th>
+                                        <th colspan="2">Aktuelle Dividende für Periode {{ subsession.round_number }}</th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td width="200px">Dividende pro Aktie:</td> <td style="text-align:center" width="150px"> {{ divB }}</td>
@@ -398,7 +450,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Vermögen </th>
+                                        <th colspan="2">Ihr Vermögen </th>
                                     </tr>
                                     <tr style=" font-size:10pt;">
                                         <td width="250px">Vermögen zu Beginn der Periode</td> <td style="text-align:right" width="100px">{{player.endowmentalt}}</td>
@@ -445,7 +497,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Portfolio </th>
+                                        <th colspan="2">Ihr Portfolio </th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td style="text-align:center" width="180px">Anzahl A-Aktien</td> <td style="text-align:center" width="180px">Anzahl B-Aktien</td>
@@ -490,7 +542,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         <td width="250px">Gezahlte Steuern</td> <td style="text-align:center" width="100px">2,5</td>
                                     </tr>
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Aktuelle Dividende</th>
+                                        <th colspan="2">Aktuelle Dividende in Periode {{ subsession.round_number }}</th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td width="200px">Dividende pro Aktie:</td> <td style="text-align:center" width="150px"> {{ divA }}</td>

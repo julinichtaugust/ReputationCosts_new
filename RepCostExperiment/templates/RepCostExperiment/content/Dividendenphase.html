@@ -15,50 +15,78 @@
     <h3>{% trans 'Bildschirm in der Dividendenphase' %}</h3>
         <p>
             {% blocktrans trimmed %}
-                 Die folgende Abbildung zeigt den Bildschirm der Dividendenphase. In der Dividendenphase können Sie nicht aktiv am Markt teilnehmen. Sie erhalten lediglich die folgenden Informationen.
+                 Die folgende Abbildung zeigt den Bildschirm der Dividendenphase. In der Dividendenphase können Sie nicht aktiv am Markt teilnehmen. In dieser Phase erhalten Sie Informationen sowohl zu Ihrem Vermögen als auch zum Handel in dieser Periode:
             {% endblocktrans %}
         </p>
-        <center>
+        <p>
         <img src="{% static "ReputationCosts/Screenshots/Dividenden.PNG" %}"/>
-        </center>
+        </p>
 
 
     <h3>{% trans 'Handelsinformationen' %}</h3>
-        <p>
-            {% blocktrans trimmed %}
-               Im unteren Teil sehen Sie für beide Unternehmen das Orderbuch, in das alle Kaufpreise und Verkaufpreise eingetragen sind. Sie können damit nachvollziehen, ob Sie eine Aktie erworben oder verkauft haben.
-                Zusätzlich sehen Sie den berechneten Marktpreis für beide Aktien.
-            {% endblocktrans %}
-        </p>
-
-    <h3>{% trans 'Ermittlung des Marktpreises' %}</h3>
-
     <p>
-        {% blocktrans trimmed %}
-           Im Anschluss an die Handelsphase werden für beide Unternehmen die Nachfragen und Angebote auf dem Markt ausgewertet. Dabei werden die Zahlungsbereitschaften für den Kauf absteigend und die Zahlungsforderungen für den Verkauf aufsteigend sortiert. Sie finden diese Übersicht für beide Märkte unten mittig auf dem Bildschirm in der Dividendenphase.
-            Zur Veranschaulichung nutzen wir den Markt A aus der oben abgebildeten Dividendenphase. Es werden der Reihe nach die entstandenen Nachfrage- und Angebotspaare verglichen. Im ersten Paar möchte der Spieler 1 die Aktie für 4 ECU kaufen, während Spieler 2 bereit ist, diese für 2 ECU zu verkaufen. In diesem Fall findet ein Handel statt. Betrachten wir das nächste Nachfrage- und Angebotspaar. Spieler 3 ist bereit die Aktie ebenfalls für 4 ECU zu kaufen. Allerdings möchte Spieler 1 diese minimal für 5 ECU verkaufen. Dies bedeutet, dass zwischen diesen Spielern kein Handel stattfindet.
-        {% endblocktrans %}
+        Im Anschluss an die Handelsphase werden für beide Unternehmen die Nachfragen und Angebote auf dem Markt ausgewertet.
+        Dabei werden im <b>Orderbuch</b> die Zahlungsbereitschaften aller Marktteilnehmer für den Kauf der Aktien (= Nachfragen) absteigend
+        und die Zahlungsforderungen von allen Marktteilnehmern für den Verkauf der Aktien (= Angebote) aufsteigend sortiert.
+    </p>
+    <p>
+        Hier ein Beispiel:
+    </p>
+    <p>
+        <h4 class="card-title" align="center">
+           Orderbuch
+        </h4>
+        <table border="0" cellpadding="1" cellspacing="1" align="center">
+            <tr style="font-size:10pt;">
+                <th>Spieler</th>
+                <th width="100px">Nachfrage</th>
+                <th width="100px">Angebot</th>
+                <th>Spieler</th>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td style="background: #F5A9A9">1</td>
+                <td>4,00 ECU</td>
+                <td>2,00 ECU</td>
+                <td>2</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>3</td>
+                <td>4,00 ECU</td>
+                <td>5,00 ECU</td>
+                <td style="background: #F5A9A9">1</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>2</td>
+                <td>1,00 ECU</td>
+                <td>6,00 ECU</td>
+                <td>3</td>
+            </tr>
+
+        </table>
     </p>
 
     <p>
-        {% blocktrans trimmed %}
-           Abschließend muss der Marktpreis berechnet werden, zu dem alle Transaktionen durchgeführt werden. Dafür wird als erstes das Handelspaar mit dem niedrigsten Nachfragepreis und höchsten Angebotspreis bestimmt, bei dem ein Handel stattfindet. Der Marktpreis ergibt sich als Mittelwert aus diesem Kaufpreis- und Verkaufspreispaar. Im Beispiel bedeutet dies, dass wir uns den Handel von Spieler 1 und 2 anschauen. Der Mittelwert aus dem Nachfragepreis (4 ECU) und aus dem Angebotspreis (2 ECU) beträgt 3 ECU, sodass die Aktie für 3 ECU gehandelt wird.
-            Entsprechend kann es passieren, dass beispielsweise Ihr angegebener Kaufpreis zwar über dem Marktpreis liegt, jedoch kein weiterer Marktteilnehmer bereit ist zu diesem Preis zu verkaufen und somit der Käufer mit einer höheren oder der gleichen Kaufnachfrage die Aktie erhält.
-        {% endblocktrans %}
+        <b>Angebot und Nachfrage.</b> Ihr Angebot und Ihre Nachfrage werden immer rot markiert. Ihre maximale Zahlungsbereitschaft für eine Aktie (=Nachfrage) ist in diesem Fall 4,00 ECU.
+        Außerdem sind Sie bereit eine Aktie für mindestens 5,00 ECU zu verkaufen. Weiterhin sehen Sie die Nachfragen und Angebote der Spieler 2 und 3.
+    </p>
+    <p>
+        <b>Kommt ein Handel zustanden?</b> Nun wird jeweils der Nachfragepreis mit dem Angebotspreis verglichen. Ist die Nachfrage höher als das Angebot wird gehandelt.
+        In der ersten Zeile msind Sie bereit die Aktie für 4,00 ECU zu verkaufen. Spieler 2 ist bereit diese für 2,00 ECU zu verkaufen. In diesem Fall wird gehandelt und Spieler 2 verkauft eine Aktie an Sie. In den anderen beiden Fällen wird nicht gehandelt. Ob ein Handel für Sie zustande gekommen ist oder nicht, sehen Sie auch unter den <b>Handelsinformationen</b>.
+    </p>
+    <p>
+        <b>Wie hoch ist der Marktpreis zu dem alle Transaktionen durchgeführt werden?</b> Dafür wird als erstes das Handelspaar mit dem niedrigsten Nachfragepreis und höchsten Angebotspreis bestimmt, bei dem ein Handel stattfindet. Der Marktpreis ergibt sich als Mittelwert aus diesem Kaufpreis- und Verkaufspreispaar. Im Beispiel bedeutet dies, dass wir uns den Handel von Spieler 1 und 2 anschauen. Der Mittelwert aus dem Nachfragepreis (4 ECU) und aus dem Angebotspreis (2 ECU) beträgt 3 ECU, sodass die Aktie für 3 ECU gehandelt wird.
     </p>
 
-    <h3>{% trans 'Aktuelle Dividenden' %}</h3>
+    <h3>{% trans 'Ihr Vermögen' %}</h3>
         <p>
-            {% blocktrans trimmed %}
-               Links und rechts sehen Sie die Höhe der Dividende eines Unternehmens für die aktuelle Periode.
-            {% endblocktrans %}
+            <b>Höhe der Dividenden.</b> Unter der Gewinn- und Verlustrechnung der beiden Unternehmen sehen Sie die Höhe der Dividende eines Unternehmens für die aktuelle Periode.
         </p>
 
-    <h3>{% trans 'Berechnung des gesamten Vermögens' %}</h3>
         <p>
-            {% blocktrans trimmed %}
-               In der Mitte des Bildschirms sehen Sie eine Übersicht der Handels- und der Dividendenphase. Diese zeigt unter anderem zum welchem Preis Sie eine Aktie erworben und/oder verkauft haben. Außerdem sehen Sie wie viele Aktien Sie jeweils von einem Unternehmen in Ihrem Portfolio und welche Dividendenzahlungen Sie dafür erhalten haben. Am Ende sehen Sie ihr neues Vermögen.
-            {% endblocktrans %}
+            <b>Ihr Vermögen in dieser Periode.</b> In der Mitte des Bildschirms sehen Sie eine Übersicht ihres Vermögens und Ihres Portfolios.
+            Zum einen wird Ihnen angezeigt, zu welchem Preis Sie eine Aktie ggf. erworben und/oder verkauft haben.
+            Außerdem sehen Sie wie viele Aktien Sie jeweils von einem Unternehmen in Ihrem Portfolio und welche Dividendenzahlungen Sie dafür erhalten haben.
+            Am Ende sehen Sie ihr aktuelles Vermögen.
         </p>
 
     <h3>{% trans 'Ende der Dividendenphase' %}</h3>
