@@ -24,7 +24,7 @@ Your app description 4
 
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
-    players_per_group = 3
+    players_per_group = 6
     num_rounds = 2
 
     endowment = 100

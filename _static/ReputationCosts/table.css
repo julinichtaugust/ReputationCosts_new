@@ -40,6 +40,13 @@ table  tr {
     float: left;
      padding: 20px;
 }
+#UnternehmenA_news {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 430px;
+    float: left;
+     padding: 20px;
+}
 #UnternehmenB {
     padding-left: 10px;
     padding-right: 10px;

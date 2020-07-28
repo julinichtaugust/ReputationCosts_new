@@ -132,10 +132,10 @@ class MyPage2(Page):
     form_fields = ['verkaufA', 'kaufA', 'verkaufB', 'kaufB']
 
     #def get_timeout_seconds(self):
-    #    if self.round_number <= 2:
-    #        second = 1200
+    #    if self.round_number <= 3:
+    #        second = 120
     #    else:
-    #        second = 300
+    #        second = 60
     #    return second
 
     def after_all_players_arrive(self):
@@ -215,11 +215,12 @@ class ResultsWaitPage(WaitPage):
 
 class Results2(Page):
 
+
     #def get_timeout_seconds(self):
-    #    if self.round_number <= 2:
-    #        second = 1200
+    #    if self.round_number <= 3:
+    #        second = 120
     #    else:
-    #        second = 300
+    #        second = 60
     #    return second
 
     def vars_for_template(self):

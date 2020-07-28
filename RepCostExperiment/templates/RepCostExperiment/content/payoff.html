@@ -9,7 +9,8 @@
     <h3>{% trans 'Variable Vergütung' %}</h3>
         <p>
             {% blocktrans trimmed %}
-                Ihre variable Vergütung entspricht dem Vermögen am Ende einer Sequenz. Ein Zufallsgenerator entscheidet, welches Vermögen der beiden Sequenzen ausgezahlt wird.
+                Ihre variable Vergütung entspricht dem Vermögen am Ende einer Sequenz. In der letzten Periode einer Sequenz wird in der Handelsphase zunächst der Handel für diese Periode bestimmt und Sie erhalten für alle Aktien, die Sie nach dem Handel in Ihrem Portfolio haben eine letzte Dividende. Nach Auszahlung dieser Dividende sind die Aktien wertlos. Folglich erzeugt eine Aktie im Portfolio nach der letzten Periode kein Vermögen mehr.
+                Sie erhalten also das Endvermögen einer der Sequenzen ausgezahlt. Ein Zufallsgenerator entscheidet, welches Vermögen der beiden Sequenzen ausgezahlt wird.
                 <b>Es wird folglich nur eine Sequenz entlohnt!</b> Das Ergebnis der zufällig gezogenen Sequenz wird in Euro umgerechnet.
             {% endblocktrans %}
         </p>

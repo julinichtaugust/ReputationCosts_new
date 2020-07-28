@@ -15,7 +15,7 @@ SESSION_CONFIGS = [
     dict(
         name='RepCostExperiment',
         display_name='RepCostExperiment',
-        num_demo_participants=3,
+        num_demo_participants=6,
         app_sequence=['RepCostExperiment'],
         use_browser_bots=False,
         tax_rate=0.40,

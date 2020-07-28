@@ -6,7 +6,7 @@
 
 <h3>{% trans 'Unternehmen' %}</h3>
     <p>
-        Nachfolgend finden Sie Informationen zu den beiden Unternehmen. Bitte lesen Sie sich diese genau durch.
+        Nachfolgend finden Sie Informationen zu den beiden Unternehmen. Die Unternehmen unterscheiden sich nur in den unten aufgeführten Kennzahlen und News. Bitte lesen Sie sich diese genau durch.
     </p>
     <p>
         <div class="container-fluid">
@@ -41,9 +41,14 @@
         <b>Beispiel:</b> Dividende pro Aktie: [10, 20, 30, 40, 50] ECU
     </p>
     <p>
-        Die Dividende pro Aktie wird in jeder Periode für jedes Unternehmen neu bestimmt. Die Höhe der Dividende beträgt in diesem Beispiel 10, 20, 30, 40 <b>oder</b> 50 ECU.
-        Sie wird mit Hilfe eines Zufallsgenerators bestimmt. Die Eintrittswahrscheinlichkeit ist für alle fünf Zustände gleich. So erhalten Sie beispielsweise mit einer Wahrscheinlichkeit von 20 % eine Dividende in Höhe von 30 ECU.
+        Die Dividende pro Aktie wird in jeder Periode für jedes Unternehmen neu bestimmt. Die Höhe der Dividende beträgt in diesem Beispiel 10, 20, 30, 40 <b>oder</b> 50 ECU. In einer Sequenz ändert sich die Liste der möglichen Dividenden nicht, sodass in jeder Periode aus der gleichen Liste eine Dividende zufällig gezogen wird.
+        Diese wird mit Hilfe eines Zufallsgenerators bestimmt. Die Eintrittswahrscheinlichkeit ist für alle fünf Zustände gleich. So erhalten Sie beispielsweise mit einer Wahrscheinlichkeit von 20 % eine Dividende in Höhe von 30 ECU.
     </p>
+    <p>
+        Der Zufallsgenrator ist für beide Unternehmen unabhängig voneinander, sodass die Unternehmen in einer Periode nicht immer die gleiche Dividende auszahlen werden.
+        Die Verteilung ist jedoch für beide Unternehmen identisch, das bedeutet, dass die Wahrscheinlichkeiten für beide Unternehmen identisch sind.
+    </p>
+
 
 {% endblock %}
 
