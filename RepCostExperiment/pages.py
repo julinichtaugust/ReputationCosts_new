@@ -94,6 +94,12 @@ class Instruction_Page(Page):
                 self.player.wrong_answer6 += 1
                 return trans_question_incorrectly(6)
 
+class Probe(Page):
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+
 class comprehension_check(Page):
 
     def is_displayed(self):
@@ -119,6 +125,50 @@ class comprehension_check(Page):
         )
         return context
 
+#######################################################################################################
+class Try1(Page):
+    form_model = 'player'
+    form_fields = ['try_verkauf', 'try_kauf']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+
+    def error_message(self, values):
+        if values['try_kauf'] is None:
+            pass
+        else:
+            if values['try_kaufA']  > self.player.try_endowment:
+                return 'Die Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+
+        if values['try_kauf'] is None or values['try_verkauf'] is None:
+            pass
+        else:
+            if values['try_verkauf'] <= values['try_kauf']:
+                return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
+
+
+    def before_next_page(self):
+        self.player.set_value_try_verkauf()
+        self.player.set_value_try_kauf()
+
+
+class Try2(Page):
+
+    def vars_for_template(self):
+            return {
+                'verkaufA_liste': self.group.verkaufA_liste,
+                'kaufA_liste': self.group.kaufA_liste,
+                'marktpreisA': self.group.marktpreisA,
+                'try_anzahl': self.player.try_anzahl,
+                'try_endowment': self.player.try_endowment,
+                'try_div': self.group.try_dividende,
+                'gesdiviA': self.player.gesdiviA,
+            }
+
+########################################################################################################
+
+
 
 class Wait_Page(WaitPage):
     def after_all_players_arrive(self):
@@ -139,7 +189,7 @@ class MyPage2(Page):
     #    return second
 
     def after_all_players_arrive(self):
-        if self.round_number != 1:
+        if self.round_number >= 2:
             self.group.marktpreisA_alt()
 
     def vars_for_template(self):
@@ -258,6 +308,9 @@ page_sequence = [
     Welcome,
     questions_pre,
     Instruction_Page,
+    Probe,
+    Try1,
+    Try2,
     comprehension_check,
     Wait_Page,
     MyPage2,

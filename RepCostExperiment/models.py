@@ -25,11 +25,13 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    num_rounds = 12
+    num_rounds = 13 #eine davon ist Proberunde
 
     endowment = 100
+    try_endowmwnt = 100
     diviA = [10, 20, 30, 40, 50]
     diviB = [10, 20, 30, 40, 50]
+    try_divi = [1, 2, 3, 4, 5]
 
     mean_remuneration = 1500
 
@@ -57,6 +59,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+    try_dividende = models.CurrencyField()
     marktpreisA = models.CurrencyField()
     clearing_rankA = models.IntegerField()
     dividendeA = models.CurrencyField()
@@ -89,6 +92,8 @@ class Group(BaseGroup):
         self.verkaufB_liste = [p.verkaufB for p in players]
         self.verkaufB_liste.sort()
         return self.verkaufB_liste
+
+
 
 # Sortierte Liste der Kaufspreise (Nachfragen: von groß nach klein)
     def kaufA_liste(self):
@@ -313,7 +318,19 @@ class Group(BaseGroup):
             p.gesdiviA = p.anzahlA * self.dividendeA
             p.gesdiviB = p.anzahlB * self.dividendeB
 
+    def try_dividende_rech(self):
+        self.try_dividende = c(random.choice(Constants.try_divi))
+        players = self.get_players()
+        for p in players:
+            p.try_endowment = p.try_endowment + p.try_anzahl * self.try_dividende
+            p.try_gesdivi = p.try_anzahl * self.try_dividende
+
+
 class Player(BasePlayer):
+    try_verkauf = models.CurrencyField(blank=True)
+    try_kauf = models.CurrencyField(blank=True)
+    try_endowment = models.CurrencyField(initial=100)
+    try_anzahl = models.IntegerField(initial=1)
     rand = models.IntegerField()
     verkaufA = models.CurrencyField(blank=True)
     kaufA = models.CurrencyField(blank=True)
@@ -325,6 +342,7 @@ class Player(BasePlayer):
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
+    try_gesdivi = models.CurrencyField()
 
     verkaufB = models.CurrencyField(blank=True)
     kaufB = models.CurrencyField(blank=True)
@@ -334,7 +352,6 @@ class Player(BasePlayer):
     rank_verkaufB = models.IntegerField()
     rank_kaufB = models.IntegerField()
     gesdiviB = models.CurrencyField()
-
     treatment = models.StringField()
 
     gender = models.IntegerField(
@@ -459,8 +476,28 @@ class Player(BasePlayer):
         if self.kaufA == None:
             self.kaufA = 0
 
+    def set_value_try_verkauf(self):
+        if self.try_verkauf == None:
+            self.try_verkauf = 99999
+
+    def set_value_try_kauf(self):
+        if self.try_kauf == None:
+            self.try_kauf = 0
+
 # Werte der Vorperiode holen
     def access_data(self):
         self.endowment = self.in_round(self.round_number - 1).endowment
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
         self.anzahlB = self.in_round(self.round_number - 1).anzahlB
+
+# Für Proberunde
+
+    def try_verkauf_liste(self):
+        self.try_verkauf_liste = [self.try_verkauf, 2, 4, 4, 6, 7]
+        self.try_verkauf_liste.sort()
+        return self.try_verkauf_liste
+
+    def try_kauf_liste(self):
+        self.try_kauf_liste = [self.try_kauf, 4, 3, 3, 2, 1]
+        self.try_kauf_liste.sort(reverse=True)
+        return self.try_kauf_liste
