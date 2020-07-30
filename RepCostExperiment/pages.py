@@ -138,7 +138,7 @@ class Try1(Page):
         if values['try_kauf'] is None:
             pass
         else:
-            if values['try_kaufA']  > self.player.try_endowment:
+            if values['try_kauf']  > self.player.try_endowment:
                 return 'Die Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
 
         if values['try_kauf'] is None or values['try_verkauf'] is None:
@@ -157,13 +157,14 @@ class Try2(Page):
 
     def vars_for_template(self):
             return {
-                'verkaufA_liste': self.group.verkaufA_liste,
-                'kaufA_liste': self.group.kaufA_liste,
-                'marktpreisA': self.group.marktpreisA,
+                'try_verkauf_liste': self.player.try_verkauf_liste,
+                'try_kauf_liste': self.player.try_kauf_liste,
+                'try_marktpreis': self.player.try_marktpreis,
                 'try_anzahl': self.player.try_anzahl,
                 'try_endowment': self.player.try_endowment,
-                'try_div': self.group.try_dividende,
-                'gesdiviA': self.player.gesdiviA,
+                'try_dividende': self.player.try_dividende,
+                'try_daten_verkauf': self.player.try_daten_verkauf,
+                'try_daten_kauf': self.player.try_daten_kauf,
             }
 
 ########################################################################################################

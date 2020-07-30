@@ -32,6 +32,7 @@ class Constants(BaseConstants):
     diviA = [10, 20, 30, 40, 50]
     diviB = [10, 20, 30, 40, 50]
     try_divi = [1, 2, 3, 4, 5]
+    try_player = [1, 2, 3, 4, 5, 6]
 
     mean_remuneration = 1500
 
@@ -59,7 +60,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    try_dividende = models.CurrencyField()
+
     marktpreisA = models.CurrencyField()
     clearing_rankA = models.IntegerField()
     dividendeA = models.CurrencyField()
@@ -318,14 +319,6 @@ class Group(BaseGroup):
             p.gesdiviA = p.anzahlA * self.dividendeA
             p.gesdiviB = p.anzahlB * self.dividendeB
 
-    def try_dividende_rech(self):
-        self.try_dividende = c(random.choice(Constants.try_divi))
-        players = self.get_players()
-        for p in players:
-            p.try_endowment = p.try_endowment + p.try_anzahl * self.try_dividende
-            p.try_gesdivi = p.try_anzahl * self.try_dividende
-
-
 class Player(BasePlayer):
     try_verkauf = models.CurrencyField(blank=True)
     try_kauf = models.CurrencyField(blank=True)
@@ -343,6 +336,9 @@ class Player(BasePlayer):
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
     try_gesdivi = models.CurrencyField()
+    try_marktpreis = models.CurrencyField()
+    try_dividende = models.CurrencyField()
+    #try_player = [1, 2, 3, 4, 5, 6]
 
     verkaufB = models.CurrencyField(blank=True)
     kaufB = models.CurrencyField(blank=True)
@@ -493,11 +489,85 @@ class Player(BasePlayer):
 # Für Proberunde
 
     def try_verkauf_liste(self):
-        self.try_verkauf_liste = [self.try_verkauf, 2, 4, 4, 6, 7]
-        self.try_verkauf_liste.sort()
+        self.try_verkauf_liste = [
+            {
+                'SPIELER': 1,
+                'ANGEBOT': self.try_verkauf
+            },
+            {
+                'SPIELER': 2,
+                'ANGEBOT': c(3)
+            },
+            {
+                'SPIELER': 3,
+                'ANGEBOT': c(2)
+            },
+            {
+                'SPIELER': 4,
+                'ANGEBOT': c(5)
+            },
+            {
+                'SPIELER': 5,
+                'ANGEBOT': c(2)
+            },
+            {
+                'SPIELER': 6,
+                'ANGEBOT': c(1)
+            }
+        ]
         return self.try_verkauf_liste
 
+    def try_daten_verkauf(self):
+        v = self.try_verkauf_liste
+        w1=0
+        self.try_daten_verkauf = sorted(v, key=lambda k: (k['ANGEBOT'],random.random()))
+        for item in self.try_daten_verkauf:
+            w1 = w1+1
+            item.update({'RANK': w1})
+        return self.try_daten_verkauf
+
     def try_kauf_liste(self):
-        self.try_kauf_liste = [self.try_kauf, 4, 3, 3, 2, 1]
-        self.try_kauf_liste.sort(reverse=True)
+        self.try_kauf_liste = [
+            {
+                'SPIELER': 1,
+                'NACHFRAGE': self.try_kauf
+            },
+            {
+                'SPIELER': 2,
+                'NACHFRAGE': c(3)
+            },
+            {
+                'SPIELER': 3,
+                'NACHFRAGE': c(2)
+            },
+            {
+                'SPIELER': 4,
+                'NACHFRAGE': c(5)
+            },
+            {
+                'SPIELER': 5,
+                'NACHFRAGE': c(2)
+            },
+            {
+                'SPIELER': 6,
+                'NACHFRAGE': c(1)
+            }
+        ]
         return self.try_kauf_liste
+
+    def try_daten_kauf(self):
+        q = self.try_kauf_liste
+        w1=0
+        self.try_daten_kauf = sorted(q, key=lambda k: (k['NACHFRAGE'],random.random()))
+        for item in self.try_daten_kauf:
+            w1 = w1+1
+            item.update({'RANK': w1})
+        return self.try_daten_kauf
+
+
+
+
+    def try_dividende(self):
+        self.try_dividende = c(random.choice(Constants.try_divi))
+        return self.try_dividende
+
