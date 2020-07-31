@@ -557,12 +557,31 @@ class Player(BasePlayer):
 
     def try_daten_kauf(self):
         q = self.try_kauf_liste
-        w1=0
-        self.try_daten_kauf = sorted(q, key=lambda k: (k['NACHFRAGE'],random.random()))
+        w2=0
+        self.try_daten_kauf = sorted(q, key=lambda k: (k['NACHFRAGE'],random.random()), reverse=True)
         for item in self.try_daten_kauf:
-            w1 = w1+1
-            item.update({'RANK': w1})
+            w2 = w2+1
+            item.update({'RANK': w2})
         return self.try_daten_kauf
+
+    def try_verkauf_liste_h(self):
+        self.try_verkauf_liste_h = [self.try_verkauf, 3, 2, 5, 2, 1]
+        self.try_verkauf_liste_h.sort()
+        return self.try_verkauf_liste_h
+
+    def try_kauf_liste_h(self):
+        self.try_kauf_liste_h = [self.try_kauf, 3, 2, 5, 2, 1]
+        self.try_kauf_liste_h.sort(reverse=True)
+        return self.try_kauf_liste_h
+
+    def try_rank(self):
+        self.try_clearing_rank = 0
+        for i in range(1,Constants.players_per_group+1,1):
+            a = i-1
+            if self.try_kauf_liste_h[a] >= self.try_verkauf_liste_h[a]:
+                self.try_clearing_rank = i
+            else:
+                pass
 
 
 

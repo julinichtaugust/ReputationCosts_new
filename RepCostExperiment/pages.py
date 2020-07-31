@@ -155,6 +155,7 @@ class Try1(Page):
 
 class Try2(Page):
 
+
     def vars_for_template(self):
             return {
                 'try_verkauf_liste': self.player.try_verkauf_liste,
