@@ -55,7 +55,7 @@ class Subsession(BaseSubsession):
         for player in self.get_players():
             #player.rand = random.choice([1, 2])
             player.rand = 1
-            print('set player.rand to', player.rand)
+            #print('set player.rand to', player.rand)
 
 
 
@@ -338,6 +338,9 @@ class Player(BasePlayer):
     try_gesdivi = models.CurrencyField()
     try_marktpreis = models.CurrencyField()
     try_dividende = models.CurrencyField()
+    try_clearing_rank = models.IntegerField()
+    try_is_trade_kauf = models.BooleanField(initial=False)
+    try_is_trade_verkauf = models.BooleanField(initial=False)
     #try_player = [1, 2, 3, 4, 5, 6]
 
     verkaufB = models.CurrencyField(blank=True)
@@ -582,7 +585,51 @@ class Player(BasePlayer):
                 self.try_clearing_rank = i
             else:
                 pass
+        print(self.try_clearing_rank)
 
+    def try_rank_verkauf_player(self):
+        self.try_rank_verkauf_player = (next((i for i, item in enumerate(self.try_daten_verkauf) if item["SPIELER"] == 1), None))+1
+        print(self.try_daten_verkauf)
+        print(self.try_rank_verkauf_player)
+        return self.try_rank_verkauf_player
+
+    def try_rank_kauf_player(self):
+        self.try_rank_kauf_player = (next((i for i, item in enumerate(self.try_daten_kauf) if item["SPIELER"] == 1), None))+1
+        print(self.try_daten_kauf)
+        print(self.try_rank_kauf_player)
+        return self.try_rank_kauf_player
+
+    def try_marktpreis_rech(self):
+        for i in range(Constants.players_per_group, 0, -1):
+            a = i-1
+            if self.try_clearing_rank == i:
+                self.try_marktpreis = ((self.try_kauf_liste_h[a] + self.try_verkauf_liste_h[a])/2)
+            else:
+                pass
+
+    def try_handel(self):
+        if self.try_rank_kauf_player <= self.try_clearing_rank:
+            self.try_is_trade_kauf = True
+        else:
+            pass
+        if self.try_rank_verkauf_player <= self.try_clearing_rank:
+            self.try_is_trade_verkauf = True
+        else:
+            pass
+
+    def try_ausfuhrung(self):
+            if self.try_is_trade_kauf == True and self.try_is_trade_verkauf == True:
+                pass
+            else:
+                if self.try_is_trade_kauf == True and self.try_is_trade_verkauf == False:
+                    self.try_anzahl = self.try_anzahl + 1
+                    self.try_endowment = self.try_endowment - self.try_marktpreis
+                else:
+                    if self.try_is_trade_verkauf == True and self.try_is_trade_kauf == False:
+                        self.try_anzahl = self.try_anzahl -1
+                        self.try_endowment = self.try_endowment + self.try_marktpreis
+                    else:
+                        pass
 
 
 

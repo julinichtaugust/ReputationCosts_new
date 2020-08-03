@@ -166,6 +166,14 @@ class Try2(Page):
                 'try_dividende': self.player.try_dividende,
                 'try_daten_verkauf': self.player.try_daten_verkauf,
                 'try_daten_kauf': self.player.try_daten_kauf,
+                'try_verkauf_liste_h': self.player.try_verkauf_liste_h,
+                'try_kauf_liste_h': self.player.try_kauf_liste_h,
+                'try_rank':self.player.try_rank,
+                'try_rank_verkauf_player': self.player.try_rank_verkauf_player,
+                'try_rank_kauf_player': self.player.try_rank_kauf_player,
+                'try_marktpreis_rech': self.player.try_marktpreis_rech,
+                'try_handel': self.player.try_handel,
+                'try_ausfuhrung': self.player.try_ausfuhrung,
             }
 
 ########################################################################################################

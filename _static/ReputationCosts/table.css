@@ -68,6 +68,13 @@ table  tr {
     padding-top: 15 pt;
 }
 
+#Info3 {
+    height: 40px;
+    float: center;
+    padding-left: 100pt;
+    padding-top: 150pt;
+}
+
 #main {
    width: 440px;
    background-color: #fff;

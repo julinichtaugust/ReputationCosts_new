@@ -15,13 +15,13 @@ Probe-Sequenz - Dividendenphase
 {% block content %}
     <div class="container-fluid">
         <div class="row toprow">
-            <div class="col-md-4">
-                <div class="card my-0">
-                    <div class="card-body" style="height: 550px;">
+            <div class="col-md-6">
+                <div class="card my-2">
+                    <div class="card-body" style="height: 400px;">
                         <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                             X-Unternehmen
                         </h4>
-                        <div id="UnternehmenA" style=" float:left;">
+                        <div id="UnternehmenA" style=" float:left;" >
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
@@ -55,13 +55,13 @@ Probe-Sequenz - Dividendenphase
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card my-0" >
-                    <div class="card-body"  style="height: 475px;" align="center">
+            <div class="col-md-6">
+                <div class="card my-2" >
+                    <div class="card-body"  style="height: 400px;" align="center">
                         <h4 class="card-title" align="center">
                            Informationen
                         </h4>
-                        <div id="Info" style=" float:left;">
+                        <div id="Info">
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
@@ -70,16 +70,7 @@ Probe-Sequenz - Dividendenphase
                                     <tr style=" font-size:10pt;">
                                         <td width="250px">Vermögen zu Beginn der Periode</td> <td style="text-align:right" width="100px">100 ECU</td>
                                     </tr>
-                                    {% if player.try_is_trade_verkauf %}
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Verkauf der X-Aktie</td> <td style="text-align:right" width="100px">+ {{try_marktpreis}}</td>
-                                        </tr>
-                                    {% endif %}
-                                    {% if player.try_is_trade_kauf %}
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td width="250px">Kauf der X-Aktie</td> <td style="text-align:right" width="100px">- {{try_marktpreis}}</td>
-                                        </tr>
-                                    {% endif %}
+
                                     <tr style="font-size:10pt;">
                                         <td width="250px">Erhaltene Dividenden:</td> <td style="text-align:right" width="100px"></td>
                                     </tr>
@@ -109,7 +100,6 @@ Probe-Sequenz - Dividendenphase
                             </p>
                         </div>
                     </div>
-                    {% next_button %}
                 </div>
             </div>
         </div>
@@ -122,11 +112,20 @@ Probe-Sequenz - Dividendenphase
                         <td style="width: 1%; text-align: center; background-color: white;">
                         <h4 align="center">
                            Markt X
+
                             <p hidden>
                             {{player.try_verkauf_liste}}
                             {{player.try_kauf_liste }}
                             {{player.try_daten_verkauf}}
-                            {{player.try_daten_kauf}}
+                             {{player.try_daten_kauf}}
+                                {{player.try_verkauf_liste_h}}
+                            {{player.try_kauf_liste_h}}
+                            {{player.try_rank}}
+                            {{player.try_rank_verkauf_player}}
+                            {{player.try_rank_kauf_player}}
+                            {{player.try_marktpreis_rech}}
+                            {{player.try_handel}}
+                                {{player.try_ausfuhrung}}
                             </p>
                         </h4>
                         </td>
@@ -139,7 +138,7 @@ Probe-Sequenz - Dividendenphase
 
         <div class="row bottomrow ">
 
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="card my-2">
                     <div class="card-body" style="height: 300px;">
                         <h4 class="card-title" align="center">
@@ -150,12 +149,7 @@ Probe-Sequenz - Dividendenphase
                                 <tr style="font-size:10pt;">
                                     <th width="350px" colspan="1">Aktueller Marktpreis: {% if try_marktpreis == None %}Kein Handel{% else %}{{ try_marktpreis }}{% endif %} </th>
                                 </tr>
-                                <tr style="font-size:10pt;">
-                                    <td style="text-align:center" width="175px">{% if player.try_is_trade_verkauf %}<div class="alert alert-success">X-Aktie verkauft für {{ try_marktpreis }} </div>{% else %}<div class="alert alert-warning">Keine X-Aktie verkauft </div>{% endif %}</td>
-                                </tr>
-                                <tr style="font-size:10pt;">
-                                    <td style="text-align:center" width="175px">{% if player.try_is_trade_kauf %}<div class="alert alert-success">X-Aktie gekauft für {{ try_marktpreis }} </div>{% else %}<div class="alert alert-warning">Keine X-Aktie gekauft </div>{% endif %}</td>
-                                </tr>
+
                             </table>
                         </p>
                     </div>
@@ -176,69 +170,69 @@ Probe-Sequenz - Dividendenphase
                                     <th>Teilnehmer</th>
                                 </tr>
                                 <tr style="font-size:10pt;background: whitesmoke;text-align: center">
-                                {% if player.try_daten_kauf.0.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_kauf.0.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_kauf.0.SPIELER}}</td>{% endif %}
+                                {% if player.try_daten_kauf.0.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_kauf.0.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_kauf.0.SPIELER}}</td>{% endif %}
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_kauf.0.NACHFRAGE == 0  %}-{% else %} {{player.try_daten_kauf.0.NACHFRAGE}}{% endif %}
                                     </td>
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_verkauf.0.ANGEBOT == 99999  %} - {% else %} {{player.try_daten_verkauf.0.ANGEBOT}} {% endif %}
                                     </td>
-                                    {% if player.try_daten_verkauf.0.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_verkauf.0.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_verkauf.0.SPIELER}}</td>{% endif %}
+                                    {% if player.try_daten_verkauf.0.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_verkauf.0.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_verkauf.0.SPIELER}}</td>{% endif %}
                                 </tr>
 
                                 <tr style="font-size:10pt;background: whitesmoke;text-align: center">
-                                {% if player.try_daten_kauf.1.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_kauf.1.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_kauf.1.SPIELER}}</td>{% endif %}
+                                {% if player.try_daten_kauf.1.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_kauf.1.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_kauf.1.SPIELER}}</td>{% endif %}
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_kauf.1.NACHFRAGE == 0  %}-{% else %} {{player.try_daten_kauf.1.NACHFRAGE}}{% endif %}
                                     </td>
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_verkauf.1.ANGEBOT == 99999  %} - {% else %} {{player.try_daten_verkauf.1.ANGEBOT}} {% endif %}
                                     </td>
-                                    {% if player.try_daten_verkauf.1.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_verkauf.1.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_verkauf.1.SPIELER}}</td>{% endif %}
+                                    {% if player.try_daten_verkauf.1.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_verkauf.1.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_verkauf.1.SPIELER}}</td>{% endif %}
                                 </tr>
 
                                 <tr style="font-size:10pt;background: whitesmoke;text-align: center">
-                                {% if player.try_daten_kauf.2.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_kauf.2.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_kauf.2.SPIELER}}</td>{% endif %}
+                                {% if player.try_daten_kauf.2.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_kauf.2.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_kauf.2.SPIELER}}</td>{% endif %}
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_kauf.2.NACHFRAGE == 0  %}-{% else %} {{player.try_daten_kauf.2.NACHFRAGE}}{% endif %}
                                     </td>
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_verkauf.2.ANGEBOT == 99999  %} - {% else %} {{player.try_daten_verkauf.2.ANGEBOT}} {% endif %}
                                     </td>
-                                    {% if player.try_daten_verkauf.2.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_verkauf.2.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_verkauf.2.SPIELER}}</td>{% endif %}
+                                    {% if player.try_daten_verkauf.2.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_verkauf.2.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_verkauf.2.SPIELER}}</td>{% endif %}
                                 </tr>
 
                                 <tr style="font-size:10pt;background: whitesmoke;text-align: center">
-                                {% if player.try_daten_kauf.3.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_kauf.3.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_kauf.3.SPIELER}}</td>{% endif %}
+                                {% if player.try_daten_kauf.3.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_kauf.3.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_kauf.3.SPIELER}}</td>{% endif %}
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_kauf.3.NACHFRAGE == 0  %}-{% else %} {{player.try_daten_kauf.3.NACHFRAGE}}{% endif %}
                                     </td>
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_verkauf.3.ANGEBOT == 99999  %} - {% else %} {{player.try_daten_verkauf.3.ANGEBOT}} {% endif %}
                                     </td>
-                                    {% if player.try_daten_verkauf.3.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_verkauf.3.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_verkauf.3.SPIELER}}</td>{% endif %}
+                                    {% if player.try_daten_verkauf.3.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_verkauf.3.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_verkauf.3.SPIELER}}</td>{% endif %}
                                 </tr>
 
                                 <tr style="font-size:10pt;background: whitesmoke;text-align: center">
-                                {% if player.try_daten_kauf.4.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_kauf.4.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_kauf.4.SPIELER}}</td>{% endif %}
+                                {% if player.try_daten_kauf.4.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_kauf.4.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_kauf.4.SPIELER}}</td>{% endif %}
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_kauf.4.NACHFRAGE == 0  %}-{% else %} {{player.try_daten_kauf.4.NACHFRAGE}}{% endif %}
                                     </td>
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_verkauf.4.ANGEBOT == 99999  %} - {% else %} {{player.try_daten_verkauf.4.ANGEBOT}} {% endif %}
                                     </td>
-                                    {% if player.try_daten_verkauf.4.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_verkauf.4.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_verkauf.4.SPIELER}}</td>{% endif %}
+                                    {% if player.try_daten_verkauf.4.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_verkauf.4.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_verkauf.4.SPIELER}}</td>{% endif %}
                                 </tr>
 
                                 <tr style="font-size:10pt;background: whitesmoke;text-align: center">
-                                {% if player.try_daten_kauf.5.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_kauf.5.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_kauf.5.SPIELER}}</td>{% endif %}
+                                {% if player.try_daten_kauf.5.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_kauf.5.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_kauf.5.SPIELER}}</td>{% endif %}
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_kauf.5.NACHFRAGE == 0  %}-{% else %} {{player.try_daten_kauf.5.NACHFRAGE}}{% endif %}
                                     </td>
                                     <td style="background: whitesmoke;text-align: center">
                                         {% if player.try_daten_verkauf.5.ANGEBOT == 99999  %} - {% else %} {{player.try_daten_verkauf.5.ANGEBOT}} {% endif %}
                                     </td>
-                                    {% if player.try_daten_verkauf.5.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{try_daten_verkauf.5.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{try_daten_verkauf.5.SPIELER}}</td>{% endif %}
+                                    {% if player.try_daten_verkauf.5.SPIELER == 1  %}<td style="background: #F5A9A9;text-align:center">{{player.try_daten_verkauf.5.SPIELER}}</td>{% else %}<td style="background: whitesmoke;text-align:center">{{player.try_daten_verkauf.5.SPIELER}}</td>{% endif %}
                                 </tr>
                             </table>
                         </div>
