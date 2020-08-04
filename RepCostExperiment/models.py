@@ -382,6 +382,16 @@ class Player(BasePlayer):
         initial=1,  # zum testen
     )
 
+    train_question1 = models.IntegerField(
+        verbose_name=(
+            "Frage 1: In welches Phase können Sie Aktien kaufen und verkaufen?"),
+        initial=1,
+        choices=[
+            [0, ('Dividendenphase')],
+            [1, ('Handelsphase')]],
+        widget=widgets.RadioSelect,
+    )
+
     comprehension_question1 = models.IntegerField(
         verbose_name=(
             "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende des Experiments ist richtig?"),
@@ -443,6 +453,7 @@ class Player(BasePlayer):
     # Frage zu Anzahl Perioden
     # Frage zu Unsicherheit Dividenden
 
+    train_wrong_answer1 = models.IntegerField(initial=0)
     wrong_answer1 = models.IntegerField(initial=0)
     wrong_answer2 = models.IntegerField(initial=0)
     wrong_answer3 = models.IntegerField(initial=0)
@@ -635,5 +646,9 @@ class Player(BasePlayer):
 
     def try_dividende(self):
         self.try_dividende = c(random.choice(Constants.try_divi))
+        self.try_gesdivi = self.try_anzahl * self.try_dividende
         return self.try_dividende
+
+
+
 

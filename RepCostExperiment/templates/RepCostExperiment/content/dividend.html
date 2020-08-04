@@ -1,0 +1,29 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block content %}
+
+<br>
+<h3>{% trans 'Dividenden' %}</h3>
+    <p>
+        SCREENSHOT DIVIDENDE TRAINING
+    </p>
+    <p>
+        Jedes Unternehmen schüttet in der Dividendenphase eine Dividende aus
+    </p>
+    <p>
+        Die Dividende eines Unternehmens wird durch einen Zufallsgenerator für jede Periode neu bestimmt. Insgesamt gibt es fünf mögliche Dividenden mit einer gleichen Eintrittswahrscheinlichkeit von jeweils 20 %.
+        Informationen zu den Dividenden jedes Unternehmens finden Sie bei den Informationen zu jedem Unternehmen.
+    </p>
+    <p>
+        <b>Beispiel:</b> Dividende pro Aktie: [1, 2, 3, 4, 5] ECU
+    </p>
+    <p>
+        Die Dividende pro Aktie wird in jeder Periode für jedes Unternehmen neu bestimmt. Die Höhe der Dividende beträgt in diesem Beispiel 1, 2, 3, 4 <b>oder</b> 5 ECU.
+        Diese wird mit Hilfe eines Zufallsgenerators bestimmt. Die Eintrittswahrscheinlichkeit ist für alle fünf Zustände gleich. So erhalten Sie beispielsweise mit einer Wahrscheinlichkeit von 20 % eine Dividende in Höhe von 3 ECU.
+    </p>
+
+
+{% endblock %}
+
+

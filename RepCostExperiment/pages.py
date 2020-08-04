@@ -32,6 +32,23 @@ class questions_pre(Page):
         if value == None:
             return "Diese Frage wurde nicht beantwortet."
 
+class Instruction_Training(Page):
+    form_model = 'player'
+
+    def get_form_fields(self):
+        if self.player.rand == 1:
+            return ['train_question1']
+        else:
+            return ['train_question1']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def train_question1_error_message(self, value):
+        if value != 1:
+            self.player.train_wrong_answer1 += 1
+            return trans_question_incorrectly(1)
+
 class Instruction_Page(Page):
     form_model = 'player'
 
@@ -317,10 +334,11 @@ class Ende(Page):
 page_sequence = [
     Welcome,
     questions_pre,
-    Instruction_Page,
+    Instruction_Training,
     Probe,
     Try1,
     Try2,
+    Instruction_Page,
     comprehension_check,
     Wait_Page,
     MyPage2,

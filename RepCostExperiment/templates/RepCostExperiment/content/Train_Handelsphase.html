@@ -1,0 +1,50 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block content %}
+
+    <h3>{% trans 'Markt' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+           In diesem Experiment nehmen sie an einem fiktiven Kapitalmarkt teil. Neben Ihnen handeln noch 5 weitere Experimentteilnehmer mit Ihnen an diesen Märkten.
+        {% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans trimmed %}
+            In jeder Periode haben Sie in der Handelsphase die Möglichkeit Aktien von anderen Marktteilnehmern zu kaufen als auch an andere Marktteilnehmer zu verkaufen.
+        {% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans trimmed %}
+            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen auf dem Bildschirm Informationen zu den Unternehmen. Außerdem erhalten Sie in jeder Handelsphase Informationen zu Ihrem aktuellen Vermögen sowie zu Ihrem Portfolio.
+        {% endblocktrans %}
+     </p>
+    <center>
+        SCRENNSHOT HANDELSPHASE TRAINING
+        <!--<img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>-->
+    </center>
+
+    <h3>{% trans 'Kauf von Aktien' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+        Um Aktien von anderen Marktteilnehmer zu kaufen, geben Sie in das Feld <b>Kauf</b> den Maximalpreis ein, zum dem Sie bereit sind, die Aktie zu kaufen.
+        Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei.
+        {% endblocktrans %}
+
+    </p>
+
+    <h3>{% trans 'Verkauf von Aktien' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+           Um Aktien an andere Marktteilnehmer zu verkaufen, geben Sie in das Feld <b>Verkauf</b> den Mindestpreis ein, zum dem Sie bereit sind, die Aktie zu verkaufen.
+            Möchten Sie in einer Periode keine Aktie verkaufen, lassen Sie das Feld frei. Beachten Sie, dass Ihr Kaufpreis nicht über Ihrem Verkaufspreis liegen darf, da Sie in diesem Fall mit sich selber handeln würden.
+        {% endblocktrans %}
+    </p>
+
+
+
+
+
+{% endblock %}
+
+

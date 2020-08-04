@@ -40,11 +40,11 @@
 <ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center " id="myTab" role="tablist">
 
     <li class="nav-item" >
-        <a class="nav-link active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="topFunction()">{% trans 'Aufbau des Experiments' %}</a>
+        <a class="nav-link active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="topFunction()">{% trans 'Allgemeines' %}</a>
     </li>
 
     <li class="nav-item" >
-        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Unternehmen und Dividenden' %}</a>
+        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Dividende' %}</a>
     </li>
 
     <li class="nav-item">
@@ -53,10 +53,6 @@
 
     <li class="nav-item">
         <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Vergütung' %}</a>
     </li>
 
     <li class="nav-item">
@@ -76,12 +72,12 @@
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title ">
-                {% trans 'Aufbau des Experiments' %}
+                {% trans 'Allgemeines' %}
             </h2>
         </div>
         <br>
 
-        {% include 'RepCostExperiment/content/structure.html' %}
+        {% include 'RepCostExperiment/content/intro_training.html' %}
 
 
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
@@ -93,12 +89,12 @@
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title ">
-                {% trans 'Unternehmen und Dividenden' %}
+                {% trans 'Dividende' %}
             </h2>
         </div>
         <br>
 
-        {% include 'RepCostExperiment/content/companies.html' %}
+        {% include 'RepCostExperiment/content/dividend.html' %}
 
 
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
@@ -116,7 +112,7 @@
         </div>
         <br>
 
-        {% include 'RepCostExperiment/content/Handelsphase.html' %}
+        {% include 'RepCostExperiment/content/Train_Handelsphase.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
@@ -134,7 +130,7 @@
         </div>
         <br>
 
-        {% include 'RepCostExperiment/content/Dividendenphase.html' %}
+        {% include 'RepCostExperiment/content/Train_Dividendenphase.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
@@ -142,25 +138,6 @@
         </div>
     </div>
 
-
-<!-- Payoff -->
-    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
-
-        <div class="card-header bg-transparent mainheader" >
-            <h2 class="card-title">
-                {% trans 'Vergütung der Studie' %}
-            </h2>
-
-        </div>
-        <br>
-
-        {% include 'RepCostExperiment/content/payoff.html' %}
-
-        <div style="text-align: center">
-            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
-            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">{% trans 'Weiter' %}</button>
-        </div>
-    </div>
 
 <!-- Comprehension test -->
     <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
@@ -173,7 +150,7 @@
         </div>
         <br>
 
-        {% include 'RepCostExperiment/content/comprehension_test.html' %}
+        {% include 'RepCostExperiment/content/train_comprehension_test.html' %}
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>

@@ -1,0 +1,119 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block styles %}
+<style type="text/css">
+    .otree-title {
+        text-align: center;
+    }
+</style>
+    <link href="{% static 'RepCostExperiment/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+    <h3>{% trans 'Bildschirm in der Dividendenphase' %}</h3>
+        <p>
+            {% blocktrans trimmed %}
+                 Die folgende Abbildung zeigt den Bildschirm der Dividendenphase. In der Dividendenphase können Sie nicht aktiv am Markt teilnehmen. In dieser Phase erhalten Sie Informationen sowohl zu Ihrem Vermögen als auch zum Handel in dieser Periode:
+            {% endblocktrans %}
+        </p>
+        <p>
+            SCREENSHOT DIVIDENDENPHASE TRAINING
+        <!--<img src="{% static "ReputationCosts/Screenshots/Dividenden.png" %}" width="100%"/>-->
+        </p>
+
+
+    <h3>{% trans 'Handelsinformationen' %}</h3>
+    <p>
+        Im Anschluss an die Handelsphase werden die Nachfragen und Angebote auf dem Markt ausgewertet.
+        Dabei werden im <b>Orderbuch</b> die Zahlungsbereitschaften aller Marktteilnehmer für den Kauf der Aktien (= Nachfragen) absteigend
+        und die Zahlungsforderungen von allen Marktteilnehmern für den Verkauf der Aktien (= Angebote) aufsteigend sortiert. Sollten mehrere Marktteilnehmer den Nachfragen oder Angebote in gleicher Höhe abgeben, entscheidet der Zufall, wer höher auf der Liste erscheint
+    </p>
+    <p>
+        Hier ein Beispiel:
+    </p>
+    <p>
+        <h4 class="card-title" align="center">
+           Orderbuch
+        </h4>
+        <table border="0" cellpadding="1" cellspacing="1" align="center">
+            <tr style="font-size:10pt;">
+                <th>Marktteilnehmer</th>
+                <th width="100px">Nachfrage</th>
+                <th width="100px">Angebot</th>
+                <th>Marktteilnehmer</th>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td style="background: #F5A9A9">1</td>
+                <td>6,00 ECU</td>
+                <td>2,00 ECU</td>
+                <td>4</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>3</td>
+                <td>4,50 ECU</td>
+                <td>4,00 ECU</td>
+                <td>6</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>5</td>
+                <td>4,00 ECU</td>
+                <td>4,50 ECU</td>
+                <td>2</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>6</td>
+                <td>2,00 ECU</td>
+                <td>6,00 ECU</td>
+                <td>3</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>2</td>
+                <td>1,00 ECU</td>
+                <td>7,00 ECU</td>
+                <td style="background: #F5A9A9">1</td>
+            </tr>
+            <tr style="font-size:10pt;">
+                <td>4</td>
+                <td>-</td>
+                <td>-</td>
+                <td>5</td>
+            </tr>
+
+        </table>
+    </p>
+
+    <p>
+        <b>Angebot und Nachfrage.</b> Ihr Angebot und Ihre Nachfrage werden immer rot markiert. Ihre maximale Zahlungsbereitschaft für eine Aktie (=Nachfrage) ist in diesem Fall 6,00 ECU.
+        Außerdem sind Sie bereit eine Aktie für mindestens 7,00 ECU zu verkaufen. Weiterhin sehen Sie die Nachfragen und Angebote der Marktteilnehmer 2 bis 6. Sollten zwei Marktteilnehmer Nachfragen in der gleichen Höhe abgeben, entscheidet der Zufalls wessen Nachfrage weiter oben gelistet ist und damit auch welcher Marktteilnehmer als Erstes eine Aktie kauft. Gleiches gilt für die Angebote.
+    </p>
+    <p>
+        <b>Kommt ein Handel zustanden?</b> Nun wird jeweils der Nachfragepreis mit dem Angebotspreis verglichen. Ist die Nachfrage höher als das Angebot wird gehandelt.
+        In der ersten Zeile sind Sie bereit die Aktie für 6,00 ECU zu verkaufen. Marktteilnehmer 4 ist bereit diese für 2,00 ECU zu verkaufen. In diesem Fall wird gehandelt und Marktteilnehmer 4 verkauft eine Aktie an Sie. Auch die Nachfrage von Marktteilnehmer 3 in Höhe von 4,50 ECU liegt über dem Angebot von Marktteilnehmer 6, der die Aktie für 4,00 ECU verkaufen möchte. In den anderen Fällen wird nicht gehandelt. Ob ein Handel für Sie zustande gekommen ist oder nicht, sehen Sie auch unter den <b>Handelsinformationen</b>.
+    </p>
+    <p>
+        <b>Wie hoch ist der Marktpreis zu dem alle Transaktionen durchgeführt werden?</b> Bei der Ermittlung des aktuellen Marktpreises werden lediglich die Preise berücksichtigt, bei dem ein Handel stattfindet.
+        In diesem Fall sind es das Angebot und die Nachfrage in den ersten beiden Zeilen. Für die Berechnung des Marktpreises wird nur auf die unterste der zuvor ermittelten Zeilen geschaut. In diesem Beispiel als dem Handel zwischen Marktteilnehmer 3 und 6.
+        Der Marktpreis ist der <b>Mittelwert des Kauf- und Verkaufspreises</b> dieser Zeile.
+        In diesem Beispiel berechnet sich der Marktpreis durch den Mittelwert aus dem Nachfragepreis von Marktteilnehmer 3 (4,50 ECU) und aus dem Angebotspreis (4,00 ECU) von Marktteilnehmer 6. Der Marktpreis ist folglich 4,25 ECU, zu welchem alle Aktien gehandelt werden. Dies bedeutet, auch der Handel zwischen Ihnen und dem Marktteilnehmer 4 wird zu diesem Preis durchgeführt.
+    </p>
+
+    <h3>{% trans 'Ihr Vermögen' %}</h3>
+        <p>
+            <b>Höhe der Dividenden.</b> Unter der Gewinn- und Verlustrechnung der beiden Unternehmen sehen Sie die Höhe der Dividende eines Unternehmens für die aktuelle Periode.
+        </p>
+
+        <p>
+            <b>Ihr Vermögen in dieser Periode.</b> Außerdem sehen Sie eine Übersicht ihres Vermögens und Ihres Portfolios.
+            Zum einen wird Ihnen angezeigt, zu welchem Preis Sie eine Aktie ggf. erworben und/oder verkauft haben.
+            Außerdem sehen Sie wie viele Aktien Sie jeweils von einem Unternehmen in Ihrem Portfolio und welche Dividendenzahlungen Sie dafür erhalten haben.
+            Am Ende sehen Sie ihr aktuelles Vermögen.
+        </p>
+
+
+
+
+{% endblock %}
+
+

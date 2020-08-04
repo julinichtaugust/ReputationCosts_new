@@ -1,0 +1,42 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block scripts %}
+<script>
+    var errorExists
+    {% if form.errors %}
+    errorExists = true;
+    {% endif %}
+</script>
+
+    <script>
+        errors = document.getElementsByClassName("otree-form-errors alert alert-danger").item(0)
+        if (errors != null) {
+            errors.innerHTML= "{% trans 'Mindestens eine Verständnisfrage wurde falsch beantwortet. <br> Bitte lesen Sie sich die Instruktionen erneut durch und überprüfen anschließend Ihre Antwort(en)!' %} "
+        }else{
+            console.log(errors)
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info" role="alert">
+        <p>
+            {% blocktrans trimmed %}
+                Bevor die Trainings-Sequenz beginnt, möchten wir Sie bitten, die folgenden Fragen zu beantworten.
+                Bei Verständnisfragen heben Sie bitte die Hand. Wir helfen Ihnen dann weiter. Sie können sich alternativ auch jederzeit die Instruktionen erneut anschauen.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+
+    <br>
+    {% formfield player.train_question1 %}
+
+
+
+
+{% endblock %}
+
+
