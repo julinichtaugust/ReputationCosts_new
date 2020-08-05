@@ -21,8 +21,6 @@ Handelsphase - Periode {{ subsession.round_number }}
 
 {% block content %}
 
-{% if player.rand == 1 %}
-
     <div class="container-fluid">
         <div class="row toprow">
             <div class="col-md-4">
@@ -35,7 +33,11 @@ Handelsphase - Periode {{ subsession.round_number }}
                                         <th>Letzter Marktpreis A-Unternehmen </th>
                                     </tr>
                                     <tr style="background: whitesmoke; font-size:10pt;">
+                                        {% if player.rand == 1 %}
                                         <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
+                                        {% else %}
+                                        <td style="text-align:center; font-size:10pt;" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
+                                        {% endif %}
                                     </tr>
                                 </table>
                             </p>
@@ -71,7 +73,7 @@ Handelsphase - Periode {{ subsession.round_number }}
                                         <td style="text-align:center" width="175px">Anzahl A-Aktien</td> <td style="text-align:center" width="175px">Anzahl B-Aktien</td>
                                     </tr>
                                     <tr style="background: whitesmoke; font-size:10pt;">
-                                        <td style="text-align:center" width="175px">{{ player.anzahlA }}</td> <td style="text-align:center" width="175">{{ player.anzahlB }}</td>
+                                        <td style="text-align:center" width="175px">{% if player.rand == 1 %} {{ player.anzahlA }} {% else %} {{ player.anzahlB }} {% endif %}</td> <td style="text-align:center" width="175">{% if player.rand == 1 %} {{ player.anzahlB }} {% else %} {{ player.anzahlA }} {% endif %}</td>
                                     </tr>
                                 </table>
                             </p>
@@ -97,10 +99,18 @@ Handelsphase - Periode {{ subsession.round_number }}
                                                 </h4>
                                                 <table border="0" cellpadding="1" cellspacing="1">
                                                     <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.verkaufA label="Verkauf A:" %}</td>
+                                                        {% if player.rand == 1 %}
+                                                            <td>{% formfield player.verkaufA label="Verkauf A:" %}</td>
+                                                        {% else %}
+                                                            <td>{% formfield player.verkaufB label="Verkauf A:" %}</td>
+                                                        {% endif %}
                                                     </tr>
                                                     <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.kaufA label="Kauf A:"%}</td>
+                                                        {% if player.rand == 1 %}
+                                                            <td>{% formfield player.kaufA label="Kauf A:" %}</td>
+                                                        {% else %}
+                                                            <td>{% formfield player.kaufB label="Kauf A:" %}</td>
+                                                        {% endif %}
                                                     </tr>
                                                 </table>
                                             </div>
@@ -115,10 +125,18 @@ Handelsphase - Periode {{ subsession.round_number }}
                                                 </h4>
                                                 <table border="0" cellpadding="1" cellspacing="1">
                                                     <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.verkaufB  label="Verkauf B:"%}</td>
+                                                        {% if player.rand == 1 %}
+                                                            <td>{% formfield player.verkaufB label="Verkauf B:" %}</td>
+                                                        {% else %}
+                                                            <td>{% formfield player.verkaufA label="Verkauf B:" %}</td>
+                                                        {% endif %}
                                                     </tr>
                                                     <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.kaufB label="Kauf B:"%}</td>
+                                                        {% if player.rand == 1 %}
+                                                            <td>{% formfield player.kaufB label="Kauf B:" %}</td>
+                                                        {% else %}
+                                                            <td>{% formfield player.kaufA label="Kauf B:" %}</td>
+                                                        {% endif %}
                                                     </tr>
                                                 </table>
                                             </div>
@@ -138,14 +156,17 @@ Handelsphase - Periode {{ subsession.round_number }}
                     <div class="card-body" style="height: 816px;">
                         {% include 'RepCostExperiment/comp_template/B.html' %}
                             <br>
-                            <br>
                                 <p>
                                     <table align="center" style="width: 378px">
                                         <tr style="font-size:10pt;">
                                             <th>Letzter Marktpreis B-Unternehmen</th>
                                         </tr>
                                         <tr style="background: whitesmoke; font-size:10pt;">
+                                            {% if player.rand == 1 %}
                                             <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
+                                            {% else %}
+                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
+                                            {% endif %}
                                         </tr>
                                     </table>
                                 </p>
@@ -155,148 +176,6 @@ Handelsphase - Periode {{ subsession.round_number }}
             </div>
         </div>
     </div>
-{% else %}
-
-    <div class="container-fluid">
-        <div class="row toprow">
-            <div class="col-md-4">
-                <div class="card my-0">
-                    <div class="card-body" style="height: 816px;">
-                        {% include 'RepCostExperiment/comp_template/A.html' %}
-                            <br>
-                            <br>
-                                <p>
-                                    <table align="center" style="width: 378px">
-                                        <tr style="font-size:10pt;">
-                                            <th>Letzter Marktpreis A-Unternehmen</th>
-                                        </tr>
-                                        <tr style="background: whitesmoke; font-size:10pt;">
-                                            <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
-                                        </tr>
-                                    </table>
-                                </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-4">
-                <div class="card my-0" >
-                    <div class="card-body"  style="height: 276px">
-                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
-                           Informationen
-                        </h4>
-                        <div id="Info" style=" float:left;">
-                            <p>
-                                <table align="center" style="width: 378px" >
-                                    <tr style="font-size:10pt;">
-                                        <th>Ihr Vermögen </th>
-                                    </tr>
-                                    <tr style="font-size:10pt;">
-                                        <td style="text-align:center" width="350px">{{ player.endowment }}</td>
-                                    </tr>
-                                </table>
-                            </p>
-
-                            <p>
-                                <table align="center" style="width: 378px" >
-                                    <tr style="font-size:10pt;">
-                                        <th colspan="2">Ihr Portfolio </th>
-                                    </tr>
-                                    <tr style="font-size:10pt;">
-                                        <td style="text-align:center" width="175px">Anzahl A-Aktien</td> <td style="text-align:center" width="175px">Anzahl B-Aktien</td>
-                                    </tr>
-                                    <tr style="background: whitesmoke; font-size:10pt;">
-                                        <td style="text-align:center" width="175px">{{ player.anzahlB }}</td> <td style="text-align:center" width="175">{{ player.anzahlA }}</td>
-                                    </tr>
-                                </table>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card my-0" style="top: 20px; height: 520px" >
-                    <div class="card-body"  style="height: 500px">
-                        <h4 class="card-title" align="center" style="margin-bottom: .0rem">
-                               Entscheidung
-                        </h4>
-                        <div id="Info2" style=" float:left;">
-                            <p align="center">
-                                Geben Sie nun die Verkaufs- und Kaufspreise in die untenliegenden Felder ein.
-                            </p>
-                                <div id="main" style="margin-left: -10px;">
-                                    <div id="spaltelinks">
-                                        <div class="card my-4" >
-                                            <div class="card-body" style="height: 250px;" >
-                                                <h4 class="card-title">
-                                                    Handelsplatz A
-                                                </h4>
-                                                <table border="0" cellpadding="1" cellspacing="1">
-                                                    <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.verkaufB label="Verkauf A:" %}</td>
-                                                    </tr>
-                                                    <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.kaufB label="Kauf A:"%}</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="spalterechts">
-                                        <div class="card my-4">
-                                            <div class="card-body" style="height: 250px;">
-                                                <h4 class="card-title">
-                                                    Handelsplatz B
-                                                </h4>
-                                                <table border="0" cellpadding="1" cellspacing="1">
-                                                    <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.verkaufA  label="Verkauf B:"%}</td>
-                                                    </tr>
-                                                    <tr style="font-size:10pt;">
-                                                        <td>{% formfield player.kaufA label="Kauf B:"%}</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                        </div>
-                    </div>
-
-
-                    {% next_button %}
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="card my-0">
-                    <div class="card-body" style="height: 816px;">
-                        {% include 'RepCostExperiment/comp_template/B.html' %}
-
-                            <p>
-                                <table align="center" style="width: 378px" >
-                                    <tr style="font-size:10pt;">
-                                        <th>Letzter Marktpreis B-Unternehmen </th>
-                                    </tr>
-                                    <tr style="background: whitesmoke; font-size:10pt;">
-                                        <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
-                                    </tr>
-                                </table>
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-{% endif %}
 <br>
 <div class="container-fluid">
             <div class="col-md-12">

@@ -320,6 +320,7 @@ class Group(BaseGroup):
             p.gesdiviB = p.anzahlB * self.dividendeB
 
 class Player(BasePlayer):
+
     try_verkauf = models.CurrencyField(blank=True)
     try_kauf = models.CurrencyField(blank=True)
     try_endowment = models.CurrencyField(initial=100)
@@ -352,6 +353,13 @@ class Player(BasePlayer):
     rank_kaufB = models.IntegerField()
     gesdiviB = models.CurrencyField()
     treatment = models.StringField()
+
+    seat_number = models.IntegerField(
+        min=0,
+        max=18,
+        label=("Bitte geben Sie Ihre Sitzplatznummer ein"),
+        blank=False,
+    )
 
     gender = models.IntegerField(
         label=(("Sind Sie weiblich, männlich oder divers?")),
@@ -421,9 +429,9 @@ class Player(BasePlayer):
         verbose_name=(
             "Frage 4: Wie viele Teilnehmer (mit Ihnen) handeln auf dem Markt?"),
         initial = 1,
-        choices=[[0, ('2')],
-                 [1, ('3')],
-                 [2, ('4')], ],
+        choices=[[0, ('5')],
+                 [1, ('6')],
+                 [2, ('7')], ],
         widget=widgets.RadioSelect,
     )
     comprehension_question5 = models.IntegerField(
@@ -648,6 +656,11 @@ class Player(BasePlayer):
         self.try_dividende = c(random.choice(Constants.try_divi))
         self.try_gesdivi = self.try_anzahl * self.try_dividende
         return self.try_dividende
+
+    def try_vermogen(self):
+
+        self.try_endowment = self.try_endowment + self.try_gesdivi
+        return self.try_endowment
 
 
 

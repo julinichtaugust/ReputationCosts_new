@@ -22,7 +22,7 @@ class questions_pre(Page):
 
 
     def get_form_fields(self):
-        return ['gender', 'year_of_birth', 'risk']
+        return ['seat_number']
 
     def is_displayed(self):
         self.participant.vars['year_of_birth'] = self.player.year_of_birth
@@ -191,6 +191,7 @@ class Try2(Page):
                 'try_marktpreis_rech': self.player.try_marktpreis_rech,
                 'try_handel': self.player.try_handel,
                 'try_ausfuhrung': self.player.try_ausfuhrung,
+                'try_vermogen': self.player.try_vermogen,
             }
 
 ########################################################################################################

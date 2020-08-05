@@ -11,13 +11,17 @@
         {% endblocktrans %}
      </p>
     <center>
-        <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
+        {% if player.rand == 1 %}
+            <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
+        {% else %}
+            <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
+        {% endif %}
     </center>
 
     <h3>{% trans 'Kauf und Verkauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
-        Wie in der Trainings-Sequenz können Sie durch die Eingabe in die Felder Kauf und Verkauf Aktien handeln.
+        Wie in der Trainings-Sequenz können Sie durch die Eingabe in die Felder <b>Kauf</b> und <b>Verkauf</b> Aktien handeln.
         {% endblocktrans %}
 
     </p>

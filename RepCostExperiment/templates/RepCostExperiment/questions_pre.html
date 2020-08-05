@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block title %}
-    {% trans 'Fragen zu Ihrer Person' %}
+    {% trans 'Sitzplatznummer' %}
 {% endblock %}
 
 {% block content %}
@@ -20,40 +20,10 @@
     }
 </style>
 -->
-    <div class="alert alert-info" role="alert" style="text-align: center">
-        <p>
-            {% trans "Wir möchten Sie bitten, die folgenden Fragen zu beantworten." %}
-        </p>
-    </div>
-    <br>
-    <h3>{% trans 'Frage' %}</h3>
-    {% formfield player.gender %}
-    <br>
-    <h3>{% trans 'Frage' %}</h3>
-    {% formfield player.year_of_birth %}
-    <br>
-     <!-- risk -->
-    <h3>{% trans 'Frage' %}</h3>
-    {{ form.risk.label }}
-    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
-        <tbody>
-            <tr>
-                <td width="30%" style="text-align: right">
-                    {% trans 'gar nicht risikobereit' %}
-                </td>
-                {% for choice in form.risk %}
-                    <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
-                {% endfor %}
-                <td width="30%">
-                    {% trans 'sehr risikobereit' %}
-                </td>
-            </tr>
 
-        </tbody>
-    </table>
-    <div> {{ form.risk.errors }}</div>
-    <br>
-
-
+<center>
+    {% formfield player.seat_number %}
+</center>
+<br>
 {% next_button %}
 {% endblock %}

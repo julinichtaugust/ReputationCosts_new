@@ -96,8 +96,10 @@
 
         {% include 'RepCostExperiment/content/dividend.html' %}
 
-
-        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
+        <div style="text-align: center">
+            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
+            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">{% trans 'Weiter' %}</button>
+        </div>
     </div>
 
 <!-- Income phase -->
