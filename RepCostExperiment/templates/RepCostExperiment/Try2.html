@@ -160,10 +160,10 @@ Trainings-Sequenz - Dividendenphase
                                     <th width="350px" colspan="1">Aktueller Marktpreis: {% if player.try_marktpreis == None %}Kein Handel{% else %}{{ player.try_marktpreis }} ECU{% endif %} </th>
                                 </tr>
                                 <tr style="font-size:10pt;">
-                                    <td style="text-align:center" width="175px">{% if player.try_is_trade_verkauf %}<div class="alert alert-success">X-Aktie verkauft für {{ player.try_marktpreis }} ECU </div>{% else %}<div class="alert alert-warning">Keine X-Aktie verkauft </div>{% endif %}</td>
+                                    <td style="text-align:center" width="175px">{% if player.try_is_trade_verkauf %}<div class="alert alert-success">X-Aktie verkauft für {{ player.try_marktpreis }} ECU </div>{% else %}<div class="alert alert-warning">Sie haben keine X-Aktie verkauft </div>{% endif %}</td>
                                 </tr>
                                 <tr style="font-size:10pt;">
-                                    <td style="text-align:center" width="175px">{% if player.try_is_trade_kauf %}<div class="alert alert-success">X-Aktie gekauft für {{ player.try_marktpreis }} ECU </div>{% else %}<div class="alert alert-warning">Keine X-Aktie gekauft </div>{% endif %}</td>
+                                    <td style="text-align:center" width="175px">{% if player.try_is_trade_kauf %}<div class="alert alert-success">X-Aktie gekauft für {{ player.try_marktpreis }} ECU </div>{% else %}<div class="alert alert-warning">Sie haben keine X-Aktie gekauft </div>{% endif %}</td>
                                 </tr>
                             </table>
                         </p>

@@ -587,12 +587,12 @@ class Player(BasePlayer):
         return self.try_daten_kauf
 
     def try_verkauf_liste_h(self):
-        self.try_verkauf_liste_h = [self.try_verkauf, 3, 2, 5, 2, 1]
+        self.try_verkauf_liste_h = [self.try_verkauf, 3, 2.5, 5, 2, 1]
         self.try_verkauf_liste_h.sort()
         return self.try_verkauf_liste_h
 
     def try_kauf_liste_h(self):
-        self.try_kauf_liste_h = [self.try_kauf, 3, 2, 5, 2, 1]
+        self.try_kauf_liste_h = [self.try_kauf, 3, 2, 5, 2.5, 1]
         self.try_kauf_liste_h.sort(reverse=True)
         return self.try_kauf_liste_h
 
@@ -604,18 +604,17 @@ class Player(BasePlayer):
                 self.try_clearing_rank = i
             else:
                 pass
-        print(self.try_clearing_rank)
 
     def try_rank_verkauf_player(self):
         self.try_rank_verkauf_player = (next((i for i, item in enumerate(self.try_daten_verkauf) if item["SPIELER"] == 1), None))+1
-        print(self.try_daten_verkauf)
-        print(self.try_rank_verkauf_player)
+        #print(self.try_daten_verkauf)
+        #print(self.try_rank_verkauf_player)
         return self.try_rank_verkauf_player
 
     def try_rank_kauf_player(self):
         self.try_rank_kauf_player = (next((i for i, item in enumerate(self.try_daten_kauf) if item["SPIELER"] == 1), None))+1
-        print(self.try_daten_kauf)
-        print(self.try_rank_kauf_player)
+        #print(self.try_daten_kauf)
+        #print(self.try_rank_kauf_player)
         return self.try_rank_kauf_player
 
     def try_marktpreis_rech(self):
@@ -623,8 +622,13 @@ class Player(BasePlayer):
             a = i-1
             if self.try_clearing_rank == i:
                 self.try_marktpreis = ((self.try_kauf_liste_h[a] + self.try_verkauf_liste_h[a])/2)
+                print(self.try_clearing_rank)
+                print(self.try_kauf_liste)
+                print(self.try_kauf_liste_h)
+                print(self.try_marktpreis)
             else:
                 pass
+
 
     def try_handel(self):
         if self.try_rank_kauf_player <= self.try_clearing_rank:

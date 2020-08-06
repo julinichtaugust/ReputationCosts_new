@@ -53,8 +53,9 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         </tr>
                                     </table>
 
-
+                            <p></p>
                             <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
+                            </p>
                             <p>
                                 <table border="0" cellpadding="1" cellspacing="1">
                                     <colgroup>
@@ -62,7 +63,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         <col width="80%" />
                                     </colgroup>
                                     <tr style="font-size:10pt;">
-                                        <td>15.01.2019</td>
+                                        <td valign="top">15.01.2019</td>
                                         <td>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
                                     </tr>
                                     <tr style="font-size:10pt;">
@@ -243,8 +244,9 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         </tr>
                                     </table>
 
-
+                            <p>
                             <p style="font-weight: bold;color: #007bff; text-underline: #007bff; font-size:12.0pt; text-align: center"><u>News und Analysen</u></p>
+                            </p>
                             <p>
                                 <table border="0" cellpadding="1" cellspacing="1">
                                     <colgroup>
@@ -252,7 +254,7 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                         <col width="80%" />
                                     </colgroup>
                                     <tr style="font-size:10pt;">
-                                        <td>15.01.2019</td>
+                                        <td valign="top">15.01.2019</td>
                                         <td>B-Unternehmen mit Gewinnzuwachs – Anleger erfreut</td>
                                     </tr>
                                     <tr style="font-size:10pt;">
@@ -307,16 +309,16 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                 </tr>
                                 <tr style="font-size:10pt;">
                                     {% if player.rand == 1 %}
-                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufA %}<div class="alert alert-success">A-Aktie verkauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Keine A-Aktie verkauft </div>{% endif %}</td>
+                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufA %}<div class="alert alert-success">A-Aktie verkauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Sie haben keine A-Aktie verkauft </div>{% endif %}</td>
                                     {% else %}
-                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufB %}<div class="alert alert-success">A-Aktie verkauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Keine A-Aktie verkauft </div>{% endif %}</td>
+                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufB %}<div class="alert alert-success">A-Aktie verkauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Sie haben keine A-Aktie verkauft </div>{% endif %}</td>
                                     {% endif %}
                                 </tr>
                                 <tr style="font-size:10pt;">
                                     {% if player.rand == 1 %}
-                                       <td style="text-align:center" width="175px">{% if player.is_trade_kaufA %}<div class="alert alert-success">A-Aktie gekauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Keine A-Aktie gekauft </div>{% endif %}</td>
+                                       <td style="text-align:center" width="175px">{% if player.is_trade_kaufA %}<div class="alert alert-success">A-Aktie gekauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Sie haben keine A-Aktie gekauft </div>{% endif %}</td>
                                     {% else %}
-                                        <td style="text-align:center" width="175px">{% if player.is_trade_kaufB %}<div class="alert alert-success">A-Aktie gekauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Keine A-Aktie gekauft </div>{% endif %}</td>
+                                        <td style="text-align:center" width="175px">{% if player.is_trade_kaufB %}<div class="alert alert-success">A-Aktie gekauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Sie haben keine A-Aktie gekauft </div>{% endif %}</td>
                                     {% endif %}
                                 </tr>
                             </table>
@@ -502,16 +504,16 @@ Dividendenphase - Periode {{ subsession.round_number }}
                                 </tr>
                                 <tr style="font-size:10pt;">
                                     {% if player.rand == 1 %}
-                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufB %}<div class="alert alert-success">B-Aktie verkauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Keine B-Aktie verkauft </div>{% endif %}</td>
+                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufB %}<div class="alert alert-success">B-Aktie verkauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Sie haben keine B-Aktie verkauft </div>{% endif %}</td>
                                     {% else %}
-                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufA %}<div class="alert alert-success">B-Aktie verkauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Keine B-Aktie verkauft </div>{% endif %}</td>
+                                        <td style="text-align:center" width="175px">{% if player.is_trade_verkaufA %}<div class="alert alert-success">B-Aktie verkauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Sie haben keine B-Aktie verkauft </div>{% endif %}</td>
                                     {% endif %}
                                 </tr>
                                 <tr style="font-size:10pt;">
                                     {% if player.rand == 1 %}
-                                       <td style="text-align:center" width="175px">{% if player.is_trade_kaufB %}<div class="alert alert-success">B-Aktie gekauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Keine B-Aktie gekauft </div>{% endif %}</td>
+                                       <td style="text-align:center" width="175px">{% if player.is_trade_kaufB %}<div class="alert alert-success">B-Aktie gekauft für {{ marktpreisB }} </div>{% else %}<div class="alert alert-warning">Sie haben keine B-Aktie gekauft </div>{% endif %}</td>
                                     {% else %}
-                                        <td style="text-align:center" width="175px">{% if player.is_trade_kaufA %}<div class="alert alert-success">B-Aktie gekauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Keine B-Aktie gekauft </div>{% endif %}</td>
+                                        <td style="text-align:center" width="175px">{% if player.is_trade_kaufA %}<div class="alert alert-success">B-Aktie gekauft für {{ marktpreisA }} </div>{% else %}<div class="alert alert-warning">Sie haben keine B-Aktie gekauft </div>{% endif %}</td>
                                     {% endif %}
                                 </tr>
                             </table>

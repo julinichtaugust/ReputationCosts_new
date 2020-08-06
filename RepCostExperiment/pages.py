@@ -34,19 +34,19 @@ class questions_pre(Page):
 class Instruction_Training(Page):
     form_model = 'player'
 
-    def get_form_fields(self):
-        if self.player.rand == 1:
-            return ['train_question1']
-        else:
-            return ['train_question1']
+    #def get_form_fields(self):
+     #   if self.player.rand == 1:
+     #       return ['train_question1']
+     #   else:
+     #       return ['train_question1']
 
     def is_displayed(self):
         return self.round_number == 1
 
-    def train_question1_error_message(self, value):
-        if value != 1:
-            self.player.train_wrong_answer1 += 1
-            return trans_question_incorrectly(1)
+    #def train_question1_error_message(self, value):
+    #    if value != 1:
+    #        self.player.train_wrong_answer1 += 1
+    #        return trans_question_incorrectly(1)
 
 class Instruction_Page(Page):
     form_model = 'player'
@@ -210,12 +210,12 @@ class MyPage2(Page):
     form_model = 'player'
     form_fields = ['verkaufA', 'kaufA', 'verkaufB', 'kaufB']
 
-    #def get_timeout_seconds(self):
-    #    if self.round_number <= 3:
-    #        second = 120
-    #    else:
-    #        second = 60
-    #    return second
+    def get_timeout_seconds(self):
+        if self.round_number <= 3:
+            second = 120
+        else:
+            second = 60
+        return second
 
     def after_all_players_arrive(self):
         if self.round_number >= 2:
@@ -295,12 +295,12 @@ class ResultsWaitPage(WaitPage):
 class Results2(Page):
 
 
-    #def get_timeout_seconds(self):
-    #    if self.round_number <= 3:
-    #        second = 120
-    #    else:
-    #        second = 60
-    #    return second
+    def get_timeout_seconds(self):
+        if self.round_number <= 3:
+            second = 120
+        else:
+            second = 60
+        return second
 
     def vars_for_template(self):
             return {

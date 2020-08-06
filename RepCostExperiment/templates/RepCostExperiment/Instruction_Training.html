@@ -54,11 +54,11 @@
     <li class="nav-item">
         <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
     </li>
-
+<!--
     <li class="nav-item">
         <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
     </li>
-
+-->
 </ul>
 
 
@@ -136,29 +136,11 @@
 
         <div style="text-align: center">
             <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
-            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">{% trans 'Weiter' %}</button>
+            <button class="next btn btn-primary" type="submit">{% trans 'Fertig' %}</button>
         </div>
     </div>
 
 
-<!-- Comprehension test -->
-    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
-
-        <div class="card-header bg-transparent mainheader" >
-            <h2 class="card-title">
-                {% trans 'Verständnistest' %}
-            </h2>
-
-        </div>
-        <br>
-
-        {% include 'RepCostExperiment/content/train_comprehension_test.html' %}
-
-        <div style="text-align: center">
-            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
-            <button class="next btn btn-primary" type="submit">{% trans 'Überprüfen' %}</button>
-        </div>
-    </div>
 
 </div>
 
