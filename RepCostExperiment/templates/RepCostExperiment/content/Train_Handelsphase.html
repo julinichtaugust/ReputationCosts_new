@@ -12,22 +12,24 @@
     <p>
         {% blocktrans trimmed %}
             In jeder Periode haben Sie in der Handelsphase die Möglichkeit Aktien von anderen Marktteilnehmern zu kaufen als auch an andere Marktteilnehmer zu verkaufen.
+            In der Trainings-Sequenz gibt es lediglich das X-Unternehmen.
         {% endblocktrans %}
     </p>
     <p>
         {% blocktrans trimmed %}
-            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen auf dem Bildschirm Informationen zu den Unternehmen. Außerdem erhalten Sie in jeder Handelsphase Informationen zu Ihrem aktuellen Vermögen sowie zu Ihrem Portfolio.
+            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen zum einen Informationen zum X-Unternehmen (in der Trainings-Sequenz sind diese zum Teil noch leer) und zum anderen Informationen zu Ihrem aktuellen Vermögen sowie zu Ihrem Portfolio.
         {% endblocktrans %}
      </p>
-    <center>
-         <img src="{% static "ReputationCosts/Screenshots/Train_Handel.png" %}" width="75%"/>
-    </center>
-
+    <p>
+        <center>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Handel.png" %}" width="75%"/>
+        </center>
+    </p>
     <h3>{% trans 'Kauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
         Um Aktien von anderen Marktteilnehmer zu kaufen, geben Sie in das Feld <b>Kauf</b> den Maximalpreis ein, zum dem Sie bereit sind, die Aktie zu kaufen.
-        Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei.
+        Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei. Achten Sie darauf, dass der Kaufpreis Ihr Vermögen nicht übersteigen darf.
         {% endblocktrans %}
 
     </p>

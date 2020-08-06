@@ -10,14 +10,15 @@
             Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen auf der linken und rechten Seite jeweils erneut die Informationen zu den Unternehmen. In der Mitte erhalten Sie in jeder Handelsphase Informationen zu Ihrem aktuellen Vermögen sowie zu Ihrem Portfolio.
         {% endblocktrans %}
      </p>
-    <center>
-        {% if player.rand == 1 %}
-            <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
-        {% else %}
-            <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
-        {% endif %}
-    </center>
-
+    <p></p>
+        <center>
+            {% if player.rand == 1 %}
+                <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
+            {% else %}
+                <img src="{% static "ReputationCosts/Screenshots/Handel.png" %}" width="100%"/>
+            {% endif %}
+        </center>
+    </p>
     <h3>{% trans 'Kauf und Verkauf von Aktien' %}</h3>
     <p>
         {% blocktrans trimmed %}
