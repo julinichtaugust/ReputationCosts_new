@@ -25,7 +25,7 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    num_rounds = 3 #eine davon ist Proberunde
+    num_rounds = 3
 
     endowment = 100
     try_endowmwnt = 100
@@ -44,6 +44,7 @@ class Constants(BaseConstants):
     ETR_high = 30.6
     Steuern_low = 2.5
     Steuern_high = 10.7
+    fix = 3
 
 
 
@@ -662,7 +663,6 @@ class Player(BasePlayer):
         return self.try_dividende
 
     def try_vermogen(self):
-
         self.try_endowment = self.try_endowment + self.try_gesdivi
         return self.try_endowment
 

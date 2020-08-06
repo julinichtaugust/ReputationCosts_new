@@ -325,6 +325,7 @@ class Results2(Page):
                 'dividendeB': self.group.dividendeB,
             }
 
+
 class Ende(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
