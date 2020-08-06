@@ -25,7 +25,6 @@ class questions_pre(Page):
         return ['seat_number']
 
     def is_displayed(self):
-        self.participant.vars['year_of_birth'] = self.player.year_of_birth
         return self.round_number == 1
 
     def risk_error_message(self, value):
@@ -172,6 +171,8 @@ class Try1(Page):
 
 class Try2(Page):
 
+    def is_displayed(self):
+        return self.round_number == 1
 
     def vars_for_template(self):
             return {
@@ -319,6 +320,9 @@ class Results2(Page):
                 'divB': self.group.dividendeB,
                 'gesdiviB': self.player.gesdiviB,
                 'datenB_verkauf_liste': self.group.datenB_verkauf_liste,
+                'dividende_rech': self.group.dividende_rech,
+                'dividendeA': self.group.dividendeA,
+                'dividendeB': self.group.dividendeB,
             }
 
 class Ende(Page):

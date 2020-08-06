@@ -25,7 +25,7 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    num_rounds = 13 #eine davon ist Proberunde
+    num_rounds = 3 #eine davon ist Proberunde
 
     endowment = 100
     try_endowmwnt = 100
@@ -53,8 +53,8 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         # randomize to treatments
         for player in self.get_players():
-            #player.rand = random.choice([1, 2])
-            player.rand = 1
+            player.rand = random.choice([1, 2])
+            #player.rand = 1
             #print('set player.rand to', player.rand)
 
 
@@ -530,7 +530,7 @@ class Player(BasePlayer):
             },
             {
                 'SPIELER': 5,
-                'ANGEBOT': c(2)
+                'ANGEBOT': c(2.5)
             },
             {
                 'SPIELER': 6,
@@ -560,7 +560,7 @@ class Player(BasePlayer):
             },
             {
                 'SPIELER': 3,
-                'NACHFRAGE': c(2)
+                'NACHFRAGE': c(2.5)
             },
             {
                 'SPIELER': 4,
