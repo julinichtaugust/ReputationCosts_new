@@ -1,0 +1,254 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
+    <link href="{% static 'global/css/table.css' %}" rel="stylesheet"/>
+    <link href="{% static 'questionnaire/css/Counter.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'questionnaire/js/error.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    {% trans "Fragebogen - Teil" %} 2/4
+{% endblock %}
+
+{% block content %}
+<!-- kenntnis -->
+<h3>{% trans "Frage" %}</h3>
+{{ form.kenntnis.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Überhaupt keine Kenntnisse' %}
+            </td>
+            {% for choice in form.kenntnis %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Steuerexperte/ Steuerberater' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.kenntnis.errors }}</div>
+<br>
+
+<!-- geldanlagen -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.geldanlagen.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Überhaupt keine Kenntnisse' %}
+            </td>
+            {% for choice in form.geldanlagen %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Finanzexperte' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.geldanlagen.errors }}</div>
+<br>
+
+<!-- risiko -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.risiko.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Gar nicht risikobereit' %}
+            </td>
+            {% for choice in form.risiko %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Sehr risikobereit' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.risiko.errors }}</div>
+<br>
+
+<!-- schlupf -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.schlupf.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Unter gar keinen Umständen in Ordnung' %}
+            </td>
+            {% for choice in form.schlupf %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'In jedem Fall in Ordnung' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.schlupf.errors }}</div>
+<br>
+
+<!-- hinterziehen -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.hinterziehen.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Unter gar keinen Umständen in Ordnung' %}
+            </td>
+            {% for choice in form.hinterziehen %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'In jedem Fall in Ordnung' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.hinterziehen.errors }}</div>
+<br>
+
+<!-- leistungen -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.leistungen.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Staatliche Leistungen sind deutlich geringer als meine Steuerzahlungen' %}
+            </td>
+            {% for choice in form.leistungen %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Staatliche Leistungen sind deutlich höher als meine Steuerzahlungen' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.leistungen.errors }}</div>
+<br>
+
+<!-- sinnvoll -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.sinnvoll.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Trifft gar nicht zu' %}
+            </td>
+            {% for choice in form.sinnvoll %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Trifft voll und ganz zu' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.sinnvoll.errors }}</div>
+<br>
+
+
+<h3>{% trans 'Frage' %}</h3>
+{% formfield player.strafen %}
+<br>
+
+ <!-- taxmoral -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.taxmoral.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Das darf man unter keinen Umständen tun' %}
+            </td>
+            {% for choice in form.taxmoral %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Das ist in jedem Fall in Ordnung' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.taxmoral.errors }}</div>
+<br>
+
+
+ <!-- taxaversion -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.taxaversion.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'ganz unwichtig' %}
+            </td>
+            {% for choice in form.taxaversion %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'sehr wichtig' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.taxaversion.errors }}</div>
+<br>
+
+<h3>{% trans 'Frage' %}</h3>
+{% formfield player.taxaversion2 %}
+<br>
+<h3>{% trans 'Frage' %}</h3>
+{% blocktrans trimmed %}
+    <p>
+        Stellen Sie sich bitte vor, Sie erleiden in der Zukunft einen Verlust in Höhe von 1.000 €.
+        Jedoch bietet Ihnen jemand jetzt die Möglichkeit an, den Verlust in der Zukunft für Sie zu übernehmen.
+        Wie viel wären Sie jetzt maximal bereit zu zahlen, um den Verlust in Höhe von 1.000 € in Zukunft zu vermeiden?
+        Der Verlust tritt dabei entweder in 24 Stunden, in einem Jahr oder in zehn Jahren ein.
+    </p>
+    <p>
+        Geben Sie hier bitte für jede Situation Ihre maximale Zahlungsbereitschaft in Euro an, um den Verlust in Höhe von 1.000 € zu vermeiden:
+    </p>
+{% endblocktrans %}
+<p>
+    <table>
+        <tr style="background-color: white!important;">
+            <td width="20%" style="text-align: -webkit-center">{% formfield player.dread1 %}</td>
+            <td width="20%" style="text-align: -webkit-center">{% formfield player.dread2 %}</td>
+            <td width="20%" style="text-align: -webkit-center">{% formfield player.dread3 %}</td>
+        </tr>
+    </table>
+</p>
+
+<br>
+
+
+    {% next_button %}
+
+{% endblock %}

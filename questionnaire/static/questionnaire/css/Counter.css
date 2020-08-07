@@ -1,0 +1,13 @@
+body {
+  counter-reset: h3counter;
+}
+
+  h3::after {
+    content: "\0000a0" counter(h3counter)":" ;
+    counter-increment: h3counter;
+    font-size: large;
+  }
+
+  h3 {
+        font-size: larger;
+  }

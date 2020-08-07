@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
+    <link href="{% static 'global/css/table.css' %}" rel="stylesheet"/>
+    <link href="{% static 'questionnaire/css/Counter.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'questionnaire/js/error.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    {% trans 'Fragebogen - Teil' %} 1/4
+{% endblock %}
+
+{% block content %}
+<!--
+<style>
+    .otree-body {
+        max-width:1000px
+    }
+</style>
+-->
+    <div class="alert alert-info" role="alert" style="text-align: center">
+        <p>
+            {% trans "Wir möchten Sie nun bitten, den folgenden Fragebogen wahrheitsgemäß zu beantworten. Wenn keine der Antworten genau passt, wählen Sie bitte die Antwort, die am ehesten zutrifft. Die Antworten dienen zur Analyse Ihrer getroffenen Entscheidungen." %}
+        </p>
+        <p>
+            <b>{% trans 'Vielen Dank!' %}</b>
+        </p>
+    </div>
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.gender %}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.age %}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.abschluss %}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.fakultaet%}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.familie %}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.kinder %}
+    <br>
+    <h3>Frage</h3>
+    {% formfield player.income %}
+    <br>
+
+
+{% next_button %}
+{% endblock %}

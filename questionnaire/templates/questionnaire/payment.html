@@ -1,0 +1,65 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
+    <link href="{% static 'global/css/table.css' %}" rel="stylesheet"/>
+    <link href="{% static 'instructions/css/Counter.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    {% trans 'Vergütung' %}
+    <p><img style="display: block; text-align: center; margin: 0px auto; width: 900px;" src="{% static image_path12_payoff %}"></p>
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info" role="alert">
+        <p>
+            {% trans 'Damit ist die Studie zu Ende. Im Folgenden sehen Sie Ihre Vergütung und Ihren MTurk Code.' %}
+        </p>
+        <p>
+            <b>
+                {% trans 'Vielen Dank für die Teilnahme!' %}
+            </b>
+        </p>
+    </div>
+    <br>
+    <h3>{% trans 'Fixe Vergütung' %}</h3>
+    <p>
+        {% trans 'Sie erhalten eine fixe Vergütung von' %} {{ participation_fee }}.
+    </p>
+
+    <h3>{% trans 'Variable Vergütung' %}</h3>
+    <p>
+        {% blocktrans trimmed with paying_round_seq=paying_round_seq paying_sequence=paying_sequence payoff_random_period=payoff_random_period payoff_random_period_e=payoff_random_period_e %}
+            Der Zufallsgenerator hat Periode {{ paying_round_seq }} der Sequenz {{ paying_sequence }} für Ihre Vergütung bestimmt. In dieser Periode haben Sie {{ payoff_random_period }} verdient. Umgerechnet entspricht das {{ payoff_random_period_e }}.
+        {% endblocktrans %}
+    </p>
+    <h3>{% trans 'Zusätzliche Vergütung' %}</h3>
+    <p>
+        {% trans 'Sie erhalten weiterhin xxx aus der Aufgabe in dem Fragebogen.' %}
+    </p>
+
+    <h3>{% trans 'Gesamte Vergütung' %}</h3>
+    <p>
+        {% trans 'Ihre gesamte Vergütung beträgt' %} <b>{{ total_payoff }}</b>.
+    </p>
+
+    <h3>MTurk Code</h3>
+    <p>
+        {% trans 'Kehren Sie nun bitte zu Mechanical Turk zurück und geben Sie den folgenden Code ein:' %} steu2020.
+    </p>
+
+{% comment %}
+    <div class="alert alert-info" role="alert">
+        <h2>Vielen Dank</h2>
+        <p>... dass du dir die Zeit für das Experiment genommen hast. Das hilft mir sehr.</p>
+        <p>Bitte denke nochmal kurz an das Experiment zurück: War alles (von Anfang an) verständlich? Gab es irgendwelche Fehler? Wurde alles richtig und leserlich angezeigt? Ist dir sonst irgendetwas aufgefallen?</p>
+        <div style="text-align: -webkit-center;">{% formfield player.anmerkungen %}</div>
+    </div>
+
+
+{% endcomment %}
+    {% next_button %}
+{% endblock %}

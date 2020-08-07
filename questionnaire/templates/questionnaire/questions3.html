@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
+    <link href="{% static 'global/css/table.css' %}" rel="stylesheet"/>
+    <link href="{% static 'questionnaire/css/Counter.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'questionnaire/js/error.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    {% trans 'Fragebogen - Teil' %} 3/4
+    <p><img style="display: block; text-align: center; margin: 0px auto; width: 900px;" src="{% static image_path12_questionnaire %}"></p>
+{% endblock %}
+
+{% block content %}
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.crt_bat %}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.crt_widget %}
+    <br>
+    <h3>{% trans 'Frage' %}</h3>
+    {% formfield player.crt_lake %}
+    <br>
+
+    {% next_button %}
+
+
+
+{% endblock %}
