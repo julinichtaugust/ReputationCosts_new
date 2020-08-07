@@ -25,7 +25,7 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    num_rounds = 3
+    num_rounds = 1
 
     endowment = 100
     try_endowmwnt = 100
@@ -44,7 +44,7 @@ class Constants(BaseConstants):
     ETR_high = 30.6
     Steuern_low = 2.5
     Steuern_high = 10.7
-    fix = 3
+    fix = 3.00
 
 
 
@@ -665,6 +665,18 @@ class Player(BasePlayer):
     def try_vermogen(self):
         self.try_endowment = self.try_endowment + self.try_gesdivi
         return self.try_endowment
+
+    def endowment_euro(self):
+        self.endowment_euro = self.endowment.to_real_world_currency(self.session)
+        return self.endowment_euro
+
+    def part_fee(self):
+        self.part_fee = self.session.config['participation_fee']
+        return self.part_fee
+
+    def auszahlung_euro(self):
+        self.auszahlung_euro = self.session.config['participation_fee'] + self.endowment.to_real_world_currency(self.session)
+        return self.auszahlung_euro
 
 
 

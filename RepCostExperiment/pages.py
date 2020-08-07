@@ -334,6 +334,9 @@ class Ende(Page):
             'anzahlA': self.player.anzahlA,
             'anzahlB': self.player.anzahlB,
             'endowment': self.player.endowment,
+            'endowment_euro': self.player.endowment_euro,
+            'auszahlung_euro': self.player.auszahlung_euro,
+            'part_fee': self.player.part_fee,
         }
 
 
