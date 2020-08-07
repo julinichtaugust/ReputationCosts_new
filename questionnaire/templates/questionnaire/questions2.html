@@ -171,82 +171,319 @@
 <div> {{ form.sinnvoll.errors }}</div>
 <br>
 
+<h3>{% trans 'Frage' %}</h3>
+Von welchen Steuerplanungsstrategien haben Sie schon gehört?
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr >
+            <td></td>
+            <td>ja</td>
+            <td>nein</td>
+            <td>weiß nicht</td>
+        </tr>
+        <tr>
+            <td width="80%" style="text-align: left">
+                {{ form.hybrid.label }}
+            </td>
+            {% for choice in form.hybrid %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="80%" style="text-align: left">
+                {{ form.lizenz.label }}
+            </td>
+            {% for choice in form.lizenz %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="80%" style="text-align: left">
+                {{ form.privilegien.label }}
+            </td>
+            {% for choice in form.privilegien %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="80%" style="text-align: left">
+                {{ form.oase.label }}
+            </td>
+            {% for choice in form.oase %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="80%" style="text-align: left">
+                {{ form.treaty.label }}
+            </td>
+            {% for choice in form.treaty %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.hybrid.errors }}</div>
+<div> {{ form.lizenz.errors }}</div>
+<div> {{ form.privilegien.errors }}</div>
+<div> {{ form.oase.errors }}</div>
+<div> {{ form.treaty.errors }}</div>
+<br>
+
+<h3>{% trans 'Frage' %}</h3>
+Welche Medien nutzen Sie, um sich über wirtschaftspolitische Themen zu informieren? Geben Sie an, wie häufig Sie diese nutzen.
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr >
+            <td></td>
+            <td>Täglich</td>
+            <td>5-6 Mal pro Woche</td>
+            <td>2-4 Mal pro Woche</td>
+            <td>Einmal pro Woche</td>
+            <td>Einmal pro Monat</td>
+            <td>Nie</td>
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.handelsblatt.label }}
+            </td>
+            {% for choice in form.handelsblatt %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.bild.label }}
+            </td>
+            {% for choice in form.bild %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.spiegel.label }}
+            </td>
+            {% for choice in form.spiegel %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.welt.label }}
+            </td>
+            {% for choice in form.welt %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.zeit.label }}
+            </td>
+            {% for choice in form.zeit %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.focus.label }}
+            </td>
+            {% for choice in form.focus %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.mm.label }}
+            </td>
+            {% for choice in form.mm %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.regio.label }}
+            </td>
+            {% for choice in form.regio %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.sonsZ.label }}
+            </td>
+            {% for choice in form.sonsZ %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.handelsblatt.errors }}</div>
+<div> {{ form.bild.errors }}</div>
+<div> {{ form.spiegel.errors }}</div>
+<div> {{ form.welt.errors }}</div>
+<div> {{ form.zeit.errors }}</div>
+<div> {{ form.focus.errors }}</div>
+<div> {{ form.mm.errors }}</div>
+<div> {{ form.regio.errors }}</div>
+<div> {{ form.sonsZ.errors }}</div>
+<br>
+
+<h3>{% trans 'Frage' %}</h3>
+Stimmen Sie den folgenden Aussagen zu?
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr >
+            <td></td>
+            <td colspan="3">stimme überhaupt nicht zu ...</td>
+            <td colspan="3"></td>
+            <td colspan="3">... stimme voll und ganz zu</td>
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.sparen.label }}
+            </td>
+            {% for choice in form.sparen %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.verteilung.label }}
+            </td>
+            {% for choice in form.verteilung %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.umgebung_hint.label }}
+            </td>
+            {% for choice in form.umgebung_hint %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.umgebung_schl.label }}
+            </td>
+            {% for choice in form.umgebung_schl %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.akzeptanz_hint.label }}
+            </td>
+            {% for choice in form.akzeptanz_hint %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.akzeptanz_schl.label }}
+            </td>
+            {% for choice in form.akzeptanz_schl %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.sparen.errors }}</div>
+<div> {{ form.verteilung.errors }}</div>
+<div> {{ form.umgebung_hint.errors }}</div>
+<div> {{ form.umgebung_schl.errors }}</div>
+<div> {{ form.akzeptanz_hint.errors }}</div>
+<div> {{ form.akzeptanz_schl.errors }}</div>
+<br>
+
+<h3>{% trans 'Frage' %}</h3>
+Stimmen Sie den folgenden Aussagen über die Finanzämter zu?
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr >
+            <td></td>
+            <td colspan="3">stimme überhaupt nicht zu ...</td>
+            <td colspan="3"></td>
+            <td colspan="3">... stimme voll und ganz zu</td>
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.aufdeckung.label }}
+            </td>
+            {% for choice in form.aufdeckung %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.interpretation.label }}
+            </td>
+            {% for choice in form.interpretation %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.respekt.label }}
+            </td>
+            {% for choice in form.respekt %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td width="50%" style="text-align: left">
+                {{ form.fair.label }}
+            </td>
+            {% for choice in form.fair %}
+                <td width="50px" style="text-align: center; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.aufdeckung.errors }}</div>
+<div> {{ form.interpretation.errors }}</div>
+<div> {{ form.respekt.errors }}</div>
+<div> {{ form.fair.errors }}</div>
+<br>
+
+
+
+
 
 <h3>{% trans 'Frage' %}</h3>
 {% formfield player.strafen %}
 <br>
 
- <!-- taxmoral -->
 <h3>{% trans 'Frage' %}</h3>
-{{ form.taxmoral.label }}
+{% formfield player.aktien %}
+<br>
+
+<!-- politik -->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.politik.label }}
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
     <tbody>
         <tr>
             <td width="30%" style="text-align: right">
-                {% trans 'Das darf man unter keinen Umständen tun' %}
+                {% trans 'sehr weit links' %}
             </td>
-            {% for choice in form.taxmoral %}
+            {% for choice in form.politik %}
                 <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
             {% endfor %}
             <td width="30%">
-                {% trans 'Das ist in jedem Fall in Ordnung' %}
+                {% trans 'sehr weit rechts' %}
             </td>
         </tr>
 
     </tbody>
 </table>
-<div> {{ form.taxmoral.errors }}</div>
+<div> {{ form.politik.errors }}</div>
 <br>
 
-
- <!-- taxaversion -->
-<h3>{% trans 'Frage' %}</h3>
-{{ form.taxaversion.label }}
-<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
-    <tbody>
-        <tr>
-            <td width="30%" style="text-align: right">
-                {% trans 'ganz unwichtig' %}
-            </td>
-            {% for choice in form.taxaversion %}
-                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
-            {% endfor %}
-            <td width="30%">
-                {% trans 'sehr wichtig' %}
-            </td>
-        </tr>
-
-    </tbody>
-</table>
-<div> {{ form.taxaversion.errors }}</div>
-<br>
-
-<h3>{% trans 'Frage' %}</h3>
-{% formfield player.taxaversion2 %}
-<br>
-<h3>{% trans 'Frage' %}</h3>
-{% blocktrans trimmed %}
-    <p>
-        Stellen Sie sich bitte vor, Sie erleiden in der Zukunft einen Verlust in Höhe von 1.000 €.
-        Jedoch bietet Ihnen jemand jetzt die Möglichkeit an, den Verlust in der Zukunft für Sie zu übernehmen.
-        Wie viel wären Sie jetzt maximal bereit zu zahlen, um den Verlust in Höhe von 1.000 € in Zukunft zu vermeiden?
-        Der Verlust tritt dabei entweder in 24 Stunden, in einem Jahr oder in zehn Jahren ein.
-    </p>
-    <p>
-        Geben Sie hier bitte für jede Situation Ihre maximale Zahlungsbereitschaft in Euro an, um den Verlust in Höhe von 1.000 € zu vermeiden:
-    </p>
-{% endblocktrans %}
-<p>
-    <table>
-        <tr style="background-color: white!important;">
-            <td width="20%" style="text-align: -webkit-center">{% formfield player.dread1 %}</td>
-            <td width="20%" style="text-align: -webkit-center">{% formfield player.dread2 %}</td>
-            <td width="20%" style="text-align: -webkit-center">{% formfield player.dread3 %}</td>
-        </tr>
-    </table>
-</p>
-
-<br>
 
 
     {% next_button %}

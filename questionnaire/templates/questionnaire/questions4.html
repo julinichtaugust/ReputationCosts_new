@@ -13,24 +13,18 @@
 {% endblock %}
 
 {% block title %}
-    {% trans 'Fragebogen - Teil' %} 3/4
+    {% trans 'Fragebogen - Teil' %} 4/4
 {% endblock %}
 
 {% block content %}
-<h4>Stellen Sie sich vor, Sie sind Vorstandsmitglied eines multinationalen deutschen Unternehmens: </h4>
+<h4>Bitte erklären Sie Ihre Gedanken, warum Sie Aktien gekauft oder verkauft haben. Haben Sie die Aktien der beiden Unternehmen unterschiedlich behandelt, wenn ja erklären Sie bitte wie und warum. </h4>
     <h3>{% trans 'Frage' %}</h3>
-    {% formfield player.gründung %}
-    <br>
-    <h3>{% trans 'Frage' %}</h3>
-    {% formfield player.aufwand %}
-    <br>
-    <h3>{% trans 'Frage' %}</h3>
-    {% formfield player.doppelt %}
+    {% formfield player.erklaerung %}
     <br>
 
-<h4>Stellen Sie sich vor, Sie sind Geschäftsführer einer bolivianischen Gesellschaft. In Bolivien ist es seit November 2014 unter bestimmten Voraussetzungen legal, Kinder ab 10 Jahren zu beschäftigen. </h4>
+<h4>Bitte denken Sie nochmal kurz an das Experiment zurück: War alles (von Anfang an) verständlich? Gab es irgendwelche Fehler? Wurde alles richtig und leserlich angezeigt? Ist Ihnen sonst irgendetwas aufgefallen? </h4>
     <h3>{% trans 'Frage' %}</h3>
-    {% formfield player.kinderarbeit %}
+    {% formfield player.anmerkungen %}
     <br>
 
     {% next_button %}

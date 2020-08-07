@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'global/css/custom.css' %}" rel="stylesheet"/>
+    <link href="{% static 'global/css/table.css' %}" rel="stylesheet"/>
+    <link href="{% static 'instructions/css/Counter.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    {% trans '' %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info" role="alert">
+        <p>
+            {% trans 'Damit ist das Experiment zu Ende. Bitte warten Sie, bis Ihre Sitzplatznummer aufgerufen wird.' %}
+        </p>
+        <p>
+            <b>
+                {% trans 'Vielen Dank für die Teilnahme!' %}
+            </b>
+        </p>
+    </div>
+
+{% endblock %}

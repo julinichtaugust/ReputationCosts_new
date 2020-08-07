@@ -16,7 +16,7 @@ class questions1(Page):
 class questions2(Page):
     form_model = 'player'
     #form_fields = ['taxcomplexity', 'taxaversion2', 'procrastination1', 'procrastination2', 'procrastination3', 'procrastination4', 'procrastination5', 'procrastination6']
-    form_fields = ['kenntnis', 'geldanlagen', 'risiko', 'schlupf', 'hinterziehen', 'leistungen', 'sinnvoll', 'strafen', 'taxaversion2', 'taxmoral', 'taxaversion', 'dread1', 'dread2', 'dread3']
+    form_fields = ['kenntnis', 'geldanlagen', 'risiko', 'schlupf', 'hinterziehen', 'leistungen', 'sinnvoll', 'hybrid', 'lizenz', 'privilegien', 'oase', 'treaty', 'handelsblatt', 'bild', 'spiegel', 'welt', 'zeit', 'focus', 'mm', 'regio', 'sonsZ', 'sparen', 'verteilung', 'umgebung_hint', 'umgebung_schl', 'akzeptanz_hint', 'akzeptanz_schl', 'aufdeckung', 'interpretation', 'respekt', 'fair', 'strafen', 'aktien', 'politik']
 
     def taxaversion2_choices(self):
         choices=[
@@ -36,7 +36,14 @@ class questions2(Page):
             [5, _('... zu hoch.')],
             [6, _('... viel zu hoch.')],
         ]
-        random.shuffle(choices)
+        return choices
+
+    def aktien_choices(self):
+        choices=[
+            [0, _('ja')],
+            [1, _('nein')],
+
+        ]
         return choices
 
     def kenntnis_error_message(self, value):
@@ -60,13 +67,79 @@ class questions2(Page):
     def sinnvoll_error_message(self, value):
         if value == None:
             return _("Diese Frage wurde nicht beantwortet.")
-    def taxmoral_error_message(self, value):
+    def handelsblatt_error_message(self, value):
         if value == None:
             return _("Diese Frage wurde nicht beantwortet.")
-    def taxaversion_error_message(self, value):
+    def bild_error_message(self, value):
         if value == None:
             return _("Diese Frage wurde nicht beantwortet.")
-    def taxaversion2_error_message(self, value):
+    def spiegel_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def welt_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def zeit_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def focus_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def mm_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def regio_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def sonsZ_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def sparen_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def verteilung_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def umgebung_hint_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def umgebung_schl_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def akzeptanz_hint_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def akzeptanz_schl_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def aufdeckung_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def interpretation_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def respekt_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def fair_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def hybrid_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def lizenz_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def privilegien_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def oase_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def treaty_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def politik_error_message(self, value):
         if value == None:
             return _("Diese Frage wurde nicht beantwortet.")
 
@@ -76,14 +149,46 @@ class questions2(Page):
 
 class questions3(Page):
     form_model = 'player'
-    form_fields = ['crt_bat', 'crt_widget', 'crt_lake']
+    form_fields = ['gründung', 'aufwand', 'doppelt', 'kinderarbeit']
 
-    def vars_for_template(self):
-        context =  self.player.vars_for_template()
-        return context
+    def gründung_choices(self):
+        choices=[
+            [0, _('ja')],
+            [1, _('nein')],
 
-    def before_next_page(self):
-        self.participant.vars['age'] = self.player.age
+        ]
+        return choices
+
+    def aufwand_choices(self):
+        choices=[
+            [0, _('ja')],
+            [1, _('nein')],
+
+        ]
+        return choices
+
+    def doppelt_choices(self):
+        choices=[
+            [0, _('ja')],
+            [1, _('nein')],
+
+        ]
+        return choices
+
+    def kinderarbeit_choices(self):
+        choices=[
+            [0, _('ja')],
+            [1, _('nein')],
+
+        ]
+        return choices
+
+class questions4(Page):
+    form_model = 'player'
+    form_fields = ['erklaerung','anmerkungen']
+
+class Endbildschirm(Page):
+    pass
 
 #class payment(Page):
 #    form_model = 'player'
@@ -109,5 +214,7 @@ page_sequence = [
     questions1,
     questions2,
     questions3,
+    questions4,
+    Endbildschirm,
     #payment,
 ]

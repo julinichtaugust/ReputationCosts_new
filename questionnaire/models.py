@@ -23,6 +23,24 @@ def make_field9(label):
         #initial=1, #zum testen
     )
 
+def make_field3(label):
+    return models.IntegerField(
+        choices=[[1, ''], [2, ''], [3, '']],
+        label=label,
+        widget=widgets.RadioSelectHorizontal,
+        blank=False,
+        #initial=1, #zum testen
+    )
+
+def make_field6(label):
+    return models.IntegerField(
+        choices=[[1, ''], [2, ''], [3, ''],[4, ''], [5, ''], [6, '']],
+        label=label,
+        widget=widgets.RadioSelectHorizontal,
+        blank=False,
+        #initial=1, #zum testen
+    )
+
 class Constants(BaseConstants):
     name_in_url = 'questionnaire'
     players_per_group = None
@@ -39,7 +57,12 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     anmerkungen = models.LongStringField(
         blank=True,
-        label='Falls ja, dann schreibe mir die Punkte bitte auf:',
+        label='Falls ja, dann schreiben Sie die Punkte bitte auf:',
+    )
+
+    erklaerung = models.LongStringField(
+        blank=True,
+        label='Bitte erklären',
     )
 
     gender = models.IntegerField(
@@ -148,6 +171,31 @@ class Player(BasePlayer):
     hinterziehen = make_field9(_('Wie beurteilen Sie Folgendes: „Steuern hinterziehen, wenn man die Möglichkeit hat, ist …“'))
     leistungen = make_field9(_('Vergleichen Sie einmal das, was Sie an Steuern zahlen, mit dem, was Sie vom Staat in Form von Leistungen zurückbekommen. Wie würden Sie Ihre persönliche Lage dann beurteilen?'))
     sinnvoll = make_field9(_('Würden Sie der folgenden Aussage zustimmen: Der Staat verwendet meine Steuern überwiegend für sinnvolle Ausgaben?'))
+    handelsblatt= make_field6(_('Handelsblatt'))
+    bild = make_field6(_('Bild'))
+    spiegel = make_field6(_('Spiegel'))
+    welt = make_field6(_('Welt'))
+    zeit= make_field6(_('Zeit'))
+    focus = make_field6(_('Focus'))
+    mm = make_field6(_('Manager Magazin'))
+    regio = make_field6(_('Regionale Tageszeitung'))
+    sonsZ = make_field6(_('Sonstige'))
+    sparen= make_field9(_('Meine Möglichkeiten Steuern zu sparen, sind im Vergleich zu anderen gerecht.'))
+    verteilung= make_field9(_('Das deutsche Steuersystem verteilt die Steuerlast auf alle Steuerzahler/innen gerecht.'))
+    umgebung_hint= make_field9(_('Die Menschen in meiner Umgebung würden es stark missbilligen, wenn sie erfahren würden, dass ich meine Steuern hinterzogen habe.'))
+    umgebung_schl= make_field9(_('Die Menschen in meiner Umgebung würden es stark missbilligen, wenn sie erfahren würden, dass ich legale Steuerschlupflöcher genutzt habe.'))
+    akzeptanz_hint= make_field9(_('Die Deutschen akzeptieren Steuerhinterziehung nicht.'))
+    akzeptanz_schl= make_field9(_('Die Deutschen akzeptieren das Ausnutzen von legalen Steuerschlupflöchern nicht.'))
+    aufdeckung= make_field9(_('Die deutschen Finanzämter sind in der Lage, Steuerhinterziehung mit sehr hoher Wahrscheinlichkeit aufzudecken.'))
+    interpretation= make_field9(_('Die deutschen Finanzämter interpretieren das Steuerrecht in einer Art und Weise, die es den Finanzämtern ermöglicht, möglichst viele Steuernachzahlungen zu erhalten und Strafen zu verhängen.'))
+    respekt= make_field9(_('Die Finanzämter behandeln die Bürger mit Respekt.'))
+    fair= make_field9(_('Die Finanzämter behandeln alle fair.'))
+    hybrid = make_field3(_('Gestaltung mit hybrider Gesellschaft'))
+    lizenz = make_field3(_('Nutzung von Lizenzvereinbarungen ("Double Irish with a Dutch Sandwich")'))
+    privilegien = make_field3(_('Nutzung ausländischer Steuerprivilegien'))
+    oase = make_field3(_('Gewinnverschiebung in Steueroasen'))
+    treaty = make_field3(_('Treaty Shopping'))
+    politik = make_field9(_('Wenn von Politik die Rede ist, hört man immer die Begriffe „links“ und „rechts“. Wo würden Sie Ihre politischen Ansichten einordnen?'))
     #risk = make_field9(_('Wie schätzen Sie sich persönlich ein: Sind Sie im Allgemeinen ein risikobereiter Mensch oder versuchen Sie, Risiken zu vermeiden?'))
     taxmoral = make_field9(_('Bitte geben Sie an, ob Sie es in Ordnung finden, Steuern zu hinterziehen, wenn man die Möglichkeit dazu hat.'))
     taxaversion = make_field9(_('Wie wichtig ist es Ihnen persönlich Steuern zu sparen?'))
@@ -163,6 +211,14 @@ class Player(BasePlayer):
 
     strafen = models.IntegerField(
         label=(_("Die Strafen für Steuerhinterziehung in Deutschland sind ...")),
+        widget=widgets.RadioSelect,
+        blank=False,
+        #initial=1,
+    )
+
+
+    aktien = models.IntegerField(
+        label=(_("Haben Sie schon einmal selbst Aktien oder Aktienfonds gekauft?")),
         widget=widgets.RadioSelect,
         blank=False,
         #initial=1,
@@ -191,25 +247,48 @@ class Player(BasePlayer):
     #procrastination5 = make_field9(_('Mit der Klausurvorbereitung fange ich immer erst kurz vor den Klausuren an.'))
     #procrastination6 = make_field9(_('Ein aufmerksamer Leser klickt hier genau die Mitte an.'))
 
-    crt_bat = models.FloatField(
-        label=_('Ein Schläger und ein Ball kosten zusammen 22 Euro. '
-                'Der Schläger kostet 20 Euro mehr als der Ball. '
-                'Wie viel kostet der Ball?'),
+    gründung = models.IntegerField(
+        label=(_("Würden Sie die Möglichkeit der Gründung einer Finanzierungs- und Patentverwertungsgesellschaft in einem Niedrigsteuerland nutzen, wenn Steuerrechtsexperten dies übereinstimmend als legal einstufen?")),
+        choices=[
+            [1, _('Ja')],
+            [0, _('Nein')],
+        ],
+        widget=widgets.RadioSelect,
         blank=False,
+        # initial=0,
     )
 
-    crt_widget = models.FloatField(
-        label=_('5 Maschinen benötigen für die Produktion von 5 Produkten 5 Minuten. '
-                'Wie lange benötigen 100 Maschinen für die Produktion von 100 Produkten?'),
+    aufwand = models.IntegerField(
+        label=(_("Würden Sie die Möglichkeit nutzen, denselben Aufwand in mehreren Ländern steuermindernd anzusetzen, wenn Steuerrechtsexperten dies übereinstimmend als legal einstufen?")),
+        choices=[
+            [1, _('Ja')],
+            [0, _('Nein')],
+        ],
+        widget=widgets.RadioSelect,
         blank=False,
+        # initial=0,
     )
 
-    crt_lake = models.FloatField(
-        label=_('In einem See breitet sich ein kleines Feld von Seerosen aus.'
-                'Jeden Tag verdoppelt sich die Größe des Feldes.'
-                'Wenn es 48 Tage dauert, bis die Seerosen den ganzen See bedecken,'
-                'wie lange dauert es dann, bis sie die Hälfte des Sees bedecken?'),
+    doppelt = models.IntegerField(
+        label=(_("Würden Sie die Möglichkeit nutzen, sich eine Steuer doppelt erstatten zu lassen, wenn Steuerrechtsexperten dies übereinstimmend als legal einstufen?")),
+        choices=[
+            [1, _('Ja')],
+            [0, _('Nein')],
+        ],
+        widget=widgets.RadioSelect,
         blank=False,
+        # initial=0,
+    )
+
+    kinderarbeit = models.IntegerField(
+        label=(_("Würden Sie die Möglichkeit nutzen, Kinder in Ihrem Unternehmen zu beschäftigen, wenn Sie hieraus wesentliche Einsparungen erzielen könnten?")),
+        choices=[
+            [1, _('Ja')],
+            [0, _('Nein')],
+        ],
+        widget=widgets.RadioSelect,
+        blank=False,
+        # initial=0,
     )
 
     def vars_for_template(self):
