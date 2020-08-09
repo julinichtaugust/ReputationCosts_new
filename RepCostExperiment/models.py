@@ -25,9 +25,8 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    num_rounds = 1
+    num_rounds = 12
 
-    endowment = 100
     try_endowmwnt = 100
     diviA = [10, 20, 30, 40, 50]
     diviB = [10, 20, 30, 40, 50]
@@ -623,10 +622,10 @@ class Player(BasePlayer):
             a = i-1
             if self.try_clearing_rank == i:
                 self.try_marktpreis = ((self.try_kauf_liste_h[a] + self.try_verkauf_liste_h[a])/2)
-                print(self.try_clearing_rank)
-                print(self.try_kauf_liste)
-                print(self.try_kauf_liste_h)
-                print(self.try_marktpreis)
+                #print(self.try_clearing_rank)
+                #print(self.try_kauf_liste)
+                #print(self.try_kauf_liste_h)
+                #print(self.try_marktpreis)
             else:
                 pass
 

@@ -353,4 +353,5 @@ page_sequence = [
     MyPage2,
     ResultsWaitPage,
     Results2,
-    Ende]
+    Ende,
+   ]

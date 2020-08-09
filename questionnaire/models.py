@@ -43,7 +43,7 @@ def make_field6(label):
 
 class Constants(BaseConstants):
     name_in_url = 'questionnaire'
-    players_per_group = None
+    players_per_group = 1
     num_rounds = 1
 
 class Subsession(BaseSubsession):
@@ -293,6 +293,6 @@ class Player(BasePlayer):
 
     def vars_for_template(self):
         return dict(
-            test=self.participant.vars['test'],
-            image_path12_questionnaire=_('graphics/12_periods/LifeCycle_Questionnaire.png').format(self.round_number),
+            #test=self.participant.vars['test'],
+            #image_path12_questionnaire=_('graphics/12_periods/LifeCycle_Questionnaire.png').format(self.round_number),
         )
