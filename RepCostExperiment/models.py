@@ -400,26 +400,26 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
-    comprehension_question1 = models.IntegerField(
-        verbose_name=(
-            "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende des Experiments ist richtig?"),
-        initial = 2,
-        choices=[[0, ('Das durchschnittliche Endvermögen der beiden Sequenzen wird am Ende des Experiments ausgezahlt.')],
-                 [1, ('Die Summe des gesamten Vermögens beider Sequenzen wird am Ende des Experiments ausgezahlt.')],
-                 [2, ('Nur das Endvermögen einer der zwei Sequenzen wird am Ende des Experiments vergütet.')]],
-        widget=widgets.RadioSelect,
-    )
+    #comprehension_question1 = models.IntegerField(
+    #    verbose_name=(
+    #        "Frage 1: Welche der folgenden Aussagen bezüglich der Vergütung am Ende des Experiments ist richtig?"),
+    #    initial = 2,
+    #    choices=[[0, ('Das durchschnittliche Endvermögen der beiden Sequenzen wird am Ende des Experiments ausgezahlt.')],
+    #             [1, ('Die Summe des gesamten Vermögens beider Sequenzen wird am Ende des Experiments ausgezahlt.')],
+    #             [2, ('Nur das Endvermögen einer der zwei Sequenzen wird am Ende des Experiments vergütet.')]],
+    #    widget=widgets.RadioSelect,
+    #)
     comprehension_question2 = models.IntegerField(
-        verbose_name=("Frage 2: Wonach bestimmt sich die Vergütung einer Sequenz?"),
-        initial = 0,
+        verbose_name=("Frage 1: Wonach bestimmt sich die Vergütung einer Sequenz?"),
+        #initial = 0,
         choices=[[0, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden einer Sequenz.')],
                  [1, ('Nach der Anzahl der Aktien im Portfolio.')],
                  [2, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden und nach der Anzahl der Aktien im Portfolio.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question3 = models.IntegerField(
-        verbose_name=("Frage 3: Welches Unternehmen hat einen höheren Gewinn vor Steuern?"),
-        initial = 0,
+        verbose_name=("Frage 2: Welches Unternehmen hat einen höheren Gewinn vor Steuern?"),
+        #initial = 0,
         choices=[[0, ('Der Gewinn vor Steuern ist gleich groß.')],
                  [1, ('Das A-Unternehmen hat einen höheren Gewinn vor Steuern.')],
                  [2, ('Das B-Unternehmen hat einen höheren Gewinn vor Steuern.')]],
@@ -427,32 +427,32 @@ class Player(BasePlayer):
     )
     comprehension_question4 = models.IntegerField(
         verbose_name=(
-            "Frage 4: Wie viele Teilnehmer (mit Ihnen) handeln auf dem Markt?"),
-        initial = 1,
+            "Frage 3: Wie viele Teilnehmer (mit Ihnen) handeln auf dem Markt?"),
+        #initial = 1,
         choices=[[0, ('5')],
                  [1, ('6')],
                  [2, ('7')], ],
         widget=widgets.RadioSelect,
     )
     comprehension_question5 = models.IntegerField(
-        verbose_name=("Frage 5: Welches Unternehmen zahlt weniger Steuern?"),
-        initial = 1,
+        verbose_name=("Frage 4: Welches Unternehmen zahlt weniger Steuern?"),
+        #initial = 1,
         choices=[[1, ('Das A-Unternehmen.')],
                  [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
     )
 
     comprehension_question5_2 = models.IntegerField(
-        verbose_name=("Frage 5: Welches Unternehmen zahlt weniger Steuern?"),
-        initial = 2,
+        verbose_name=("Frage 4: Welches Unternehmen zahlt weniger Steuern?"),
+        #initial = 2,
         choices=[[1, ('Das A-Unternehmen.')],
                  [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question6 = models.IntegerField(
         verbose_name=(
-            "Frage 6: Wie ändert sich Ihr Vermögen?"),
-        initial = 2,
+            "Frage 5: Wie ändert sich Ihr Vermögen?"),
+        #initial = 2,
         choices=[[0, ('Nur durch den Kauf oder Verkauf von Aktien.')],
                  [1, ('Nur durch Dividenden, die Sie für die Aktien in ihrem Portfolio erhalten.')],
                  [2, ('Sowohl durch den Kauf und Verkauf von Aktien, als auch durch Dividendenzahlungen für Aktien in dem Portfolio.')]],

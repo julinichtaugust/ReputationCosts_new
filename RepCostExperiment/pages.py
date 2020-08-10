@@ -53,10 +53,10 @@ class Instruction_Page(Page):
 
     def get_form_fields(self):
         if self.player.rand == 1:
-            return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
+            return ['comprehension_question2', 'comprehension_question3',
                     'comprehension_question4', 'comprehension_question5', 'comprehension_question6']
         else:
-            return ['comprehension_question1', 'comprehension_question2', 'comprehension_question3',
+            return ['comprehension_question2', 'comprehension_question3',
                     'comprehension_question4', 'comprehension_question5_2', 'comprehension_question6']
 
     def is_displayed(self):
@@ -75,10 +75,10 @@ class Instruction_Page(Page):
         #)
         #return context
 
-    def comprehension_question1_error_message(self, value):
-        if value != 2:
-            self.player.wrong_answer1 += 1
-            return trans_question_incorrectly(1)
+    #def comprehension_question1_error_message(self, value):
+    #    if value != 2:
+    #        self.player.wrong_answer1 += 1
+    #        return trans_question_incorrectly(1)
 
     def comprehension_question2_error_message(self, value):
         if value != 0:
