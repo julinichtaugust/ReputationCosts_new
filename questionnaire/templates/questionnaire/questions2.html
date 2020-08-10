@@ -61,7 +61,7 @@
 <div> {{ form.geldanlagen.errors }}</div>
 <br>
 
-<!-- risiko -->
+<!-- risiko allgemein -->
 <h3>{% trans 'Frage' %}</h3>
 {{ form.risiko.label }}
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
@@ -81,6 +81,28 @@
     </tbody>
 </table>
 <div> {{ form.risiko.errors }}</div>
+<br>
+
+<!-- risiko geldanlage-->
+<h3>{% trans 'Frage' %}</h3>
+{{ form.risiko_allgemein.label }}
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2">
+    <tbody>
+        <tr>
+            <td width="30%" style="text-align: right">
+                {% trans 'Gar nicht risikobereit' %}
+            </td>
+            {% for choice in form.risiko_allgemein %}
+                <td width="50px" style="text-align: right; padding: 2px!important;">{{ choice }} &nbsp;</td>
+            {% endfor %}
+            <td width="30%">
+                {% trans 'Sehr risikobereit' %}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div> {{ form.risiko_allgemein.errors }}</div>
 <br>
 
 <!-- schlupf -->

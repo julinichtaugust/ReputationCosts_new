@@ -166,6 +166,7 @@ class Player(BasePlayer):
     #Kontrollfragen
     kenntnis = make_field9(_('Wie würden Sie Ihre eigenen Steuerrechtskenntnisse einschätzen?'))
     geldanlagen = make_field9(_('Wie schätzen Sie Ihre eigenen Kenntnisse bezüglich Geldanlagen ein?'))
+    risiko_allgemein = make_field9(_('Wie schätzen Sie sich persönlich ein: Sind Sie im Allgemeinen ein risikobereiter Mensch oder versuchen Sie, Risiken zu vermeiden?'))
     risiko = make_field9(_('Wie schätzen Sie sich persönlich ein: Sind Sie bezüglich Geldanlagen ein risikobereiter Mensch oder versuchen Sie, Risiken zu vermeiden?'))
     schlupf = make_field9(_('Wie beurteilen Sie Folgendes: „Legale Steuerschlupflöcher ausnutzen, wenn man die Möglichkeit hat, ist …“'))
     hinterziehen = make_field9(_('Wie beurteilen Sie Folgendes: „Steuern hinterziehen, wenn man die Möglichkeit hat, ist …“'))

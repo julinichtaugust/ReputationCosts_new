@@ -16,7 +16,7 @@ class questions1(Page):
 class questions2(Page):
     form_model = 'player'
     #form_fields = ['taxcomplexity', 'taxaversion2', 'procrastination1', 'procrastination2', 'procrastination3', 'procrastination4', 'procrastination5', 'procrastination6']
-    form_fields = ['kenntnis', 'geldanlagen', 'risiko', 'schlupf', 'hinterziehen', 'leistungen', 'sinnvoll', 'hybrid', 'lizenz', 'privilegien', 'oase', 'treaty', 'handelsblatt', 'bild', 'spiegel', 'welt', 'zeit', 'focus', 'mm', 'regio', 'sonsZ', 'sparen', 'verteilung', 'umgebung_hint', 'umgebung_schl', 'akzeptanz_hint', 'akzeptanz_schl', 'aufdeckung', 'interpretation', 'respekt', 'fair', 'strafen', 'aktien', 'politik']
+    form_fields = ['kenntnis', 'geldanlagen', 'risiko_allgemein', 'risiko', 'schlupf', 'hinterziehen', 'leistungen', 'sinnvoll', 'hybrid', 'lizenz', 'privilegien', 'oase', 'treaty', 'handelsblatt', 'bild', 'spiegel', 'welt', 'zeit', 'focus', 'mm', 'regio', 'sonsZ', 'sparen', 'verteilung', 'umgebung_hint', 'umgebung_schl', 'akzeptanz_hint', 'akzeptanz_schl', 'aufdeckung', 'interpretation', 'respekt', 'fair', 'strafen', 'aktien', 'politik']
 
     def taxaversion2_choices(self):
         choices=[
@@ -50,6 +50,9 @@ class questions2(Page):
         if value == None:
             return _("Diese Frage wurde nicht beantwortet.")
     def geldanlagen_error_message(self, value):
+        if value == None:
+            return _("Diese Frage wurde nicht beantwortet.")
+    def risiko_allgemein_error_message(self, value):
         if value == None:
             return _("Diese Frage wurde nicht beantwortet.")
     def risiko_error_message(self, value):
