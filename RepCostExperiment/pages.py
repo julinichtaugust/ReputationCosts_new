@@ -290,6 +290,7 @@ class ResultsWaitPage(WaitPage):
         self.group.handelB()
         self.group.ausfuhrung()
         self.group.dividende_rech()
+    
 
 
 class Results2(Page):
@@ -327,8 +328,10 @@ class Results2(Page):
 
 
 class Ende(Page):
+
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
+    
     def vars_for_template(self):
         return {
             'anzahlA': self.player.anzahlA,

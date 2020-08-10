@@ -353,7 +353,7 @@ class Player(BasePlayer):
     rank_kaufB = models.IntegerField()
     gesdiviB = models.CurrencyField()
     treatment = models.StringField()
-    auszahlung_euro = models.CurrencyField()
+    auszahlung_euro = models.CurrencyField(initial=0)
 
     seat_number = models.IntegerField(
         min=0,
