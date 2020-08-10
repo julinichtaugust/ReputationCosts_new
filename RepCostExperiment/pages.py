@@ -83,32 +83,32 @@ class Instruction_Page(Page):
     def comprehension_question2_error_message(self, value):
         if value != 0:
             self.player.wrong_answer2 += 1
-            return trans_question_incorrectly(2)
+            return trans_question_incorrectly(1)
 
     def comprehension_question3_error_message(self, value):
             if value != 0:
                 self.player.wrong_answer3 += 1
-                return trans_question_incorrectly(3)
+                return trans_question_incorrectly(2)
 
     def comprehension_question4_error_message(self, value):
             if value != 1:
                 self.player.wrong_answer4 += 1
-                return trans_question_incorrectly(4)
+                return trans_question_incorrectly(3)
 
     def comprehension_question5_error_message(self, value):
         if value != 1:
             self.player.wrong_answer5 += 1
-            return trans_question_incorrectly(5)
+            return trans_question_incorrectly(4)
 
     def comprehension_question5_2_error_message(self, value):
         if value !=2:
             self.player.wrong_answer5_2 += 1
-            return trans_question_incorrectly(5)
+            return trans_question_incorrectly(4)
 
     def comprehension_question6_error_message(self, value):
             if value != 2:
                 self.player.wrong_answer6 += 1
-                return trans_question_incorrectly(6)
+                return trans_question_incorrectly(5)
 
 class Probe(Page):
 
