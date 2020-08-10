@@ -328,7 +328,7 @@ class Player(BasePlayer):
     rand = models.IntegerField()
     verkaufA = models.CurrencyField(blank=True)
     kaufA = models.CurrencyField(blank=True)
-    endowment = models.CurrencyField(initial=1000)
+    endowment = models.CurrencyField(initial=1500)
     endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
     is_trade_verkaufA = models.BooleanField(initial=False)
