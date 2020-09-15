@@ -362,6 +362,7 @@ class Player(BasePlayer):
         blank=False,
     )
 
+
     gender = models.IntegerField(
         label=(("Sind Sie weiblich, männlich oder divers?")),
         choices=[
