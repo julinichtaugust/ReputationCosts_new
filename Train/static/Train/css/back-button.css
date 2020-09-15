@@ -1,0 +1,16 @@
+.next {
+    float: inherit;
+    margin: 10px auto !important;
+    width: 110px !important;
+    }
+
+.back{
+    float: inherit;
+    margin: 10px auto !important;
+    width: 110px !important;
+    }
+
+.nav {
+    visibility: visible;
+    }
+

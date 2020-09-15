@@ -1,0 +1,50 @@
+table {
+    color: black;
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+table th{
+    text-align: center !important;
+    background-color: #999999;
+}
+table * {
+  /*position: relative;*/
+}style="text-align: right"
+
+table td, table th {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  vertical-align: center !important;
+}
+
+table  tr {
+  height: 30px;
+}
+
+.alert{
+    vertical-align: middle !important;
+    padding: 0.4rem !important;
+    text-align: center;
+    margin-bottom: 0.4rem !important;
+    margin-top: 0.4rem !important;
+}
+
+#Unternehmen {
+    width: 48%;
+    height: 500px;
+    float: left;
+     padding: 20px;
+}
+.clear { clear: both; }
+
+
+tbody tr:nth-of-type(odd) {
+    background-color: whitesmoke !important;
+}
+

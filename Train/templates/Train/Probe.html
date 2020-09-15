@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block styles %}
+    <link href="{% static 'RepCostExperiment/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    {% trans 'Trainings-Sequenz' %}
+{% endblock %}
+
+{% block content %}
+
+    <p style="text-align: center">
+            Sie beginnen nun mit der Trainings-Sequenz.
+    </p>
+    <br>
+    {% next_button %}
+
+
+{% endblock %}
+
+

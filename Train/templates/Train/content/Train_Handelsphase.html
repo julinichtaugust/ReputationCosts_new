@@ -1,0 +1,51 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block content %}
+
+    <h3>{% trans 'Markt' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+           In diesem Experiment nehmen sie an einem fiktiven Kapitalmarkt teil. Neben Ihnen handeln noch 5 weitere Experimentteilnehmer mit Ihnen an diesem Markt.
+        {% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans trimmed %}
+            In jeder Periode haben Sie in der Handelsphase die Möglichkeit Aktien von anderen Marktteilnehmern zu kaufen als auch an andere Marktteilnehmer zu verkaufen.
+            In der Trainings-Sequenz gibt es lediglich das X-Unternehmen.
+        {% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans trimmed %}
+            Die folgende Abbildung zeigt den Bildschirm in der Handelsphase. Sie sehen zum einen Informationen zum X-Unternehmen (in der Trainings-Sequenz sind diese zum Teil noch leer) und zum anderen Informationen zu Ihrem aktuellen Vermögen sowie zu Ihrem Portfolio.
+        {% endblocktrans %}
+     </p>
+    <p>
+        <center>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Handel.png" %}" width="75%"/>
+        </center>
+    </p>
+    <h3>{% trans 'Kauf von Aktien' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+        Um Aktien von anderen Marktteilnehmer zu kaufen, geben Sie in das Feld <b>Kauf</b> den Maximalpreis ein, zum dem Sie bereit sind, die Aktie zu kaufen.
+        Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei. Achten Sie darauf, dass der Kaufpreis Ihr Vermögen nicht übersteigen darf.
+        {% endblocktrans %}
+
+    </p>
+
+    <h3>{% trans 'Verkauf von Aktien' %}</h3>
+    <p>
+        {% blocktrans trimmed %}
+           Um Aktien an andere Marktteilnehmer zu verkaufen, geben Sie in das Feld <b>Verkauf</b> den Mindestpreis ein, zum dem Sie bereit sind, die Aktie zu verkaufen.
+            Möchten Sie in einer Periode keine Aktie verkaufen, lassen Sie das Feld frei. Beachten Sie, dass Ihr Kaufpreis nicht über Ihrem Verkaufspreis liegen darf, da Sie in diesem Fall mit sich selber handeln würden.
+        {% endblocktrans %}
+    </p>
+
+
+
+
+
+{% endblock %}
+
+
