@@ -16,14 +16,14 @@ SESSION_CONFIGS = [
         name='RepCostExperiment',
         display_name='RepCostExperiment',
         num_demo_participants=6,
-        app_sequence=['Train'],
+        app_sequence=['RepCostExperiment'],
         use_browser_bots=False,
         tax_rate=0.40,
         tax_rate_low=0.25,
         test=0,
     ),
 ]
-# app_sequence=['RepCostExperiment'],
+#  app_sequence=['Train'],
 # app_sequence=['questionnaire'],
 # app_sequence=['Train','RepCostExperiment', 'questionnaire'],
 # ISO-639 code

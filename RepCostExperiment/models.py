@@ -27,11 +27,8 @@ class Constants(BaseConstants):
     players_per_group = 6
     num_rounds = 12
 
-    try_endowmwnt = 100
     diviA = [10, 20, 30, 40, 50]
     diviB = [10, 20, 30, 40, 50]
-    try_divi = [1, 2, 3, 4, 5]
-    try_player = [1, 2, 3, 4, 5, 6]
 
     mean_remuneration = 1500
 
@@ -51,13 +48,12 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        # randomize to treatments
-        for player in self.get_players():
-            player.rand = random.choice([1, 2])
-            #player.rand = 1
-            #print('set player.rand to', player.rand)
-
-
+        if self.round_number == 1:
+            for player in self.get_players():
+                player.rand = random.choice([1, 2])
+        else:
+            for player in self.get_players():
+                player.rand = player.in_round(1).rand
 
 class Group(BaseGroup):
 
@@ -321,10 +317,6 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    try_verkauf = models.CurrencyField(blank=True)
-    try_kauf = models.CurrencyField(blank=True)
-    try_endowment = models.CurrencyField(initial=100)
-    try_anzahl = models.IntegerField(initial=1)
     rand = models.IntegerField()
     verkaufA = models.CurrencyField(blank=True)
     kaufA = models.CurrencyField(blank=True)
@@ -336,13 +328,7 @@ class Player(BasePlayer):
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
-    try_gesdivi = models.CurrencyField()
-    try_marktpreis = models.CurrencyField()
-    try_dividende = models.CurrencyField()
-    try_clearing_rank = models.IntegerField()
-    try_is_trade_kauf = models.BooleanField(initial=False)
-    try_is_trade_verkauf = models.BooleanField(initial=False)
-    #try_player = [1, 2, 3, 4, 5, 6]
+
 
     verkaufB = models.CurrencyField(blank=True)
     kaufB = models.CurrencyField(blank=True)
@@ -354,13 +340,6 @@ class Player(BasePlayer):
     gesdiviB = models.CurrencyField()
     treatment = models.StringField()
     auszahlung_euro = models.CurrencyField(initial=0)
-
-    seat_number = models.IntegerField(
-        min=0,
-        max=18,
-        label=("Bitte geben Sie Ihre Sitzplatznummer ein"),
-        blank=False,
-    )
 
 
     gender = models.IntegerField(
@@ -392,15 +371,6 @@ class Player(BasePlayer):
         initial=1,  # zum testen
     )
 
-    train_question1 = models.IntegerField(
-        verbose_name=(
-            "Frage 1: In welches Phase können Sie Aktien kaufen und verkaufen?"),
-        initial=1,
-        choices=[
-            [0, ('Dividendenphase')],
-            [1, ('Handelsphase')]],
-        widget=widgets.RadioSelect,
-    )
 
     #comprehension_question1 = models.IntegerField(
     #    verbose_name=(
@@ -413,7 +383,7 @@ class Player(BasePlayer):
     #)
     comprehension_question2 = models.IntegerField(
         verbose_name=("Frage 1: Wonach bestimmt sich die Vergütung einer Sequenz?"),
-        #initial = 0,
+        initial = 0,
         choices=[[0, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden einer Sequenz.')],
                  [1, ('Nach der Anzahl der Aktien im Portfolio.')],
                  [2, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden und nach der Anzahl der Aktien im Portfolio.')]],
@@ -421,7 +391,7 @@ class Player(BasePlayer):
     )
     comprehension_question3 = models.IntegerField(
         verbose_name=("Frage 2: Welches Unternehmen hat einen höheren Gewinn vor Steuern?"),
-        #initial = 0,
+        initial = 0,
         choices=[[0, ('Der Gewinn vor Steuern ist gleich groß.')],
                  [1, ('Das A-Unternehmen hat einen höheren Gewinn vor Steuern.')],
                  [2, ('Das B-Unternehmen hat einen höheren Gewinn vor Steuern.')]],
@@ -430,7 +400,7 @@ class Player(BasePlayer):
     comprehension_question4 = models.IntegerField(
         verbose_name=(
             "Frage 3: Wie viele Teilnehmer (mit Ihnen) handeln auf dem Markt?"),
-        #initial = 1,
+        initial = 1,
         choices=[[0, ('5')],
                  [1, ('6')],
                  [2, ('7')], ],
@@ -438,7 +408,7 @@ class Player(BasePlayer):
     )
     comprehension_question5 = models.IntegerField(
         verbose_name=("Frage 4: Welches Unternehmen zahlt weniger Steuern?"),
-        #initial = 1,
+        initial = 1,
         choices=[[1, ('Das A-Unternehmen.')],
                  [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
@@ -446,7 +416,7 @@ class Player(BasePlayer):
 
     comprehension_question5_2 = models.IntegerField(
         verbose_name=("Frage 4: Welches Unternehmen zahlt weniger Steuern?"),
-        #initial = 2,
+        initial = 2,
         choices=[[1, ('Das A-Unternehmen.')],
                  [2, ('Das B-Unternehmen.')]],
         widget=widgets.RadioSelect,
@@ -454,7 +424,7 @@ class Player(BasePlayer):
     comprehension_question6 = models.IntegerField(
         verbose_name=(
             "Frage 5: Wie ändert sich Ihr Vermögen?"),
-        #initial = 2,
+        initial = 2,
         choices=[[0, ('Nur durch den Kauf oder Verkauf von Aktien.')],
                  [1, ('Nur durch Dividenden, die Sie für die Aktien in ihrem Portfolio erhalten.')],
                  [2, ('Sowohl durch den Kauf und Verkauf von Aktien, als auch durch Dividendenzahlungen für Aktien in dem Portfolio.')]],
@@ -463,7 +433,7 @@ class Player(BasePlayer):
     # Frage zu Anzahl Perioden
     # Frage zu Unsicherheit Dividenden
 
-    train_wrong_answer1 = models.IntegerField(initial=0)
+
     wrong_answer1 = models.IntegerField(initial=0)
     wrong_answer2 = models.IntegerField(initial=0)
     wrong_answer3 = models.IntegerField(initial=0)
@@ -496,176 +466,12 @@ class Player(BasePlayer):
         if self.kaufA == None:
             self.kaufA = 0
 
-    def set_value_try_verkauf(self):
-        if self.try_verkauf == None:
-            self.try_verkauf = 99999
-
-    def set_value_try_kauf(self):
-        if self.try_kauf == None:
-            self.try_kauf = 0
 
 # Werte der Vorperiode holen
     def access_data(self):
         self.endowment = self.in_round(self.round_number - 1).endowment
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
         self.anzahlB = self.in_round(self.round_number - 1).anzahlB
-
-# Für Proberunde
-
-    def try_verkauf_liste(self):
-        self.try_verkauf_liste = [
-            {
-                'SPIELER': 1,
-                'ANGEBOT': self.try_verkauf
-            },
-            {
-                'SPIELER': 2,
-                'ANGEBOT': c(3)
-            },
-            {
-                'SPIELER': 3,
-                'ANGEBOT': c(2)
-            },
-            {
-                'SPIELER': 4,
-                'ANGEBOT': c(5)
-            },
-            {
-                'SPIELER': 5,
-                'ANGEBOT': c(2.5)
-            },
-            {
-                'SPIELER': 6,
-                'ANGEBOT': c(1)
-            }
-        ]
-        return self.try_verkauf_liste
-
-    def try_daten_verkauf(self):
-        v = self.try_verkauf_liste
-        w1=0
-        self.try_daten_verkauf = sorted(v, key=lambda k: (k['ANGEBOT'],random.random()))
-        for item in self.try_daten_verkauf:
-            w1 = w1+1
-            item.update({'RANK': w1})
-        return self.try_daten_verkauf
-
-    def try_kauf_liste(self):
-        self.try_kauf_liste = [
-            {
-                'SPIELER': 1,
-                'NACHFRAGE': self.try_kauf
-            },
-            {
-                'SPIELER': 2,
-                'NACHFRAGE': c(3)
-            },
-            {
-                'SPIELER': 3,
-                'NACHFRAGE': c(2.5)
-            },
-            {
-                'SPIELER': 4,
-                'NACHFRAGE': c(5)
-            },
-            {
-                'SPIELER': 5,
-                'NACHFRAGE': c(2)
-            },
-            {
-                'SPIELER': 6,
-                'NACHFRAGE': c(1)
-            }
-        ]
-        return self.try_kauf_liste
-
-    def try_daten_kauf(self):
-        q = self.try_kauf_liste
-        w2=0
-        self.try_daten_kauf = sorted(q, key=lambda k: (k['NACHFRAGE'],random.random()), reverse=True)
-        for item in self.try_daten_kauf:
-            w2 = w2+1
-            item.update({'RANK': w2})
-        return self.try_daten_kauf
-
-    def try_verkauf_liste_h(self):
-        self.try_verkauf_liste_h = [self.try_verkauf, 3, 2.5, 5, 2, 1]
-        self.try_verkauf_liste_h.sort()
-        return self.try_verkauf_liste_h
-
-    def try_kauf_liste_h(self):
-        self.try_kauf_liste_h = [self.try_kauf, 3, 2, 5, 2.5, 1]
-        self.try_kauf_liste_h.sort(reverse=True)
-        return self.try_kauf_liste_h
-
-    def try_rank(self):
-        self.try_clearing_rank = 0
-        for i in range(1,Constants.players_per_group+1,1):
-            a = i-1
-            if self.try_kauf_liste_h[a] >= self.try_verkauf_liste_h[a]:
-                self.try_clearing_rank = i
-            else:
-                pass
-
-    def try_rank_verkauf_player(self):
-        self.try_rank_verkauf_player = (next((i for i, item in enumerate(self.try_daten_verkauf) if item["SPIELER"] == 1), None))+1
-        #print(self.try_daten_verkauf)
-        #print(self.try_rank_verkauf_player)
-        return self.try_rank_verkauf_player
-
-    def try_rank_kauf_player(self):
-        self.try_rank_kauf_player = (next((i for i, item in enumerate(self.try_daten_kauf) if item["SPIELER"] == 1), None))+1
-        #print(self.try_daten_kauf)
-        #print(self.try_rank_kauf_player)
-        return self.try_rank_kauf_player
-
-    def try_marktpreis_rech(self):
-        for i in range(Constants.players_per_group, 0, -1):
-            a = i-1
-            if self.try_clearing_rank == i:
-                self.try_marktpreis = ((self.try_kauf_liste_h[a] + self.try_verkauf_liste_h[a])/2)
-                #print(self.try_clearing_rank)
-                #print(self.try_kauf_liste)
-                #print(self.try_kauf_liste_h)
-                #print(self.try_marktpreis)
-            else:
-                pass
-
-
-    def try_handel(self):
-        if self.try_rank_kauf_player <= self.try_clearing_rank:
-            self.try_is_trade_kauf = True
-        else:
-            pass
-        if self.try_rank_verkauf_player <= self.try_clearing_rank:
-            self.try_is_trade_verkauf = True
-        else:
-            pass
-
-    def try_ausfuhrung(self):
-            if self.try_is_trade_kauf == True and self.try_is_trade_verkauf == True:
-                pass
-            else:
-                if self.try_is_trade_kauf == True and self.try_is_trade_verkauf == False:
-                    self.try_anzahl = self.try_anzahl + 1
-                    self.try_endowment = self.try_endowment - self.try_marktpreis
-                else:
-                    if self.try_is_trade_verkauf == True and self.try_is_trade_kauf == False:
-                        self.try_anzahl = self.try_anzahl -1
-                        self.try_endowment = self.try_endowment + self.try_marktpreis
-                    else:
-                        pass
-
-
-
-    def try_dividende(self):
-        self.try_dividende = c(random.choice(Constants.try_divi))
-        self.try_gesdivi = self.try_anzahl * self.try_dividende
-        return self.try_dividende
-
-    def try_vermogen(self):
-        self.try_endowment = self.try_endowment + self.try_gesdivi
-        return self.try_endowment
 
     def endowment_euro(self):
         self.endowment_euro = self.endowment.to_real_world_currency(self.session)

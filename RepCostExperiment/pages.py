@@ -6,47 +6,7 @@ from .models import Constants
 def trans_question_incorrectly(number):
     return ('Frage {} wurde falsch beantwortet.').format(number)
 
-class Welcome(Page):
-    def is_displayed(self):
-        return self.round_number == 1
 
-    def vars_for_template(self):
-        context = self.player.vars_for_template()
-        context.update(
-            mean_remuneration=c(Constants.mean_remuneration).to_real_world_currency(self.session),
-        )
-        return context
-
-class questions_pre(Page):
-    form_model = 'player'
-
-
-    def get_form_fields(self):
-        return ['seat_number']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def risk_error_message(self, value):
-        if value == None:
-            return "Diese Frage wurde nicht beantwortet."
-
-class Instruction_Training(Page):
-    form_model = 'player'
-
-    #def get_form_fields(self):
-     #   if self.player.rand == 1:
-     #       return ['train_question1']
-     #   else:
-     #       return ['train_question1']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    #def train_question1_error_message(self, value):
-    #    if value != 1:
-    #        self.player.train_wrong_answer1 += 1
-    #        return trans_question_incorrectly(1)
 
 class Instruction_Page(Page):
     form_model = 'player'
@@ -110,10 +70,6 @@ class Instruction_Page(Page):
                 self.player.wrong_answer6 += 1
                 return trans_question_incorrectly(5)
 
-class Probe(Page):
-
-    def is_displayed(self):
-        return self.round_number == 1
 
 
 class comprehension_check(Page):
@@ -142,61 +98,6 @@ class comprehension_check(Page):
         return context
 
 #######################################################################################################
-class Try1(Page):
-    form_model = 'player'
-    form_fields = ['try_verkauf', 'try_kauf']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-
-    def error_message(self, values):
-        if values['try_kauf'] is None:
-            pass
-        else:
-            if values['try_kauf']  > self.player.try_endowment:
-                return 'Die Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
-
-        if values['try_kauf'] is None or values['try_verkauf'] is None:
-            pass
-        else:
-            if values['try_verkauf'] <= values['try_kauf']:
-                return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
-
-
-    def before_next_page(self):
-        self.player.set_value_try_verkauf()
-        self.player.set_value_try_kauf()
-
-
-class Try2(Page):
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def vars_for_template(self):
-            return {
-                'try_verkauf_liste': self.player.try_verkauf_liste,
-                'try_kauf_liste': self.player.try_kauf_liste,
-                'try_marktpreis': self.player.try_marktpreis,
-                'try_anzahl': self.player.try_anzahl,
-                'try_endowment': self.player.try_endowment,
-                'try_dividende': self.player.try_dividende,
-                'try_daten_verkauf': self.player.try_daten_verkauf,
-                'try_daten_kauf': self.player.try_daten_kauf,
-                'try_verkauf_liste_h': self.player.try_verkauf_liste_h,
-                'try_kauf_liste_h': self.player.try_kauf_liste_h,
-                'try_rank':self.player.try_rank,
-                'try_rank_verkauf_player': self.player.try_rank_verkauf_player,
-                'try_rank_kauf_player': self.player.try_rank_kauf_player,
-                'try_marktpreis_rech': self.player.try_marktpreis_rech,
-                'try_handel': self.player.try_handel,
-                'try_ausfuhrung': self.player.try_ausfuhrung,
-                'try_vermogen': self.player.try_vermogen,
-            }
-
-########################################################################################################
-
 
 
 class Wait_Page(WaitPage):
@@ -344,12 +245,6 @@ class Ende(Page):
 
 
 page_sequence = [
-    Welcome,
-    questions_pre,
-    Instruction_Training,
-    Probe,
-    Try1,
-    Try2,
     Instruction_Page,
     comprehension_check,
     Wait_Page,
