@@ -129,6 +129,23 @@ class MyPage2(Page):
         )
 
     def error_message(self, values):
+        print('values is', values)
+        if values['kaufA'] is None:
+            pass
+        else:
+            if values['kaufA'] > self.player.endowment:
+                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+            else:
+                pass
+
+        if values['kaufB'] is None:
+            pass
+        else:
+            if values['kaufB'] > self.player.endowment:
+                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+            else:
+                pass
+
         if values['kaufA'] is None or values['kaufB'] is None:
             pass
         else:
@@ -139,7 +156,10 @@ class MyPage2(Page):
             pass
         else:
             if values['verkaufA'] > 0 and self.player.anzahlA == 0:
-                return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
+                if self.player.rand == 1:
+                    return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
+                else:
+                    return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
 
         if values['kaufA'] is None or values['verkaufA'] is None:
             pass
@@ -151,8 +171,11 @@ class MyPage2(Page):
             pass
         else:
             if values['verkaufB'] > 0 and self.player.anzahlB == 0:
-                return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
-
+                if self.player.rand == 1:
+                    return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
+                else:
+                    return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
+                
         if values['kaufB'] is None or values['verkaufB'] is None:
             pass
         else:

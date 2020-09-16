@@ -324,7 +324,7 @@ class Player(BasePlayer):
     endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
     is_trade_verkaufA = models.BooleanField(initial=False)
-    anzahlA = models.IntegerField(initial=5)
+    anzahlA = models.IntegerField(initial=0)
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
