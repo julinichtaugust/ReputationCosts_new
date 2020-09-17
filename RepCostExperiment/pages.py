@@ -129,7 +129,7 @@ class MyPage2(Page):
         )
 
     def error_message(self, values):
-        print('values is', values)
+        #print('values is', values)
         if values['kaufA'] is None:
             pass
         else:
@@ -175,7 +175,7 @@ class MyPage2(Page):
                     return 'Sie können keine B Aktie verkaufen, da Sie keine B Aktie im Portfolio haben.'
                 else:
                     return 'Sie können keine A Aktie verkaufen, da Sie keine A Aktie im Portfolio haben.'
-                
+
         if values['kaufB'] is None or values['verkaufB'] is None:
             pass
         else:
@@ -214,6 +214,11 @@ class ResultsWaitPage(WaitPage):
         self.group.handelB()
         self.group.ausfuhrung()
         self.group.dividende_rech()
+
+
+
+
+
     
 
 
@@ -251,6 +256,13 @@ class Results2(Page):
             }
 
 
+class ResultsWaitPage2(WaitPage):
+    after_all_players_arrive = 'set_payoffs'
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+
 class Ende(Page):
 
     def is_displayed(self):
@@ -262,8 +274,10 @@ class Ende(Page):
             'anzahlB': self.player.anzahlB,
             'endowment': self.player.endowment,
             'endowment_euro': self.player.endowment_euro,
+            'end_euro': self.player.payoff.to_real_world_currency(self.session),
             'auszahlung_euro': self.player.auszahlung_euro,
             'part_fee': self.player.part_fee,
+            'auszahlung': self.participant.payoff_plus_participation_fee()
         }
 
 
@@ -274,5 +288,6 @@ page_sequence = [
     MyPage2,
     ResultsWaitPage,
     Results2,
+    ResultsWaitPage2,
     Ende,
    ]

@@ -315,6 +315,13 @@ class Group(BaseGroup):
             p.gesdiviA = p.anzahlA * self.dividendeA
             p.gesdiviB = p.anzahlB * self.dividendeB
 
+
+    def set_payoffs(self):
+        if self.round_number == Constants.num_rounds:
+            players = self.get_players()
+            for p in players:
+                p.payoff = p.endowment
+
 class Player(BasePlayer):
 
     rand = models.IntegerField()
@@ -324,7 +331,7 @@ class Player(BasePlayer):
     endowmentalt = models.CurrencyField()
     is_trade_kaufA = models.BooleanField(initial=False)
     is_trade_verkaufA = models.BooleanField(initial=False)
-    anzahlA = models.IntegerField(initial=0)
+    anzahlA = models.IntegerField(initial=5)
     rank_verkaufA = models.IntegerField()
     rank_kaufA = models.IntegerField()
     gesdiviA = models.CurrencyField()
@@ -476,6 +483,8 @@ class Player(BasePlayer):
     def endowment_euro(self):
         self.endowment_euro = self.endowment.to_real_world_currency(self.session)
         return self.endowment_euro
+
+
 
     def part_fee(self):
         self.part_fee = self.session.config['participation_fee']
