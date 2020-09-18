@@ -25,7 +25,10 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    num_rounds = 12
+    sequence_length = 2
+    sequence_number = 2
+    num_rounds = sequence_length * sequence_number
+
 
     diviA = [10, 20, 30, 40, 50]
     diviB = [10, 20, 30, 40, 50]
@@ -54,6 +57,18 @@ class Subsession(BaseSubsession):
         else:
             for player in self.get_players():
                 player.rand = player.in_round(1).rand
+
+    def func_sequence(self):
+        if self.round_number <= Constants.sequence_length:
+            return 1
+        else:
+            return 2
+
+    def func_period(self):
+        if self.func_sequence() == 1:
+            return self.round_number
+        else:
+            return self.round_number - Constants.sequence_length
 
 class Group(BaseGroup):
 
@@ -317,10 +332,18 @@ class Group(BaseGroup):
 
 
     def set_payoffs(self):
-        if self.round_number == Constants.num_rounds:
+        if self.subsession.func_period() == Constants.sequence_length:
             players = self.get_players()
-            for p in players:
-                p.payoff = p.endowment
+            if self.subsession.func_sequence() == 1:
+                for p in players:
+                    p.payoff_1 = p.endowment
+                    p.payoff_1_e = p.endowment/500
+                    p.auszahlung_1 = self.session.config['participation_fee'] + p.endowment.to_real_world_currency(self.session)
+            else:
+                for p in players:
+                    p.payoff_2 = p.endowment
+                    p.payoff_2_e = p.endowment/500
+                    p.auszahlung_2 = self.session.config['participation_fee'] + p.endowment.to_real_world_currency(self.session)
 
 class Player(BasePlayer):
 
@@ -347,6 +370,13 @@ class Player(BasePlayer):
     gesdiviB = models.CurrencyField()
     treatment = models.StringField()
     auszahlung_euro = models.CurrencyField(initial=0)
+
+    payoff_1 = models.CurrencyField()
+    payoff_2 = models.CurrencyField()
+    payoff_1_e = models.CurrencyField()
+    payoff_2_e = models.CurrencyField()
+    auszahlung_1 = models.CurrencyField()
+    auszahlung_2 = models.CurrencyField()
 
 
     gender = models.IntegerField(

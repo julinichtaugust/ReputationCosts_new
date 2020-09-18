@@ -105,6 +105,10 @@ class Wait_Page(WaitPage):
         for player in self.group.get_players():
             if self.round_number != 1:
                 player.access_data()
+            if self.round_number == Constants.sequence_length + 1:
+                player.endowment = 1500
+                player.anzahlA = 5
+                player.anzahlB = 5
 
 
 class MyPage2(Page):
@@ -119,13 +123,15 @@ class MyPage2(Page):
         return second
 
     def after_all_players_arrive(self):
-        if self.round_number >= 2:
+        if self.subsession.func_period() >= 2:
             self.group.marktpreisA_alt()
 
     def vars_for_template(self):
         return dict(
             marktpreisA_alt= self.group.marktpreisA_alt(),
-            marktpreisB_alt= self.group.marktpreisB_alt()
+            marktpreisB_alt= self.group.marktpreisB_alt(),
+            sequence= self.subsession.func_sequence(),
+            periode= self.subsession.func_period()
         )
 
     def error_message(self, values):
@@ -253,6 +259,8 @@ class Results2(Page):
                 'dividende_rech': self.group.dividende_rech,
                 'dividendeA': self.group.dividendeA,
                 'dividendeB': self.group.dividendeB,
+                'sequence': self.subsession.func_sequence(),
+                'periode': self.subsession.func_period()
             }
 
 
@@ -260,13 +268,13 @@ class ResultsWaitPage2(WaitPage):
     after_all_players_arrive = 'set_payoffs'
 
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.subsession.func_period() == Constants.sequence_length
 
 
 class Ende(Page):
 
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.subsession.func_period() == Constants.sequence_length
     
     def vars_for_template(self):
         return {
@@ -277,7 +285,21 @@ class Ende(Page):
             'end_euro': self.player.payoff.to_real_world_currency(self.session),
             'auszahlung_euro': self.player.auszahlung_euro,
             'part_fee': self.player.part_fee,
-            'auszahlung': self.participant.payoff_plus_participation_fee()
+            'auszahlung': self.participant.payoff_plus_participation_fee(),
+            'sequence': self.subsession.func_sequence(),
+            'periode': self.subsession.func_period()
+        }
+
+
+class Uebersicht(Page):
+
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+        return {
+            'sequence': self.subsession.func_sequence(),
+            'periode': self.subsession.func_period()
         }
 
 
@@ -290,4 +312,5 @@ page_sequence = [
     Results2,
     ResultsWaitPage2,
     Ende,
+    Uebersicht
    ]
