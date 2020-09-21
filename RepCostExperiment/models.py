@@ -31,6 +31,7 @@ class Constants(BaseConstants):
 
 
     diviA = [10, 20, 30, 40, 50]
+    diviA_high = [20, 30, 40, 50, 60]
     diviB = [10, 20, 30, 40, 50]
 
     mean_remuneration = 1500
@@ -337,13 +338,9 @@ class Group(BaseGroup):
             if self.subsession.func_sequence() == 1:
                 for p in players:
                     p.payoff_1 = p.endowment
-                    p.payoff_1_e = p.endowment/500
-                    p.auszahlung_1 = self.session.config['participation_fee'] + p.endowment.to_real_world_currency(self.session)
             else:
                 for p in players:
                     p.payoff_2 = p.endowment
-                    p.payoff_2_e = p.endowment/500
-                    p.auszahlung_2 = self.session.config['participation_fee'] + p.endowment.to_real_world_currency(self.session)
 
 class Player(BasePlayer):
 
@@ -369,14 +366,17 @@ class Player(BasePlayer):
     rank_kaufB = models.IntegerField()
     gesdiviB = models.CurrencyField()
     treatment = models.StringField()
-    auszahlung_euro = models.CurrencyField(initial=0)
+    auszahlung_euro_1 = models.CurrencyField(initial=0)
+    auszahlung_euro_2 = models.CurrencyField(initial=0)
+
+    endowment_euro_1 = models.CurrencyField(initial=0)
+    endowment_euro_2 = models.CurrencyField(initial=0)
+
+    endowment_ende_1 = models.CurrencyField(initial=0)
+    endowment_ende_2 = models.CurrencyField(initial=0)
 
     payoff_1 = models.CurrencyField()
     payoff_2 = models.CurrencyField()
-    payoff_1_e = models.CurrencyField()
-    payoff_2_e = models.CurrencyField()
-    auszahlung_1 = models.CurrencyField()
-    auszahlung_2 = models.CurrencyField()
 
 
     gender = models.IntegerField(
@@ -510,9 +510,30 @@ class Player(BasePlayer):
         self.anzahlA = self.in_round(self.round_number - 1).anzahlA
         self.anzahlB = self.in_round(self.round_number - 1).anzahlB
 
+    def access_seq_data(self):
+        self.payoff_1= self.in_round(self.round_number - 1).payoff_1
+        self.endowment_euro_1 = self.in_round(self.round_number - 1).endowment_euro_1
+        self.auszahlung_euro_1 = self.in_round(self.round_number - 1).auszahlung_euro_1
+
+    def endowment_ende(self):
+        if self.subsession.func_sequence() == 1:
+            self.endowment_ende_1 = self.player.endowment
+            return self.endowment_ende_1
+        else:
+            self.endowment_ende_2 = self.player.endowment
+            return self.endowment_ende_2
+
+
+
     def endowment_euro(self):
-        self.endowment_euro = self.endowment.to_real_world_currency(self.session)
-        return self.endowment_euro
+        if self.subsession.func_sequence() == 1:
+            self.endowment_euro_1 = self.endowment.to_real_world_currency(self.session)
+            return self.endowment_euro_1
+        else:
+            self.endowment_euro_1 = self.payoff_1.to_real_world_currency(self.session)
+            self.endowment_euro_2 = self.endowment.to_real_world_currency(self.session)
+            return self.endowment_euro_1
+            return self.endowment_euro_2
 
 
 
@@ -521,9 +542,13 @@ class Player(BasePlayer):
         return self.part_fee
 
     def auszahlung_euro(self):
-        self.auszahlung_euro = self.session.config['participation_fee'] + self.endowment.to_real_world_currency(self.session)
-        return self.auszahlung_euro
-
-
+        if self.subsession.func_sequence() == 1:
+            self.auszahlung_euro_1 = self.session.config['participation_fee'] + self.endowment.to_real_world_currency(self.session)
+            return self.auszahlung_euro_1
+        else:
+            self.auszahlung_euro_1 = self.session.config['participation_fee'] + self.payoff_1.to_real_world_currency(self.session)
+            self.auszahlung_euro_2 = self.session.config['participation_fee'] + self.endowment.to_real_world_currency(self.session)
+            return self.auszahlung_euro_1
+            return self.auszahlung_euro_2
 
 

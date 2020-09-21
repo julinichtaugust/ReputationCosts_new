@@ -23,7 +23,10 @@ class Instruction_Page(Page):
         return self.round_number == 1
 
     def vars_for_template(self):
-        pass
+        return dict(
+            sequence=self.subsession.func_sequence(),
+            periode=self.subsession.func_period()
+        )
         #context =  self.player.vars_for_template()
         #context.update(
         #    image_path12_LifeCycle = ('graphics/12_periods/LifeCycle.png').format(self.round_number),
@@ -94,21 +97,33 @@ class comprehension_check(Page):
         context.update(
             comprehension_check= self.check_wrong_anwers(),
             wrong_answers= self.player.wrong_answer1 + self.player.wrong_answer2 + self.player.wrong_answer3 + self.player.wrong_answer4 + self.player.wrong_answer5 + self.player.wrong_answer6,
+
         )
         return context
 
-#######################################################################################################
 
+#######################################################################################################
+class New_Sequence(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.sequence_length + 1
+
+    def vars_for_template(self):
+        return dict(
+            sequence=self.subsession.func_sequence(),
+            periode=self.subsession.func_period()
+        )
 
 class Wait_Page(WaitPage):
     def after_all_players_arrive(self):
         for player in self.group.get_players():
             if self.round_number != 1:
                 player.access_data()
+                player.access_seq_data()
             if self.round_number == Constants.sequence_length + 1:
                 player.endowment = 1500
                 player.anzahlA = 5
                 player.anzahlB = 5
+
 
 
 class MyPage2(Page):
@@ -282,13 +297,15 @@ class Ende(Page):
             'anzahlB': self.player.anzahlB,
             'endowment': self.player.endowment,
             'endowment_euro': self.player.endowment_euro,
-            'end_euro': self.player.payoff.to_real_world_currency(self.session),
+            'endowment_ende': self.player.endowment_ende,
             'auszahlung_euro': self.player.auszahlung_euro,
             'part_fee': self.player.part_fee,
             'auszahlung': self.participant.payoff_plus_participation_fee(),
             'sequence': self.subsession.func_sequence(),
-            'periode': self.subsession.func_period()
+            'periode': self.subsession.func_period(),
+
         }
+
 
 
 class Uebersicht(Page):
@@ -299,18 +316,20 @@ class Uebersicht(Page):
     def vars_for_template(self):
         return {
             'sequence': self.subsession.func_sequence(),
-            'periode': self.subsession.func_period()
+            'periode': self.subsession.func_period(),
         }
 
 
 page_sequence = [
     Instruction_Page,
     comprehension_check,
+    New_Sequence,
     Wait_Page,
     MyPage2,
     ResultsWaitPage,
     Results2,
     ResultsWaitPage2,
+
     Ende,
     Uebersicht
    ]

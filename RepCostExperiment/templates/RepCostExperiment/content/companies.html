@@ -7,6 +7,12 @@
 <h3>{% trans 'Unternehmen' %}</h3>
     <p>
         Nachfolgend finden Sie Informationen zu den beiden Unternehmen. Die Unternehmen unterscheiden sich nur in den unten aufgeführten Kennzahlen und News. Bitte lesen Sie sich diese genau durch.
+
+    </p>
+{% if sequence == 2 %}
+    <p>
+        Im Vergleich zur vorherigen Sequenz haben sich die möglichen Dividendenausschüttungen der Unternehmen geändert.
+     {% else %}   {% endif %}
     </p>
     <p>
         <div class="container-fluid">
@@ -32,6 +38,7 @@
     </p>
 
 <br>
+{% if sequence == 1 %}
 <h3>{% trans 'Dividenden' %}</h3>
     <p>
         Wie in der Trainings-Sequenz werden auch im eigentlichen Experiment die Dividenden der Unternehmen durch einen Zufallsgenerator bestimmt. Insgesamt gibt es fünf mögliche Dividenden mit einer gleichen Eintrittswahrscheinlichkeit von jeweils 20 %.
@@ -45,7 +52,12 @@
         Der Zufallsgenerator ist für beide Unternehmen unabhängig voneinander, sodass die Unternehmen in einer Periode nicht immer die gleiche Dividende auszahlen werden.
         Die Verteilung ist jedoch für beide Unternehmen identisch, das bedeutet, dass die Wahrscheinlichkeiten für beide Unternehmen identisch sind.
     </p>
-
+{% else %}
+<h3>{% trans 'Beginn zweite Sequenz' %}</h3>
+    <p>
+        Mit drücken des Fertig-Buttons können Sie die zweite Sequenz des Experiments starten.
+    </p>
+{% endif %}
 
 {% endblock %}
 
