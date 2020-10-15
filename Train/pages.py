@@ -104,6 +104,33 @@ class Try2(Page):
                 'try_vermogen': self.player.try_vermogen,
             }
 
+class Train_Ende(Page):
+
+    def is_displayed(self):
+        if self.round_number == 2:
+            return self.round_number == 2
+
+    def vars_for_template(self):
+            return {
+                'try_verkauf_liste': self.player.try_verkauf_liste,
+                'try_kauf_liste': self.player.try_kauf_liste,
+                'try_marktpreis': self.player.try_marktpreis,
+                'try_anzahl': self.player.try_anzahl,
+                'try_endowment': self.player.try_endowment,
+                'try_dividende': self.player.try_dividende,
+                'try_daten_verkauf': self.player.try_daten_verkauf,
+                'try_daten_kauf': self.player.try_daten_kauf,
+                'try_verkauf_liste_h': self.player.try_verkauf_liste_h,
+                'try_kauf_liste_h': self.player.try_kauf_liste_h,
+                'try_rank':self.player.try_rank,
+                'try_rank_verkauf_player': self.player.try_rank_verkauf_player,
+                'try_rank_kauf_player': self.player.try_rank_kauf_player,
+                'try_marktpreis_rech': self.player.try_marktpreis_rech,
+                'try_handel': self.player.try_handel,
+                'try_ausfuhrung': self.player.try_ausfuhrung,
+                'try_vermogen': self.player.try_vermogen,
+            }
+
 
 
 ########################################################################################################
@@ -118,4 +145,5 @@ page_sequence = [
     Probe,
     Try1,
     Try2,
+    Train_Ende,
    ]
