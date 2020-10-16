@@ -8,20 +8,22 @@
 
     <h3>{% trans 'Variable Vergütung' %}</h3>
         <p>
-            <!-- zwei Sequenzen
+
             {% blocktrans trimmed %}
                 Ihre variable Vergütung entspricht Ihrem Vermögen am Ende einer Sequenz.
                 Am Ende der letzten Periode einer Sequenz erhalten Sie für alle Aktien in Ihrem Protfolio eine letzte Dividendenzahlung. Nach Auszahlung dieser Dividende sind die Aktien wertlos.
                 Ihnen wird jedoch nur das Endvermögen von einer der beiden Sequenzen ausgezahlt. Ein Zufallsgenerator entscheidet, welches Vermögen der beiden Sequenzen ausgezahlt wird.
-                <b>Es wird folglich nur eine Sequenz entlohnt!</b> Das Ergebnis der zufällig gezogenen Sequenz wird in Euro umgerechnet. Dabei gilt 750 ECU = 1 €.
+                <b>Es wird folglich nur eine Sequenz entlohnt!</b> Das Ergebnis der zufällig gezogenen Sequenz wird in Euro umgerechnet. Dabei gilt 500 ECU = 1 €.
             {% endblocktrans %}
 
-            -->
+
+            <!-- eine Sequenzen
             {% blocktrans trimmed %}
                 Ihre variable Vergütung entspricht Ihrem Vermögen am Ende der Sequenz.
                 Am Ende der letzten Periode der Sequenz erhalten Sie in der letzten Dividendenphase für alle Aktien in Ihrem Protfolio eine letzte Dividendenzahlung. Nach Auszahlung dieser Dividende sind die Aktien wertlos.
                  Das Ergebnis der Sequenz wird in Euro umgerechnet. Dabei gilt 500 ECU = 1 €.
             {% endblocktrans %}
+            -->
         </p>
 
 {% endblock %}
