@@ -25,7 +25,7 @@ Your app description 4
 class Constants(BaseConstants):
     name_in_url = 'RepCostExperiment'
     players_per_group = 6
-    sequence_length = 2
+    sequence_length = 12
     sequence_number = 2
     num_rounds = sequence_length * sequence_number
 
