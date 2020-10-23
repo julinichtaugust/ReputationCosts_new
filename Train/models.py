@@ -247,7 +247,7 @@ class Player(BasePlayer):
         else:
             self.try_verkauf_liste_h = [self.try_verkauf, 3, 4, 5, 2.5, 2]
         self.try_verkauf_liste_h.sort()
-        print(self.try_verkauf_liste_h)
+        #print(self.try_verkauf_liste_h)
         return self.try_verkauf_liste_h
 
     def try_kauf_liste_h(self):
@@ -256,7 +256,7 @@ class Player(BasePlayer):
         else:
             self.try_kauf_liste_h = [self.try_kauf, 3, 2.5, 4, 2, 1.5]
         self.try_kauf_liste_h.sort(reverse=True)
-        print(self.try_kauf_liste_h)
+        #print(self.try_kauf_liste_h)
         return self.try_kauf_liste_h
 
     def try_rank(self):
@@ -267,7 +267,7 @@ class Player(BasePlayer):
                 self.try_clearing_rank = i
             else:
                 pass
-        print(self.try_clearing_rank)
+        #print(self.try_clearing_rank)
 
     def try_rank_verkauf_player(self):
         self.try_rank_verkauf_player = (next((i for i, item in enumerate(self.try_daten_verkauf) if item["SPIELER"] == 1), None))+1

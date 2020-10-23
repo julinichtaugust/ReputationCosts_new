@@ -186,7 +186,7 @@ class MyPage2(Page):
             pass
         else:
             if values['verkaufA'] <= values['kaufA']:
-                return 'Ihre Nachfrage (= Kauf) kann nicht über dem Angebot (= Verkauf) liegen. Sie würden mit sich selber handeln.'
+                return 'Ihre Nachfrage (= Kauf) kann nicht über oder gleich dem Angebot (= Verkauf) liegen. Sie würden mit sich selber handeln.'
 
         if values['verkaufB'] is None:
             pass
@@ -201,7 +201,7 @@ class MyPage2(Page):
             pass
         else:
             if values['verkaufB'] <= values['kaufB']:
-                return 'Ihre Nachfrage (= Kauf) kann nicht über dem Angebot (= Verkauf) liegen. Sie würden mit sich selber handeln.'
+                return 'Ihre Nachfrage (= Kauf) kann nicht über oder gleich dem Angebot (= Verkauf) liegen. Sie würden mit sich selber handeln.'
 
     def before_next_page(self):
         self.player.set_value_verkaufA()

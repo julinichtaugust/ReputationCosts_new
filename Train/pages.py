@@ -73,7 +73,7 @@ class Try1(Page):
             pass
         else:
             if values['try_verkauf'] <= values['try_kauf']:
-                return 'Ihre Nachfrage kann nicht über dem Angebot liegen. Sie würden mit sich selber handeln.'
+                return 'Ihre Nachfrage kann nicht über oder gleich dem Angebot liegen. Sie würden mit sich selber handeln.'
 
 
     def before_next_page(self):
