@@ -19,6 +19,8 @@
     <p>
         Bei den folgenden Beispiele haben Sie zu Beginn 1 Aktie in Ihrem Protfolio sowie ein Anfangsvermögen in Höhe von {{ 100|c }}.
     </p>
+
+
     <p>
         <b>Beispiel 1:</b>
     </p>
@@ -27,47 +29,40 @@
     <p>
         <i>Endvermögen:</i> Sie erhalten zunächst in beiden Perioden jeweils eine Dividende. Die Aktie ist nach Ablauf der letzten Periode für Sie wertlos. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) und den Dividendenzahlungen  ({{ 2|c }} + {{ 3|c }}).
     </p>
-
-
-
     <p>
         <center>
              <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="65%"/>
         </center>
     </p>
+
+
     <p>
-        Das gleiche gilt für eine Aktie, die Sie in der ersten Handelsphase kaufen. Sie erhalten für diese in der ersten Dividendenphase eine Ausschüttung. Wenn Sie die Aktie in der zweiten Dividendenphase nicht verkaufen, erhalten Sie auch in der zweiten Dividendenphase die Ausschüttung. Wenn keine weiteren Perioden gespielt werden, dann ist die Aktie für Sie wertlos, da Sie keine Ausschüttungen mehr erhalten und so Ihr Vermögen nicht mehr verändert wird:
+        <b>Beispiel 2:</b>
     </p>
     <p>
+        <i>Annahme:</i> Sie kaufen eine Aktie in der ersten Periode. </p>
+    <p>
+        <i>Endvermögen:</i> Von Ihrem Anfangsvermögen wird der Kaufpreis der Aktie abgezogen. Sie erhalten jedoch nun für zwei Aktien in Ihrem Portfolio die Dividenden. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) abzüglich des Kaufpreises ({{ 6|c }}) und den Dividendenzahlungen  ({{ 4|c }} + {{ 6|c }}).
+    </p>
         <center>
              <img src="{% static "ReputationCosts/Screenshots/Train_Fall_2.png" %}" width="65%"/>
         </center>
     </p>
+
+
     <p>
-        Kaufen Sie eine Aktie erst in der zweiten Handelsrunde, dann erhalten Sie für diese nur noch eine Dividendenauszahlung:
+        <b>Beispiel 3:</b>
     </p>
     <p>
+        <i>Annahme:</i> Sie verkaufen eine Aktie in der zweiten Periode. </p>
+    <p>
+        <i>Endvermögen:</i> Zusätzlich zur Dividende der ersten Periode erhalten Sie den Verkaufspreis. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}), der Dividendenzahlung  ({{ 2|c }} und des Verkaufspreises {{ 3|c }}).
+    </p>
         <center>
              <img src="{% static "ReputationCosts/Screenshots/Train_Fall_3.png" %}" width="65%"/>
         </center>
     </p>
-    <p>
-        Verkaufen Sie eine Aktie beispielsweise in der ersten Handelsphase, dann wird der Verkaufspreis Ihrem Vermögen gutgeschrieben. Sie erhalten für diese Aktie in allen darauffolgenden Dividendenphasen keine Ausschüttung mehr.  Sie können das erhaltene Geld in Ihrem Vermögen belassen. Das Vermögen nach Ablauf der letzten Dividendenphase wird an Sie ausgezahlt:
-    </p>
-    <p>
-        <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_4.png" %}" width="65%"/>
-        </center>
-    </p>
 
-    <p>
-        Sie können das erhaltene Geld aus Verkäufen von Aktien in den folgenden Perioden auch wieder in Aktien investieren:
-    </p>
-    <p>
-        <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="65%"/>
-        </center>
-    </p>
 
 
 
