@@ -6,22 +6,33 @@
 <h3>{% trans 'Anzahl Perioden' %}</h3>
 
     <p>
-        Die Trainings-Sequenz besteht aus zwei Perioden. Demnach können Sie in zwei Handelsphasen Aktien handeln und erhalten auch in zwei Dividendenphasen die Ausschüttungen der Aktien in Ihrem Portfolio.
+        Die Trainings-Sequenz besteht aus <b>zwei Perioden</b>.
     </p>
 
 <h3>{% trans 'Endvermögen' %}</h3>
 
     <p>
-        Nach Ablauf der zweiten Runde sind die Aktien in Ihrem Portfolio wertlos und Ihr Endvermögen bestimmt sich über Ihre Ausstattung zu diesem Zeitpunkt.
+        Nach Ablauf der zweiten Periode sind die Aktien in Ihrem Portfolio wertlos. Ihre Auszahlung wird folglich lediglich durch das Endvermögen zu diesem Zeitpunkt bestimmt.
     </p>
 
 <h3>{% trans 'Beispiele' %}</h3>
     <p>
-        Eine Aktie, die Sie zu Beginn der Sequenz in Ihrem Portfolio haben und die Sie in keiner der beiden Perioden verkaufen zahlt Ihnen entsprechend bei zwei Perioden zwei mal eine Dividende aus und ist nach Ablauf der letzten Periode für Sie wertlos, da Sie keinen Endwert hat und auch keine weiteren Dividenden auszahlt:
+        Bei den folgenden Beispielen haben Sie zu Beginn 1 Aktie in Ihrem Protfolio sowie ein Anfangsvermögen in Höhe von {{ 100|c }}.
     </p>
     <p>
+        <b>Beispiel 1:</b>
+    </p>
+    <p>
+        <i>Annahme:</i> Sie handeln in keiner der beiden Perioden. </p>
+    <p>
+        <i>Endvermögen:</i> Sie erhalten zunächst in beiden Perioden jeweils eine Dividende. Die Aktie ist nach Ablauf der letzten Periode für Sie wertlos. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) und den Dividendenzahlungen  ({{ 2|c }} + {{ 3|c }}).
+    </p>
+
+
+
+    <p>
         <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="50%"/>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="65%"/>
         </center>
     </p>
     <p>
@@ -29,7 +40,7 @@
     </p>
     <p>
         <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_2.png" %}" width="50%"/>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_2.png" %}" width="65%"/>
         </center>
     </p>
     <p>
@@ -37,7 +48,7 @@
     </p>
     <p>
         <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_3.png" %}" width="50%"/>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_3.png" %}" width="65%"/>
         </center>
     </p>
     <p>
@@ -45,7 +56,7 @@
     </p>
     <p>
         <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_4.png" %}" width="50%"/>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_4.png" %}" width="65%"/>
         </center>
     </p>
 
@@ -54,7 +65,7 @@
     </p>
     <p>
         <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="50%"/>
+             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="65%"/>
         </center>
     </p>
 
