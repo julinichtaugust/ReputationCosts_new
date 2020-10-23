@@ -11,16 +11,16 @@
 {% endblock %}
 
 {% block content %}
+    <p style="text-align: center">
+        Sie haben alle Frage des Verständnistests richtig beantwortet.
+    </p>
 
     <p style="text-align: center">
-        {% blocktrans trimmed with wrong_answers=wrong_answers %}
+
 
             Sie beginnen nun mit der ersten Sequenz.
 
-            <!--
-            Sie beginnen nun mit der Sequenz.
-            -->
-        {% endblocktrans %}
+
     </p>
     <br>
     {% next_button %}
