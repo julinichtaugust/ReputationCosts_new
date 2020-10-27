@@ -27,6 +27,7 @@ SESSION_CONFIGS = [
 # app_sequence=['questionnaire'],
 #  app_sequence=['RepCostExperiment'],
 # app_sequence=['Train','RepCostExperiment', 'questionnaire'],
+# app_sequence = ['Train'],
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'de'
