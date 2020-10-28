@@ -9,9 +9,11 @@ from otree.api import Submission
 class PlayerBot(Bot):
 
     def play_round(self):
-        yield pages.questions1, dict(age= 32, job= 1, abschluss= 2, familie= 2, income= 3)
-        yield pages.questions2, dict(taxaversion2= 0, taxcomplexity= 2, decision= 7, taxmoral= 1, taxaversion= 9, dread1= 500, dread2= 500, dread3= 500, debtaversion=1)
-        yield pages.questions3, dict(crt_bat= 1.15, crt_widget= 1, crt_lake= 55)
+        yield pages.questions1, dict(gender=0,age=18, abschluss=1, fakultaet=1, familie=1, kinder=1, income=1)
+        yield pages.questions2, dict(kenntnis=1, geldanlagen=1, risiko_allgemein=1, risiko=1, schlupf=1, hinterziehen=1, leistungen=1, sinnvoll=1, hybrid=1, lizenz=1, privilegien=1, oase=1, treaty=1, handelsblatt=1, bild=1, spiegel=1, welt=1, zeit=1, focus=1, mm=1, regio=1, sonsZ=1, sparen=1, verteilung=1, umgebung_hint=1, umgebung_schl=1, akzeptanz_hint=1, akzeptanz_schl=1, aufdeckung=1, interpretation=1, respekt=1, fair=1, strafen=1, aktien=1, politik=1)
+        yield pages.questions3, dict(gründung=1, aufwand=1, doppelt=1, kinderarbeit=1)
+        yield pages.questions4, dict(erklaerung='So weit',anmerkungen='So gut')
+
         #yield Submission(pages.payment, check_html=False)
         #yield pages.payment, dict(anmerkungen= 'Das war super!')
         #time.sleep(30)  # 1 = 1 second

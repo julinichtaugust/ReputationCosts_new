@@ -16,8 +16,8 @@ SESSION_CONFIGS = [
         name='RepCostExperiment',
         display_name='RepCostExperiment',
         num_demo_participants=6,
-        app_sequence=['RepCostExperiment'],
-        use_browser_bots=False,
+        app_sequence=['Train','RepCostExperiment', 'questionnaire'],
+        use_browser_bots=True,
         tax_rate=0.40,
         tax_rate_low=0.25,
         test=0,
@@ -27,7 +27,8 @@ SESSION_CONFIGS = [
 # app_sequence=['questionnaire'],
 #  app_sequence=['RepCostExperiment'],
 # app_sequence=['Train','RepCostExperiment', 'questionnaire'],
-# app_sequence = ['Train'],
+#
+#
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'de'
