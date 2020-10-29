@@ -96,12 +96,18 @@ class Group(BaseGroup):
 # Sortierte Liste der Verkaufspreise (Angebote: von klein nach groß)
     def verkaufA_liste(self):
         players = self.get_players()
+        for p in players:
+            if p.verkaufA==0:
+                p.verkaufA = 99999
         self.verkaufA_liste = [p.verkaufA for p in players]
         self.verkaufA_liste.sort()
         return self.verkaufA_liste
 
     def verkaufB_liste(self):
         players = self.get_players()
+        for p in players:
+            if p.verkaufB==0:
+                p.verkaufB = 99999
         self.verkaufB_liste = [p.verkaufB for p in players]
         self.verkaufB_liste.sort()
         return self.verkaufB_liste
@@ -490,6 +496,8 @@ class Player(BasePlayer):
     def set_value_verkaufB(self):
         if self.verkaufB == None:
             self.verkaufB = 99999
+        if self.verkaufB == 0:
+            self.verkaufB = 99999
 
     def set_value_kaufB(self):
         if self.kaufB == None:
@@ -497,6 +505,8 @@ class Player(BasePlayer):
 
     def set_value_verkaufA(self):
         if self.verkaufA == None:
+            self.verkaufA = 99999
+        if self.verkaufA == 0:
             self.verkaufA = 99999
 
     def set_value_kaufA(self):
