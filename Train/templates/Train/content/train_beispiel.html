@@ -12,7 +12,7 @@
 <h3>{% trans 'Endvermögen' %}</h3>
 
     <p>
-        Nach Ablauf der zweiten Periode sind die Aktien in Ihrem Portfolio wertlos. Ihre Auszahlung wird folglich lediglich durch das Endvermögen zu diesem Zeitpunkt bestimmt.
+        Nach Ablauf der zweiten Periode sind die Aktien in Ihrem Portfolio wertlos. Ihre Auszahlung wird folglich lediglich durch das Endvermögen zu diesem Zeitpunkt bestimmt. Bitte bachten Sie, dass die Auszahlung der Trainings-Sequenz für die tatsächliche Vergütung am Ende des Experiments irrelevant ist.
     </p>
 
 <h3>{% trans 'Beispiele' %}</h3>
@@ -40,9 +40,9 @@
         <b>Beispiel 2:</b>
     </p>
     <p>
-        <i>Annahme:</i> Sie kaufen eine Aktie in der ersten Periode. </p>
+        <i>Annahme:</i> Sie kaufen eine Aktie für {{ 6|c }} in der ersten Periode. </p>
     <p>
-        <i>Endvermögen:</i> Von Ihrem Anfangsvermögen wird der Kaufpreis der Aktie abgezogen. Sie erhalten jedoch nun für zwei Aktien in Ihrem Portfolio die Dividenden. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) abzüglich des Kaufpreises ({{ 6|c }}) und den Dividendenzahlungen  ({{ 4|c }} + {{ 6|c }}).
+        <i>Endvermögen:</i> Von Ihrem Anfangsvermögen wird der Kaufpreis der Aktie abgezogen. Sie erhalten jedoch nun für zwei Aktien in Ihrem Portfolio die Dividenden. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) und den Dividendenzahlungen  ({{ 4|c }} + {{ 6|c }}) abzüglich des Kaufpreises ({{ 6|c }}).
     </p>
         <center>
              <img src="{% static "ReputationCosts/Screenshots/Train_Fall_2.png" %}" width="65%"/>
@@ -54,9 +54,9 @@
         <b>Beispiel 3:</b>
     </p>
     <p>
-        <i>Annahme:</i> Sie verkaufen eine Aktie in der zweiten Periode. </p>
+        <i>Annahme:</i> Sie verkaufen eine Aktie für {{ 3|c }} in der zweiten Periode. </p>
     <p>
-        <i>Endvermögen:</i> Zusätzlich zur Dividende der ersten Periode erhalten Sie den Verkaufspreis. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}), der Dividendenzahlung  ({{ 2|c }} und des Verkaufspreises {{ 3|c }}).
+        <i>Endvermögen:</i> Zusätzlich zur Dividende der ersten Periode erhalten Sie den Verkaufspreis. In der zweiten Periode erhalten Sie nun keine Dividende mehr. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}), der Dividendenzahlung  ({{ 2|c }}) und des Verkaufspreises ({{ 3|c }}).
     </p>
         <center>
              <img src="{% static "ReputationCosts/Screenshots/Train_Fall_3.png" %}" width="65%"/>
