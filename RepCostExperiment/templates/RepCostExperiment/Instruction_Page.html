@@ -46,23 +46,31 @@
     </li>
 
     <li class="nav-item" >
-        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Unternehmen und Dividenden' %}</a>
+        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Unternehmen' %}</a>
+    </li>
+
+    <li class="nav-item" >
+        <a class="nav-link" id="part3-tab" data-toggle="tab" href="#part3" role="tab" aria-controls="part3" onclick="topFunction()">{% trans 'News und Analysen' %}</a>
+    </li>
+
+    <li class="nav-item" >
+        <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividenden' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part3-tab" data-toggle="tab" href="#part3" role="tab" aria-controls="part3" onclick="topFunction()">{% trans 'Handelsphase' %}</a>
+        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Handelsphase' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
+        <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Vergütung' %}</a>
+        <a class="nav-link" id="part7-tab" data-toggle="tab" href="#part7" role="tab" aria-controls="part7" onclick="topFunction()">{% trans 'Vergütung' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part6-tab" data-toggle="tab" href="#part6" role="tab" aria-controls="part6" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
+        <a class="nav-link" id="part8-tab" data-toggle="tab" href="#part8" role="tab" aria-controls="part8" onclick="topFunction()">{% trans 'Verständnisfragen' %}</a>
     </li>
 
 </ul>
@@ -91,13 +99,13 @@
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn otree-btn-next">{% trans 'Weiter' %}</button>
     </div>
 
-    <!-- Companies and dividends -->
+    <!-- Companies -->
 
     <div class="tab-pane" id="part2" role="tabpanel" aria-labelledby="part2-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title ">
-                {% trans 'Unternehmen und Dividenden' %}
+                {% trans 'Unternehmen' %}
             </h2>
         </div>
         <br>
@@ -110,9 +118,48 @@
         </div>
     </div>
 
-<!-- Income phase -->
+    <!-- News -->
 
     <div class="tab-pane" id="part3" role="tabpanel" aria-labelledby="part3-tab">
+
+        <div class="card-header bg-transparent mainheader" >
+            <h2 class="card-title ">
+                {% trans 'News und Analysen' %}
+            </h2>
+        </div>
+        <br>
+
+        {% include 'RepCostExperiment/content/news.html' %}
+
+        <div style="text-align: center">
+            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
+            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">{% trans 'Weiter' %}</button>
+        </div>
+    </div>
+
+
+    <!-- Dividends -->
+
+    <div class="tab-pane" id="part4" role="tabpanel" aria-labelledby="part4-tab">
+
+        <div class="card-header bg-transparent mainheader" >
+            <h2 class="card-title ">
+                {% trans 'Dividenden' %}
+            </h2>
+        </div>
+        <br>
+
+        {% include 'RepCostExperiment/content/dividends.html' %}
+
+        <div style="text-align: center">
+            <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back ">{% trans 'Zurück' %}</button>
+            <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">{% trans 'Weiter' %}</button>
+        </div>
+    </div>
+
+<!-- Income phase -->
+
+    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -131,7 +178,7 @@
     </div>
 
 <!-- Rest phase -->
-    <div class="tab-pane" id="part4" role="tabpanel" aria-labelledby="part4-tab">
+    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -150,7 +197,7 @@
 
 
 <!-- Payoff -->
-    <div class="tab-pane" id="part5" role="tabpanel" aria-labelledby="part5-tab">
+    <div class="tab-pane" id="part7" role="tabpanel" aria-labelledby="part7-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">
@@ -169,7 +216,7 @@
     </div>
 
 <!-- Comprehension test -->
-    <div class="tab-pane" id="part6" role="tabpanel" aria-labelledby="part6-tab">
+    <div class="tab-pane" id="part8" role="tabpanel" aria-labelledby="part8-tab">
 
         <div class="card-header bg-transparent mainheader" >
             <h2 class="card-title">

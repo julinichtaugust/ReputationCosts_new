@@ -1,0 +1,88 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block content %}
+
+
+    <p>
+        Nachfolgend erhalten Sie aktuelle News über die beiden Unternehmen.
+    </p>
+
+    <p>
+        <div class="container-fluid">
+            <div class="row toprow">
+                <div class="col-md-6">
+                    <div class="card my-0">
+                        <div class="card-body" style="height: 600px">
+                            <p>
+                                <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                                    A-Unternehmen
+                                </h4>
+                            </p>
+                            <p>
+                                <img src="{% static "ReputationCosts/pictures/Kursverlauf.jpg"%}" width="200px"/>
+                            </p>
+                            <p style="font-size: 14pt">
+                                <b>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</b>
+                            </p>
+                            <p style="font-size: 12pt">
+                                Der Geschäftsführer des A&#8209;Unternehmens kann in diesem Jahr einen Gewinnzuwachs verkünden.
+                                Das freut insbesondere die Anleger, die eine höhere Dividende erwarten dürfen.
+                            </p>
+                            <p>
+                                <img src="{% static "ReputationCosts/pictures/Steuern.jpg"%}" width="200px"/>
+                            </p>
+                            <p style="font-size: 14pt; text-align: initial;">
+                                <b>Gewinnverschiebung ins ausländische Steuerparadies - A&#8209;Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1</b>
+                            </p>
+                            <p style="font-size: 12pt">
+                                Nach Informationen der ...
+                            </p>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card my-0">
+                        <div class="card-body" style="height: 600px">
+                            <p>
+                                <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                                    B-Unternehmen
+                                </h4>
+                            </p>
+                            <p>
+                                <img src="{% static "ReputationCosts/pictures/Kursverlauf.jpg"%}" width="200px"/>
+                            </p>
+                            <p style="font-size: 14pt">
+                                <b>B-Unternehmen mit Gewinnzuwachs – Anleger erfreut</b>
+                            </p>
+                            <p style="font-size: 12pt">
+                                Der Geschäftsführer des B&#8209;Unternehmens kann in diesem Jahr einen Gewinnzuwachs verkünden.
+                                Das freut insbesondere die Anleger, die eine höhere Dividende erwarten dürfen.
+                            </p>
+                            <p>
+                                <img src="{% static "ReputationCosts/pictures/Steuern.jpg"%}" width="200px"/>
+                            </p>
+                            <p style="font-size: 14pt; text-align: initial;">
+                                <b>
+                                    {% if player.rand == 2 %} <td>Gewinnverschiebung ins ausländische Steuerparadies - B-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td> {% else %} <td>B-Unternehmen hat eine effektive Steuerquote von 30,6 % - Steuerquote entspricht dem deutschen Durchschnitt</td> {% endif %}
+                                </b>
+                            </p>
+                            <p style="font-size: 12pt">
+                                Nach Informationen der ...
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p>
+
+
+
+{% endblock %}
+
+
