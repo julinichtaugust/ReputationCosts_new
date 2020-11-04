@@ -15,51 +15,23 @@
         Nach Ablauf der zweiten Periode sind die Aktien in Ihrem Portfolio wertlos. Ihre Auszahlung wird folglich lediglich durch das Endvermögen zu diesem Zeitpunkt bestimmt. Bitte bachten Sie, dass die Auszahlung der Trainings-Sequenz für die tatsächliche Vergütung am Ende des Experiments irrelevant ist.
     </p>
 
-<h3>{% trans 'Beispiele' %}</h3>
+<h3>{% trans 'Beispiel' %}</h3>
     <p>
-        Bei den folgenden Beispiele haben Sie zu Beginn 1 Aktie in Ihrem Portfolio sowie ein Anfangsvermögen in Höhe von {{ 100|c }}.
+        Bei dem folgenden Beispiel haben Sie zu Beginn 1 Aktie in Ihrem Portfolio sowie ein Bankguthaben in Höhe von {{ 10|c }}.
     </p>
 
 
     <p>
-        <b>Beispiel 1:</b>
-    </p>
+        <i>Annahme:</i> Sie verkaufen in der ersten Periode eine Aktie für {{ 6|c }} und kaufen in der zweiten Periode eine Aktie für {{ 3|c }}. </p>
     <p>
-        <i>Annahme:</i> Sie handeln in keiner der beiden Perioden. </p>
-    <p>
-        <i>Endvermögen:</i> Sie erhalten zunächst in beiden Perioden jeweils eine Dividende. Die Aktie ist nach Ablauf der letzten Periode für Sie wertlos. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) und den Dividendenzahlungen  ({{ 2|c }} + {{ 3|c }}).
+        <i>Endvermögen:</i> Sie erhalten in der ersten Periode den Verkaufserlös aus dem Verkauf ({{ 6|c }}. Da Sie keine Aktie mehr im Portfolio haben, erhalten Sie auch keine
+        Dividende. In der zweiten Periode kaufen Sie für {{ 3|c }} eine Aktie. Dieser Betrag wird von Ihrem Bankguthaben abgezogen. Da Sie nun eine Dividende im Portfolio haben,
+        erhalten Sie eine Dividende in Höhe von {{ 4|c }}, die Ihrem Bankguthaben hinzugefügt wird. Die Aktie ist nach Ablauf der letzten Periode für Sie wertlos. Das Bankguthaben
+        zum Ende bemisst sich folglich aus dem Bankvermögen zu Beginn ({{ 10|c }}), zuzüglich des Verkaufserlöses ({{ 6|c }}), abzüglich des Kaufpreises ({{ 3|c }}) und zuzüglich der Dividendenzahlung ({{ 4|c }}).
     </p>
     <p>
         <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_1.png" %}" width="65%"/>
-        </center>
-    </p>
-
-
-    <p>
-        <b>Beispiel 2:</b>
-    </p>
-    <p>
-        <i>Annahme:</i> Sie kaufen eine Aktie für {{ 6|c }} in der ersten Periode. </p>
-    <p>
-        <i>Endvermögen:</i> Von Ihrem Anfangsvermögen wird der Kaufpreis der Aktie abgezogen. Sie erhalten jedoch nun für zwei Aktien in Ihrem Portfolio die Dividenden. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}) und den Dividendenzahlungen  ({{ 4|c }} + {{ 6|c }}) abzüglich des Kaufpreises ({{ 6|c }}).
-    </p>
-        <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_2.png" %}" width="65%"/>
-        </center>
-    </p>
-
-
-    <p>
-        <b>Beispiel 3:</b>
-    </p>
-    <p>
-        <i>Annahme:</i> Sie verkaufen eine Aktie für {{ 3|c }} in der zweiten Periode. </p>
-    <p>
-        <i>Endvermögen:</i> Zusätzlich zur Dividende der ersten Periode erhalten Sie den Verkaufspreis. In der zweiten Periode erhalten Sie nun keine Dividende mehr. Das Endvermögen bemisst sich folglich aus dem Anfangsvermögen ({{ 100|c }}), der Dividendenzahlung  ({{ 2|c }}) und des Verkaufspreises ({{ 3|c }}).
-    </p>
-        <center>
-             <img src="{% static "ReputationCosts/Screenshots/Train_Fall_3.png" %}" width="65%"/>
+             <img src="{% static "ReputationCosts/Screenshots/Beispiel.png" %}" width="65%"/>
         </center>
     </p>
 
