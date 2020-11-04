@@ -21,14 +21,25 @@
 
 
 .popup {
-  margin: 10px auto;
-  padding: 20px;
+  margin-top: 300px;
+  padding-top: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
   background: #fff;
   border-radius: 5px;
-  width: 300px;
-  position: relative;
+  width: 400px;
+  position: absolute;
+  right: 170px;
+  top: 180px;
   transition: all 5s ease-in-out;
-  height: 200px !important;
+  height: 300px !important;
+  border: inset;
+  border-width: 2px;
+  border-color: black;
+}
+
+.card-body {
+  padding: 0.1rem !important;
 }
 
 .popup h2 {
@@ -61,4 +72,5 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
