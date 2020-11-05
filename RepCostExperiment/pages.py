@@ -132,7 +132,7 @@ class MyPage2(Page):
 
     def get_timeout_seconds(self):
         if self.round_number <= 3:
-            second = 120
+            second = 12000
         else:
             second = 60
         return second
@@ -248,7 +248,7 @@ class Results2(Page):
 
     def get_timeout_seconds(self):
         if self.round_number <= 3:
-            second = 120
+            second = 12000
         else:
             second = 60
         return second

@@ -24,6 +24,7 @@ class PlayerBot(Bot):
             yield pages.New_Sequence
         #time.sleep(4)
         if self.player.id_in_group == 1:
+            time.sleep(100)
             if self.player.anzahlA != 0 and self.player.anzahlB != 0:
                 yield pages.MyPage2, dict(verkaufA =random.randrange(31, 50, 1) , kaufA= random.randrange(1, 29, 1), verkaufB=random.randrange(31, 50, 1) , kaufB=random.randrange(1, 30, 1) )
             else:

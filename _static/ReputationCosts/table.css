@@ -1,4 +1,4 @@
-able {
+table {
     color: black;
   border-spacing: 1;
   border-collapse: collapse;
@@ -36,9 +36,9 @@ table  tr {
 #UnternehmenA {
     padding-left: 10px;
     padding-right: 10px;
-    height: 430px;
+    height: 500px;
     float: left;
-     padding: 20px;
+    padding: 20px;
 }
 #UnternehmenA_news {
     padding-left: 10px;

@@ -2,32 +2,20 @@
 {% load i18n %}
 
 {% block content %}
-<div class="card-body" style="height: 0px;">
-    <div class="center">
-        <div id="news1" class="overlay">
-            <div class="popup">
-                <a class="close" href="#">&times;</a>
-                <div class="content">
-                    <p style="font-size: 20px">
-                        A-Unternehmen mit Gewinnzuwachs – Anleger erfreut
-                    </p>
-                    <p>
-                        In diesem Jahr dürfen sich die Anleger...
-                    </p>
 
-                    <br>
+ <p>
+    Wie in der Trainings-Sequenz werden auch im eigentlichen Experiment die Dividenden der Unternehmen durch einen Zufallsgenerator bestimmt. Insgesamt gibt es fünf mögliche Dividenden mit einer gleichen Eintrittswahrscheinlichkeit von jeweils 20 %.
+</p>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<p>
+    Die Dividende pro Aktie wird in jeder Periode für jedes Unternehmen neu bestimmt.
+    In einer Sequenz ändert sich die Liste der möglichen Dividenden nicht, sodass in jeder Periode aus der gleichen Liste eine Dividende zufällig gezogen wird.
+</p>
 
-<h3>{% trans 'Unternehmen' %}</h3>
-    <p>
-        Nachfolgend finden Sie Informationen zu den beiden Unternehmen. Die Unternehmen unterscheiden sich nur in den unten aufgeführten Kennzahlen und den <i>News und Analysen</i>. Bitte lesen Sie sich diese genau durch.
+<p>
+    Der Zufallsgenerator ist für beide Unternehmen unabhängig voneinander, sodass die Unternehmen in einer Periode nicht immer die gleiche Dividende auszahlen werden.
+</p>
 
-    </p>
 {% if sequence == 2 %}
     <p>
         Im Vergleich zur vorherigen Sequenz haben sich die möglichen Dividendenausschüttungen der Unternehmen geändert.
@@ -38,16 +26,32 @@
             <div class="row toprow">
                 <div class="col-md-6">
                     <div class="card my-0">
-                        <div class="card-body" style="height: 600px">
-                            {% include 'RepCostExperiment/comp_template/A.html' %}
+                        <div class="card-body" style="height: 200px">
+                            <p>
+                                <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                                    A-Unternehmen
+                                </h4>
+                            </p>
+                            <div id="UnternehmenA" style="margin: 15px">
+                                <p>
+                                    {% include 'RepCostExperiment/comp_template/contents/Dividende_A.html' %}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card my-0">
-                        <div class="card-body" style="height: 600px">
-                            {% include 'RepCostExperiment/comp_template/B.html' %}
+                        <div class="card-body" style="height: 200px">
+                            <p>
+                                <h4 class="card-title" align="center" style="margin-bottom: .0rem">
+                                    B-Unternehmen
+                                </h4>
+                            </p>
+                            <div id="UnternehmenA" style="margin: 15px">
+                                <p>
+                                    {% include 'RepCostExperiment/comp_template/contents/Dividende_B.html' %}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -58,23 +62,12 @@
 
 <br>
 {% if sequence == 1 %}
-<h3>{% trans 'Dividenden' %}</h3>
-    <p>
-        Wie in der Trainings-Sequenz werden auch im eigentlichen Experiment die Dividenden der Unternehmen durch einen Zufallsgenerator bestimmt. Insgesamt gibt es fünf mögliche Dividenden mit einer gleichen Eintrittswahrscheinlichkeit von jeweils 20 %.
-    </p>
 
-    <p>
-        Die Dividende pro Aktie wird in jeder Periode für jedes Unternehmen neu bestimmt.
-        In einer Sequenz ändert sich die Liste der möglichen Dividenden nicht, sodass in jeder Periode aus der gleichen Liste eine Dividende zufällig gezogen wird.
-    </p>
-    <p>
-        Der Zufallsgenerator ist für beide Unternehmen unabhängig voneinander, sodass die Unternehmen in einer Periode nicht immer die gleiche Dividende auszahlen werden.
-    </p>
+
 {% else %}
-<h3>{% trans 'Beginn zweite Sequenz' %}</h3>
-    <p>
-        Mit drücken des Fertig-Buttons können Sie die zweite Sequenz des Experiments starten.
-    </p>
+<p>
+    Mit drücken des Fertig-Buttons können Sie die zweite Sequenz des Experiments starten.
+</p>
 {% endif %}
 
 {% endblock %}

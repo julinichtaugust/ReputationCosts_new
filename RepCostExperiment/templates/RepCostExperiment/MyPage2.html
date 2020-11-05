@@ -27,21 +27,21 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                 <div class="card my-0">
                     <div class="card-body" style="height: 816px;">
                         {% include 'RepCostExperiment/comp_template/A.html' %}
-                            <p>
-                                <table align="center" style="width: 350px" >
-                                    <tr style="font-size:10pt;">
-                                        <th>Letzter Marktpreis A-Unternehmen </th>
-                                    </tr>
-                                    <tr style="background: whitesmoke; font-size:10pt;">
-                                        {% if player.rand == 1 %}
-                                        <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
-                                        {% else %}
-                                        <td style="text-align:center; font-size:10pt;" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
-                                        {% endif %}
-                                    </tr>
-                                </table>
-                            </p>
-                        </div>
+                        <br>
+                        <p>
+                            <table align="center" style="width: 350px" >
+                                <tr style="font-size:10pt;">
+                                    <th>Letzter Marktpreis A-Unternehmen </th>
+                                </tr>
+                                <tr style="background: whitesmoke; font-size:10pt;">
+                                    {% if player.rand == 1 %}
+                                    <td style="text-align:center" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisA_alt == None %}Kein Handel{% else %}{{ marktpreisA_alt }}{% endif %}{% endif %}</td>
+                                    {% else %}
+                                    <td style="text-align:center; font-size:10pt;" width="350px">{% if subsession.round_number == 1 %}Noch kein Handel {% else %}{% if marktpreisB_alt == None %}Kein Handel{% else %}{{ marktpreisB_alt }}{% endif %}{% endif %}</td>
+                                    {% endif %}
+                                </tr>
+                            </table>
+                        </p>
                     </div>
                 </div>
             </div>

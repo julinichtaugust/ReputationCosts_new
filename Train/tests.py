@@ -13,12 +13,12 @@ class PlayerBot(Bot):
             yield pages.questions_pre, dict(seat_number= 1)
             yield pages.Instruction_Training
             yield pages.Probe
-        time.sleep(2)
+        #time.sleep(2)
         yield pages.Try1, dict(try_kauf=random.randrange(1, 10, 1), try_verkauf= random.randrange(11, 15, 1))
-        time.sleep(2)
+        #time.sleep(2)
         yield pages.Try2
         if self.round_number == Constants.num_rounds:
-            time.sleep(10)
+            #time.sleep(10)
             yield pages.Train_Ende
 
 

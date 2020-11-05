@@ -1,0 +1,48 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block styles %}
+<style>
+    table {
+        font-size: 10pt;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<p style="font-weight: bold;color: #3f51b5; font-size:12.0pt; text-align: left;font-size: larger">
+    NEWS UND ANALYSEN
+</p>
+
+<p>
+    <table border="0" cellpadding="1" cellspacing="1" style="text-align: left !important">
+        <colgroup>
+            <col width="20%" />
+            <col width="80%" />
+        </colgroup>
+        <tr>
+            <td valign="top" style="text-align: left; padding-left: 0cm">
+                15.01.2020
+            </td>
+            <td style="text-align: left">
+                B-Unternehmen mit Gewinnzuwachs – Anleger erfreut
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" style="text-align: left; padding-left: 0cm">
+                03.01.2020
+            </td>
+            <td style="text-align: left">
+                {% if player.rand == 2 %}
+                    Gewinnverschiebung ins ausländische Steuerparadies - B-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %
+                {% else %}
+                    B-Unternehmen hat eine effektive Steuerquote von 30,6 % - Steuerquote entspricht dem deutschen Durchschnitt
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</p>
+
+{% endblock %}
