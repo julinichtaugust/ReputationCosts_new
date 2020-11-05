@@ -1,0 +1,37 @@
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block styles %}
+<style>
+    table {
+        font-size: 10pt;
+    }
+</style>
+    <link href="{% static 'RepCostExperiment/css/Popup_news.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="card-body" style="height: 0px;">
+    <div class="center">
+        <div id="news2" class="overlay">
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <img src="{% static "ReputationCosts/pictures/Steuern.jpg"%}" width="200px"/>
+                    <p style="font-size: 20px">
+                        Gewinnverschiebung ins ausländische Steuerparadies - A-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %
+                    </p>
+                    <p>
+                        In diesem Jahr dürfen sich die Anleger...
+                    </p>
+
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

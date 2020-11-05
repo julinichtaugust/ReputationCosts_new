@@ -21,7 +21,7 @@
 
 
 .popup {
-  margin-top: 300px;
+  margin-top: 0px;
   padding-top: 35px;
   padding-left: 10px;
   padding-right: 10px;
@@ -29,7 +29,7 @@
   border-radius: 5px;
   width: 400px;
   position: absolute;
-  right: 170px;
+  right: -100px;
   top: 180px;
   transition: all 5s ease-in-out;
   height: 300px !important;
