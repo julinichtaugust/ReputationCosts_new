@@ -132,7 +132,7 @@ class MyPage2(Page):
 
     def get_timeout_seconds(self):
         if self.round_number <= 3:
-            second = 12000
+            second = 120
         else:
             second = 60
         return second
@@ -155,7 +155,7 @@ class MyPage2(Page):
             pass
         else:
             if values['kaufA'] > self.player.endowment:
-                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+                return 'Ihre Nachfrage darf Ihr verfügbares Bankguthaben nicht übersteigen!'
             else:
                 pass
 
@@ -163,7 +163,7 @@ class MyPage2(Page):
             pass
         else:
             if values['kaufB'] > self.player.endowment:
-                return 'Ihre Nachfrage darf Ihr verfügbares Vermögen nicht übersteigen!'
+                return 'Ihre Nachfrage darf Ihr verfügbares Bankguthaben nicht übersteigen!'
             else:
                 pass
 
@@ -171,7 +171,7 @@ class MyPage2(Page):
             pass
         else:
             if values['kaufA'] + values['kaufB'] > self.player.endowment:
-                return 'Die Summe der Nachfragen der Aktien beider Unternehmen darf Ihr verfügbares Vermögen nicht übersteigen!'
+                return 'Die Summe der Nachfragen der Aktien beider Unternehmen darf Ihr verfügbares Bankguthaben nicht übersteigen!'
 
         if values['verkaufA'] is None:
             pass
@@ -248,7 +248,7 @@ class Results2(Page):
 
     def get_timeout_seconds(self):
         if self.round_number <= 3:
-            second = 12000
+            second = 120
         else:
             second = 60
         return second

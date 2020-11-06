@@ -12,22 +12,22 @@
 <h3>{% trans 'Endvermögen' %}</h3>
 
     <p>
-        Nach Ablauf der zweiten Periode sind die Aktien in Ihrem Portfolio wertlos. Ihre Auszahlung wird folglich lediglich durch das Endvermögen zu diesem Zeitpunkt bestimmt. Bitte bachten Sie, dass die Auszahlung der Trainings-Sequenz für die tatsächliche Vergütung am Ende des Experiments irrelevant ist.
+        Nach Ablauf der zweiten Periode sind die Aktien in Ihrem Portfolio wertlos. Ihre Vergütung wird folglich lediglich durch das Bankguthaben zu diesem Zeitpunkt bestimmt. Bitte bachten Sie, dass das Bankguthaben der Trainings-Sequenz für die tatsächliche Vergütung am Ende des Experiments irrelevant ist.
     </p>
 
 <h3>{% trans 'Beispiel' %}</h3>
     <p>
-        Bei dem folgenden Beispiel haben Sie zu Beginn 1 Aktie in Ihrem Portfolio sowie ein Bankguthaben in Höhe von {{ 10|c }}.
+        Bei dem folgenden Beispiel haben Sie zu Beginn eine Aktie in Ihrem Portfolio sowie ein Bankguthaben in Höhe von {{ 10|c }}.
     </p>
 
 
     <p>
         <i>Annahme:</i> Sie verkaufen in der ersten Periode eine Aktie für {{ 6|c }} und kaufen in der zweiten Periode eine Aktie für {{ 3|c }}. </p>
     <p>
-        <i>Endvermögen:</i> Sie erhalten in der ersten Periode den Verkaufserlös aus dem Verkauf ({{ 6|c }}. Da Sie keine Aktie mehr im Portfolio haben, erhalten Sie auch keine
+        <i>Bankguthaben zum Ende der Sequenz:</i> Sie erhalten in der ersten Periode den Verkaufserlös aus dem Verkauf ({{ 6|c }}. Da Sie keine Aktie mehr im Portfolio haben, erhalten Sie auch keine
         Dividende. In der zweiten Periode kaufen Sie für {{ 3|c }} eine Aktie. Dieser Betrag wird von Ihrem Bankguthaben abgezogen. Da Sie nun eine Dividende im Portfolio haben,
         erhalten Sie eine Dividende in Höhe von {{ 4|c }}, die Ihrem Bankguthaben hinzugefügt wird. Die Aktie ist nach Ablauf der letzten Periode für Sie wertlos. Das Bankguthaben
-        zum Ende bemisst sich folglich aus dem Bankvermögen zu Beginn ({{ 10|c }}), zuzüglich des Verkaufserlöses ({{ 6|c }}), abzüglich des Kaufpreises ({{ 3|c }}) und zuzüglich der Dividendenzahlung ({{ 4|c }}).
+        zum Ende bemisst sich folglich aus dem Bankguthaben zu Beginn ({{ 10|c }}), zuzüglich des Verkaufserlöses ({{ 6|c }}), abzüglich des Kaufpreises ({{ 3|c }}) und zuzüglich der Dividendenzahlung ({{ 4|c }}).
     </p>
     <p>
         <center>

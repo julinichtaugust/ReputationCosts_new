@@ -427,9 +427,9 @@ class Player(BasePlayer):
     comprehension_question2 = models.IntegerField(
         verbose_name=("Frage 1: Wonach bestimmt sich die Vergütung einer Sequenz?"),
         initial = 0,
-        choices=[[0, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden einer Sequenz.')],
+        choices=[[0, ('Nach der Höhe des Bankguthabens nach Ablauf aller Perioden einer Sequenz.')],
                  [1, ('Nach der Anzahl der Aktien im Portfolio.')],
-                 [2, ('Nach der Höhe des Vermögens nach Ablauf aller Perioden und nach der Anzahl der Aktien im Portfolio.')]],
+                 [2, ('Nach der Höhe des Bankguthabens nach Ablauf aller Perioden und nach der Anzahl der Aktien im Portfolio.')]],
         widget=widgets.RadioSelect,
     )
     comprehension_question3 = models.IntegerField(
@@ -466,7 +466,7 @@ class Player(BasePlayer):
     )
     comprehension_question6 = models.IntegerField(
         verbose_name=(
-            "Frage 5: Wie ändert sich Ihr Vermögen?"),
+            "Frage 5: Wie ändert sich Ihr Bankguthaben?"),
         initial = 2,
         choices=[[0, ('Nur durch den Kauf oder Verkauf von Aktien.')],
                  [1, ('Nur durch Dividenden, die Sie für die Aktien in ihrem Portfolio erhalten.')],

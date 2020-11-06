@@ -56,7 +56,7 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                             <p>
                                 <table align="center" style="width: 378px" >
                                     <tr style="font-size:10pt;">
-                                        <th>Ihr Vermögen </th>
+                                        <th>Ihr Bankguthaben </th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                         <td style="text-align:center" width="350px">{{ player.endowment }}</td>
@@ -90,7 +90,7 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                             <div class="alert alert-info" role="alert" style="text-align: center;text-justify: inherit">
                                     Geben Sie hier Ihre Verkaufs- und Kaufpreise ein:
                             </div>
-                                <div id="main" style="margin-left: -10px;">
+                                <div id="main" style="margin-left: 8px;">
                                     <div id="spaltelinks">
                                         <div class="card my-4" >
                                             <div class="card-body" style="height: 250px;" >
@@ -204,7 +204,7 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                                         </p>
                                         <p>
 
-                                            Nach Ablauf der ersten Sequenz erhalten Sie eine Übersicht über Ihr Vermögen, sowie neue Informationen für die zweite Sequenz.
+                                            Nach Ablauf der ersten Sequenz erhalten Sie eine Übersicht über Ihr Bankguthaben und ihr Portfolio zum Ende der Sequenz, sowie neue Informationen für die zweite Sequenz.
                                         </p>
                                         <p>
                                             In jeder Handelsphase können Sie am Kapitalmarkt Aktien von <b>zwei verschiedenen Unternehmen</b> handeln, um so Ihr Portfolio (= Aktienbestand) zu optimieren. In jeder Dividendenphase erhalten Sie anschließend für jede Aktie in Ihrem Portfolio eine Dividende (= Auszahlung). Um welche Unternehmen es sich handelt und wie hoch die Dividenden sind, erfahren Sie im Punkt <i>Unternehmen und Dividenden</i>.
@@ -219,11 +219,11 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                                             Die Durchführung des Experiments erfolgt in einer <b>fiktiven Währung</b>, die wir <b>ECU</b> nennen. 500 ECU entssprechen dabei 1 €. Ihre tatsächliche Vergütung wird am Ende des Experiments in Euro umgerechnet.
                                         </p>
 
-                                        <h4>Anfangsvermögen</h4>
+                                        <h4>Bankguthaben zu Beginn</h4>
 
                                         <p>
 
-                                           Zu Beginn jeder Sequenz erhalten Sie von uns ein Vermögen in Höhe von 1500 ECU. Zusätzlich erhalten Sie für Ihr Portfolio jeweils 5 Aktien der beiden Unternehmen.
+                                           Zu Beginn jeder Sequenz erhalten Sie von uns ein Bankguthaben in Höhe von 1500 ECU. Zusätzlich erhalten Sie für Ihr Portfolio jeweils 5 Aktien der beiden Unternehmen.
                                             <!--
                                             Zu Beginn der Sequenz erhalten Sie von uns ein Vermögen in Höhe von 1500 ECU. Zusätzlich erhalten Sie für Ihr Portfolio jeweils 5 Aktien der beiden Unternehmen.
                                         -->
@@ -253,7 +253,7 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                                         <h4>Kauf von Aktien</h4>
                                          <p>
                                            Um Aktien von anderen Marktteilnehmer zu kaufen, geben Sie in das Feld <b>Kauf</b> den Maximalpreis ein, zum dem Sie bereit sind, die Aktie zu kaufen.
-                                            Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei. Achten Sie darauf, dass der Kaufpreis Ihr Vermögen nicht übersteigen darf.
+                                            Möchten Sie in einer Periode keine Aktie kaufen, lassen Sie das Feld frei. Achten Sie darauf, dass der Kaufpreis Ihr Bankguthaben nicht übersteigen darf.
                                         </p>
 
                                         <h4>Verauf von Aktien</h4>
@@ -288,9 +288,9 @@ Sequenz {{ sequence }} - Handelsphase - Periode {{ periode }}
                                         <h4>Variable Vergütung</h4>
                                         <p>
 
-                                                Ihre variable Vergütung entspricht Ihrem Vermögen am Ende einer Sequenz.
+                                                Ihre variable Vergütung entspricht Ihrem Bankguthaben am Ende einer Sequenz.
                                                 Am Ende der letzten Periode einer Sequenz erhalten Sie für alle Aktien in Ihrem Protfolio eine letzte Dividendenzahlung. Nach Auszahlung dieser Dividende sind die Aktien wertlos.
-                                                Ihnen wird jedoch nur das Endvermögen von einer der beiden Sequenzen ausgezahlt. Ein Zufallsgenerator entscheidet, welches Vermögen der beiden Sequenzen ausgezahlt wird.
+                                                Ihnen wird jedoch nur das Bankguthaben am Ende einer der beiden Sequenzen ausgezahlt. Ein Zufallsgenerator entscheidet, welches Bankguthaben der beiden Sequenzen ausgezahlt wird.
                                                 <b>Es wird folglich nur eine Sequenz entlohnt!</b> Das Ergebnis der zufällig gezogenen Sequenz wird in Euro umgerechnet. Dabei gilt 500 ECU = 1 €.
 
                                             <!--

@@ -52,10 +52,10 @@ Sequenz {{ sequence }} - Dividendenphase - Periode {{ periode }}
                             <p>
                                 <table align="center" >
                                     <tr style="font-size:10pt;">
-                                        <th colspan="2">Ihr Vermögen </th>
+                                        <th colspan="2">Ihr Bankguthaben </th>
                                     </tr>
                                     <tr style=" font-size:10pt;">
-                                        <td width="250px">Vermögen zu Beginn der Periode</td> <td style="text-align:right" width="100px">{{player.endowmentalt}}</td>
+                                        <td width="250px">Bankguthaben zu Beginn der Periode</td> <td style="text-align:right" width="100px">{{player.endowmentalt}}</td>
                                     </tr>
                                     {% if player.rand == 1 %}
                                         {% if player.is_trade_verkaufA %}
@@ -147,7 +147,7 @@ Sequenz {{ sequence }} - Dividendenphase - Periode {{ periode }}
                                         {% endif %}
                                     {% endif %}
                                     <tr style=" font-size:10pt;">
-                                        <td width="250px">Vermögen zum Ende der Periode</td> <td style="text-align:right" width="100px">{{player.endowment}}</td>
+                                        <td width="250px">Bankguthaben zum Ende der Periode</td> <td style="text-align:right" width="100px">{{player.endowment}}</td>
                                     </tr>
                                 </table>
                             </p>
