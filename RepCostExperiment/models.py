@@ -36,14 +36,14 @@ class Constants(BaseConstants):
 
     mean_remuneration = 1500
 
-    Umsatz = 60
-    GvS = 35
-    GnS_low = 32.5
-    GnS_high = 24.3
-    ETR_low = 7.1
-    ETR_high = 30.6
-    Steuern_low = 2.5
-    Steuern_high = 10.7
+    Umsatz = 175.0
+    GvS = 35.0
+    GnS_low = 32.4
+    GnS_high = 24.5
+    ETR_low = 7.5
+    ETR_high = 30.0
+    Steuern_low = 2.6
+    Steuern_high = 10.5
     fix = 3.00
 
 

@@ -26,17 +26,37 @@
                                 <b>A-Unternehmen mit Gewinnzuwachs – Anleger erfreut</b>
                             </p>
                             <p style="font-size: 12pt">
-                                Der Geschäftsführer des A&#8209;Unternehmens kann in diesem Jahr einen Gewinnzuwachs verkünden.
-                                Das freut insbesondere die Anleger, die eine höhere Dividende erwarten dürfen.
+                                Der Geschäftsführer des A-Unternehmens verkündet für dieses Jahr einen Gewinnzuwachs.
+                                Das gute Ergebnis erfreut die Anleger. Insgesamt machte das A-Unternehmen in diesem Jahr einen Gewinn vor Steuern in Höhe von 35 Milliarden ECU.
                             </p>
                             <p>
-                                <img src="{% static "ReputationCosts/pictures/Steuern.jpg"%}" width="200px"/>
+                                {% if player.rand == 1 %}
+                                <img src="{% static "ReputationCosts/pictures/TaxAvoidance_de.jpg"%}" width="200px"/>
+                                {% else %}
+                                <img src="{% static "ReputationCosts/pictures/CTR.jpg"%}" width="200px"/>
+                                {% endif %}
                             </p>
                             <p style="font-size: 14pt; text-align: initial;">
-                                <b>Gewinnverschiebung ins ausländische Steuerparadies - A&#8209;Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1</b>
+                                <b>
+                                {% if player.rand == 1 %}
+                                Gewinnverschiebung ins ausländische Steuerparadies - A-Unternehmen reduziert die effektive Steuerquote auf nur 7,5 %
+                                {% else %}
+                                A-Unternehmen hat eine effektive Steuerquote von 30,0 % - Steuerquote entspricht dem gesetzlichen Steuersatz
+                                {% endif %}
+                                    </b>
                             </p>
                             <p style="font-size: 12pt">
-                                Nach Informationen der ...
+                                {% if player.rand == 1 %}
+                                    Das A-Unternehmen hat in diesem Jahr einen großen Teil ihrer Gewinne in eine ausländische Steueroase verlagert.
+                                    Seit mehreren Jahren versuchen immer mehr Unternehmen ihre Gewinne dort zu versteuern, wo besonders geringe Steuersätze greifen.
+                                    Das A-Unternehmen konnte mit Hilfe der Gewinnverlagerung die effektive Steuerquote auf nur 7,5 % reduzieren.
+                                    Zwar ist diese Art der Steuergestaltung legal, jedoch entgehen dem Staat dadurch jährlich Steuereinkünfte in Milliardenhöhe, wodurch Geld für dringend benötigte Sozialleistungen fehl
+                                {% else %}
+                                    Das A-Unternehmen hat in diesem Jahr ihre Gewinne vollständig in Deutschland versteuert.
+                                    Seit mehreren Jahren versuchen immer mehr Unternehmen im Rahmen der sozialen Verantwortung ihre Gewinne dort zu versteuern, wo sie entstanden sind.
+                                    Das A-Unternehmen weist in diesem Jahr eine effektive Steuerquote von 30,0 % aus, was dem gesetzlichen Steuersatz in Deutschland entspricht.
+                                    Damit kommt das A-Unternehmen nach Ansicht der Experten seiner gesellschaftlichen und sozialen Verantwortung nach.
+                                {% endif %}
                             </p>
 
 
@@ -59,19 +79,37 @@
                                 <b>B-Unternehmen mit Gewinnzuwachs – Anleger erfreut</b>
                             </p>
                             <p style="font-size: 12pt">
-                                Der Geschäftsführer des B&#8209;Unternehmens kann in diesem Jahr einen Gewinnzuwachs verkünden.
-                                Das freut insbesondere die Anleger, die eine höhere Dividende erwarten dürfen.
+                                Der Geschäftsführer des B-Unternehmens verkündet für dieses Jahr einen Gewinnzuwachs.
+                                Das gute Ergebnis erfreut die Anleger. Insgesamt machte das A-Unternehmen in diesem Jahr einen Gewinn vor Steuern in Höhe von 35 Milliarden ECU.
                             </p>
                             <p>
-                                <img src="{% static "ReputationCosts/pictures/Steuern.jpg"%}" width="200px"/>
+                                {% if player.rand == 1 %}
+                                <img src="{% static "ReputationCosts/pictures/CTR.jpg"%}" width="200px"/>
+                                {% else %}
+                                <img src="{% static "ReputationCosts/pictures/TaxAvoidance_de.jpg"%}" width="200px"/>
+                                {% endif %}
                             </p>
                             <p style="font-size: 14pt; text-align: initial;">
                                 <b>
-                                    {% if player.rand == 2 %} <td>Gewinnverschiebung ins ausländische Steuerparadies - B-Unternehmen reduziert die effektive Steuerquote auf unterdurchschnittliche 7,1 %</td> {% else %} <td>B-Unternehmen hat eine effektive Steuerquote von 30,6 % - Steuerquote entspricht dem deutschen Durchschnitt</td> {% endif %}
+                                    {% if player.rand == 2 %}
+                                    Gewinnverschiebung ins ausländische Steuerparadies - B-Unternehmen reduziert die effektive Steuerquote auf nur 7,5 %
+                                    {% else %}
+                                    B-Unternehmen hat eine effektive Steuerquote von 30,0 % - Steuerquote entspricht dem gesetzlichen Steuersatz
+                                    {% endif %}
                                 </b>
                             </p>
                             <p style="font-size: 12pt">
-                                Nach Informationen der ...
+                                {% if player.rand == 2 %}
+                                    Das B-Unternehmen hat in diesem Jahr einen großen Teil ihrer Gewinne in eine ausländische Steueroase verlagert.
+                                    Seit mehreren Jahren versuchen immer mehr Unternehmen ihre Gewinne dort zu versteuern, wo besonders geringe Steuersätze greifen.
+                                    Das B-Unternehmen konnte mit Hilfe der Gewinnverlagerung die effektive Steuerquote auf nur 7,5 % reduzieren.
+                                    Zwar ist diese Art der Steuergestaltung legal, jedoch entgehen dem Staat dadurch jährlich Steuereinkünfte in Milliardenhöhe, wodurch Geld für dringend benötigte Sozialleistungen fehl
+                                {% else %}
+                                    Das B-Unternehmen hat in diesem Jahr ihre Gewinne vollständig in Deutschland versteuert.
+                                    Seit mehreren Jahren versuchen immer mehr Unternehmen im Rahmen der sozialen Verantwortung ihre Gewinne dort zu versteuern, wo sie entstanden sind.
+                                    Das B-Unternehmen weist in diesem Jahr eine effektive Steuerquote von 30,0 % aus, was dem gesetzlichen Steuersatz in Deutschland entspricht.
+                                    Damit kommt das B-Unternehmen nach Ansicht der Experten seiner gesellschaftlichen und sozialen Verantwortung nach.
+                                {% endif %}
                             </p>
 
                         </div>
