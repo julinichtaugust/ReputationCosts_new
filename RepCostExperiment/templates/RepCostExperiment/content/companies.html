@@ -2,26 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-<div class="card-body" style="height: 0px;">
-    <div class="center">
-        <div id="news1" class="overlay">
-            <div class="popup">
-                <a class="close" href="#">&times;</a>
-                <div class="content">
-                    <p style="font-size: 20px">
-                        A-Unternehmen mit Gewinnzuwachs – Anleger erfreut
-                    </p>
-                    <p>
-                        In diesem Jahr dürfen sich die Anleger...
-                    </p>
-
-                    <br>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <p>
     Nachfolgend erhalten Sie Informationen zu den Gewinn- und Verlustrechungen der beiden Unternehmen.  Bitte lesen Sie sich diese genau durch.
@@ -34,7 +14,7 @@
         <div class="row toprow">
             <div class="col-md-6">
                 <div class="card my-0">
-                    <div class="card-body" style="height: 350px">
+                    <div class="card-body" style="height: 450px">
                         <p>
                             <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                                 A-Unternehmen
@@ -44,13 +24,16 @@
                             <p>
                                 {% include 'RepCostExperiment/comp_template/contents/GuV_A.html' %}
                             </p>
+                                <p>
+                                    {% include 'RepCostExperiment/comp_template/contents/Dividende_A.html' %}
+                                </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card my-0">
-                    <div class="card-body" style="height: 350px">
+                    <div class="card-body" style="height: 450px">
                         <p>
                             <h4 class="card-title" align="center" style="margin-bottom: .0rem">
                                 B-Unternehmen
@@ -60,6 +43,9 @@
                             <p>
                                 {% include 'RepCostExperiment/comp_template/contents/GuV_B.html' %}
                             </p>
+                                <p>
+                                    {% include 'RepCostExperiment/comp_template/contents/Dividende_B.html' %}
+                                </p>
                         </div>
                     </div>
                 </div>
