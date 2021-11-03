@@ -9,7 +9,7 @@
 
 {% block scripts %}
 
-<script src="{% static "Train/js/prev_next_button.js" %}"></script>
+    <script src="{% static "global/js/prev_next_button.js" %}"></script>
 
 {% endblock %}
 
@@ -40,23 +40,23 @@
 <ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center " id="myTab" role="tablist">
 
     <li class="nav-item" >
-        <a class="nav-link active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="topFunction()">{% trans 'Allgemeines' %}</a>
+        <a class="nav-link active" id="part1-tab" data-bs-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="topFunction()">{% trans 'Allgemeines' %}</a>
     </li>
 
     <li class="nav-item" >
-        <a class="nav-link" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Dividende' %}</a>
+        <a class="nav-link" id="part2-tab" data-bs-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction()">{% trans 'Dividende' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part3-tab" data-toggle="tab" href="#part3" role="tab" aria-controls="part3" onclick="topFunction()">{% trans 'Handelsphase' %}</a>
+        <a class="nav-link" id="part3-tab" data-bs-toggle="tab" href="#part3" role="tab" aria-controls="part3" onclick="topFunction()">{% trans 'Handelsphase' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part4-tab" data-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
+        <a class="nav-link" id="part4-tab" data-bs-toggle="tab" href="#part4" role="tab" aria-controls="part4" onclick="topFunction()">{% trans 'Dividendenphase' %}</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" id="part5-tab" data-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Trainings-Sequenz' %}</a>
+        <a class="nav-link" id="part5-tab" data-bs-toggle="tab" href="#part5" role="tab" aria-controls="part5" onclick="topFunction()">{% trans 'Trainings-Sequenz' %}</a>
     </li>
 
 </ul>
